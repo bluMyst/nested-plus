@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<!-- saved from url=(0032)http://orteil.dashnet.org/nested -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Nested</title>
+<meta name="description" content="A simulation of everything. (by Orteil)">
+<meta name="keywords" content="nested, game, toy, webtoy, orteil, dashnet, universe, simulation of everything, doughnutverse, lasagnaverse, lobster">
+<meta name="author" content="Orteil">
+
+<script src="./Nested_files/ca-pub-8491708950677704.js"></script><script type="text/javascript" async="" src="./Nested_files/ga.js"></script><script async="" src="./Nested_files/cloudflare.min.js"></script><script type="text/javascript">
+//<![CDATA[
+try{if (!window.CloudFlare) {var CloudFlare=[{verbose:0,p:0,byc:0,owlid:"cf",bag2:1,mirage2:0,oracle:0,paths:{cloudflare:"/cdn-cgi/nexp/dok3v=1613a3a185/"},atok:"a64fedd15051c66f11935fb0f9e1474a",petok:"f19b0edfc57de080a712453305acb7c185b337d3-1470651869-1800",adblock:1,betok:"83a4cb4001a0e38029ff4d0783f16a2b6798c708-1470651869-120",zone:"dashnet.org",rocket:"0",apps:{"ga_key":{"ua":"UA-29324474-2","ga_bs":"2"},"abetterbrowser":{"ie":"8"}},sha2test:0}];!function(a,b){a=document.createElement("script"),b=document.getElementsByTagName("script")[0],a.async=!0,a.src="//ajax.cloudflare.com/cdn-cgi/nexp/dok3v=0489c402f5/cloudflare.min.js",b.parentNode.insertBefore(a,b)}()}}catch(e){};
+//]]>
+</script>
+<script type="text/javascript">
+    window.cookieconsent_options = {"message":"This website uses cookies for ads and traffic analysis.","dismiss":"Got it!","learnMore":"Learn more","link":"http://orteil.dashnet.org/cookieconsentpolicy.html","target":"_blank","theme":"http://orteil.dashnet.org/cookieconsent.css","domain":"dashnet.org"};
+</script>
+<script type="text/javascript" src="./Nested_files/cookieconsent.min.js"></script>
+
+<!-- Hello Internet ! Welcome to my source code. If you wish to learn more about how this thing works, please visit /nestedscript.js . -->
+
+<!--
+History
+January 2014 : working on a sequel maybe
+January 2013 : added a bunch of new stuff
+January 2012 : finally cleaned up and uploaded
+January 2011 : coded most of Nested
+how's that for a healthy update cycle
+-->
+
+<link rel="shortcut icon" href="http://orteil.dashnet.org/favicon.ico">
+<link rel="stylesheet" type="text/css" href="./Nested_files/nestedstyle.css">
+<!--
+-->
+<script type="text/javascript">
+/* <![CDATA[ */
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-29324474-2']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+
+(function(b){(function(a){"__CF"in b&&"DJS"in b.__CF?b.__CF.DJS.push(a):"addEventListener"in b?b.addEventListener("load",a,!1):b.attachEvent("onload",a)})(function(){"FB"in b&&"Event"in FB&&"subscribe"in FB.Event&&(FB.Event.subscribe("edge.create",function(a){_gaq.push(["_trackSocial","facebook","like",a])}),FB.Event.subscribe("edge.remove",function(a){_gaq.push(["_trackSocial","facebook","unlike",a])}),FB.Event.subscribe("message.send",function(a){_gaq.push(["_trackSocial","facebook","send",a])}));"twttr"in b&&"events"in twttr&&"bind"in twttr.events&&twttr.events.bind("tweet",function(a){if(a){var b;if(a.target&&a.target.nodeName=="IFRAME")a:{if(a=a.target.src){a=a.split("#")[0].match(/[^?=&]+=([^&]*)?/g);b=0;for(var c;c=a[b];++b)if(c.indexOf("url")===0){b=unescape(c.split("=")[1]);break a}}b=void 0}_gaq.push(["_trackSocial","twitter","tweet",b])}})})})(window);
+/* ]]> */
+</script>
+<style type="text/css">.cf-hidden { display: none; } .cf-invisible { visibility: hidden; }</style></head>
+
+<body>
+<div id="header" class="nav"><a href="http://orteil.dashnet.org/">&#8592;</a> Nested <span id="version">0.3</span> <span id="madeby"> © <a href="http://orteil.dashnet.org/">Orteil</a>, 2011-2013 - hosted by <a href="http://dashnet.org/">DashNet</a></span><span id="news"></span><div id="styles"><a href="javascript:SetStyle(0);" style="background-color:#fff;">-</a><a href="javascript:SetStyle(1);" style="background-color:#8cf;">-</a><a href="javascript:SetStyle(2);" style="background-color:#474;">-</a><a href="javascript:SetStyle(3);" style="background-color:#953;">-</a><a href="javascript:SetStyle(4);" style="background-color:#a97;">-</a><a href="javascript:SetStyle(5);" style="background-color:#ccc;">-</a><a href="javascript:SetStyle(6);" style="background-color:#000;">-</a><a href="javascript:SetStyle(7);" style="background-color:#214;">-</a></div></div>
+
+
+<div id="debug"><br><div id="div0" class="thing"><a href="javascript:Toggle(0);" style="padding-right:8px;" alt="archetype : universe" title="archetype : universe"><span class="arrow" id="arrow0">+</span> universe</a><div id="container0" class="thing" style="display:none;"><div id="div1">thing</div><div id="div2">thing</div><div id="div3">thing</div><div id="div4">thing</div><div id="div5">thing</div><div id="div6">thing</div><div id="div7">thing</div><div id="div8">thing</div><div id="div9">thing</div><div id="div10">thing</div><div id="div11">thing</div><div id="div12">thing</div><div id="div13">thing</div><div id="div14">thing</div><div id="div15">thing</div><div id="div16">thing</div><div id="div17">thing</div><div id="div18">thing</div><div id="div19">thing</div></div></div></div>
+
+<div id="sidebar" class="nav">
+
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" id="donate">
+it ain't gonna host itself<br>
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="BBN2WL3TC6QH4">
+<input type="image" src="./Nested_files/btn_donate_LG.gif" border="0" name="submit" alt="PayPal â€” The safer, easier way to pay online.">
+<img alt="" border="0" src="./Nested_files/pixel.gif" width="1" height="1">
+</form>
+
+
+<div id="news">
+NEWS :<br>Added museums, nondescript prehistoric people, and some universe garnish.<br>Don't forget to check out the <a href="http://orteil.dashnet.org/gamegen">Game idea generator</a>!<br>(also : <a href="http://orteil42.tumblr.com/">tumblr</a>, <a href="https://twitter.com/Orteil42">twitter</a>)</div>
+
+
+<script async="" src="./Nested_files/adsbygoogle.js"></script>
+<!-- DashNet Orteil Nested Skyscraper -->
+<ins class="adsbygoogle" style="display:inline-block;width:120px;height:600px" data-ad-client="ca-pub-8491708950677704" data-ad-slot="7805441131" data-adsbygoogle-status="done"><ins id="aswift_0_expand" style="display:inline-table;border:none;height:600px;margin:0;padding:0;position:relative;visibility:visible;width:120px;background-color:transparent"><ins id="aswift_0_anchor" style="display:block;border:none;height:600px;margin:0;padding:0;position:relative;visibility:visible;width:120px;background-color:transparent"><iframe width="120" height="600" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;" src="./Nested_files/saved_resource.html"></iframe></ins></ins></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+<script type="text/javascript" src="./Nested_files/nestedscript.js"></script>
+
+
+<script>
+var SeedObject="universe";//This can be set to anything else, like "firefighter" or "donut box".
+var Offline=1;
+</script>
+
+<span style="display:none;">
+<script>Offline=0;</script></span>
+
+<script>
+	
+	LaunchNest(SeedObject.toLowerCase());
+	
+	<!-- quick and dirty dynamic stylesheets (doesn't seem to work in IE, unfortunately) -->
+	var sheet=document.createElement('style');
+	sheet.id="customstyle";
+	document.body.appendChild(sheet);
+	
+	
+	function SetStyle(which)
+	{
+		if (Styles[which].style) sheet.innerHTML=Styles[which].style;
+	}
+	
+	var Styles=[];
+	function Style(color,style)
+	{
+		this.color=color;
+		this.style=style;
+		Styles.push(this);
+	}
+	
+	new Style("#fff",
+	'body {background:#fff;}'+
+	'.thing {border-color:#fff;}'
+	);
+	new Style("#8cf",
+	'body {background:#8cf;}'+
+	'.thing {border-color:#8cf;background:#bef;}'
+	);
+	new Style("#474",
+	'body {background:#474;}'+
+	'.thing {border-color:#141;background:#ada;}'+
+	'.thing a:hover, .thing a:active {background:#141;color:#fff;}'+
+	'.arrow {background:#141;}'
+	);
+	new Style("#953",
+	'body {background:#953;}'+
+	'.thing {border-color:#620;background:#c96;}'+
+	'.thing a:hover, .thing a:active {background:#620;color:#fff;}'+
+	'.arrow {background:#620;}'
+	);
+	new Style("#a97",
+	'body {background:#a97;}'+
+	'.thing {border-color:#a97;background:#cb9;font-family:Georgia,serif;font-size:10pt;box-shadow:0px 2px 2px #321;}'+
+	'.thing, .thing a, .thing a:hover, .thing a:active {color:#321;}'+
+	'.thing a:hover, .thing a:active {color:#852;background:transparent;text-shadow:0px 0px 2px #fff;}'+
+	'.arrow {background:transparent;color:#321;}'
+	);
+	new Style("#ccc",
+	'.thing{border-radius:10px;-moz-border-radius:10px;padding:5px;border-top:#fff solid 2px;border-left:#ddd solid 2px;border-right:#ddd solid 2px;border-bottom:#bbb solid 2px;-moz-box-shadow: 0px 2px 3px #000;padding-right:1px;}.arrow{border-radius:10px;-moz-border-radius:10px;padding-left:4px;padding-right:4px;}.thing a{border-radius:10px;-moz-border-radius:10px;}'
+	);
+	new Style("#000",
+	'body {background:#000;}'+
+	'.thing {border-color:#000;background:#222;color:#fff;}'+
+	'.thing a {color:#fff;}'+
+	'.thing a:active {background:#fff;color:#000;}'
+	);
+	new Style("#214",
+	'body {background:url(UniverseBG.jpg);}'+
+	'.thing {border-color:#fff;border-width:1px;background:transparent;color:#fff;box-shadow:0px 0px 8px #428,0px 0px 4px #fff inset;}'+
+	'.thing a {color:#fff;background:rgba(0,0,0,0.5);}'+
+	'.thing a:hover, .thing a:hover .arrow {background:#fff;color:#000;}'
+	);
+	
+	var str="";
+	for (var i in Styles)
+	{
+		str+='<a href="javascript:SetStyle('+i+');" style="background-color:'+Styles[i].color+';">-</a>';
+	}
+	document.getElementById("styles").innerHTML=str;
+</script><style id="customstyle">body {background:#fff;}.thing {border-color:#fff;}</style>
+
+
+</body></html>

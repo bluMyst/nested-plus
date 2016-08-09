@@ -18,7 +18,7 @@ choose = (arr) ->
   #Returns an element from an array at random.
   arr[Math.floor(Math.random() * arr.length)]
 
-WeightedChoose = (arr, weightChoose) ->
+weightedChoose = (arr, weightChoose) ->
   #Returns an element from an array at random according to a weight.
   #A weight of 2 means the first element will be picked roughly twice as often as the second; a weight of 0.5 means half as often. A weight of 1 gives a flat, even distribution.
   if weightChoose <= 0 or weightChoose == undefined
@@ -42,52 +42,56 @@ randint = (min, max) ->
   #Return a number between min and max, included.
   parseFloat(Math.floor(Math.random() * (max - min + 1))) + parseFloat(min)
 
-Things = []
-ThingsN = 0
-Thing = (@name, @contains, @namegen) ->
-  if @namegen == undefined
-    @namegen = @name
+things = []
+thingsN = 0
+class Thing
+    constructor: (@name, @contains, @namegen=@name) ->
+      things[@name] = this
+      thingsN++
+      return
 
-  Things[@name] = this
-  ThingsN++
-  return
-
-CheckMissingThings = ->
+checkMissingThings = ->
   allContents = []
-  allMissing = []
-  for i of Things
-    thisThing = Things[i]
-    for i2 of thisThing.contains
-      thisContent = thisThing.contains[i2]
+  allMissing  = []
+
+  for i, thisThing of things
+    for i2, thisContent of thisThing.contains
       if typeof thisContent != 'string'
-        for i3 of thisContent
-          allContents.push thisContent[i3]
+        for i3, v3 of thisContent
+          allContents.push v3
       else
         allContents.push thisContent
+
   for i of allContents
     thisContent = allContents[i]
-    if thisContent.charAt(0) == '.'
-      thisContent = thisContent.substring(1)
+
+    if thisContent[0] == '.'
+      thisContent = thisContent[1..]
+
     thisContent = thisContent.split(',')
     thisContent = thisContent[0]
-    if !Things[thisContent] and thisContent != ''
+
+    if !things[thisContent] and thisContent != ''
       allMissing.push thisContent
+
   #    allMissing=allMissing.filter(function(elem,pos) {return allMissing.indexOf(elem)==pos;});//remove duplicates
-  str = 'Things that are linked to, but don\'t exist :\n'
+
+  str = "Things that are linked to, but don't exist :\n"
+
   for i of allMissing
     str += allMissing[i] + '\n'
   alert str
   return
 
 CleanThings = ->
-  for iT of Things
-    thisT = Things[iT]
+  for iT of things
+    thisT = things[iT]
     toConcat = []
     for i of thisT.contains
       if typeof thisT.contains[i] == 'string'
-        if thisT.contains[i].charAt(0) == '.'
-          if Things[thisT.contains[i].substring(1)] != undefined
-            toConcat = toConcat.concat(Things[thisT.contains[i].substring(1)].contains)
+        if thisT.contains[i][0] == '.'
+          if things[thisT.contains[i][1..]] != undefined
+            toConcat = toConcat.concat(things[thisT.contains[i][1..]].contains)
           thisT.contains[i] = ''
     if toConcat.length > 0
       for i of toConcat
@@ -103,7 +107,7 @@ iN = 0
 Instances = []
 Instance = (what) ->
   @name = 'thing'
-  @type = Things[what]
+  @type = things[what]
   @parent = 0
   @children = []
   @n = iN
@@ -119,9 +123,9 @@ Title = (what) ->
   toReturn = ''
   for i of what
     if what[i] != 'of' and what[i] != 'in' and what[i] != 'on' and what[i] != 'and' and what[i] != 'the' and what[i] != 'an' and what[i] != 'a' and what[i] != 'with' and what[i] != 'to' and what[i] != 'for'
-      what[i] = what[i].substring(0, 1).toUpperCase() + what[i].substring(1)
+      what[i] = what[i][0].toUpperCase() + what[i][1..]
     toReturn += ' ' + what[i]
-  toReturn.substring 1
+  toReturn[1..]
 
 Make = (what) ->
   new Instance(what)
@@ -146,7 +150,7 @@ Toggle = (what) ->
   return
 
 LaunchNest = (what) ->
-  if !Things[what]
+  if !things[what]
     what = 'error'
   Seed = Make(what)
   Seed.Grow 0
@@ -208,7 +212,7 @@ Instance::Name = ->
     str = ''
     #http://names.mongabay.com/male_names.htm
     if gender == 0
-      str += WeightedChoose([
+      str += weightedChoose([
         'Mary'
         'Patricia'
         'Linda'
@@ -311,7 +315,7 @@ Instance::Name = ->
         'Robin'
       ], 1.2)
     else if gender == 1
-      str += WeightedChoose([
+      str += weightedChoose([
         'James'
         'John'
         'Robert'
@@ -416,7 +420,7 @@ Instance::Name = ->
     str += ' '
     if randint(0, 30) == 1
       str += 'Mc'
-    str += WeightedChoose([
+    str += weightedChoose([
       'Smith'
       'Johnson'
       'Williams'
@@ -967,7 +971,7 @@ Instance::Name = ->
     @name = str
   else if @name == '*MEMORY*'
     str = ''
-    str += WeightedChoose([
+    str += weightedChoose([
       choose([
         'Biking'
         'Hiking'
@@ -1101,7 +1105,7 @@ Instance::Name = ->
           'nose'
         ])
         'broke up with my partner'
-        'lost my ' + WeightedChoose([
+        'lost my ' + weightedChoose([
           'dog'
           'cat'
           'bunny'
@@ -1128,7 +1132,7 @@ Instance::Name = ->
     @name = str
   else if @name == '*SADTHOUGHT*'
     str = ''
-    str += WeightedChoose([
+    str += weightedChoose([
       choose([
         'This place is crowded.'
         'I don\'t want to live here my whole life.'
@@ -1446,7 +1450,7 @@ Instance::Name = ->
     @name = str
   else if @name == '*HAPPYTHOUGHT*'
     str = ''
-    str += WeightedChoose([
+    str += weightedChoose([
       choose([
         'What a nice day!'
         'It\'s sunny today.'
@@ -1647,7 +1651,7 @@ Instance::Name = ->
     @name = str
   else if @name == '*MEDIEVAL MEMORY*'
     str = ''
-    str += WeightedChoose([
+    str += weightedChoose([
       choose([
         'Tending the fields'
         'Tending the animals'
@@ -1790,7 +1794,7 @@ Instance::Name = ->
     @name = str
   else if @name == '*MEDIEVAL THOUGHT*'
     str = ''
-    str += WeightedChoose([ choose([
+    str += weightedChoose([ choose([
       'Today was a fine day.'
       'Many things happened on this day.'
       'What an eventful week this has been.'
@@ -1925,7 +1929,7 @@ Instance::Name = ->
     @name = str
   else if @name == '*ANCIENT MEMORY*'
     str = ''
-    str += WeightedChoose([
+    str += weightedChoose([
       choose([
         'Scouting for wild beasts'
         'Tending the fire'
@@ -2047,7 +2051,7 @@ Instance::Name = ->
     @name = str
   else if @name == '*ANCIENT THOUGHT*'
     str = ''
-    str += WeightedChoose([ choose([
+    str += weightedChoose([ choose([
       'Today. Nice day.'
       'Many things, today.'
       'Good year so far. Not many dead children.'
@@ -2132,7 +2136,7 @@ Instance::Name = ->
     @name = str
   else if @name == '*FUTURE MEMORY*'
     str = ''
-    str += WeightedChoose([
+    str += weightedChoose([
       choose([
         'Spraying the clearpath'
         'Clearing the tendrils'
@@ -2279,7 +2283,7 @@ Instance::Name = ->
           'brain'
         ])
         'ended my biocontract with my biomate'
-        'lost my ' + WeightedChoose([
+        'lost my ' + weightedChoose([
           'dwog'
           'cwat'
           'bwunny'
@@ -2306,7 +2310,7 @@ Instance::Name = ->
     @name = str
   else if @name == '*FUTURE THOUGHT*'
     str = ''
-    str += WeightedChoose([ choose([
+    str += weightedChoose([ choose([
       'That\'s nice... that\'s really nice.'
       'All of this stuff is so nice.'
       'So nice, wow.'
@@ -2832,7 +2836,7 @@ Instance::Name = ->
       'in the sewers'
       'on a moon\'s surface'
     ]
-    str += WeightedChoose([
+    str += weightedChoose([
       'A painting of'
       'A portrait of'
       'A picture of'
@@ -3427,7 +3431,7 @@ Instance::Name = ->
           'discoveries'
         ]) + ' of '
       ]) + choose([
-        WeightedChoose([
+        weightedChoose([
           'James'
           'John'
           'Robert'
@@ -3722,7 +3726,7 @@ Instance::Name = ->
           'discoveries'
         ]) + ' of '
       ]) + choose([
-        WeightedChoose([
+        weightedChoose([
           'James'
           'John'
           'Robert'
@@ -3750,7 +3754,7 @@ Instance::Name = ->
           'Jeff'
           'Jack'
         ], 1.5)
-        WeightedChoose([
+        weightedChoose([
           'Mary'
           'Patricia'
           'Linda'
@@ -3905,7 +3909,7 @@ Instance::Name = ->
   else if @name == '*MONUMENT*'
     str = ''
     str += choose([ choose([ choose([
-      WeightedChoose([
+      weightedChoose([
         'old'
         'new'
         'ancient'
@@ -3926,7 +3930,7 @@ Instance::Name = ->
         'glorious'
         'flying'
       ], 2)
-      WeightedChoose([
+      weightedChoose([
         'great'
         'big'
         'large'
@@ -3960,7 +3964,7 @@ Instance::Name = ->
         'azure'
         'viridian'
       ]) + ' '
-    ]) + WeightedChoose([
+    ]) + weightedChoose([
       'tower'
       choose([
         ''
@@ -4012,30 +4016,37 @@ Instance::Grow = ->
     @Name()
     for i of @type.contains
       toMake = @type.contains[i]
+
       if typeof toMake != 'string'
         toMake = choose(toMake)
+
       toMake = toMake.split(',')
       makeAmount = 1
       makeProb = 100
+
       if toMake[1] == undefined
         toMake[1] = 1
       else
         makeAmount = toMake[1].split('-')
+
         if makeAmount[1] == undefined
           makeAmount = makeAmount[0]
         else
           makeAmount = randint(makeAmount[0], makeAmount[1])
+
         makeProb = (toMake[1] + '?').split('%')
+
         if makeProb[1] != undefined
           makeProb = makeProb[0]
           makeAmount = 1
         else
           makeProb = 100
-      if Things[toMake[0]] != undefined
+
+      if things[toMake[0]] != undefined
         if Math.random() * 100 <= makeProb
           ii = 0
           while ii < makeAmount
-            New = Make(Things[toMake[0]].name)
+            New = Make(things[toMake[0]].name)
             New.parent = this
             @children.push New
             ii++
@@ -14771,7 +14782,7 @@ new Thing('thanks', [
 #actual battlefield thoughts,military bases,ships,airports,more street names,space ships/stations,giant colony ships,wasteland worlds,cults,space probes,prisons,government buildings,schools,amphibian skin
 Debug 'Building...'
 CleanThings()
-#CheckMissingThings();
-#alert("There are "+ThingsN+" thing archetypes.");
+#checkMissingThings();
+#alert("There are "+thingsN+" thing archetypes.");
 document.getElementById('debug').innerHTML = ''
 Debug '<div id="div0" class="thing"></div>'

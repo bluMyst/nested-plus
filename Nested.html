@@ -43,14 +43,7 @@
         <span id="news"></span>
 
         <div id="styles">
-            <a href="javascript:SetStyle(0);" style="background-color:#fff;">-</a>
-            <a href="javascript:SetStyle(1);" style="background-color:#8cf;">-</a>
-            <a href="javascript:SetStyle(2);" style="background-color:#474;">-</a>
-            <a href="javascript:SetStyle(3);" style="background-color:#953;">-</a>
-            <a href="javascript:SetStyle(4);" style="background-color:#a97;">-</a>
-            <a href="javascript:SetStyle(5);" style="background-color:#ccc;">-</a>
-            <a href="javascript:SetStyle(6);" style="background-color:#000;">-</a>
-            <a href="javascript:SetStyle(7);" style="background-color:#214;">-</a>
+            <!-- Filled in by the style code further down. -->
         </div>
     </div>
 
@@ -110,19 +103,19 @@
         LaunchNest(SeedObject.toLowerCase());
 
         <!-- quick and dirty dynamic stylesheets (doesn't seem to work in IE, unfortunately) -->
-        var sheet=document.createElement('style');
-        sheet.id="customstyle";
+        var sheet = document.createElement('style');
+        sheet.id = "customstyle";
         document.body.appendChild(sheet);
 
 
         function SetStyle(which) {
-            if (Styles[which].style) sheet.innerHTML=Styles[which].style;
+            if (Styles[which].style) sheet.innerHTML = Styles[which].style;
         }
 
         var Styles=[];
-        function Style(color,style) {
-            this.color=color;
-            this.style=style;
+        function Style(color, style) {
+            this.color = color;
+            this.style = style;
             Styles.push(this);
         }
 
@@ -180,6 +173,7 @@
         for (var i in Styles) {
             str += '<a href="javascript:SetStyle('+i+');" style="background-color:'+Styles[i].color+';">-</a>';
         }
+
         document.getElementById("styles").innerHTML = str;
     </script>
 </body>

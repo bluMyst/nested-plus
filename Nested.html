@@ -2,15 +2,17 @@
 <!-- saved from url=(0032)http://orteil.dashnet.org/nested -->
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    <!-- <meta http-equiv="Content-Type" content="text/html; charset=windows-1252"> -->
+    <meta http-equiv="Content-Type" content="text/html; charset=ansi">
     <title>Nested</title>
     <meta name="description" content="A simulation of everything. (by Orteil)">
     <meta name="keywords" content="nested, game, toy, webtoy, orteil, dashnet, universe, simulation of everything, doughnutverse, lasagnaverse, lobster">
     <meta name="author" content="Orteil">
 
+    <!--
     <script src="./Nested_files/ca-pub-8491708950677704.js"></script>
-    <script type="text/javascript" async="" src="./Nested_files/ga.js"></script>
     <script async="" src="./Nested_files/cloudflare.min.js"></script>
+    -->
 
     <!-- Hello Internet ! Welcome to my source code. If you wish to learn more about how this thing works, please visit /nestedscript.js . -->
 
@@ -37,7 +39,7 @@
         Nested <span id="version">0.3</span>
 
         <span id="madeby">
-            © <a href="http://orteil.dashnet.org/">Orteil</a>, 2011-2013 - hosted by <a href="http://dashnet.org/">DashNet</a>
+            © <a href="http://orteil.dashnet.org/">Orteil</a>, 2011-2013
         </span>
 
         <span id="news"></span>
@@ -92,12 +94,15 @@
 
 
     <script>
-    var SeedObject="universe";//This can be set to anything else, like "firefighter" or "donut box".
-    var Offline=1;
+        // This can be set to anything else, like "firefighter" or "donut box".
+        var SeedObject="universe";
+
+        var Offline=1;
     </script>
 
     <span style="display:none;">
-    <script>Offline=0;</script></span>
+        <script>Offline=0;</script>
+    </span>
 
     <script>
         LaunchNest(SeedObject.toLowerCase());
@@ -163,7 +168,7 @@
         );
 
         new Style("#214",
-            'body {background:url(UniverseBG.jpg);}'+
+            'body {background:url(Nested_files/UniverseBG.jpg);}'+
             '.thing {border-color:#fff;border-width:1px;background:transparent;color:#fff;box-shadow:0px 0px 8px #428,0px 0px 4px #fff inset;}'+
             '.thing a {color:#fff;background:rgba(0,0,0,0.5);}'+
             '.thing a:hover, .thing a:hover .arrow {background:#fff;color:#000;}'

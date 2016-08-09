@@ -9,11 +9,6 @@
     <meta name="keywords" content="nested, game, toy, webtoy, orteil, dashnet, universe, simulation of everything, doughnutverse, lasagnaverse, lobster">
     <meta name="author" content="Orteil">
 
-    <!--
-    <script src="./Nested_files/ca-pub-8491708950677704.js"></script>
-    <script async="" src="./Nested_files/cloudflare.min.js"></script>
-    -->
-
     <!-- Hello Internet ! Welcome to my source code. If you wish to learn more about how this thing works, please visit /nestedscript.js . -->
 
     <!--
@@ -29,14 +24,12 @@
     <link rel="stylesheet" type="text/css" href="./Nested_files/nestedstyle.css">
 
     <style type="text/css">
-        .cf-hidden { display: none; } .cf-invisible { visibility: hidden; }
+        .cf-hidden { display: none; }
+        .cf-invisible { visibility: hidden; }
     </style>
-</head>
-
-<body>
+</head><body>
     <div id="header" class="nav">
-        <a href="http://orteil.dashnet.org/">&#8592;</a>
-        Nested <span id="version">0.3</span>
+        Nested <span id="version">0.3...?</span>
 
         <span id="madeby">
             © <a href="http://orteil.dashnet.org/">Orteil</a>, 2011-2013
@@ -53,31 +46,10 @@
     <div id="debug">
         <br>
         <div id="div0" class="thing">
-            <a href="javascript:Toggle(0);" style="padding-right:8px;" alt="archetype : universe" title="archetype : universe">
-                <span class="arrow" id="arrow0">+</span> universe
-            </a>
-
-            <div id="container0" class="thing" style="display:none;">
-                <div id="div1">thing</div>
-                <div id="div2">thing</div>
-                <div id="div3">thing</div>
-                <div id="div4">thing</div>
-                <div id="div5">thing</div>
-                <div id="div6">thing</div>
-                <div id="div7">thing</div>
-                <div id="div8">thing</div>
-                <div id="div9">thing</div>
-                <div id="div10">thing</div>
-                <div id="div11">thing</div>
-                <div id="div12">thing</div>
-                <div id="div13">thing</div>
-                <div id="div14">thing</div>
-                <div id="div15">thing</div>
-                <div id="div16">thing</div>
-                <div id="div17">thing</div>
-                <div id="div18">thing</div>
-                <div id="div19">thing</div>
-            </div>
+            <!--
+            This is where the meat of the 'game' happens. It'll get filled
+            in by javascript a little later.
+            -->
         </div>
     </div>
 
@@ -91,7 +63,6 @@
     </div>
 
     <script type="text/javascript" src="./Nested_files/nestedscript.js"></script>
-
 
     <script>
         // This can be set to anything else, like "firefighter" or "donut box".
@@ -107,7 +78,7 @@
     <script>
         LaunchNest(SeedObject.toLowerCase());
 
-        <!-- quick and dirty dynamic stylesheets (doesn't seem to work in IE, unfortunately) -->
+        // quick and dirty dynamic stylesheets (doesn't seem to work in IE, unfortunately)
         var sheet = document.createElement('style');
         sheet.id = "customstyle";
         document.body.appendChild(sheet);

@@ -3492,7 +3492,7 @@ launchNest = (what) -> # {{{2
 # Thing definitions {{{1
 # And now, the fun begins!
 # How to add a new Thing :
-#    new Thing(name,contains,name generator);
+#    new Thing(name, contains, name generator);
 #        - name is the referral name for this Thing. Unless a name generator is
 #          specified, this name will be the default name for any instances of
 #          this Thing.

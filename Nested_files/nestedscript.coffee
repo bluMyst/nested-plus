@@ -49,8 +49,8 @@ randint = (min, max) -> # {{{2
 things = []
 thingsN = 0
 class Thing
-    constructor: (@name, @contains, @namegen=@name) ->
-        things[@name] = this
+    constructor: (@name_, @contains, @namegen=@name_) ->
+        things[@name_] = this
         thingsN++
         return
 
@@ -111,7 +111,7 @@ cleanThings = -> # {{{2
 iN = 0
 instances = []
 Instance = (what) ->
-    @name = 'thing'
+    @name_ = 'thing'
     @type = things[what]
     @parent = 0
     @children = []
@@ -122,15 +122,25 @@ Instance = (what) ->
     iN++
     return this
 
-bookCase = (what) -> # {{{2
-    #Changes a string like "the cat is on the table" to "the Cat Is on the Table"
-    what = what.split(' ')
-    toReturn = ''
-    for i of what
-        if what[i] != 'of' and what[i] != 'in' and what[i] != 'on' and what[i] != 'and' and what[i] != 'the' and what[i] != 'an' and what[i] != 'a' and what[i] != 'with' and what[i] != 'to' and what[i] != 'for'
-            what[i] = what[i][0].toUpperCase() + what[i][1..]
-        toReturn += ' ' + what[i]
-    toReturn[1..]
+bookCase = (s) -> # {{{2
+    # Changes a string like "the cat is on the table" to "The Cat Is on the Table"
+
+    capitalizeWord = (s) ->
+        return s[0].toUpperCase() + s[1..]
+
+    s = s.split(' ')
+    for i of s
+        if i == 0
+            # Always capitalize the first word.
+            s[i] = capitalizeWord s[i]
+            continue
+
+        if s[i] not in ['of', 'in', 'on', 'and', 'the', 'an', 'a', 'with', 'to', 'for', 'from', 'be']
+            s[i] = capitalizeWord s[i]
+
+    s = s.join(' ')
+
+    return s
 
 make = (what) -> # {{{2
     # TODO: Why does this function exist?
@@ -144,8 +154,8 @@ toggle = (what) -> # {{{2
     if instances[what].display == 0
         for i of instances[what].children
             if instances[what].children[i].grown == false
-                instances[what].children[i].Grow 0
-                instances[what].children[i].List 0
+                instances[what].children[i].grow 0
+                instances[what].children[i].list 0
         instances[what].display = 1
         document.getElementById('container' + what).style.display = 'block'
         document.getElementById('arrow' + what).innerHTML = '-'
@@ -153,44 +163,44 @@ toggle = (what) -> # {{{2
         instances[what].display = 0
         document.getElementById('container' + what).style.display = 'none'
         document.getElementById('arrow' + what).innerHTML = '+'
-    return
+
+    return # DO NOT REMOVE
 
 LaunchNest = (what) -> # {{{2
     if !things[what]
         what = 'error'
     Seed = make(what)
-    Seed.Grow 0
-    Seed.List()
-    return
+    Seed.grow 0
+    Seed.list()
 
-Instance::Name = -> # {{{2
+Instance::name = -> # {{{2
     `var str`
-    @name = @type.namegen
+    @name_ = @type.namegen
 
-    if typeof @name != 'string'
+    if typeof @name_ != 'string'
         str = ''
 
-        if typeof @name[0] == 'string'
-            str += choose(@name)
+        if typeof @name_[0] == 'string'
+            str += choose(@name_)
         else
-            for i in @name
+            for i in @name_
                 str += choose i
 
-        @name = str
+        @name_ = str
 
-    nameParts = @name.split('|')
-    @name = nameParts[0]
+    nameParts = @name_.split('|')
+    @name_ = nameParts[0]
 
-    if @name in ['*PERSON*', '*MAN*', '*WOMAN*'] # {{{3
+    if @name_ in ['*PERSON*', '*MAN*', '*WOMAN*'] # {{{3
         # Generates a first name + last name, compiled from the 100 most
         # popular names in the USA. Yes, every person in the universe is an
         # American.
 
-        if @name == '*PERSON*'
+        if @name_ == '*PERSON*'
             gender = choose([0, 1])
-        else if @name == '*MAN*'
+        else if @name_ == '*MAN*'
             gender = 1
-        else if @name == '*WOMAN*'
+        else if @name_ == '*WOMAN*'
             gender = 0
 
         str = ''
@@ -280,15 +290,15 @@ Instance::Name = -> # {{{2
                 'Gabe Newell'
             ])
         # 4chan made me do it
-        @name = str
-    else if @name in ['*MEDIEVAL PERSON*', '*MEDIEVAL MAN*', '*MEDIEVAL WOMAN*'] # {{{3
+        @name_ = str
+    else if @name_ in ['*MEDIEVAL PERSON*', '*MEDIEVAL MAN*', '*MEDIEVAL WOMAN*'] # {{{3
         # Generates a medieval first name + last name, mostly taken from
         # http://www.infernaldreams.com/names/Europe/Medieval/England.htm
-        if @name == '*MEDIEVAL PERSON*'
+        if @name_ == '*MEDIEVAL PERSON*'
             gender = choose [0, 1]
-        else if @name == '*MEDIEVAL MAN*'
+        else if @name_ == '*MEDIEVAL MAN*'
             gender = 1
-        else if @name == '*MEDIEVAL WOMAN*'
+        else if @name_ == '*MEDIEVAL WOMAN*'
             gender = 0
 
         str = ''
@@ -321,14 +331,14 @@ Instance::Name = -> # {{{2
             'sheep', 'pig', 'fox', 'hunt', 'dragon',# }}}
         ])
 
-        @name = str
-    else if @name in ['*ANCIENT PERSON*', '*ANCIENT MAN*', '*ANCIENT WOMAN*'] # {{{3
+        @name_ = str
+    else if @name_ in ['*ANCIENT PERSON*', '*ANCIENT MAN*', '*ANCIENT WOMAN*'] # {{{3
         #Generates a primitive name
-        if @name == '*ANCIENT PERSON*'
+        if @name_ == '*ANCIENT PERSON*'
             gender = choose [0, 1]
-        else if @name == '*ANCIENT MAN*'
+        else if @name_ == '*ANCIENT MAN*'
             gender = 1
-        else if @name == '*ANCIENT WOMAN*'
+        else if @name_ == '*ANCIENT WOMAN*'
             gender = 0
 
         str = choose([
@@ -355,15 +365,15 @@ Instance::Name = -> # {{{2
         if gender == 1 and randint(0, 250) == 1
             str = 'Dave'
 
-        @name = str
-    else if @name in ['*FUTURE PERSON*', '*FUTURE MAN*', '*FUTURE WOMAN*'] # {{{3
+        @name_ = str
+    else if @name_ in ['*FUTURE PERSON*', '*FUTURE MAN*', '*FUTURE WOMAN*'] # {{{3
         # Generates a futuristic first name + last name
 
-        if @name == '*FUTURE PERSON*'
+        if @name_ == '*FUTURE PERSON*'
             gender = choose [0, 1]
-        else if @name == '*FUTURE MAN*'
+        else if @name_ == '*FUTURE MAN*'
             gender = 1
-        else if @name == '*FUTURE WOMAN*'
+        else if @name_ == '*FUTURE WOMAN*'
             gender = 0
 
         str = ''
@@ -396,8 +406,8 @@ Instance::Name = -> # {{{2
             'boticus', 'meld', 'sweep', 'block', 'dine', 'zine', 'nople',
             'neon', 'ba', 'zor', 'zar', 'klor',# }}}
         ])
-        @name = str
-    else if @name == '*MEMORY*' # {{{3
+        @name_ = str
+    else if @name_ == '*MEMORY*' # {{{3
         str = ''
         str += weightedChoose([
             choose([
@@ -530,8 +540,8 @@ Instance::Name = -> # {{{2
                 'party'
             ]) + '.'
         ], 1.5)
-        @name = str
-    else if @name == '*SADTHOUGHT*' # {{{3
+        @name_ = str
+    else if @name_ == '*SADTHOUGHT*' # {{{3
         str = ''
         str += weightedChoose([
             choose([
@@ -848,8 +858,8 @@ Instance::Name = -> # {{{2
                 'The end.'
             ])
         ], 1.4)
-        @name = str
-    else if @name == '*HAPPYTHOUGHT*' # {{{3
+        @name_ = str
+    else if @name_ == '*HAPPYTHOUGHT*' # {{{3
         str = ''
         str += weightedChoose([
             choose([
@@ -1049,8 +1059,8 @@ Instance::Name = -> # {{{2
                 ])
             ])
         ], 1.4)
-        @name = str
-    else if @name == '*MEDIEVAL MEMORY*' # {{{3
+        @name_ = str
+    else if @name_ == '*MEDIEVAL MEMORY*' # {{{3
         str = ''
         str += weightedChoose([
             choose([
@@ -1192,8 +1202,8 @@ Instance::Name = -> # {{{2
                 ])
             ]) + '.'
         ], 1.5)
-        @name = str
-    else if @name == '*MEDIEVAL THOUGHT*' # {{{3
+        @name_ = str
+    else if @name_ == '*MEDIEVAL THOUGHT*' # {{{3
         str = ''
         str += weightedChoose([ choose([
             'Today was a fine day.'
@@ -1327,8 +1337,8 @@ Instance::Name = -> # {{{2
                 'Some must fight, so that all may be free.'
             ])
         ]) ], 1.1)
-        @name = str
-    else if @name == '*ANCIENT MEMORY*' # {{{3
+        @name_ = str
+    else if @name_ == '*ANCIENT MEMORY*' # {{{3
         str = ''
         str += weightedChoose([
             choose([
@@ -1449,8 +1459,8 @@ Instance::Name = -> # {{{2
                 'got lost in the forest'
             ]) + '.'
         ], 1.5)
-        @name = str
-    else if @name == '*ANCIENT THOUGHT*' # {{{3
+        @name_ = str
+    else if @name_ == '*ANCIENT THOUGHT*' # {{{3
         str = ''
         str += weightedChoose([ choose([
             'Today. Nice day.'
@@ -1534,8 +1544,8 @@ Instance::Name = -> # {{{2
                 'Smash rocks found on the beach. Eat insides.'
             ])
         ]) ], 1.1)
-        @name = str
-    else if @name == '*FUTURE MEMORY*' # {{{3
+        @name_ = str
+    else if @name_ == '*FUTURE MEMORY*' # {{{3
         str = ''
         str += weightedChoose([
             choose([
@@ -1708,8 +1718,8 @@ Instance::Name = -> # {{{2
                 'party'
             ]) + '.'
         ], 1.5)
-        @name = str
-    else if @name == '*FUTURE THOUGHT*' # {{{3
+        @name_ = str
+    else if @name_ == '*FUTURE THOUGHT*' # {{{3
         str = ''
         str += weightedChoose([ choose([
             'That\'s nice... that\'s really nice.'
@@ -1797,8 +1807,8 @@ Instance::Name = -> # {{{2
                 'I can\'t stop crying at that videoverse...'
             ])
         ]) ], 1.5)
-        @name = str
-    else if @name == '*PAINTING*' # {{{3
+        @name_ = str
+    else if @name_ == '*PAINTING*' # {{{3
         #Paintings ! Most of these end up sounding rather disturbing, I wonder why ?
         str = ''
         objs = [
@@ -2269,8 +2279,8 @@ Instance::Name = -> # {{{2
         str = str.split('$obj2').join(choose(objs))
         str = str.split('$adj').join(choose(adjs))
         str = str.split('$obj').join(choose(objs))
-        @name = str
-    else if @name == '*NOTE*' # {{{3
+        @name_ = str
+    else if @name_ == '*NOTE*' # {{{3
         #Notes found hidden in people's pockets, etc. Can contain recipes, laundry bills, or creepy observations.
         str = ''
         str += choose([
@@ -2434,8 +2444,8 @@ Instance::Name = -> # {{{2
                 'soy sauce'
             ]) ])
         ])
-        @name = '"' + str + '"'
-    else if @name == '*BOOK*' # {{{3
+        @name_ = '"' + str + '"'
+    else if @name_ == '*BOOK*' # {{{3
         #This is probably my favorite name generator.
         str = ''
         str += choose([
@@ -3296,8 +3306,8 @@ Instance::Name = -> # {{{2
                 'IX'
                 'X'
             ])
-        @name = bookCase(str)
-    else if @name == '*CHAR*' # {{{3
+        @name_ = bookCase(str)
+    else if @name_ == '*CHAR*' # {{{3
         str = ''
         str = 'aaaabbccddeeeeffgghhhiijkkllmmnnooppqqrrrssstttuuvwwxyz.,;!?:()-\''
         if randint(0, 20) == 0
@@ -3306,8 +3316,8 @@ Instance::Name = -> # {{{2
         str = choose(str)
         if randint(0, 30) == 0
             str = str.toUpperCase()
-        @name = str
-    else if @name == '*MONUMENT*' # {{{3
+        @name_ = str
+    else if @name_ == '*MONUMENT*' # {{{3
         str = ''
         str += choose([ choose([ choose([
             weightedChoose([
@@ -3407,16 +3417,16 @@ Instance::Name = -> # {{{2
             'wheel'
         ], 5) ])
         str = 'The ' + str
-        @name = bookCase(str)
+        @name_ = bookCase(str)
     # }}}3
 
     if nameParts[1] != undefined
-        @name = @name + nameParts[1]
+        @name_ = @name_ + nameParts[1]
     return
 
-Instance::Grow = -> # {{{2
+Instance::grow = -> # {{{2
     if @grown == false
-        @Name()
+        @name()
         for i, toMake of @type.contains
             if typeof toMake != 'string'
                 toMake = choose(toMake)
@@ -3447,32 +3457,32 @@ Instance::Grow = -> # {{{2
                 if Math.random() * 100 <= makeProb
                     ii = 0
                     while ii < makeAmount
-                        New = make(things[toMake[0]].name)
+                        New = make(things[toMake[0]].name_)
                         New.parent = this
                         @children.push New
                         ii++
         @grown = true
     return
 
-Instance::List = -> # {{{2
+Instance::list = -> # {{{2
     str = ''
     addStyle = ''
     for i of @children
-        str += '<div id="div' + @children[i].n + '">' + @children[i].name + '</div>'
+        str += '<div id="div' + @children[i].n + '">' + @children[i].name_ + '</div>'
     #special-case pictures
-    if @name == 'sharkverse'
+    if @name_ == 'sharkverse'
         addStyle = 'background-image:url(\'nestedSharkverse.png\');'
-    else if @name == 'baconverse'
+    else if @name_ == 'baconverse'
         addStyle = 'background-image:url(\'nestedBaconverse.png\');'
-    else if @name == 'doughnutverse'
+    else if @name_ == 'doughnutverse'
         addStyle = 'background-image:url(\'nestedDoughnutverse.png\');'
-    else if @name == 'lasagnaverse'
+    else if @name_ == 'lasagnaverse'
         addStyle = 'background-image:url(\'nestedLasagnaverse.png\');'
-    #if (this.children.length>0) document.getElementById("div"+this.n).innerHTML='<span onclick="toggle('+this.n+');"><span class="arrow" id="arrow'+this.n+'">+</span> '+this.name+'</span><div id="container'+this.n+'" class="thing" style="display:none;">'+str+'</div>';
+    #if (this.children.length>0) document.getElementById("div"+this.n).innerHTML='<span onclick="toggle('+this.n+');"><span class="arrow" id="arrow'+this.n+'">+</span> '+this.name_+'</span><div id="container'+this.n+'" class="thing" style="display:none;">'+str+'</div>';
     if @children.length > 0
-        document.getElementById('div' + @n).innerHTML = '<a href="javascript:toggle(' + @n + ');" style="padding-right:8px;" alt="archetype : ' + @type.name + '" title="archetype : ' + @type.name + '"><span class="arrow" id="arrow' + @n + '">+</span> ' + @name + '</a><div id="container' + @n + '" class="thing" style="display:none;' + addStyle + '">' + str + '</div>'
+        document.getElementById('div' + @n).innerHTML = '<a href="javascript:toggle(' + @n + ');" style="padding-right:8px;" alt="archetype : ' + @type.name_ + '" title="archetype : ' + @type.name_ + '"><span class="arrow" id="arrow' + @n + '">+</span> ' + @name_ + '</a><div id="container' + @n + '" class="thing" style="display:none;' + addStyle + '">' + str + '</div>'
     else
-        document.getElementById('div' + @n).innerHTML = '<span class="emptyThing">' + @name + '</span>'
+        document.getElementById('div' + @n).innerHTML = '<span class="emptyThing">' + @name_ + '</span>'
     return
 
 # Thing definitions {{{1
@@ -3499,7 +3509,7 @@ Instance::List = -> # {{{2
 #          will be named according to this.
 #            It can be either an array containing other arrays (the name will be
 #            patched up from an element of each array) or an identifier for the
-#            Name function, like *BOOK*.
+#            name function, like *BOOK*.
 #            A name generator of [["blue ","red "],["frog","toad"]] will produce
 #            names such as "blue frog" or "red toad".
 

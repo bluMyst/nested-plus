@@ -3434,10 +3434,15 @@ class Instance
         return
 
 bookCase = (s) -> # {{{2
-    # Changes a string like "the cat is on the table" to "The Cat Is on the Table"
+    # Changes a string like "the cat is on the table" to "The Cat is on the Table"
 
     capitalizeWord = (s) ->
         return s[0].toUpperCase() + s[1..]
+
+    wordsToNotCapitalize = [
+        'of', 'in', 'on', 'and', 'the', 'an', 'a', 'with', 'to', 'for', 'from',
+        'be', 'about', 'is'
+    ]
 
     s = s.split(' ')
     for i of s
@@ -3446,7 +3451,7 @@ bookCase = (s) -> # {{{2
             s[i] = capitalizeWord s[i]
             continue
 
-        if s[i] not in ['of', 'in', 'on', 'and', 'the', 'an', 'a', 'with', 'to', 'for', 'from', 'be']
+        if s[i] not in wordsToNotCapitalize
             s[i] = capitalizeWord s[i]
 
     s = s.join(' ')

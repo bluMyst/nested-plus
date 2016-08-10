@@ -79,13 +79,8 @@
 
         // This can be set to anything, like "firefighter" or "donut box".
         var seedObject = getParameterByName('seed');
-
         if (seedObject == null) seedObject = "universe";
-    </script>
-
-    <script>
         launchNest(seedObject.toLowerCase());
-
 
         // quick and dirty dynamic stylesheets (doesn't seem to work in IE, unfortunately)
         var sheet = document.createElement('style');

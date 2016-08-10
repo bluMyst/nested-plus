@@ -13,6 +13,7 @@
 
     <!--
     History
+    August  2016 : Ahto begins refactoring and porting the Javascript to Coffeescript.
     January 2014 : working on a sequel maybe
     January 2013 : added a bunch of new stuff
     January 2012 : finally cleaned up and uploaded
@@ -21,7 +22,7 @@
     -->
 
     <!-- TODO: Favicon -->
-    <!-- <link rel="shortcut icon" href="http://orteil.dashnet.org/favicon.ico"> -->
+    <link rel="shortcut icon" href="http://orteil.dashnet.org/favicon.ico">
     <link rel="stylesheet" type="text/css" href="./Nested_files/nestedstyle.css">
 
     <style type="text/css">
@@ -67,7 +68,19 @@
 
     <script>
         // This can be set to anything else, like "firefighter" or "donut box".
-        var SeedObject="universe";
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+        var SeedObject = getParameterByName('seed');
+
+        if (SeedObject == "") SeedObject = "universe";
 
         var Offline=1;
     </script>

@@ -123,8 +123,8 @@ Instance = function(what) {
   this.n = iN;
   this.display = 0;
   this.grown = false;
-  iN++;
   instances.push(this);
+  iN++;
   return this;
 };
 
@@ -179,24 +179,25 @@ LaunchNest = function(what) {
 };
 
 Instance.prototype.Name = function() {
-  var gender;
   var str;
-  var adjs, gender, i, locs, nameParts, objs, str, tverbings, verbings;
+  var adjs, gender, i, j, len, locs, nameParts, objs, ref, ref1, ref2, ref3, ref4, str, tverbings, verbings;
   this.name = this.type.namegen;
   if (typeof this.name !== 'string') {
     str = '';
     if (typeof this.name[0] === 'string') {
       str += choose(this.name);
     } else {
-      for (i in this.name) {
-        str += choose(this.name[i]);
+      ref = this.name;
+      for (j = 0, len = ref.length; j < len; j++) {
+        i = ref[j];
+        str += choose(i);
       }
     }
     this.name = str;
   }
   nameParts = this.name.split('|');
   this.name = nameParts[0];
-  if (this.name === '*PERSON*' || this.name === '*MAN*' || this.name === '*WOMAN*') {
+  if ((ref1 = this.name) === '*PERSON*' || ref1 === '*MAN*' || ref1 === '*WOMAN*') {
     if (this.name === '*PERSON*') {
       gender = choose([0, 1]);
     } else if (this.name === '*MAN*') {
@@ -219,7 +220,7 @@ Instance.prototype.Name = function() {
       str = choose(['Elvis Presley', 'Gabe Newell']);
     }
     this.name = str;
-  } else if (this.name === '*MEDIEVAL PERSON*' || this.name === '*MEDIEVAL MAN*' || this.name === '*MEDIEVAL WOMAN*') {
+  } else if ((ref2 = this.name) === '*MEDIEVAL PERSON*' || ref2 === '*MEDIEVAL MAN*' || ref2 === '*MEDIEVAL WOMAN*') {
     if (this.name === '*MEDIEVAL PERSON*') {
       gender = choose([0, 1]);
     } else if (this.name === '*MEDIEVAL MAN*') {
@@ -237,7 +238,7 @@ Instance.prototype.Name = function() {
     str += choose(['Strong', 'Tall', 'Grand', 'Bold', 'Big', 'Small', 'Fine', 'Good', 'Glad', 'Green', 'Blue', 'Red', 'Black', 'White', 'Pale', 'Gray', 'Gold', 'Silver', 'Dark', 'Light', 'Brave', 'Sly']);
     str += choose(['ington', 'son', 'house', 'door', 'castle', 'forest', 'tree', 'leaf', 'wind', 'rain', 'snow', 'rock', 'stone', 'river', 'sea', 'ship', 'smith', 'craft', 'cook', 'worth', 'might', 'wolf', 'bear', 'sheep', 'pig', 'fox', 'hunt', 'dragon']);
     this.name = str;
-  } else if (this.name === '*ANCIENT PERSON*' || this.name === '*ANCIENT MAN*' || this.name === '*ANCIENT WOMAN*') {
+  } else if ((ref3 = this.name) === '*ANCIENT PERSON*' || ref3 === '*ANCIENT MAN*' || ref3 === '*ANCIENT WOMAN*') {
     if (this.name === '*ANCIENT PERSON*') {
       gender = choose([0, 1]);
     } else if (this.name === '*ANCIENT MAN*') {
@@ -245,7 +246,6 @@ Instance.prototype.Name = function() {
     } else if (this.name === '*ANCIENT WOMAN*') {
       gender = 0;
     }
-    str = '';
     str = choose(['Passing', 'Walking', 'Running', 'Sitting', 'Kneeling', 'Timid', 'Dreaming', 'Swift', 'Deadly', 'Wise', 'Old', 'Young', 'Ugly', 'Bright', 'Broken', 'Fine', 'Soulful', 'Loud', 'Mad', 'Crazed', 'Unending', 'Lone', 'Sure', 'Steady', 'Hungry', 'Crafty', 'Thirsty', 'Rising', 'Falling', 'Huge', 'Magnificent', 'Deep', 'Aching', 'Mourning', 'Sweet', 'Kind', 'Comforting', 'Misshapen', 'Smiling', 'Sneaking', 'Trusted', 'Shifty', 'Furious', 'Lustful']);
     str += ' ';
     str += choose(['Thought', 'Eyes', 'Legs', 'Hands', 'Nose', 'Sorrow', 'Scream', 'Whisper', 'Rage', 'Stream', 'River', 'Sky', 'Light', 'Spark', 'Moon', 'Sun', 'Star', 'Forest', 'Cloud', 'Tree', 'Rock', 'Beast', 'Rabbit', 'Wolf', 'Auroch', 'Mammoth', 'Lion', 'Spear', 'Flame', 'Cave', 'Ocean', 'Snail', 'Slug', 'Bear', 'Shark', 'Toad', 'Day', 'Night', 'Friend', 'Snake', 'Ears', 'Spirit', 'Track', 'Pebble', 'Boulder', 'Mountain', 'Volcano', 'Storm', 'Rain', 'Snow']);
@@ -253,7 +253,7 @@ Instance.prototype.Name = function() {
       str = 'Dave';
     }
     this.name = str;
-  } else if (this.name === '*FUTURE PERSON*' || this.name === '*FUTURE MAN*' || this.name === '*FUTURE WOMAN*') {
+  } else if ((ref4 = this.name) === '*FUTURE PERSON*' || ref4 === '*FUTURE MAN*' || ref4 === '*FUTURE WOMAN*') {
     if (this.name === '*FUTURE PERSON*') {
       gender = choose([0, 1]);
     } else if (this.name === '*FUTURE MAN*') {
@@ -360,11 +360,12 @@ Instance.prototype.Name = function() {
 };
 
 Instance.prototype.Grow = function() {
-  var New, i, ii, makeAmount, makeProb, toMake;
+  var New, i, ii, makeAmount, makeProb, ref, toMake;
   if (this.grown === false) {
     this.Name();
-    for (i in this.type.contains) {
-      toMake = this.type.contains[i];
+    ref = this.type.contains;
+    for (i in ref) {
+      toMake = ref[i];
       if (typeof toMake !== 'string') {
         toMake = choose(toMake);
       }
@@ -491,8 +492,6 @@ new Thing('copper', ['.atom']);
 
 new Thing('lead', ['.atom']);
 
-new Thing('steel', ['iron', 'carbon']);
-
 new Thing('gold', ['.atom']);
 
 new Thing('silver', ['.atom']);
@@ -506,6 +505,8 @@ new Thing('nitrogen', ['.atom']);
 new Thing('sulfur', ['.atom']);
 
 new Thing('phosphorus', ['.atom']);
+
+new Thing('steel', ['iron', 'carbon']);
 
 new Thing('proteins', ['.molecule']);
 
@@ -533,7 +534,7 @@ new Thing('qwubble', ['multiverse,1-5']);
 
 new Thing('portal', ['universe']);
 
-new Thing('multiverse', ['universe,10-30'], ['multiverse', 'lasagnaverse', 'doughnutverse', 'towelverse', 'baconverse', 'sharkverse', 'nestedverse', 'tastyverse', 'upverse', 'downverse', 'layerverse', 'clusterverse', 'metaverse', 'quantiverse', 'paraverse', 'epiverse', 'alterverse', 'hypoverse', 'dimensioverse', 'planiverse', 'pluriverse', 'polyverse', 'maniverse', 'stackoverse', 'antiverse', 'superverse', 'upperverse', 'maxiverse', 'megaverse', 'babyverse', 'tinyverse', 'retroverse', 'ultraverse', 'topoverse', 'otherverse', 'bubbleverse', 'esreverse', 'versiverse', '\'verse', 'cookieverse', 'grandmaverse']);
+new Thing('multiverse', ['universe,10-30'], ['multiverse', 'lasagnaverse', 'doughnutverse', 'towelverse', 'baconverse', 'sharkverse', 'nestedverse', 'tastyverse', 'upverse', 'downverse', 'layerverse', 'clusterverse', 'metaverse', 'quantiverse', 'paraverse', 'epiverse', 'alterverse', 'hypoverse', 'dimensioverse', 'planiverse', 'pluriverse', 'polyverse', 'maniverse', 'stackoverse', 'antiverse', 'superverse', 'upperverse', 'maxiverse', 'megaverse', 'babyverse', 'tinyverse', 'retroverse', 'ultraverse', 'topoverse', 'otherverse', 'bubbleverse', 'esreverse', 'versiverse', "'verse", 'cookieverse', 'grandmaverse']);
 
 new Thing('universe', ['supercluster,10-30']);
 

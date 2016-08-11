@@ -3490,6 +3490,7 @@ launchNest = (what) -> # {{{2
     Seed.list()
 
 # Thing definitions {{{1
+# Instructions {{{2
 # And now, the fun begins!
 # How to add a new Thing :
 #    new Thing(name, contains, name generator);
@@ -3870,11 +3871,13 @@ new Thing('white hole', [ 'universe' ])
 new Thing('42', [ 'universe' ])
 new Thing('everything', [ 'universe' ])
 new Thing('end of universe note', [ 'pasta,0.1%' ], [
-    'Help! I\'m trapped in a universe factory!'
+    "Help! I'm trapped in a universe factory!"
     'Okay, you can stop clicking now.'
-    'I want to get off Mr Orteil\'s Wild Ride'
+    "I want to get off Mr Orteil's Wild Ride"
     'my sides'
 ])
+
+# Orteil {{{2
 new Thing('orteil', [
     'body'
     'orteil psyche'
@@ -3892,13 +3895,15 @@ new Thing('orteil thoughts', [], [
     'WHAT ARE YOU DOING OH GOD'
     'WHY THE HELL ARE YOU HERE'
     'I DO WHAT I WANT OKAY'
-    'NO I DON\'T CARE GO AWAY'
+    "NO I DON'T CARE GO AWAY"
     'WHAT DID I EVEN DO TO YOU'
     'OH NO WHY THIS'
     'OKAY JUST <a href="http://orteil.deviantart.com">GO THERE ALREADY</a>'
     '<a href="http://twitter.com/orteil42">WHATEVER</a>'
 ])
-#cell stuff
+
+# biological {{{2
+# cell stuff {{{3
 new Thing('cell', [
     'nucleus'
     'cytoplasm'
@@ -3926,7 +3931,8 @@ new Thing('nucleotide', [ 'molecule' ], [
     'G'
     'C'
 ])
-#body stuff
+
+# body stuff {{{3
 new Thing('body part', [
     'bacteria,30%'
     'bacteria,10%'
@@ -4173,18 +4179,20 @@ new Thing('abomination', [
     'abomination body'
     'abomination psyche'
 ], '*PERSON*| (abomination)')
-#nonononononono
+# nonononononono {{{2
 new Thing('abomination psyche', [
     'abomination thoughts'
     'memories'
 ], 'psyche')
+
 new Thing('abomination thoughts', [
     'black hole,0.01%'
     'abomination thought'
 ], 'thoughts')
+
 new Thing('abomination thought', [], [
     'P-please...'
-    'Don\'t look at me...'
+    "Don't look at me..."
     'Please... kill me...'
     'Kill... me...'
     'Why would I ever ask for this...'
@@ -4200,21 +4208,16 @@ new Thing('abomination thought', [], [
     'How could they do this to me...'
     'What have I become...'
     'I feel... different...'
-    'I can\'t feel... anything...'
-    'I can\'t... see anything...'
+    "I can't feel... anything..."
+    "I can't... see anything..."
 ])
+
 new Thing('abomination body', [
     'abomination head'
     'abomination head,5%'
     'abomination torso'
-    [
-        'arm,0-8'
-        'arm,0-4'
-    ]
-    [
-        'leg,0-8'
-        'leg,0-4'
-    ]
+    ['arm,0-8', 'arm,0-4']
+    ['leg,0-8', 'leg,0-4']
     'crustacean claw,2%'
     'stinger,2%'
     'weird soft organ,10%'
@@ -4222,6 +4225,7 @@ new Thing('abomination body', [
     'weird hard organ,10%'
     'weird hard organ,10%'
 ], 'misshapen body')
+
 new Thing('abomination head', [
     'mouth,0-2'
     'nose,0-2'
@@ -4233,6 +4237,7 @@ new Thing('abomination head', [
     'head hair,65%'
     '.body part'
 ], 'misshapen head')
+
 new Thing('abomination torso', [
     'chest'
     'chest,10%'
@@ -4242,7 +4247,8 @@ new Thing('abomination torso', [
     'weird hard organ,20%'
     '.body part'
 ], 'misshapen torso')
-#brain stuff
+
+# Brain stuff {{{2
 new Thing('psyche', [
     'thoughts'
     'memories'
@@ -4258,7 +4264,8 @@ new Thing('sad thought', [], [ '*SADTHOUGHT*' ])
 new Thing('happy thought', [], [ '*HAPPYTHOUGHT*' ])
 new Thing('memories', [ 'memory,2-4' ])
 new Thing('memory', [], [ '*MEMORY*' ])
-#cloth stuff
+
+# Cloth stuff {{{2
 new Thing('cloth', [ 'textile' ])
 new Thing('leather', [ 'skin cell' ])
 new Thing('textile', [ 'textile fibre' ])
@@ -4325,18 +4332,14 @@ new Thing('cozy von pocketworth', [
     '.clothing'
     'leather,30%'
 ], [ 'Cozy von Pocketworth' ])
-#lotsopokkits
+# lotsopokkits
 new Thing('socks', [ '.clothing' ])
 new Thing('shoes', [
-    'leather,40%'
-    'plastic'
+    'leather,40%', 'plastic'
 ], [
-    'shoes'
-    'boots'
-    'sneakers'
-    'sandals'
+    'shoes', 'boots', 'sneakers', 'sandals'
 ])
-#crocs //okay seriously no
+# headware
 new Thing('hat', [ '.clothing' ], [
     'cap'
     'hat'
@@ -4359,51 +4362,23 @@ new Thing('glasses', [
     'monocle'
     'ski mask'
 ])
-#terrain stuff
+# terrain stuff {{{2
 new Thing('ocean', [
     'sea water'
     'sea life'
     'beach,10-20'
-    [
-        'iceberg,2-6'
-        ''
-        ''
-        ''
-        ''
-    ]
+    ['iceberg,2-6', '', '', '', '']
     'abyss'
 ])
 new Thing('sea', [
-    'sea water'
-    'sea life'
-    'beach,2-6'
+    'sea water', 'sea life', 'beach,2-6'
 ], [
     [
-        'great'
-        'wide'
-        'big'
-        'old'
-        'young'
-        'large'
-        'small'
-        'dead'
-        'shallow'
-        'deep'
-        'red'
-        'yellow'
-        'green'
-        'blue'
-        'orange'
-        'brown'
-        'grey'
-        'black'
-        'white'
-        'purple'
-        'shady'
-        'bright'
-        'silver'
+        'great', 'wide', 'big', 'old', 'young', 'large', 'small', 'dead',
+        'shallow', 'deep', 'red', 'yellow', 'green', 'blue', 'orange', 'brown',
+        'grey', 'black', 'white', 'purple', 'shady', 'bright', 'silver'
     ]
-    [ ' sea' ]
+    [' sea']
 ])
 new Thing('sea water', [
     'water'
@@ -4424,29 +4399,13 @@ new Thing('abyss', [
 ])
 new Thing('sand', [ 'silica' ])
 new Thing('soil', [
-    [
-        'worm,0-2'
-        ''
-        ''
-    ]
-    [
-        'insect,0-2'
-        ''
-        ''
-    ]
+    ['worm,0-2', '', '']
+    ['insect,0-2', '', '']
     'silica'
 ], 'dirt')
 new Thing('mud', [
-    [
-        'worm,0-2'
-        ''
-        ''
-    ]
-    [
-        'insect,0-2'
-        ''
-        ''
-    ]
+    ['worm,0-2', '', '']
+    ['insect,0-2', '', '']
     'water'
     'silica'
 ])
@@ -4675,7 +4634,7 @@ new Thing('precipitation', [ 'water' ], [
     'drizzle'
     'storm'
 ])
-#vegetation
+# vegetation {{{2
 new Thing('plant cell', [ '.cell' ], [ 'plant cells' ])
 new Thing('grass', [ 'grass blade,50-100' ])
 new Thing('grass blade', [
@@ -4686,15 +4645,8 @@ new Thing('grass blade', [
     'plant cell'
 ])
 new Thing('grass thoughts', [ 'grass thought,1' ], 'thought')
-new Thing('grass thought', [], [
-    ':D'
-    ':O'
-    'D:'
-    ':|'
-    ':]'
-    '>:0'
-])
-new Thing('trees', [ 'tree,20-50' ])
+new Thing('grass thought', [], [':D', ':O', 'D:', ':|', ':]', '>:0'])
+new Thing('trees', ['tree,20-50'])
 new Thing('tree', [
     'tree thoughts,2%'
     'tree trunk'
@@ -4732,29 +4684,21 @@ new Thing('tree', [
 new Thing('tree thoughts', [ 'tree thought,1' ], 'thought')
 new Thing('tree thought', [], [
     'Well. What is this all about.'
-    'So. What\'s the hurry?'
+    "So. What's the hurry?"
     'Whoah. Slow down.'
     'Do like a tree. And go away.'
     'I seen some things.'
-    'They\'re coming.'
+    "They're coming."
     'We know.'
-    'We\'ve been watching you for hundreds of years.'
+    "We've been watching you for hundreds of years."
     'Do you have any idea how old I am?'
     'Yes. I remember you. I remember all of you.'
 ])
 new Thing('leaves', [ 'leaf,50-100' ])
-new Thing('leaf', [
-    'dew,6%'
-    'insect,6%'
-    'plant cell'
-])
-new Thing('branches', [ 'branch,10-30' ])
-new Thing('branch', [
-    'insect,6%'
-    'leaf,10%'
-    'plant cell'
-])
-new Thing('twig', [ 'plant cell' ])
+new Thing('leaf', ['dew,6%', 'insect,6%', 'plant cell'])
+new Thing('branches', ['branch,10-30'])
+new Thing('branch', ['insect,6%', 'leaf,10%', 'plant cell'])
+new Thing('twig', ['plant cell'])
 new Thing('fruits', [
     'worm,5%'
     'plant cell'
@@ -4795,7 +4739,8 @@ new Thing('nest', [
     'bird egg,0-6'
     'twig,6-12'
 ])
-#life
+# life {{{2
+# misc life {{{3
 new Thing('life', [ [
     'bird'
     'poultry'
@@ -5232,7 +5177,8 @@ new Thing('snake body', [
     'flesh'
 ], 'body')
 #oh my god writing animal thoughts is so much fun
-#single-celled organisms
+# single-celled organisms {{{3
+# TODO: Bacteria are not viruses.
 new Thing('bacteria', [
     'bacteria body'
     'bacteria thoughts'
@@ -5288,7 +5234,7 @@ new Thing('bacteria thoughts', [ 'bacteria thought,1' ], [ 'thoughts' ])
 new Thing('bacteria thought', [], [
     '#wow'
     '#wow okay'
-    '#i can\'t even'
+    "#i can't even"
     '#okay'
     '#me'
     '#yes'
@@ -5305,7 +5251,7 @@ new Thing('bacteria thought', [], [
     '#single-celled and ready to mingle'
     '#lame'
     '#meh'
-    '#i don\'t wanna talk about it'
+    "#i don't wanna talk about it"
     '#eukaryote privilege'
     '#protist scum'
     '#squirm'
@@ -5313,8 +5259,8 @@ new Thing('bacteria thought', [], [
     '#osmosis'
     '#one cell of a guy'
 ])
-#sea life
-#plankton
+#sea life {{{3
+#plankton {{{4
 new Thing('plankton', [
     'plankton body'
     'plankton thoughts'
@@ -5370,7 +5316,7 @@ new Thing('plankton thought', [], [
     'give me the formuoli :)'
     'oh,...'
 ])
-#clams
+#clams {{{4
 new Thing('clam', [
     'clam body'
     'clam thoughts'
@@ -5411,7 +5357,7 @@ new Thing('clam thought', [], [
     'what is this'
     'what\'s that'
 ])
-#cnidaria
+#cnidaria {{{4
 new Thing('cnidaria', [
     'cnidaria body'
     'cnidaria thoughts'
@@ -5457,7 +5403,7 @@ new Thing('cnidaria thought', [], [
         'orpsss'
     ]
 ])
-#mollusks
+#mollusks {{{4
 new Thing('mollusk', [
     'mollusk body'
     'mollusk thoughts'
@@ -5507,7 +5453,7 @@ new Thing('mollusk thought', [], [
     'party yes nice'
     'woooo party'
 ])
-#crustaceans
+#crustaceans {{{4
 new Thing('crustacean', [
     'crustacean body'
     'crustacean thoughts'
@@ -5546,7 +5492,8 @@ new Thing('crustacean thought', [], [
     'breed breed'
     'under the sea'
 ])
-#fish; getting those from http://homepages.cwi.nl/~sjoerd/fishlist.html just because I can
+# fish {{{4
+# getting those from http://homepages.cwi.nl/~sjoerd/fishlist.html just because I can
 new Thing('fish', [
     'fish body'
     'fish thoughts'
@@ -5611,7 +5558,7 @@ new Thing('fish thought', [], [
     'gotta breed'
     'oooh shiny'
 ])
-#sharks
+#sharks {{{5
 new Thing('shark', [
     'fish body'
     'shark thoughts'
@@ -5655,25 +5602,25 @@ new Thing('shark thought', [], [
     'EXCUSE ME ARE YOU FOOD'
     'OH SORRY I THOUGHT YOU WERE FOOD'
     'HAVE YOU SEEN FOOD'
-    'WHAT\'S THIS ALL ABOUT'
+    "WHAT'S THIS ALL ABOUT"
     'WOULD YOU COME OVER HERE'
-    'SO YOU\'RE NOT FOOD RIGHT'
+    "SO YOU'RE NOT FOOD RIGHT"
     'LET ME TELL YOU ABOUT FOOD'
     'WHY ARE WE YELLING'
     'OOOH SHINY'
     'IT KEEPS HAPPENING'
     'I TOLD YOU ABOUT FOOD BRO'
     'WHY DO I KEEP EATING MY FRIENDS'
-    'I DON\'T GET IT'
-    'I\'M A SHARK'
-    'IF THEY DIDN\'T WANT TO BE EATEN THEY WOULDN\'T BE SO DELICIOUS'
-    'YOU\'RE NOT ONE OF THEM PRANCY FANCY DOLPHINS ARE YOU'
-    'FOOD COME BACK I\'M SORRY I YELLED'
+    "I DON'T GET IT"
+    "I'M A SHARK"
+    "IF THEY DIDN'T WANT TO BE EATEN THEY WOULDN'T BE SO DELICIOUS"
+    "YOU'RE NOT ONE OF THEM PRANCY FANCY DOLPHINS ARE YOU"
+    "FOOD COME BACK I'M SORRY I YELLED"
     'OH FOOD I LOVE YOU SO'
-    'I\'M SERIOUS'
-    'HOLD ON IT\'S TIME FOR FOOD'
+    "I'M SERIOUS"
+    "HOLD ON IT'S TIME FOR FOOD"
 ])
-#cetaceans
+#cetaceans {{{4
 new Thing('cetacean', [
     'cetacean body'
     'cetacean thoughts'
@@ -5724,7 +5671,7 @@ new Thing('cetacean body', [
     'tail'
     'flesh'
 ], 'body')
-#worms
+#worms {{{3
 new Thing('worm', [
     'worm body'
     'worm thoughts'
@@ -5755,7 +5702,7 @@ new Thing('worm thought', [], [
     'so much fun'
     'nevermind'
 ])
-#insects (arachnids etc too)
+#insects (arachnids etc too) {{{3
 new Thing('insect', [
     'insect body'
     'insect thoughts'
@@ -5820,6 +5767,7 @@ new Thing('insect body', [
     'flesh'
 ], 'body')
 #spiders with wings. because yeah
+# TODO: Spiders don't have wings. Because no.
 new Thing('insect thoughts', [ 'insect thought,2-3' ], [ 'thoughts' ])
 new Thing('insect thought', [], [
     'skitter'
@@ -5897,117 +5845,36 @@ new Thing('social insect thought', [], [
     'hey intruder you\'re like very big so please don\'t stay here'
     'i trophallaxized a girl and i liked it'
 ])
-#monsters
+#monsters {{{3
 new Thing('sea monster', [
     'sea monster thoughts'
-    [
-        'tentacle,0-6'
-        'fish fin,0-4'
-        ''
-        ''
-    ]
+    ['tentacle,0-6', 'fish fin,0-4', '', '']
     'stinger,20%'
-    [
-        'crustacean claw,0-4'
-        ''
-    ]
-    [
-        'crustacean leg,0-8'
-        ''
-    ]
-    [
-        'crustacean shell'
-        'scales'
-        'fur'
-        'exoskeleton'
-        ''
-    ]
-    [
-        'mouth,1-2'
-        'beak,1-2'
-    ]
+    ['crustacean claw,0-4', '']
+    ['crustacean leg,0-8', '']
+    ['crustacean shell', 'scales', 'fur', 'exoskeleton', '']
+    ['mouth,1-2', 'beak,1-2']
     'skull,80%'
-    [
-        'eye,1-8'
-        'simple eye,1-8'
-        ''
-        ''
-    ]
+    ['eye,1-8', 'simple eye,1-8', '', '']
     'weird soft organ,0-4'
     'weird hard organ,0-4'
 ], [
     [
-        'giant'
-        'timeless'
-        'colossal'
-        'abyssal'
-        'forgotten'
-        'ancient'
-        'gigantic'
-        'monstrous'
+        'giant', 'timeless', 'colossal', 'abyssal', 'forgotten', 'ancient',
+        'gigantic', 'monstrous',
     ]
-    [ ' ' ]
+    [' ']
     [
-        'craze'
-        'drift'
-        'dredge'
-        'dread'
-        'slumber'
-        'dream'
-        'wander'
-        'frost'
-        'magma'
-        'stone'
-        'slime'
-        'ooze'
-        'egg'
-        'larva'
-        'grudge'
-        'stride'
-        'flail'
-        'wail'
-        'time'
-        'star'
-        'crystal'
-        'terror'
-        'horror'
-        'scream'
-        'wrath'
-        'burst'
-        'dark'
-        'deep'
-        'tickle'
+        'craze', 'drift', 'dredge', 'dread', 'slumber', 'dream', 'wander',
+        'frost', 'magma', 'stone', 'slime', 'ooze', 'egg', 'larva', 'grudge',
+        'stride', 'flail', 'wail', 'time', 'star', 'crystal', 'terror',
+        'horror', 'scream', 'wrath', 'burst', 'dark', 'deep', 'tickle',
     ]
     [
-        'fin'
-        'tail'
-        'sinker'
-        'sunk'
-        'singer'
-        'song'
-        'polyp'
-        'rifter'
-        'glider'
-        'squirmer'
-        'titan'
-        'colossus'
-        'brain'
-        'queen'
-        'king'
-        'child'
-        'guardian'
-        'seer'
-        'whale'
-        'worm'
-        'spider'
-        'crab'
-        'leech'
-        'fish'
-        'shark'
-        'squid'
-        'saur'
-        'buddy'
-        'lord'
+        'fin', 'tail', 'sinker', 'sunk', 'singer', 'song', 'polyp', 'rifter',
+        'glider', 'squirmer', 'titan', 'colossus', 'brain', 'queen', 'king',
+        'child', 'guardian', 'seer', 'whale', 'worm', 'spider', 'crab',
+        'leech', 'fish', 'shark', 'squid', 'saur', 'buddy', 'lord',
     ]
 ])
 new Thing('sea monster thoughts', [ 'sea monster thought,1-2' ], [ 'thoughts' ])
@@ -6021,7 +5888,7 @@ new Thing('sea monster thought', [], [
     'IIIII SHALL CONSSSSUME'
     'IIIII SHALL DEVOUUUUURRRRR'
     'LIFFFFFFE MUSSSSST PERISHHHHH'
-    'NNNNNNNNURISHMENT'
+    'NNNNNNNNOURISHMENT'
     'ALL SHALLLLLLL GO INSSSSSSANE'
     'SSSSSSANITY SHALL YIELDDDDD'
     'EXXXXXILED I WASSSSS'
@@ -6035,114 +5902,36 @@ new Thing('sea monster thought', [], [
 ])
 new Thing('space monster', [
     'space monster thoughts'
-    [
-        'tentacle,0-6'
-        'fish fin,0-4'
-        ''
-        ''
-    ]
+    ['tentacle,0-6', 'fish fin,0-4', '', '']
     'stinger,20%'
-    [
-        'crustacean claw,0-4'
-        ''
-    ]
-    [
-        'crustacean leg,0-8'
-        ''
-    ]
-    [
-        'crustacean shell'
-        'scales'
-        'fur'
-        'exoskeleton'
-        ''
-    ]
-    [
-        'mouth,1-2'
-        'beak,1-2'
-    ]
+    ['crustacean claw,0-4', '']
+    ['crustacean leg,0-8', '']
+    ['crustacean shell', 'scales', 'fur', 'exoskeleton', '']
+    ['mouth,1-2', 'beak,1-2']
     'skull,80%'
-    [
-        'eye,1-8'
-        'simple eye,1-8'
-        ''
-        ''
-    ]
+    ['eye,1-8', 'simple eye,1-8', '', '']
     'weird soft organ,0-4'
     'weird hard organ,0-4'
 ], [
     [
-        'C\''
-        'Vr\''
-        'Ksh'
-        'Zn\''
-        'Sh'
-        'Hrl'
-        'X'
-        'O'
-        'Yog'
-        'Gorg'
-        'Morg'
-        'Marg'
-        'Magg'
+        'C\'', 'Vr\'', 'Ksh', 'Zn\'', 'Sh', 'Hrl', 'X', 'O', 'Yog', 'Gorg',
+        'Morg', 'Marg', 'Magg',
     ]
     [
-        ''
-        ''
-        'agn'
-        'soth'
-        'norgn'
-        'ngas'
-        'alx'
-        'orx'
-        'rgl'
-        'iirn'
-        'egw'
-        'thulh'
-        't'
-        'g'
-        'm'
+        '', '', 'agn', 'soth', 'norgn', 'ngas', 'alx', 'orx', 'rgl', 'iirn',
+        'egw', 'thulh', 't', 'g', 'm',
     ]
     [
-        'org'
-        'orgon'
-        'orgus'
-        'orkus'
-        'oid'
-        'us'
-        'u'
-        'esth'
-        'ath'
-        'oth'
-        'um'
-        'ott'
-        'aur'
+        'org', 'orgon', 'orgus', 'orkus', 'oid', 'us', 'u', 'esth', 'ath',
+        'oth', 'um', 'ott', 'aur',
     ]
     [
-        ''
-        ' the Forgotten'
-        ' the Entity'
-        ' the Ancient'
-        ' the Starchild'
-        ' the Seeder'
-        ' the Leech'
-        ' the Timeless'
-        ' the Eon'
-        ' the Many'
-        ' the Countless'
-        ' the Boundless'
-        ' the Prisoner'
-        ' the Child'
-        ' the Form'
-        ' the Shape'
-        ' the Drifter'
-        ' the Swarm'
-        ' the Vicious'
-        ' the Warden'
-        ' the Ender'
-        ' the Unworldly'
-        ' the Unfriendly'
-        ' the All-Consumer'
+        '', ' the Forgotten', ' the Entity', ' the Ancient', ' the Starchild',
+        ' the Seeder', ' the Leech', ' the Timeless', ' the Eon', ' the Many',
+        ' the Countless', ' the Boundless', ' the Prisoner', ' the Child',
+        ' the Form', ' the Shape', ' the Drifter', ' the Swarm', ' the Vicious',
+        ' the Warden', ' the Ender', ' the Unworldly', ' the Unfriendly',
+        ' the All-Consumer',
     ]
 ])
 new Thing('space monster thoughts', [ 'space monster thought,1-2' ], [ 'thoughts' ])
@@ -6179,141 +5968,43 @@ new Thing('space monster thought', [], [
     'HHHHHHHEY HOW YOU DOIN\''
     'AWKWAAAAAAAAARD'
 ])
+
 new Thing('space animal', [
-    'space animal thoughts,85%'
-    'space animal body'
+    'space animal thoughts,85%', 'space animal body'
 ], [
+    ['e', 'a', 'o', '', '', '', '', '', '']
     [
-        'e'
-        'a'
-        'o'
-        ''
-        ''
-        ''
-        ''
-        ''
-        ''
+        'sm', 'cr', 'shn', 'sh', 'sn', 'gl', 'g', 'm', 'c', 'x', 'h', 'dr',
+        'r', 'l',
     ]
+    ['o', 'a', 'u', 'i', 'e', 'ee']
     [
-        'sm'
-        'cr'
-        'shn'
-        'sh'
-        'sn'
-        'gl'
-        'g'
-        'm'
-        'c'
-        'x'
-        'h'
-        'dr'
-        'r'
-        'l'
+        'x', 'b', 'rv', 'z', 's', 'gg', 'g', 'k', 'rf', 'gl', 'bl', 'th', 'kt',
+        'm', 'sh', 'l', 'dr', 'v', 'p', 'nt', 'nk',
     ]
+    ['o', 'a', 'i', 'u', 'e']
     [
-        'o'
-        'a'
-        'u'
-        'i'
-        'e'
-        'ee'
-    ]
-    [
-        'x'
-        'b'
-        'rv'
-        'z'
-        's'
-        'gg'
-        'g'
-        'k'
-        'rf'
-        'gl'
-        'bl'
-        'th'
-        'kt'
-        'm'
-        'sh'
-        'l'
-        'dr'
-        'v'
-        'p'
-        'nt'
-        'nk'
-    ]
-    [
-        'o'
-        'a'
-        'i'
-        'u'
-        'e'
-    ]
-    [
-        'n'
-        'ne'
-        'se'
-        'b'
-        'm'
-        'l'
-        's'
-        'sh'
-        'th'
-        't'
-        'sk'
-        'zer'
-        'bbler'
-        'ggler'
-        'ddler'
-        'ter'
-        'nt'
-        'r'
-        'r'
-        'r'
+        'n', 'ne', 'se', 'b', 'm', 'l', 's', 'sh', 'th', 't', 'sk', 'zer',
+        'bbler', 'ggler', 'ddler', 'ter', 'nt', 'r', 'r', 'r',
     ]
 ])
+
 new Thing('space animal body', [
     [
-        'tentacle,0-6'
-        'crustacean leg,0-8'
-        'fish fin,0-4'
-        'mammal leg,1-6'
-        ''
-        ''
+        'tentacle,0-6', 'crustacean leg,0-8', 'fish fin,0-4', 'mammal leg,1-6',
+        '', '',
     ]
-    [
-        'insect wing,0-6'
-        ''
-        ''
-    ]
-    [
-        'crustacean claw,0-4'
-        ''
-        ''
-    ]
+    ['insect wing,0-6', '', '']
+    ['crustacean claw,0-4', '', '']
     'flesh,40%'
     'snout,3%'
     'stinger,10%'
     'whiskers,3%'
-    [
-        'crustacean shell'
-        'scales'
-        'fur'
-        'exoskeleton'
-        ''
-    ]
-    [
-        'mouth,1-4'
-        'beak,1-4'
-        ''
-    ]
+    ['crustacean shell', 'scales', 'fur', 'exoskeleton', '']
+    ['mouth,1-4', 'beak,1-4', '']
     'skull,30%'
     'brain,50%'
-    [
-        'eye,1-2'
-        'eye,1-6'
-        'simple eye,1-6'
-        ''
-    ]
+    ['eye,1-2', 'eye,1-6', 'simple eye,1-6', '']
     'weird soft organ,50%'
     'weird soft organ,20%'
     'weird hard organ,50%'
@@ -6322,94 +6013,32 @@ new Thing('space animal body', [
 new Thing('space animal thoughts', [ 'space animal thought,1-3' ], [ 'thoughts' ])
 new Thing('space animal thought', [], [
     [
-        'sk\''
-        'mop'
-        'nanu'
-        'nug'
-        'gmap'
-        'shmu'
-        'dna'
-        'no'
-        'xle'
-        'doda'
-        'daia'
-        'de'
-        ''
+        'sk\'', 'mop', 'nanu', 'nug', 'gmap', 'shmu', 'dna', 'no', 'xle',
+        'doda', 'daia', 'de', '',
     ]
     [
-        'g '
-        'gek '
-        'th '
-        'iap '
-        'glib '
-        'ph '
-        'd\'t '
-        'neig\''
-        'dip '
-        'shna '
-        'sh '
+        'g ', 'gek ', 'th ', 'iap ', 'glib ', 'ph ', 'd\'t ', 'neig\'', 'dip ',
+        'shna ', 'sh ',
     ]
     [
-        'sk\''
-        'mop'
-        'nanu'
-        'nug'
-        'gmap'
-        'shmu'
-        'dna'
-        'no'
-        'xle'
-        'doda'
-        'daia'
-        'de'
-        ''
+        'sk\'', 'mop', 'nanu', 'nug', 'gmap', 'shmu', 'dna', 'no', 'xle',
+        'doda', 'daia', 'de', '',
     ]
     [
-        'g '
-        'gek '
-        'th '
-        'iap '
-        'glib '
-        'ph '
-        'd\'t '
-        'neig\''
-        'dip '
-        'shna '
-        'sh '
+        'g ', 'gek ', 'th ', 'iap ', 'glib ', 'ph ', 'd\'t ', 'neig\'', 'dip ',
+        'shna ', 'sh ',
     ]
-    [
-        'mi'
-        'di'
-        'glu'
-        'dra'
-        'shwa'
-        'ama'
-        ''
-    ]
-    [
-        'ben'
-        'ri'
-        'nap'
-        'dap'
-        'top'
-        'gog'
-    ]
-    [
-        '.'
-        '.'
-        '.'
-        '.'
-        '!'
-        '?'
-    ]
+    ['mi', 'di', 'glu', 'dra', 'shwa', 'ama', '']
+    ['ben', 'ri', 'nap', 'dap', 'top', 'gog']
+    ['.', '.', '.', '.', '!', '?']
 ])
+
 new Thing('can of nightmare', [
-    'space animal,4-12'
-    'sea monster,2-6'
+    'space animal,4-12', 'sea monster,2-6',
     'space monster,2-6'
 ])
 #do not open
-#amphibians
+#amphibians {{{3
 new Thing('amphibian', [
     'reptile body'
     'amphibian thoughts'
@@ -6444,7 +6073,7 @@ new Thing('amphibian thought', [], [
     'why frog do that'
     'toadally'
 ])
-#reptiles
+#reptiles {{{3
 new Thing('reptile', [
     'reptile body'
     'reptile thoughts'
@@ -6526,7 +6155,7 @@ new Thing('reptile thought', [], [
     'mmh'
     'body massage'
 ])
-#dinosaurs yes
+#dinosaurs yes {{{3
 new Thing('dinosaur', [
     'reptile body'
     'dinosaur thoughts'
@@ -6557,72 +6186,30 @@ new Thing('dinosaur', [
 ])
 new Thing('dinosaur thoughts', [ 'dinosaur thought,1-2' ], [ 'thoughts' ])
 new Thing('dinosaur thought', [], [
-    'Dinner. Served.'
-    'End. Near.'
-    'Protect. Eggs.'
-    'Food. Must find.'
-    'Need food. Badly.'
-    'Scared. Hunted.'
-    'Things. Beneath.'
-    'Chase. Run.'
-    'Food. Nearby.'
-    'Sky. Dark.'
-    'Limbs. Aching.'
-    'Mind. Numb.'
-    'Ground. Shaking.'
-    'Over. Soon.'
-    'Offspring. Safety.'
-    'Skin. Burning.'
-    'Hostile. Nearby.'
-    'Must. Go on.'
-    'Must. Remember.'
-    'Pack. Lost?'
+    'Dinner. Served.', 'End. Near.', 'Protect. Eggs.', 'Food. Must find.',
+    'Need food. Badly.', 'Scared. Hunted.', 'Things. Beneath.', 'Chase. Run.',
+    'Food. Nearby.', 'Sky. Dark.', 'Limbs. Aching.', 'Mind. Numb.', 'Ground.
+    Shaking.', 'Over. Soon.', 'Offspring. Safety.', 'Skin. Burning.', 'Hostile.
+    Nearby.', 'Must. Go on.', 'Must. Remember.', 'Pack. Lost?',
     'Family. Where?'
 ])
 #dragons why not
 new Thing('dragon', [
-    'dragon body'
-    'dragon thoughts'
+    'dragon body', 'dragon thoughts'
 ], [
     [
-        'fire'
-        'ice'
-        'forst'
-        'arcane'
-        'ancient'
-        'wise'
-        'guardian'
-        'copper'
-        'bronze'
-        'steel'
-        'obsidian'
-        'gem'
-        'undead'
-        'skeletal'
-        'sea'
-        'sky'
-        'cloud'
-        'green'
-        'red'
-        'white'
-        'golden'
-        'silver'
-        'chrome'
-        'rainbow'
-        'mist'
-        'mother'
+        'fire', 'ice', 'forst', 'arcane', 'ancient', 'wise', 'guardian',
+        'copper', 'bronze', 'steel', 'obsidian', 'gem', 'undead', 'skeletal',
+        'sea', 'sky', 'cloud', 'green', 'red', 'white', 'golden', 'silver',
+        'chrome', 'rainbow', 'mist', 'mother',
     ]
-    [ ' ' ]
-    [
-        'dragon'
-        'wyrm'
-        'wyvern'
-        'guivre'
-    ]
+    [' ']
+    ['dragon', 'wyrm', 'wyvern', 'guivre']
 ])
+
 new Thing('dragon thoughts', [ 'dragon thought,1-2' ], [ 'thoughts' ])
 new Thing('dragon thought', [], [
-    'You shouldn\'t be here.'
+    "You shouldn't be here."
     'Leave. Now.'
     'You need to leave.'
     'Well well well. What do we have here?'
@@ -6644,185 +6231,70 @@ new Thing('dragon thought', [], [
     'I\'m on fire today.'
     'Ooooh burn.'
 ])
+
 new Thing('dragon body', [
     'reptile head'
     'pyrolith'
     'scales'
     'reptile leg,4'
-    [
-        'reptile wing,2'
-        ''
-    ]
+    ['reptile wing,2', '']
     'tail'
     'flesh'
 ], 'body')
-new Thing('pyrolith', [ 'rock' ])
+
+new Thing('pyrolith', ['rock'])
 new Thing('dragon lair', [
-    'dragon,98%'
-    'medieval servant,10%'
-    'dragon nest,40%'
-    'pile of treasure,90%'
-    'medieval corpse,0-3'
+    'dragon,98%', 'medieval servant,10%', 'dragon nest,40%', 'pile of
+    treasure,90%', 'medieval corpse,0-3'
 ])
 new Thing('dragon nest', [
-    'egg shell,20%'
-    'dragon egg,0-3'
-    'pile of treasure'
+    'egg shell,20%', 'dragon egg,0-3', 'pile of treasure'
 ])
 new Thing('dragon egg', [
-    'egg thoughts'
-    'egg shell'
-    'soft flesh'
-    'organic matter'
+    'egg thoughts', 'egg shell', 'soft flesh', 'organic matter'
 ], 'dragon egg')
-#birds
+#birds {{{3
 new Thing('bird', [
-    'bird body'
-    'bird thoughts'
+    'bird body', 'bird thoughts'
 ], [
-    'pigeon'
-    'starling'
-    'swallow'
-    'robin'
-    'sparrow'
-    'eagle'
-    'vulture'
-    'hawk'
-    'condor'
-    'osprey'
-    'buzzard'
-    'crane'
-    'bustard'
-    'pheasant'
-    'woodpecker'
-    'seagull'
-    'albatross'
-    'petrel'
-    'grebe'
-    'flamingo'
-    'stork'
-    'ibis'
-    'heron'
-    'swan'
-    'magpie'
-    'crow'
-    'raven'
-    'jay'
-    'chough'
-    'quail'
-    'grouse'
-    'partridge'
-    'egret'
-    'pelican'
-    'cormorant'
-    'avocet'
-    'lapwing'
-    'plover'
-    'curlew'
-    'gull'
-    'tern'
-    'skua'
-    'guillemot'
-    'auk'
-    'sandgrouse'
-    'dove'
-    'parrot'
-    'lorikeet'
-    'cockatoo'
-    'parakeet'
-    'macaw'
-    'turaco'
-    'cuckoo'
-    'coucal'
-    'owl'
-    'snowy owl'
-    'frogmouth'
-    'nightjar'
-    'swift'
-    'hummingbird'
-    'quetzal'
-    'toucan'
-    'shrike'
-    'wren'
-    'oriole'
-    'fantail'
-    'paradise bird'
-    'lark'
-    'skylark'
-    'warbler'
-    'babbler'
-    'thrasher'
-    'mockingbird'
-    'lyrebird'
-    'bluebird'
-    'thrush'
-    'nightingale'
-    'sunbird'
-    'finch'
-    'kingfisher'
-    'trogon'
-    'pitta'
-    'manakin'
-    'chickadee'
-    'sula'
+    'pigeon', 'starling', 'swallow', 'robin', 'sparrow', 'eagle', 'vulture',
+    'hawk', 'condor', 'osprey', 'buzzard', 'crane', 'bustard', 'pheasant',
+    'woodpecker', 'seagull', 'albatross', 'petrel', 'grebe', 'flamingo',
+    'stork', 'ibis', 'heron', 'swan', 'magpie', 'crow', 'raven', 'jay',
+    'chough', 'quail', 'grouse', 'partridge', 'egret', 'pelican', 'cormorant',
+    'avocet', 'lapwing', 'plover', 'curlew', 'gull', 'tern', 'skua',
+    'guillemot', 'auk', 'sandgrouse', 'dove', 'parrot', 'lorikeet', 'cockatoo',
+    'parakeet', 'macaw', 'turaco', 'cuckoo', 'coucal', 'owl', 'snowy owl',
+    'frogmouth', 'nightjar', 'swift', 'hummingbird', 'quetzal', 'toucan',
+    'shrike', 'wren', 'oriole', 'fantail', 'paradise bird', 'lark', 'skylark',
+    'warbler', 'babbler', 'thrasher', 'mockingbird', 'lyrebird', 'bluebird',
+    'thrush', 'nightingale', 'sunbird', 'finch', 'kingfisher', 'trogon',
+    'pitta', 'manakin', 'chickadee', 'sula', 'tit', 'booby'
 ])
-#not putting in tits or boobies
+
 new Thing('poultry', [
     'bird body'
     'poultry thoughts'
 ], [
-    'chicken'
-    'chicken'
-    'chicken'
-    'duck'
-    'duck'
-    'mallard'
-    'goose'
-    'goose'
-    'turkey'
-    'kiwi'
-    'penguin'
-    'ostrich'
-    'emu'
-    'cassowary'
+    'chicken', 'chicken', 'chicken', 'duck', 'duck', 'mallard', 'goose','goose',
+    'turkey', 'kiwi', 'penguin', 'ostrich', 'emu', 'cassowary'
 ])
-#All flightless birds are considered poultry. Penguins and kiwis in farms. LIKE I CARE
+# All flightless birds are considered poultry. Penguins and kiwis in farms. LIKE I CARE
+# TODO: Fix
 new Thing('bird thoughts', [ 'bird thought,1-2' ], [ 'thoughts' ])
 new Thing('bird thought', [], [
-    'caw'
-    'caw caw'
-    ':V'
-    ':V caw'
-    'you think i care'
-    'yeah bring it'
-    'like for real'
-    'come say that to my face'
-    'chirp'
-    'so high right now'
+    'caw', 'caw caw', ':V', ':V caw', 'you think i care', 'yeah bring it'
+    'like for real', 'come say that to my face', 'chirp', 'so high right now'
     'pooping on people, from far above, doop-dee-doop'
-    'do i care, no i don\'t, doop-dee-doop'
-    'me and my mates are gonna ruin your day'
-    'can i peck your face'
-    'please can i peck at you just a bit'
-    'everything i sing is super-lewd'
-    'i\'m a lewd dude'
-    'so yeah'
-    'i am bird hi'
-    'i\'m pretty fly'
-    'hey can i steal that'
-    'what now'
-    'that\'s not what your mom said last night'
-    'yes that\'s right'
-    'yes indeed'
-    'see what happens'
-    'oh god what happen'
-    'riveting'
-    'aw yiss'
-    'bred crums yisss'
-    'i am the birdest'
-    'bird and bird accessories'
-    'hey have you heard'
-    'turns out i\'m the word'
+    "do i care, no i don't, doop-dee-doop"
+    'me and my mates are gonna ruin your day', 'can i peck your face'
+    'please can i peck at you just a bit', 'everything i sing is super-lewd'
+    "i'm a lewd dude", 'so yeah', 'i am bird hi', 'i\'m pretty fly'
+    'hey can i steal that', 'what now'
+    "that's not what your mom said last night", "yes that's right"
+    'yes indeed', 'see what happens', 'oh god what happen', 'riveting'
+    'aw yiss', 'bred crums yisss', 'i am the birdest'
+    'bird and bird accessories', 'hey have you heard', "turns out i'm the word"
 ])
 new Thing('poultry thoughts', [ 'poultry thought,1-2' ], [ 'thoughts' ])
 new Thing('poultry thought', [], [
@@ -6876,7 +6348,7 @@ new Thing('egg thought', [], [ [
     'a...'
     'ah...'
 ] ])
-#mammals
+#mammals {{{3
 new Thing('small mammal', [
     'mammal body'
     'small mammal thoughts'
@@ -7483,7 +6955,7 @@ new Thing('dog thought', [], [
     'WHY THIS'
     'THIS IS GREAT'
 ])
-#world subdivisions
+# world subdivisions {{{2
 new Thing('biome', [
     'plain,1-5'
     [
@@ -7649,7 +7121,7 @@ new Thing('region', [
     ]
     [ ' region' ]
 ])
-#towns
+# towns {{{3
 new Thing('village', [
     'residential area,1-4'
     'commercial area,90%'
@@ -7696,7 +7168,7 @@ new Thing('capital', [
     'cemetery,50%'
     'research facility,1%'
 ], 'capital city')
-#buildings
+# buildings {{{3
 new Thing('monument', [
     'tourist,5-30'
     'souvenir shop,70%'
@@ -7815,7 +7287,7 @@ new Thing('apartment building', [
     'apartment,6-20'
     '.building'
 ])
-#farms
+# farms {{{3
 new Thing('farm', [
     'fire,0.3%'
     'house,1-3'
@@ -7907,7 +7379,7 @@ new Thing('public bathroom', [
     'toilet,1-4'
     'mirror,0-3'
 ], 'restroom')
-#offices
+# offices {{{3
 new Thing('building hall', [
     'office worker,0-3'
     'elevator,1-3'
@@ -8291,7 +7763,7 @@ new Thing('water cooler', [
     'water'
     'push-button'
 ])
-#small shops
+# small shops {{{3
 new Thing('shop', [
     'clerk,1-6'
     [
@@ -8755,7 +8227,7 @@ new Thing('souvenir', [ [
         'souvenir'
     ]
 ])
-#museums
+# museums {{{3
 new Thing('museum', [
     'painting,0-3'
     'museum room,2-12'
@@ -8781,7 +8253,7 @@ new Thing('paint', [
     'pigment'
 ])
 new Thing('wooden frame', [ 'wood' ])
-#services
+# services {{{3
 new Thing('fire department', [
     'fire,0.2%'
     'firefighter,3-6'
@@ -8815,7 +8287,7 @@ new Thing('library', [
     '.building'
 ])
 new Thing('librarian', [ '.person' ], '*PERSON*| (librarian)')
-#war stuff
+# war stuff {{{3
 new Thing('battlefield', [
     'soldier,10-30'
     'corpse,10-30'
@@ -8911,7 +8383,7 @@ new Thing('bullet wound', [
     'bullet,10%'
     'bullet,2%'
 ], 'wound')
-#hospitals
+# hospitals {{{3
 new Thing('hospital', [
     'doctor,2-4'
     'nurse,2-4'
@@ -8950,7 +8422,7 @@ new Thing('patient', [
     'blood,15%'
     'wound,0-3'
 ], '*PERSON*| (patient)')
-#[DATA EXPUNGED]
+# [DATA EXPUNGED] {{{3
 new Thing('research facility', [
     'researcher,2-8'
     'security guard,1-4'
@@ -9296,7 +8768,7 @@ new Thing('top secret file', [], [
     ]
     [ '.' ]
 ])
-#cemeteries
+# cemeteries {{{3
 new Thing('cemetery', [
     'gravedigger,0-2'
     'person,0-3'
@@ -9446,7 +8918,7 @@ new Thing('ghost thought', [], [
     'who you - gonna call -'
     'can you - hear me now -'
 ])
-#infrastructure
+# infrastructure {{{3
 new Thing('street', [
     'traffic accident,1%'
     'urban life'
@@ -9586,8 +9058,7 @@ new Thing('driven bike', [
     'person,5%'
     '.bike'
 ], 'bike')
-#["Chr","F","Chevr","Cad","H","Hyun","Maz","Niss","Suz","Lex","Merc","Aud","Volv"],["ysler","ord","olet","illac","onda","dai","da","an","uki","us","edes","i","o"]
-#rooms
+# rooms {{{3
 new Thing('building', [
     'walls'
     'roof'
@@ -9779,7 +9250,7 @@ new Thing('hole', [
     'insect,15%'
     'dirt'
 ])
-#furniture
+# furniture {{{3
 new Thing('cabinet', [
     'wood frame'
     'glass,30%'
@@ -10323,7 +9794,7 @@ new Thing('electronic component', [
     'transmorpher'
     'beeper'
 ])
-#computers
+# computers {{{3
 new Thing('pixel paragraph', [ 'pixel character,50-300' ], 'paragraph')
 new Thing('pixel character', [ 'bit,8' ], '*CHAR*')
 new Thing('computer', [
@@ -11067,14 +10538,14 @@ new Thing('internet', [ 'website,20' ], 'The Internet')
 new Thing('google', [ '.website' ])
 new Thing('wikipedia', [ '.website' ])
 new Thing('4chan', [ '.website' ])
-new Thing('nested', [ 'universe' ], 'www.orteil.dashnet.org/nested')
+new Thing('nested', [ 'universe' ], 'www.orteil.dashnet.org/nested') # TODO
 new Thing('reddit', [ '.website' ])
 new Thing('facebook', [ '.website' ])
 new Thing('/tg/', [ '.website' ])
 new Thing('/b/', [ '.website' ])
 new Thing('/v/', [ '.website' ])
 new Thing('/x/', [ '.website' ])
-#food
+# food {{{3
 new Thing('milk', [
     'glucids'
     'lipids'
@@ -11385,7 +10856,7 @@ new Thing('dough', [
     'glucids'
     'lipids'
 ])
-#visitors
+# visitors {{{3
 new Thing('visitor', [
     'visitor body'
     'visitor psyche'
@@ -11774,7 +11245,7 @@ new Thing('visitor ship', [
     'visitor furniture,1-6'
     'metal'
 ], 'visitor UFO')
-#medieval and ancient
+# medieval and ancient {{{3
 new Thing('medieval continent', [
     'medieval land,1-6'
     'sea,1-5'
@@ -11922,7 +11393,7 @@ new Thing('ancient land', [
     ]
     [ ' land' ]
 ])
-#medieval people
+# medieval people {{{3
 new Thing('medieval clothing set', [
     'medieval hat,30%'
     'medieval pants,98%'
@@ -12127,7 +11598,7 @@ new Thing('medieval corpse', [
     'worm,20%'
     'worm,10%'
 ], '*MEDIEVAL PERSON*| (dead)')
-#medieval towns
+# medieval towns {{{3
 new Thing('medieval village', [
     'townwall,20%'
     'watchtower,15%'

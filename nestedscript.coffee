@@ -3549,6 +3549,7 @@ new Thing('polymers', ['.glucids'])
 new Thing('alcohol',  ['.glucids'])
 
 # Elements {{{3
+new Thing('atom', ['proton', 'neutron', 'electron'], ['atoms'])
 new Thing('carbon',     ['.atom'])
 new Thing('sodium',     ['.atom'])
 new Thing('chlorine',   ['.atom'])
@@ -3579,8 +3580,6 @@ new Thing('organic matter', [
     ['proteins', 'lipids', 'glucids', ''],
     'salt,30%'
 ])
-
-new Thing('atom', ['proton', 'neutron', 'electron'], ['atoms'])
 
 new Thing('molecule', ['atom'], ['molecules'])
 

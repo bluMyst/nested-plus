@@ -20,15 +20,25 @@ new Thing('nitrogen', ['proton,7', 'neutron,14', 'neutron,0.368%', 'electron,7']
 #          18O 0.205
 new Thing('oxygen', ['proton,9', 'neutron,16', 'neutron,0.038', 'neutron,0.205%', 'electron,8'])
 
+new Thing('fluorine', ['proton,9', 'neutron,19', 'electron,9'])
 
-new Thing('fluorine', ['proton,9', 'neutron,0-3', 'electron,9'])
-new Thing('neon', ['proton,10', 'neutron,0-3', 'electron,10'])
-new Thing('sodium', ['proton,11', 'neutron,0-3', 'electron,11'])
-new Thing('magnesium', ['proton,12', 'neutron,0-3', 'electron,12'])
-new Thing('aluminum', ['proton,13', 'neutron,0-3', 'electron,13'])
-new Thing('silicon', ['proton,14', 'neutron,0-3', 'electron,14'])
-new Thing('phosphorus', ['proton,15', 'neutron,0-3', 'electron,15'])
-new Thing('sulfur', ['proton,16', 'neutron,0-3', 'electron,16'])
+# TODO:
+# 10 Neon 20Ne 90.48
+#         21Ne 0.27
+#         22Ne 9.25
+new Thing('neon', ['proton,10', 'neutron,20', 'neutron,0.27%', 'neutron,9.25%', 'electron,10'])
+
+new Thing('sodium', ['proton,11', 'neutron,23', 'electron,11'])
+
+# TODO:
+# 12 Magnesium 24Mg 78.99
+#              25Mg 10.00
+#              26Mg 11.01
+new Thing('magnesium', ['proton,12', 'neutron,24', 'neutron,10%', 'neutron,11.01%', 'electron,12'])
+new Thing('aluminum', ['proton,13', 'neutron,27', 'electron,13'])
+new Thing('silicon', ['proton,14', 'neutron,28', 'electron,14']) # TODO: isotope data
+new Thing('phosphorus', ['proton,15', 'neutron,31', 'electron,15'])
+new Thing('sulfur', ['proton,16', 'neutron,32', 'electron,16']) # TODO: isotope data
 new Thing('chlorine', ['proton,17', 'neutron,0-3', 'electron,17'])
 new Thing('argon', ['proton,18', 'neutron,0-3', 'electron,18'])
 new Thing('potassium', ['proton,19', 'neutron,0-3', 'electron,19'])

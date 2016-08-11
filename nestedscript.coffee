@@ -3503,6 +3503,7 @@ launchNest = (what) -> # {{{2
 #              banana and 1 orange.
 #            - ["banana","strawberry,25%"] means it will contain 1 banana, and
 #              has a 25% probability of also containing a strawberry.
+#              ["strawberry,0.00000000001%"] is also Kosher - Ahto
 #            - ["banana,2-7"] means it will contain between 2 and 7 bananas.
 #            - [".banana"] will not include a banana in the Thing; instead, the
 #              Thing will contain whatever the banana normally contains.
@@ -3550,25 +3551,24 @@ new Thing('alcohol',  ['.glucids'])
 
 # Elements {{{3
 new Thing('atom', ['proton', 'neutron', 'electron'], ['atoms'])
-new Thing('carbon',     ['.atom'])
-new Thing('sodium',     ['.atom'])
-new Thing('chlorine',   ['.atom'])
-new Thing('oxygen',     ['.atom'])
-new Thing('helium',     ['.atom'])
-new Thing('potassium',  ['.atom'])
-new Thing('aluminium',  ['.atom'])
-new Thing('iron',       ['.atom'])
-new Thing('copper',     ['.atom'])
-new Thing('lead',       ['.atom'])
-new Thing('gold',       ['.atom'])
-new Thing('silver',     ['.atom'])
-new Thing('silicon',    ['.atom'])
-new Thing('calcium',    ['.atom'])
-new Thing('nitrogen',   ['.atom'])
-new Thing('sulfur',     ['.atom'])
-new Thing('phosphorus', ['.atom'])
-#alright, I'm not doing the whole periodic table.
-# TODO: Do the whole periodic table.
+$.getScript 'atoms.js'
+#new Thing('carbon',     ['.atom'])
+#new Thing('sodium',     ['.atom'])
+#new Thing('chlorine',   ['.atom'])
+#new Thing('oxygen',     ['.atom'])
+#new Thing('helium',     ['.atom'])
+#new Thing('potassium',  ['.atom'])
+#new Thing('aluminium',  ['.atom'])
+#new Thing('iron',       ['.atom'])
+#new Thing('copper',     ['.atom'])
+#new Thing('lead',       ['.atom'])
+#new Thing('gold',       ['.atom'])
+#new Thing('silver',     ['.atom'])
+#new Thing('silicon',    ['.atom'])
+#new Thing('calcium',    ['.atom'])
+#new Thing('nitrogen',   ['.atom'])
+#new Thing('sulfur',     ['.atom'])
+#new Thing('phosphorus', ['.atom'])
 
 new Thing('steel', ['iron', 'carbon'])
 new Thing('proteins', ['.molecule'])

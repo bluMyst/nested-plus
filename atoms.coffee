@@ -7,7 +7,7 @@ new Thing('deuterium', ['proton,1', 'neutron,2', 'electron,1'])
 new Thing('tritium',   ['proton,1', 'neutron,3', 'electron,1'])
 
 new Thing('helium', ['proton,2', 'neutron,3', 'neutron,99.999863%', 'electron,2'])
-new Thing('lithium', ['proton,3', 'neutron,6', 'neutron,92.41%' 'electron,3'])
+new Thing('lithium', ['proton,3', 'neutron,6', 'neutron,92.41%', 'electron,3'])
 new Thing('beryllium', ['proton,4', 'neutron,9', 'electron,4'])
 new Thing('boron', ['proton,5', 'neutron,10', 'neutron,80.1%', 'electron,5'])
 new Thing('carbon', ['proton,6', 'neutron,12', 'neutron,1.07%' 'electron,6'])

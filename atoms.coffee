@@ -1,3 +1,5 @@
+#= require <thing>
+
 # Source for isotope data: https://www.ncsu.edu/chemistry/msf/pdf/IsotopicMass_NaturalAbundance.pdf
 
 # TODO: Hydrogen with two neutrons should be called deuterium. How would I go
@@ -39,6 +41,8 @@ new Thing('aluminum', ['proton,13', 'neutron,27', 'electron,13'])
 new Thing('silicon', ['proton,14', 'neutron,28', 'electron,14']) # TODO: isotope data
 new Thing('phosphorus', ['proton,15', 'neutron,31', 'electron,15'])
 new Thing('sulfur', ['proton,16', 'neutron,32', 'electron,16']) # TODO: isotope data
+
+# TODO: Everything after this point has no isotope data
 new Thing('chlorine', ['proton,17', 'neutron,0-3', 'electron,17'])
 new Thing('argon', ['proton,18', 'neutron,0-3', 'electron,18'])
 new Thing('potassium', ['proton,19', 'neutron,0-3', 'electron,19'])

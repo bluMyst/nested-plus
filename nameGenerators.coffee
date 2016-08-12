@@ -11,17 +11,9 @@ nameGenerators =
         # popular names in the USA. Yes, every person in the universe is an
         # American.
 
-        if @name_ == '*PERSON*'
-            gender = choose([0, 1])
-        else if @name_ == '*MAN*'
-            gender = 1
-        else if @name_ == '*WOMAN*'
-            gender = 0
-
-        str = ''
         #http://names.mongabay.com/male_names.htm
         if gender == FEMALE
-            str += weightedChoose([
+            str = weightedChoose([
                 'Mary', 'Patricia', 'Linda', 'Barbara', 'Elizabeth', # {{{
                 'Jennifer', 'Maria', 'Susan', 'Margaret', 'Dorothy', 'Lisa',
                 'Nancy', 'Karen', 'Betty', 'Helen', 'Sandra', 'Donna', 'Carol',
@@ -41,7 +33,7 @@ nameGenerators =
                 'Diana', 'Annie', 'Lillian', 'Emily', 'Robin', # }}}
             ], 1.2)
         else if gender == MALE
-            str += weightedChoose([
+            str = weightedChoose([
                 'James', 'John', 'Robert', 'Michael', 'William', 'David',# {{{
                 'Richard', 'Charles', 'Joseph', 'Thomas', 'Christopher',
                 'Daniel', 'Paul', 'Mark', 'Donald', 'George', 'Kenneth',

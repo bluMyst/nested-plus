@@ -32,6 +32,7 @@
 #= require <atoms>
 #= require <rand>
 #= require <nameGenerators>
+#= require <thoughtGenerators>
 
 # Function/class definitions {{{1
 # Instances {{{2
@@ -68,160 +69,23 @@ class Instance
             gender = INVALID_GENDER
         else if @name_.search(/ PERSON\*$/) != -1
             gender = choose [MALE, FEMALE]
-        else if @name_.search(/ WOMAN\*$/) != -1
+        else if @name_.search(/WOMAN\*$/) != -1
+            # Order is important here. WOMAN comes before MAN because /MAN$/
+            # matches "WOMAN"
             gender = FEMALE
-        else if @name_.search(/ MAN\*$/) != -1
+        else if @name_.search(/MAN\*$/) != -1
             gender = MALE
 
-        if @name_ in ['*PERSON*', '*MAN*', '*WOMAN*'] # {{{4
-            if @name_ == '*PERSON*'
-                gender = choose([0, 1])
-            else if @name_ == '*MAN*'
-                gender = 1
-            else if @name_ == '*WOMAN*'
-                gender = 0
-
+        if @name_ in ['*PERSON*', '*MAN*', '*WOMAN*']
             @name_ = nameGenerators.modern(gender)
-        else if @name_ in ['*MEDIEVAL PERSON*', '*MEDIEVAL MAN*', '*MEDIEVAL WOMAN*'] # {{{4
+        else if @name_ in ['*MEDIEVAL PERSON*', '*MEDIEVAL MAN*', '*MEDIEVAL WOMAN*']
             @name_ = nameGenerators.midieval gender
-        else if @name_ in ['*ANCIENT PERSON*', '*ANCIENT MAN*', '*ANCIENT WOMAN*'] # {{{4
+        else if @name_ in ['*ANCIENT PERSON*', '*ANCIENT MAN*', '*ANCIENT WOMAN*']
             @name_ = nameGenerators.ancient gender
-        else if @name_ in ['*FUTURE PERSON*', '*FUTURE MAN*', '*FUTURE WOMAN*'] # {{{4
+        else if @name_ in ['*FUTURE PERSON*', '*FUTURE MAN*', '*FUTURE WOMAN*']
             @name_ = nameGenerators.future gender
         else if @name_ == '*MEMORY*' # {{{4
-            str = ''
-            str += weightedChoose([
-                choose([
-                    'Biking', 'Hiking', 'Swimming', 'Flying kites', 'Playing',
-                    'Playing baseball', 'Stargazing', 'Playing soccer', 'Playing
-                    basketball', 'Playing chess', 'Playing checkers', 'Playing
-                    video-games', 'Watching TV', 'Cooking',
-                ]) + ' with my ' + choose([
-                    'mother', 'father', 'parents', 'grand-father', 'grand-mother',
-                    'grand-parents', 'uncle', 'aunt', 'cousin', 'sister',
-                    'brother',
-                ]) + choose([
-                    '',
-                    ' when I was ' + choose([
-                        'a child', 'young', randint(7, 21),
-                    ]),
-                ]) + '.'
-
-                'The day I ' + choose([
-                    'learned how to ' + choose([
-                        'drive', 'cook', 'love', 'kiss', 'read', 'forgive', 'make
-                        friends', 'speak another language',
-
-                        'play ' + choose([
-                            'piano', 'drums', 'guitar', 'saxophone', 'cards'
-                        ]),
-                    ]),
-
-                    choose([
-                        'graduated high school', 'graduated college',
-                        'got my license'
-                    ])
-
-                    choose([
-                        'got promoted as '
-                        'got a job as '
-                        'finally became '
-                    ]) + choose([
-                        'a cook'
-                        'a reporter'
-                        'a game designer'
-                        'a lawyer'
-                        'a doctor'
-                        'a veterinarian'
-                        'a biologist'
-                        'a soldier'
-                        'a physicist'
-                        'a scientist'
-                        'a geologist'
-                        'a shopkeeper'
-                        'a teacher'
-                        'a historian'
-                        'an archeologist'
-                        'a musician'
-                        'an artist'
-                        'an athlete'
-                        'a dancer'
-                    ])
-                ]) + '.'
-                choose([
-                    'Kissing'
-                    'Cuddling with'
-                    'Watching movies with'
-                    'Staying up late with'
-                    'Sharing secrets with'
-                    'Sharing childhood memories with'
-                    'Feeling close to'
-                    'Laying my arm around'
-                ]) + ' ' + choose([
-                    'that one person'
-                    'my best friend'
-                    'my love interest'
-                    'my crush'
-                ]) + ' in ' + choose([
-                    'middle school'
-                    'high school'
-                    'college'
-                ]) + '.'
-                'The day I ' + choose([
-                    'got married'
-                    'had my daughter'
-                    'had my son'
-                    'lost my father'
-                    'lost my mother'
-                    'went on a trip with ' + choose([
-                        'my partner'
-                        'my family'
-                        'my friends'
-                    ])
-                    'learned ' + choose([
-                        'I'
-                        'my son'
-                        'my daughter'
-                        'my sister'
-                        'my brother'
-                        'my father'
-                        'my mother'
-                    ]) + ' was ill'
-                    'learned we were at war'
-                    'learned the war was over'
-                    'broke my ' + choose([
-                        'leg'
-                        'ankle'
-                        'elbow'
-                        'knee'
-                        'nose'
-                    ])
-                    'broke up with my partner'
-                    'lost my ' + weightedChoose([
-                        'dog'
-                        'cat'
-                        'bunny'
-                        'hamster'
-                        'gerbil'
-                        'bird'
-                        'goldfish'
-                        'ferret'
-                        'rat'
-                        'iguana'
-                        'pet spider'
-                    ], 1.5)
-                ]) + '.'
-                'That one unforgettable ' + choose([
-                    'book'
-                    'movie'
-                    'video game'
-                    'trip'
-                    'kiss'
-                    'person I met'
-                    'party'
-                ]) + '.'
-            ], 1.5)
-            @name_ = str
+            @name_ = thoughtGenerators.memory()
         else if @name_ == '*SADTHOUGHT*' # {{{4
             str = ''
             str += weightedChoose([

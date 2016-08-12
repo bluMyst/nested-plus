@@ -101,7 +101,7 @@ nameGenerators =
 
         return str
 
-    midieval: (gender) -> # {{{1
+    medieval: (gender) -> # {{{1
         # Generates a medieval first name + last name, mostly taken from
         # http://www.infernaldreams.com/names/Europe/Medieval/England.htm
         if gender == FEMALE
@@ -160,9 +160,6 @@ nameGenerators =
 
     future: (gender) -> # {{{1
         # Generates a futuristic first name + last name
-
-        str = 'ERROR'
-        console.log "gender: #{gender}"
 
         if gender == FEMALE
             str = choose([

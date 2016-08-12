@@ -3552,7 +3552,7 @@ new Thing('alcohol',  ['.glucids'])
 
 # Elements {{{3
 new Thing('atom', ['proton', 'neutron', 'electron'], ['atoms'])
-$.getScript 'atoms.js'
+$.getScript 'atoms.js' # TODO: WARNING: This runs asynchronously. Stuff might break!
 #new Thing('carbon',     ['.atom'])
 #new Thing('sodium',     ['.atom'])
 #new Thing('chlorine',   ['.atom'])

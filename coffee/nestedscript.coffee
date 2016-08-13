@@ -10,6 +10,7 @@
 # Add a warning that make.sh is untested.
 # Change default skin to the cool dark one.
 # miscGenerators.book should bookCase its output
+# How many Things on screen is too many?
 
 # Comments {{{1
 # Converted by js2coffee 2.2.0 but tweaked and refactored from there manually.
@@ -1474,377 +1475,144 @@ new Thing('nest', [
 ])
 # life {{{2
 # misc life {{{3
+
+# TODO: Why is 'Life' capitalized?
 new Thing('life', [ [
-    'bird'
-    'poultry'
-    'fish'
-    'shark'
-    'crustacean'
-    'cnidaria'
-    'worm'
-    'mollusk'
-    'clam'
-    'plankton'
-    'reptile'
-    'amphibian'
-    'snake'
-    'small mammal'
-    'herbivorous mammal'
-    'predatory mammal'
-    'monkey'
-    'bear'
-    'horse'
-    'cat'
-    'dog'
-    'dinosaur'
-    'medieval person'
-    'caveman'
-    'dragon'
-    'person'
-    'space animal'
-    'insect'
-    'tree'
-    'grass blade'
+    'bird', 'poultry', 'fish', 'shark', 'crustacean', 'cnidaria', 'worm',
+    'mollusk', 'clam', 'plankton', 'reptile', 'amphibian', 'snake', 'small
+    mammal', 'herbivorous mammal', 'predatory mammal', 'monkey', 'bear',
+    'horse', 'cat', 'dog', 'dinosaur', 'medieval person', 'caveman', 'dragon',
+    'person', 'space animal', 'insect', 'tree', 'grass blade'
 ] ], 'Life')
+
 new Thing('sea life', [
-    'sea monster,0.5%'
-    'fish,5-10'
-    'cetacean,0-4'
-    'shark,0-4'
-    'crustacean,1-4'
-    'cnidaria,1-4'
-    'mollusk,1-4'
-    'clam,1-4'
-    'plankton,2-8'
+    'sea monster,0.5%', 'fish,5-10', 'cetacean,0-4', 'shark,0-4',
+    'crustacean,1-4', 'cnidaria,1-4', 'mollusk,1-4', 'clam,1-4', 'plankton,2-8'
 ], 'life')
+
 new Thing('abyss life', [
-    'sea monster,2%'
-    'fish,3-6'
-    'cetacean,0-2'
-    'shark,0-2'
-    'crustacean,2-5'
-    'cnidaria,2-5'
-    'mollusk,2-5'
-    'clam,2-5'
-    'plankton,2-8'
+    'sea monster,2%', 'fish,3-6', 'cetacean,0-2', 'shark,0-2',
+    'crustacean,2-5', 'cnidaria,2-5', 'mollusk,2-5', 'clam,2-5', 'plankton,2-8'
 ], 'life')
+
 new Thing('beach life', [
-    'bird,0-3'
-    'herbivorous mammal,5%'
-    'amphibian,2%'
-    'reptile,2%'
-    'snake,2%'
-    'predatory mammal,5%'
-    'small mammal,2-5'
-    'insect,3-10'
+    'bird,0-3', 'herbivorous mammal,5%', 'amphibian,2%', 'reptile,2%',
+    'snake,2%', 'predatory mammal,5%', 'small mammal,2-5', 'insect,3-10',
     'clam,3-8'
 ], 'life')
+
 new Thing('river life', [
-    'fish,5-15'
-    'crustacean,0-10'
-    'plankton,2-8'
-    'bird,0-5'
-    'small mammal,0-2'
-    'amphibian,0-5'
-    'reptile,0-1'
-    'snake,0-1'
-    'insect,3-10'
+    'fish,5-15', 'crustacean,0-10', 'plankton,2-8', 'bird,0-5', 'small
+    mammal,0-2', 'amphibian,0-5', 'reptile,0-1', 'snake,0-1', 'insect,3-10'
 ], 'life')
+
 new Thing('lake life', [
-    'sea monster,1%'
-    'fish,5-15'
-    'amphibian,0-5'
-    'crustacean,0-10'
-    'bird,0-5'
-    'plankton,5-15'
-    'small mammal,0-2'
-    'reptile,0-1'
-    'snake,0-1'
-    'insect,3-10'
+    'sea monster,1%', 'fish,5-15', 'amphibian,0-5', 'crustacean,0-10',
+    'bird,0-5', 'plankton,5-15', 'small mammal,0-2', 'reptile,0-1',
+    'snake,0-1', 'insect,3-10'
 ], 'life')
 new Thing('land life', [
-    'herbivorous mammal,2-8'
-    'horse,5%'
-    'predatory mammal,0-4'
-    'small mammal,5-10'
-    'amphibian,0-2'
-    'reptile,0-2'
-    'snake,0-2'
-    'bird,0-5'
-    'anthill,30%'
-    'insect,5-10'
+    'herbivorous mammal,2-8', 'horse,5%', 'predatory mammal,0-4', 'small
+    mammal,5-10', 'amphibian,0-2', 'reptile,0-2', 'snake,0-2', 'bird,0-5',
+    'anthill,30%', 'insect,5-10'
 ], 'life')
 new Thing('forest life', [
-    'herbivorous mammal,2-8'
-    'predatory mammal,0-4'
-    'bear,0-5'
-    'small mammal,5-10'
-    'amphibian,0-3'
-    'reptile,0-3'
-    'snake,0-3'
-    'bird,2-10'
-    'beehive,30%'
-    'anthill,30%'
-    'insect,5-10'
+    'herbivorous mammal,2-8', 'predatory mammal,0-4', 'bear,0-5', 'small
+    mammal,5-10', 'amphibian,0-3', 'reptile,0-3', 'snake,0-3', 'bird,2-10',
+    'beehive,30%', 'anthill,30%', 'insect,5-10'
 ], 'life')
 new Thing('jungle life', [
-    'herbivorous mammal,1-5'
-    'predatory mammal,0-4'
-    'monkey,1-5'
-    'small mammal,5-10'
-    'amphibian,0-3'
-    'reptile,0-3'
-    'snake,0-6'
-    'bird,2-10'
-    'beehive,30%'
-    'anthill,30%'
-    'insect,5-10'
+    'herbivorous mammal,1-5', 'predatory mammal,0-4', 'monkey,1-5', 'small
+    mammal,5-10', 'amphibian,0-3', 'reptile,0-3', 'snake,0-6', 'bird,2-10',
+    'beehive,30%', 'anthill,30%', 'insect,5-10'
 ], 'life')
 new Thing('mountain life', [
-    'herbivorous mammal,1-6'
-    'predatory mammal,0-4'
-    'bear,2-6'
-    'small mammal,5-10'
-    'amphibian,0-2'
-    'reptile,0-2'
-    'snake,0-2'
-    'bird,2-10'
-    'beehive,30%'
-    'anthill,30%'
-    'insect,5-10'
+    'herbivorous mammal,1-6', 'predatory mammal,0-4', 'bear,2-6', 'small
+    mammal,5-10', 'amphibian,0-2', 'reptile,0-2', 'snake,0-2', 'bird,2-10',
+    'beehive,30%', 'anthill,30%', 'insect,5-10'
 ], 'life')
 new Thing('cave life', [
-    'herbivorous mammal,10%'
-    'predatory mammal,10%'
-    'bear,20%'
-    'small mammal,20%'
-    'small mammal,20%'
-    'small mammal,20%'
-    'amphibian,20%'
-    'reptile,20%'
-    'snake,10%'
-    'bird,15%'
-    'bird,5%'
-    'insect,5-10'
+    'herbivorous mammal,10%', 'predatory mammal,10%', 'bear,20%', 'small
+    mammal,20%', 'small mammal,20%', 'small mammal,20%', 'amphibian,20%',
+    'reptile,20%', 'snake,10%', 'bird,15%', 'bird,5%', 'insect,5-10'
 ], 'life')
-new Thing('ancient land life', [
-    'dinosaur,0-8'
-    '.land life'
-], 'life')
-new Thing('ancient forest life', [
-    'dinosaur,0-5'
-    '.forest life'
-], 'life')
-new Thing('ancient jungle life', [
-    'dinosaur,0-5'
-    '.jungle life'
-], 'life')
-new Thing('ancient mountain life', [
-    'dinosaur,0-3'
-    '.mountain life'
-], 'life')
+
+new Thing('ancient land life', ['dinosaur,0-8', '.land life'], 'life')
+
+new Thing('ancient forest life', ['dinosaur,0-5', '.forest life'], 'life')
+new Thing('ancient jungle life', ['dinosaur,0-5', '.jungle life'], 'life')
+new Thing('ancient mountain life', ['dinosaur,0-3', '.mountain life'], 'life')
 new Thing('urban life', [
-    'bird,0-8'
-    'small mammal,5-10'
-    'anthill,30%'
-    'insect,10-20'
+    'bird,0-8', 'small mammal,5-10', 'anthill,30%', 'insect,10-20'
 ], 'life')
-new Thing('sky life', [
-    'shark,1%'
-    'bird,5-20'
-    'insect,0-2'
-], 'life')
-new Thing('galactic life', [
-    'space monster,1%'
-    'space animal,1-12'
-], 'life')
+new Thing('sky life', ['shark,1%', 'bird,5-20', 'insect,0-2'], 'life')
+new Thing('galactic life', ['space monster,1%', 'space animal,1-12'], 'life')
 new Thing('skeleton', [ 'bones' ], 'skeleton')
 new Thing('flesh', [ '.skinless body part' ], 'flesh')
 new Thing('soft flesh', [ '.skinless soft body part' ], 'flesh')
 new Thing('scales', [ 'keratin' ])
-new Thing('fish fin', [
-    'muscles'
-    'scales'
-], 'fin')
-new Thing('fish tail', [
-    'muscles'
-    'scales'
-], 'tail')
-new Thing('fish skin', [ 'scales' ], 'skin')
-new Thing('cetacean flipper', [
-    'muscles'
-    'skin'
-], 'flipper')
-new Thing('cetacean fin', [
-    'muscles'
-    'skin'
-], 'fin')
-new Thing('crustacean claw', [
-    'chitin'
-    'muscles'
-    'fat'
-], 'claw')
-new Thing('crustacean leg', [
-    'chitin'
-    'muscles'
-    'fat'
-], 'leg')
+new Thing('fish fin', ['muscles', 'scales'], 'fin')
+new Thing('fish tail', ['muscles', 'scales'], 'tail')
+new Thing('fish skin', ['scales'], 'skin')
+new Thing('cetacean flipper', ['muscles', 'skin'], 'flipper')
+new Thing('cetacean fin', ['muscles', 'skin'], 'fin')
+new Thing('crustacean claw', ['chitin', 'muscles', 'fat'], 'claw')
+new Thing('crustacean leg', ['chitin', 'muscles', 'fat'], 'leg')
 new Thing('crustacean shell', [ 'chitin' ], 'shell')
 new Thing('clam shell', [ 'calcium' ], 'shell')
 new Thing('simple eye', [ '.eye flesh' ], 'eye')
 new Thing('exoskeleton', [ 'chitin' ], 'exoskeleton')
-new Thing('insect leg', [
-    'chitin'
-    'muscles'
-    'fat'
-], 'leg')
-new Thing('insect claw', [
-    'chitin'
-    'muscles'
-    'fat'
-], 'claw')
-new Thing('stinger', [
-    'chitin'
-    'venom'
-], 'stinger')
+new Thing('insect leg', ['chitin', 'muscles', 'fat'], 'leg')
+new Thing('insect claw', ['chitin', 'muscles', 'fat'], 'claw')
+new Thing('stinger', ['chitin', 'venom'], 'stinger')
 new Thing('antenna', [ 'chitin' ], 'antenna')
-new Thing('insect wing', [
-    [
-        'chitin'
-        'scales'
-    ]
-    'dew,2%'
-], 'wing')
-new Thing('wing', [
-    'feathers'
-    '.body part'
-], 'wing')
-new Thing('reptile wing', [
-    'scales'
-    '.body part'
-], 'wing')
-new Thing('bird wing', [
-    'feathers'
-    '.body part'
-], 'wing')
-new Thing('bird leg', [
-    'feathers'
-    '.body part'
-], 'leg')
-new Thing('bird tail', [
-    'feathers'
-    '.body part'
-], 'tail')
+new Thing('insect wing', [['chitin', 'scales'], 'dew,2%'], 'wing')
+new Thing('wing', ['feathers', '.body part'], 'wing')
+new Thing('reptile wing', ['scales', '.body part'], 'wing')
+new Thing('bird wing', ['feathers', '.body part'], 'wing')
+new Thing('bird leg', ['feathers', '.body part'], 'leg')
+new Thing('bird tail', ['feathers', '.body part'], 'tail')
+
+# TODO: Why manually specify 'venom' when that's what it's called?
 new Thing('venom', [
-    'proteins'
-    'lipids,40%'
-    'nitrogen,40%'
-    'sodium,40%'
-    'chlorine,40%'
+    'proteins', 'lipids,40%', 'nitrogen,40%', 'sodium,40%', 'chlorine,40%'
 ], 'venom')
-new Thing('jelly', [ 'water' ])
+
+new Thing('jelly', ['water'])
+
 new Thing('weird soft organ', [ '.skinless soft body part' ], [
     [
-        'fleshy'
-        'thick'
-        'slimy'
-        'scaly'
-        'furry'
-        'fuzzy'
-        'feathery'
-        'sharp'
-        'pointy'
-        'thorny'
-        'bulbous'
-        'leathery'
-        'hidden'
-        'soft'
-        'bubbling'
-        'distorted'
-        'shapeless'
-        'porous'
-        'spongiform'
-        'liquid-filled'
-        'foamy'
-        'smoking'
-        'oozing'
-        'drooling'
-        'shivering'
-        'quivering'
-        'pulsing'
+        'fleshy', 'thick', 'slimy', 'scaly', 'furry', 'fuzzy', 'feathery',
+        'sharp', 'pointy', 'thorny', 'bulbous', 'leathery', 'hidden', 'soft',
+        'bubbling', 'distorted', 'shapeless', 'porous', 'spongiform',
+        'liquid-filled', 'foamy', 'smoking', 'oozing', 'drooling', 'shivering',
+        'quivering', 'pulsing'
     ]
-    [ ' ' ]
+    [' ']
     [
-        'grasper'
-        'tendril'
-        'stinger'
-        'claw'
-        'tentacle'
-        'sac'
-        'egg sac'
-        'pouch'
-        'organ'
-        'specialized organ'
-        'bulb'
-        'brain bulb'
-        'gland'
-        'epiderm'
-        'sucker'
-        'pod'
-        'pseudolimb'
-        'nervous bulb'
-        'external muscle'
-        'structure'
-        'orifice'
-        'proboscis'
-        'tail'
+        'grasper', 'tendril', 'stinger', 'claw', 'tentacle', 'sac', 'egg sac',
+        'pouch', 'organ', 'specialized organ', 'bulb', 'brain bulb', 'gland',
+        'epiderm', 'sucker', 'pod', 'pseudolimb', 'nervous bulb',
+        'external muscle', 'structure', 'orifice', 'proboscis', 'tail'
     ]
 ])
+
 new Thing('weird hard organ', [ '.skinless body part' ], [
     [
-        'fleshy'
-        'thick'
-        'slimy'
-        'scaly'
-        'furry'
-        'fuzzy'
-        'sharp'
-        'pointy'
-        'thorny'
-        'bulbous'
-        'hidden'
-        'flexible'
-        'plated'
-        'armored'
-        'metallic'
-        'distorted'
-        'shapeless'
-        'porous'
-        'spongiform'
-        'liquid-filled'
-        'foamy'
-        'smoking'
-        'oozing'
-        'drooling'
+        'fleshy', 'thick', 'slimy', 'scaly', 'furry', 'fuzzy', 'sharp',
+        'pointy', 'thorny', 'bulbous', 'hidden', 'flexible', 'plated',
+        'armored', 'metallic', 'distorted', 'shapeless', 'porous',
+        'spongiform', 'liquid-filled', 'foamy', 'smoking', 'oozing', 'drooling'
     ]
-    [ ' ' ]
+    [' ']
     [
-        'carapace'
-        'shell'
-        'bone structure'
-        'skull'
-        'grasper'
-        'stinger'
-        'claw'
-        'organ'
-        'specialized organ'
-        'sucker'
-        'pod'
-        'pseudolimb'
+        'carapace', 'shell', 'bone structure', 'skull', 'grasper', 'stinger',
+        'claw', 'organ', 'specialized organ', 'sucker', 'pod', 'pseudolimb',
         'structure'
     ]
 ])
-new Thing('tentacle', [ '.skinless soft body part' ], 'tentacle')
+
+new Thing('tentacle', ['.skinless soft body part'], 'tentacle')
 new Thing('simple mouth', [
     'teeth'
     '.skinless soft body part'
@@ -3605,170 +3373,45 @@ new Thing('dog thought', [], [
     'THIS IS GREAT'
 ])
 # world subdivisions {{{2
-new Thing('biome', [
-    'plain,1-5'
+new Thing('biome', ['plain,1-5', ['forest,0-4', 'jungle,0-4'], 'mountain,0-3'])
+
+new Thing('continent', ['country,1-10', 'sea,1-5'],
     [
-        'forest,0-4'
-        'jungle,0-4'
+        ['continent of ']
+        ['A', 'Eu', 'Ame', 'Ocea', 'Anta', 'Atla']
+        ['frica', 'rtica', 'ropa', 'rica', 'nia', 'sia', 'ntide']
     ]
-    'mountain,0-3'
-])
-new Thing('continent', [
-    'country,1-10'
-    'sea,1-5'
-], [
-    [ 'continent of ' ]
-    [
-        'A'
-        'Eu'
-        'Ame'
-        'Ocea'
-        'Anta'
-        'Atla'
-    ]
-    [
-        'frica'
-        'rtica'
-        'ropa'
-        'rica'
-        'nia'
-        'sia'
-        'ntide'
-    ]
-])
+)
+
 #[["Eu","A","O","E"],["rt","lt","rm","t","tr","tl","str","s","m","fr"],["a","o","e","i"],["ri","ni","ti","fri","",""],["sia","nia","ca"]]);
-new Thing('country', [
-    'region,1-10'
-    'battlefield,10%'
-    '.biome'
-], [
-    [ 'country of ' ]
+new Thing('country', ['region,1-10', 'battlefield,10%', '.biome'], [
+    ['country of ']
     [
-        'Li'
-        'Arme'
-        'Le'
-        'Molda'
-        'Slove'
-        'Tur'
-        'Afgha'
-        'Alba'
-        'Alge'
-        'Tu'
-        'Fran'
-        'Baha'
-        'Su'
-        'Austra'
-        'Germa'
-        'In'
-        'Ara'
-        'Austri'
-        'Be'
-        'Ba'
-        'Bra'
-        'Ru'
-        'Chi'
-        'Ja'
-        'Tai'
-        'Bangla'
-        'Gha'
-        'Bou'
-        'Bo'
-        'Tas'
-        'Ze'
-        'Mon'
-        'Mo'
-        'Ne'
-        'Neder'
-        'Spai'
-        'Portu'
-        'Po'
-        'Por'
-        'Mol'
-        'Bul'
-        'Bru'
-        'Bur'
-        'Gro'
-        'Syl'
-        'Gui'
-        'Da'
-        'Gree'
-        'Bri'
-        'Ita'
+        'Li', 'Arme', 'Le', 'Molda', 'Slove', 'Tur', 'Afgha', 'Alba', 'Alge',
+        'Tu', 'Fran', 'Baha', 'Su', 'Austra', 'Germa', 'In', 'Ara', 'Austri',
+        'Be', 'Ba', 'Bra', 'Ru', 'Chi', 'Ja', 'Tai', 'Bangla', 'Gha', 'Bou',
+        'Bo', 'Tas', 'Ze', 'Mon', 'Mo', 'Ne', 'Neder', 'Spai', 'Portu', 'Po',
+        'Por', 'Mol', 'Bul', 'Bru', 'Bur', 'Gro', 'Syl', 'Gui', 'Da', 'Gree',
+        'Bri', 'Ita'
     ]
     [
-        'ly'
-        'dania'
-        'mas'
-        'vania'
-        'ce'
-        'nea'
-        'nau'
-        'topia'
-        'garia'
-        'gal'
-        'laska'
-        'golia'
-        'nisia'
-        'land'
-        'snia'
-        'livia'
-        'mania'
-        'than'
-        'nin'
-        'pan'
-        'wan'
-        'zil'
-        'ssia'
-        'na'
-        'rein'
-        'lgium'
-        'bia'
-        'ny'
-        'ce'
-        'stan'
-        'distan'
-        'nistan'
-        'dan'
-        'lia'
-        'nia'
-        'via'
-        'sia'
-        'tia'
-        'key'
-        'desh'
-        'dia'
+        'ly', 'dania', 'mas', 'vania', 'ce', 'nea', 'nau', 'topia', 'garia',
+        'gal', 'laska', 'golia', 'nisia', 'land', 'snia', 'livia', 'mania',
+        'than', 'nin', 'pan', 'wan', 'zil', 'ssia', 'na', 'rein', 'lgium',
+        'bia', 'ny', 'ce', 'stan', 'distan', 'nistan', 'dan', 'lia', 'nia',
+        'via', 'sia', 'tia', 'key', 'desh', 'dia'
     ]
 ])
-new Thing('region', [
-    'capital'
-    'city,1-10'
-    'village,2-15'
-], [
+new Thing('region', ['capital', 'city,1-10', 'village,2-15'], [
     [
-        'north '
-        'east '
-        'south '
-        'west '
-        'north-west '
-        'north-east '
-        'south-west '
-        'south-east '
-        'center '
-        'oversea '
+        'north ', 'east ', 'south ', 'west ', 'north-west ', 'north-east ',
+        'south-west ', 'south-east ', 'center ', 'oversea '
     ]
     [
-        'hilly'
-        'rainy'
-        'lush'
-        'foggy'
-        'desertic'
-        'green'
-        'tropical'
-        'rich'
-        'barren'
-        'scorched'
+        'hilly', 'rainy', 'lush', 'foggy', 'desertic', 'green', 'tropical',
+        'rich', 'barren', 'scorched'
     ]
-    [ ' region' ]
+    [' region']
 ])
 # towns {{{3
 new Thing('village', [
@@ -6680,244 +6323,63 @@ new Thing('video game', [ '.computer file' ], [
 ])
 new Thing('software', [ '.computer file' ], [
     [
-        'Photo'
-        'Touch'
-        'Pic'
-        'Morph'
-        'Kid'
-        'Cosmo'
-        'Astro'
-        'Ink'
-        'Web'
-        'Art'
-        'Movie'
-        'Music'
-        'Calc'
-        'Math'
-        'Phrase'
-        'Dictio'
-        'World'
-        'Bug'
-        'Shell'
-        'Folder'
-        'File'
-        'Program'
-        'Question'
-        'EZ'
-        'Easy'
-        'Ancestry'
-        'History'
-        'Encyclo'
-        'Sun'
-        'Speed'
-        'Health'
-        'Doc'
-        'School'
-        'Learn'
-        'Lang'
-        'Code'
-        'Prog'
-        'Note'
-        'Pixel'
-        'Simple'
-        'Line'
-        'Shape'
-        'Name'
-        'Phone'
-        'Insta'
-        'Love'
-        'Friend'
-        'Assist'
-        'Tut'
-        'Active'
-        'Micro'
-        'Macro'
-        'Shock'
-        'Laser'
-        'Disc'
-        'Index'
-        'Game'
-        'Trouble'
-        'Hobbie'
-        'House'
-        'Task'
-        'Sports'
-        'Car'
-        'Money'
-        'Finance'
-        'Password'
-        'Fun'
-        'Mail'
-        'Virus'
-        'Fire'
-        'Burn'
-        'Diet'
-        'Pet'
-        'Mission'
-        'Hyper'
-        'Flower'
-        'Biblio'
-        'Video'
-        'Party'
-        'Open'
-        'Closed'
-        'Magic'
+        'Photo', 'Touch', 'Pic', 'Morph', 'Kid', 'Cosmo', 'Astro', 'Ink',
+        'Web', 'Art', 'Movie', 'Music', 'Calc', 'Math', 'Phrase', 'Dictio',
+        'World', 'Bug', 'Shell', 'Folder', 'File', 'Program', 'Question', 'EZ',
+        'Easy', 'Ancestry', 'History', 'Encyclo', 'Sun', 'Speed', 'Health',
+        'Doc', 'School', 'Learn', 'Lang', 'Code', 'Prog', 'Note', 'Pixel',
+        'Simple', 'Line', 'Shape', 'Name', 'Phone', 'Insta', 'Love', 'Friend',
+        'Assist', 'Tut', 'Active', 'Micro', 'Macro', 'Shock', 'Laser', 'Disc',
+        'Index', 'Game', 'Trouble', 'Hobbie', 'House', 'Task', 'Sports', 'Car',
+        'Money', 'Finance', 'Password', 'Fun', 'Mail', 'Virus', 'Fire', 'Burn',
+        'Diet', 'Pet', 'Mission', 'Hyper', 'Flower', 'Biblio', 'Video',
+        'Party', 'Open', 'Closed', 'Magic'
     ]
     [
-        'shop'
-        'pic'
-        'pix'
-        'draw'
-        'thinker'
-        'brain'
-        'pad'
-        'glide'
-        'top'
-        'artist'
-        'words'
-        'writer'
-        'layer'
-        'net'
-        'nary'
-        'matic'
-        'ulator'
-        'ula'
-        'ulus'
-        'ify'
-        'izer'
-        'crusher'
-        'finder'
-        'find'
-        'sort'
-        'reply'
-        'info'
-        'pro'
-        'pedia'
-        'helper'
-        'creator'
-        'card'
-        'land'
-        'warrior'
-        'armor'
-        'wall'
-        'nova'
-        'manager'
-        'paint'
-        'pixel'
-        'namer'
-        'call'
-        'book'
-        'tales'
-        'media'
-        'wave'
-        'mail'
-        '-b-gone'
-        'care'
-        'serve'
-        'server'
-        'printer'
-        'designer'
-        'retriever'
-        'spy'
-        'link'
-        'Office'
-        'cracker'
-        'Edit'
-        'Editor'
+        'shop', 'pic', 'pix', 'draw', 'thinker', 'brain', 'pad', 'glide',
+        'top', 'artist', 'words', 'writer', 'layer', 'net', 'nary', 'matic',
+        'ulator', 'ula', 'ulus', 'ify', 'izer', 'crusher', 'finder', 'find',
+        'sort', 'reply', 'info', 'pro', 'pedia', 'helper', 'creator', 'card',
+        'land', 'warrior', 'armor', 'wall', 'nova', 'manager', 'paint',
+        'pixel', 'namer', 'call', 'book', 'tales', 'media', 'wave', 'mail',
+        '-b-gone', 'care', 'serve', 'server', 'printer', 'designer',
+        'retriever', 'spy', 'link', 'Office', 'cracker', 'Edit', 'Editor'
     ]
     [
-        ' Pro'
-        ' - More Clipart edition'
-        ' Assistant'
-        ' Fusion'
-        ' Easy'
-        ' Plus'
-        ' Professional'
-        ' Gold'
-        ' extended edition'
-        ' Free'
-        ' freeware version'
-        ' trial'
-        ' shareware'
-        ' Web'
-        ' Online'
-        ' Edit'
-        ' Illustrated'
-        ' 2.0'
-        ' 1.1'
-        ' 1.2'
-        ' 3.0'
-        ' [keygen]'
-        ' [CRACK]'
-        ' HD'
-        ''
-        ''
-        ''
-        ''
-        ''
-        ''
-        ''
-        ''
-        ''
-        ''
-        ''
+        ' Pro', ' - More Clipart edition', ' Assistant', ' Fusion', ' Easy',
+        ' Plus', ' Professional', ' Gold', ' extended edition', ' Free',
+        ' freeware version', ' trial', ' shareware', ' Web', ' Online', ' Edit',
+        ' Illustrated', ' 2.0', ' 1.1', ' 1.2', ' 3.0', ' [keygen]',
+        ' [CRACK]', ' HD', '', '', '', '', '', '', '', '', '', '', ''
     ]
-    [ '.soft' ]
+    ['.soft']
 ])
-new Thing('computer file', [ 'bit,50-100' ], [ 'file' ])
-new Thing('bit', [], [
-    '0'
-    '1'
-])
+
+new Thing('computer file', ['bit,50-100'], ['file'])
+new Thing('bit', [], ['0', '1'])
+
 new Thing('cute computer image', [ '.computer file' ], [
     [
-        'An image of '
-        'A picture of '
-        'A short video of '
-        'A drawing of '
-        'A slideshow of '
-        'A video of '
+        'An image of ', 'A picture of ', 'A short video of ', 'A drawing of ',
+        'A slideshow of ', 'A video of '
     ]
     [
-        'a cat'
-        'two cats'
-        'cats'
-        'kittens'
-        'a kitten'
-        'a duckling'
-        'a duck'
-        'ducks'
-        'a puppy'
-        'a baby seal'
-        'a dog'
-        'puppies'
-        'a squid'
-        'a dolphin'
-        'a bunny'
-        'bunnies'
-        'baby bunnies'
-        'a parrot'
-        'two parrots'
-        'a gecko'
-        'a chameleon'
+        'a cat', 'two cats', 'cats', 'kittens', 'a kitten', 'a duckling', 'a
+        duck', 'ducks', 'a puppy', 'a baby seal', 'a dog', 'puppies', 'a
+        squid', 'a dolphin', 'a bunny', 'bunnies', 'baby bunnies', 'a parrot',
+        'two parrots', 'a gecko', 'a chameleon'
     ]
-    [ ' ' ]
+    [' ']
     [
-        'playing with a ball'
-        'befriending other animals'
-        'making cute faces'
-        'wearing silly hats'
-        'trying to play piano'
-        'in various shenanigans'
-        'playing with cardboard boxes'
-        'being really excited'
-        'sneezing'
-        'sleeping'
-        'waking up'
+        'playing with a ball', 'befriending other animals', 'making cute
+        faces', 'wearing silly hats', 'trying to play piano',
+        'in various shenanigans', 'playing with cardboard boxes',
+        'being really excited', 'sneezing', 'sleeping', 'waking up',
         'falling asleep'
     ]
-    [ '.' ]
+    ['.']
 ])
+
 new Thing('stupid computer image', [ '.computer file' ], [
     [
         'An image of '
@@ -10226,7 +9688,7 @@ new Thing('wall painting', [ 'pigment' ], [
     [ ')' ]
 ])
 new Thing('pigment', [ 'organic matter' ])
-# meta {{{3
+# meta {{{2
 new Thing('later', ['sorry'], 'will do later')
 new Thing('error', ['sorry'], "Uh oh... It looks like you didn't supply a valid element to create.")
 new Thing('sorry', ['consolation universe'], '(Sorry!)')
@@ -10237,9 +9699,11 @@ new Thing('thanks', [
     'cake'
     'portal'
 ], 'Thank you for donating!')
-#to add :
+#to add : {{{2
 #cows,fungi,more shops,temples,more buildings,paintings,internal organs,phones,lamps,abandoned plants/castles,spaceships oh god
 #actual battlefield thoughts,military bases,ships,airports,more street names,space ships/stations,giant colony ships,wasteland worlds,cults,space probes,prisons,government buildings,schools,amphibian skin
+
+# }}}1
 debug 'Building...'
 cleanThings()
 checkMissingThings()

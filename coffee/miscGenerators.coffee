@@ -1,15 +1,14 @@
-#vim: foldmethod=marker
+# vim: foldmethod=marker
 #= require <rand>
 
 miscGenerators =
     painting: -> # {{{1
-        #Paintings ! Most of these end up sounding rather disturbing, I wonder why ?
-        str = ''
+        # Paintings ! Most of these end up sounding rather disturbing, I wonder why ?
         objs = [
             'apple', 'pear', 'peach', 'coconut', 'banana', 'fruit bowl',
-            'teapot', 'teacup', 'spoon', 'knife', 'fork', 'lemon', 'plate of
-            pasta', 'baby', 'girl', 'boy', 'person', 'young man', 'young
-            woman', 'man', 'woman', 'gentleman', 'lady', 'old person',
+            'teapot', 'teacup', 'spoon', 'knife', 'fork', 'lemon',
+            'plate of pasta', 'baby', 'girl', 'boy', 'person', 'young man',
+            'young woman', 'man', 'woman', 'gentleman', 'lady', 'old person',
             'businessman', 'salesman', 'ballerina', 'princess', 'prince',
             'wizard', 'king', 'queen', 'witch', 'dragon', 'knight', 'singer',
             'comedian', 'magician', 'artist', 'cook', 'clown', 'mime',
@@ -20,17 +19,17 @@ miscGenerators =
             'wolf', 'frog', 'snake', 'dolphin', 'chicken', 'brain', 'skeleton',
             'skull', 'eyeball', 'rose', 'hat', 'robot', 'android', 'ghost',
             'dinosaur', 'flower', 'tree', 'mushroom', 'worm', 'snowflake',
-            'clock', 'violin', 'tuba', 'saxophone', 'harp', 'piano', 'cosmic
-            abomination', 'video game character', 'pizza slice', 'sphere',
-            'cube', 'ovoid', 'torus', 'square', 'triangle', 'line', 'dot',
-            'pyramid', 'abstract blob', 'hand', 'foot', 'beak', 'mouth', 'eye',
-            'tentacle', 'god', 'ancestor', 'unicorn', 'vampire', 'midget',
-            'giant', 'mountain', 'caveman', 'feather', 'bubble', 'detective',
-            'cop', 'spinning top', 'sponge', 'doll', 'train', 'manbox',
-            'person dressed as an animal', 'animal dressed as a person',
-            'moustache', 'fetus', 'egg', 'phone', 'television', 'computer',
-            'humanoid', 'anthill', 'beehive', 'octopus', 'couple', 'pair of
-            shoes', 'mirror'
+            'clock', 'violin', 'tuba', 'saxophone', 'harp', 'piano',
+            'cosmic abomination', 'video game character', 'pizza slice',
+            'sphere', 'cube', 'ovoid', 'torus', 'square', 'triangle', 'line',
+            'dot', 'pyramid', 'abstract blob', 'hand', 'foot', 'beak', 'mouth',
+            'eye', 'tentacle', 'god', 'ancestor', 'unicorn', 'vampire',
+            'midget', 'giant', 'mountain', 'caveman', 'feather', 'bubble',
+            'detective', 'cop', 'spinning top', 'sponge', 'doll', 'train',
+            'manbox', 'person dressed as an animal',
+            'animal dressed as a person', 'moustache', 'fetus', 'egg', 'phone',
+            'television', 'computer', 'humanoid', 'anthill', 'beehive',
+            'octopus', 'couple', 'pair of shoes', 'mirror'
         ]
 
         adjs = [
@@ -53,236 +52,85 @@ miscGenerators =
         ]
 
         tverbings = [
-            'harassing'
-            'dancing with'
-            'screaming at'
-            'yelling at'
-            'laughing at'
-            'smiling at'
-            'kissing'
-            'licking'
-            'arguing with'
-            'crying over'
-            'eating'
-            'mourning'
-            'devouring'
-            'killing'
-            'seducing'
-            'courting'
-            'hanging out with'
-            'having a chat with'
-            'drawing'
-            'painting'
-            'running towards'
-            'insulting'
-            'stabbing'
-            'tickling'
-            'nibbling'
-            'hugging'
-            'watching'
-            'looking at'
-            'staring at'
-            'pointing at'
-            'running away from'
-            'chasing'
-            'stalking'
-            'following'
-            'holding hands with'
-            'being mean to'
-            'being nice to'
-            'sharing toys with'
-            'tearing apart'
-            'trying to touch'
-            'reaching for'
-            'giving birth to'
-            'cleaning up'
-            'strangling'
-            'exploring with'
-            'lasering'
-            'cutting up'
-            'singing for'
-            'intimidating'
-            'ignoring'
-            'trying to eat'
-            'suffocating under the weight of'
-            'searching for'
-            'fishing for'
-            'trying to lure'
-            'explaining something to'
-            'laying on'
-            'jumping on'
-            'stomping on'
-            'marrying'
-            'rejecting'
-            'playing with'
-            'toying with'
-            'fused to'
-            'softly rubbing'
-            'spreading jam on'
-            'drooling on'
-            'climbing on'
-            'stepping on'
+            'harassing', 'dancing with', 'screaming at', 'yelling at',
+            'laughing at', 'smiling at', 'kissing', 'licking', 'arguing with',
+            'crying over', 'eating', 'mourning', 'devouring', 'killing',
+            'seducing', 'courting', 'hanging out with', 'having a chat with',
+            'drawing', 'painting', 'running towards', 'insulting', 'stabbing',
+            'tickling', 'nibbling', 'hugging', 'watching', 'looking at',
+            'staring at', 'pointing at', 'running away from', 'chasing',
+            'stalking', 'following', 'holding hands with', 'being mean to',
+            'being nice to', 'sharing toys with', 'tearing apart',
+            'trying to touch', 'reaching for', 'giving birth to', 'cleaning up',
+            'strangling', 'exploring with', 'lasering', 'cutting up',
+            'singing for', 'intimidating', 'ignoring', 'trying to eat',
+            'suffocating under the weight of', 'searching for', 'fishing for',
+            'trying to lure', 'explaining something to', 'laying on',
+            'jumping on', 'stomping on', 'marrying', 'rejecting',
+            'playing with', 'toying with', 'fused to', 'softly rubbing',
+            'spreading jam on', 'drooling on', 'climbing on', 'stepping on',
             'putting a hat on'
         ]
 
         verbings = [
-            'dancing'
-            'screaming'
-            'crying'
-            'laughing'
-            'flying'
-            'sleeping'
-            'resting'
-            'thinking'
-            'tap-dancing'
-            'smiling'
-            'meditating'
-            'wiggling'
-            'jiggling'
-            'looking away'
-            'shivering'
-            'shaking'
-            'trembling'
-            'moaning'
-            'drooling'
-            'twitching'
-            'spinning'
-            'melting'
-            'phasing out of existence'
-            'breathing heavily'
-            'dying'
-            'slowly dying'
-            'floating away'
-            'looking terrified'
-            'looking happy as can be'
-            'playing music'
-            'reading a book'
-            'losing all sanity'
-            'slowly coming this way'
-            'stifling laughter'
-            'pretending not to notice anything'
-            'yawning'
-            'singing'
-            'stretching'
-            'taking notes'
-            'teleporting'
-            'drowning'
-            'suffocating'
-            'vomiting'
-            'flying away'
-            'swimming away'
-            'shapeshifting'
-            'changing shapes'
-            'morphing into something else'
-            'tearing apart'
-            'bursting into treats'
-            'trying to escape death'
-            'sobbing sadly'
-            'clapping'
-            'staring at the viewer'
-            'blowing a raspberry'
-            'making a prank call'
-            'looking upset'
-            'looking bored'
-            'looking sad'
-            'jogging'
-            'spilling spaghetti'
-            'looking satisfied'
-            'partying'
-            'skiing'
-            'rotting away'
+            'dancing', 'screaming', 'crying', 'laughing', 'flying', 'sleeping',
+            'resting', 'thinking', 'tap-dancing', 'smiling', 'meditating',
+            'wiggling', 'jiggling', 'looking away', 'shivering', 'shaking',
+            'trembling', 'moaning', 'drooling', 'twitching', 'spinning',
+            'melting', 'phasing out of existence', 'breathing heavily',
+            'dying', 'slowly dying', 'floating away', 'looking terrified',
+            'looking happy as can be', 'playing music', 'reading a book',
+            'losing all sanity', 'slowly coming this way', 'stifling laughter',
+            'pretending not to notice anything', 'yawning', 'singing',
+            'stretching', 'taking notes', 'teleporting', 'drowning',
+            'suffocating', 'vomiting', 'flying away', 'swimming away',
+            'shapeshifting', 'changing shapes', 'morphing into something else',
+            'tearing apart', 'bursting into treats', 'trying to escape death',
+            'sobbing sadly', 'clapping', 'staring at the viewer',
+            'blowing a raspberry', 'making a prank call', 'looking upset',
+            'looking bored', 'looking sad', 'jogging', 'spilling spaghetti',
+            'looking satisfied', 'partying', 'skiing', 'rotting away',
             'wearing a hat'
         ]
 
         locs = [
-            'in outer space'
-            'in the moonlight'
-            'under a starry night'
-            'under a red sky'
-            'under an otherworldly sky'
-            'in a kitchen'
-            'among the clouds'
-            'in the sky'
-            'on a table'
-            'in a blank room'
-            'outside a house'
-            'in a dark room'
-            'on a bed'
-            'on a couch'
-            'in a living-room'
-            'in front of a house'
-            'on top of a house'
-            'in the ocean'
-            'on the beach'
-            'on an airplane'
-            'on a boat'
-            'in front of a window'
-            'on top of a building'
-            'on the town square'
-            'in a dark cave'
-            'in the forest'
-            'in the desert'
-            'on top of a mountain'
-            'in a snowy landscape'
-            'in a storm'
-            'in an urban setting'
-            'in a metropolis'
-            'in a bar'
-            'at a party'
-            'in a medieval setting'
-            'in a futuristic setting'
-            'in a restaurant'
-            'in an elegant stairway'
-            'in a castle'
-            'in a lavish palace'
-            'in a museum'
-            'in an ancient temple'
-            'in an alien construction'
-            'in an industrial landscape'
-            'on a movie set'
-            'in an opera'
-            'surrounded by strange contraptions'
-            'in a laboratory'
-            'surrounded by geometric patterns'
-            'in an abstract landscape'
-            'in a geometric landscape'
-            'on an alien planet'
-            'in a bloody landscape'
-            'in a bleak landscape'
-            'in a post-apocalyptic landscape'
-            'in an alternate dimension'
-            'in a historic scene'
-            'in a bathroom'
-            'in a romantic setting'
-            'surrounded by ruins'
-            'in a library'
-            'underwater'
-            'in a wasteland'
-            'in a long, dark corridor'
-            'in a dark alley'
-            'surrounded by dancing figures'
-            'surrounded by judging faces'
-            'surrounded by twisted statues'
-            'under the rain'
-            'atop a hill'
-            'in the sewers'
-            "on a moon's surface"
+            'in outer space', 'in the moonlight', 'under a starry night',
+            'under a red sky', 'under an otherworldly sky', 'in a kitchen',
+            'among the clouds', 'in the sky', 'on a table', 'in a blank room',
+            'outside a house', 'in a dark room', 'on a bed', 'on a couch',
+            'in a living-room', 'in front of a house', 'on top of a house',
+            'in the ocean', 'on the beach', 'on an airplane', 'on a boat',
+            'in front of a window', 'on top of a building',
+            'on the town square', 'in a dark cave', 'in the forest',
+            'in the desert', 'on top of a mountain', 'in a snowy landscape',
+            'in a storm', 'in an urban setting', 'in a metropolis', 'in a bar',
+            'at a party', 'in a medieval setting', 'in a futuristic setting',
+            'in a restaurant', 'in an elegant stairway', 'in a castle',
+            'in a lavish palace', 'in a museum', 'in an ancient temple',
+            'in an alien construction', 'in an industrial landscape',
+            'on a movie set', 'in an opera',
+            'surrounded by strange contraptions', 'in a laboratory',
+            'surrounded by geometric patterns', 'in an abstract landscape',
+            'in a geometric landscape', 'on an alien planet',
+            'in a bloody landscape', 'in a bleak landscape',
+            'in a post-apocalyptic landscape', 'in an alternate dimension',
+            'in a historic scene', 'in a bathroom', 'in a romantic setting',
+            'surrounded by ruins', 'in a library', 'underwater',
+            'in a wasteland', 'in a long, dark corridor', 'in a dark alley',
+            'surrounded by dancing figures', 'surrounded by judging faces',
+            'surrounded by twisted statues', 'under the rain', 'atop a hill',
+            'in the sewers', "on a moon's surface"
         ]
-        str += weightedChoose([
-            'A painting of'
-            'A portrait of'
-            'A picture of'
-            'A photograph of'
-            'A rendition of'
-            'A sculpture of'
-            'A bas-relief of'
-            'An installation of'
-            'A series of pictures representing'
-            'A series of photographs showing'
-            'A model of'
-            'A dyptic of'
+
+        str = weightedChoose([
+            'A painting of', 'A portrait of', 'A picture of',
+            'A photograph of', 'A rendition of', 'A sculpture of',
+            'A bas-relief of', 'An installation of',
+            'A series of pictures representing',
+            'A series of photographs showing', 'A model of', 'A dyptic of',
             'A tryptic of'
         ], 3) + ' '
+
         str += choose([
             '$adj $obj $loc.'
             '$adj $obj $verbing $loc.'
@@ -292,61 +140,51 @@ miscGenerators =
             '$adj $obj $tverbing $adj2 $obj2. The $obj2 is $verbing.'
             '$adj $obj $tverbing $adj2 $obj2 $loc.'
         ])
-        str = str.split('$verbing2').join(choose(verbings))
-        str = str.split('$verbing').join(choose(verbings))
-        str = str.split('$tverbing').join(choose(tverbings))
-        str = str.split('$loc').join(choose(locs))
-        str = str.split('$adj2').join(choose(adjs))
-        str = str.split('$obj2').join(choose(objs))
-        str = str.split('$adj').join(choose(adjs))
-        str = str.split('$obj').join(choose(objs))
+
+        #str = str.split('$verbing2').join(choose(verbings))
+        #str = str.split('$verbing').join(choose(verbings))
+        #str = str.split('$tverbing').join(choose(tverbings))
+        #str = str.split('$loc').join(choose(locs))
+        #str = str.split('$adj2').join(choose(adjs))
+        #str = str.split('$obj2').join(choose(objs))
+        #str = str.split('$adj').join(choose(adjs))
+        #str = str.split('$obj').join(choose(objs))
+        # TODO: Remove if the below code works properly.
+
+        str = str
+            .replace /\$verbing2/g,  choose(verbings)
+            .replace /\$verbing/g,   choose(verbings)
+            .replace /\$tverbing/g,  choose(tverbings)
+            .replace /\$loc/g,       choose(locs)
+            .replace /\$adj2/g,      choose(adjs)
+            .replace /\$obj2/g,      choose(objs)
+            .replace /\$adj/g,       choose(adjs)
+            .replace /\$obj/g,       choose(objs)
 
         return str
+
     note: -> # {{{1
         #Notes found hidden in people's pockets, etc. Can contain recipes, laundry bills, or creepy observations.
         str = choose([
             choose([
-                "I'm sorry."
-                'I regret everything.'
-                'I regret nothing!'
-                "Please don't judge me."
-                'I wish things went otherwise.'
+                "I'm sorry.", 'I regret everything.', 'I regret nothing!',
+                "Please don't judge me.", 'I wish things went otherwise.',
                 "I didn't know what to say."
+
                 'Thanks for the dinner.' + choose([
-                    ''
-                    ' It was great.'
-                    ' I enjoyed it.'
+                    '', ' It was great.', ' I enjoyed it.'
                 ])
+
                 'I have this ' + choose([
-                    'neat'
-                    'cool'
-                    'awesome'
-                    'stupid'
+                    'neat', 'cool', 'awesome', 'stupid'
                 ]) + ' idea for ' + choose([
-                    'a book'
-                    'a joke'
-                    'a story'
-                    'a film'
+                    'a book', 'a joke', 'a story', 'a film'
                 ]) + '. It involves ' + choose([
-                    'pirates'
-                    'ninjas'
-                    'dinosaurs'
-                    'unicorns'
-                    'robots'
-                    'cyborgs'
-                    'scientists'
-                    'superheroes'
-                    'maths'
+                    'pirates', 'ninjas', 'dinosaurs', 'unicorns', 'robots',
+                    'cyborgs', 'scientists', 'superheroes', 'maths'
                 ]) + ', ' + choose([
-                    'surgeons'
-                    'penguins'
-                    'dolphins'
-                    'cheese'
-                    'dragons'
-                    'ghosts'
-                    'kittens'
-                    'sarcasm'
-                    'astronomers'
+                    'surgeons', 'penguins', 'dolphins', 'cheese', 'dragons',
+                    'ghosts', 'kittens', 'sarcasm', 'astronomers',
                     'banana peels'
                 ]) + ' and ' + choose([
                     'spaceships'

@@ -1,14 +1,21 @@
 # vim: foldmethod=marker
 # Todo list {{{1
+# To test:
+# - Painting generator.
+# - Note generator.
+# - All generators, now that we're using a switch statement.
+# - New folder structure, and makefiles.
+# - make.sh, on Linux.
+#
 # Add a warning that make.sh is untested.
 # Change default skin to the cool dark one.
 # miscGenerators.book should bookCase its output
 
 # Comments {{{1
-# Converted by js2coffee 2.2.0 but tweaked from there manually.
+# Converted by js2coffee 2.2.0 but tweaked and refactored from there manually.
 
-# coffeescript-concat is really smart. Don't worry about redundant code
-# unless you do this:
+# coffeescript-concat is really smart. Don't worry about it inserting redundant
+# code unless you do something like this:
 # require <thing>
 # require Thing
 
@@ -75,777 +82,49 @@ class Instance
             gender = FEMALE
         else if @name_.search(/MAN\*$/) != -1
             gender = MALE
+        else
+            gender = INVALID_GENDER
 
-        if @name_ in ['*PERSON*', '*MAN*', '*WOMAN*']
-            @name_ = nameGenerators.modern(gender)
-        else if @name_ in ['*MEDIEVAL PERSON*', '*MEDIEVAL MAN*', '*MEDIEVAL WOMAN*']
-            @name_ = nameGenerators.medieval gender
-        else if @name_ in ['*ANCIENT PERSON*', '*ANCIENT MAN*', '*ANCIENT WOMAN*']
-            @name_ = nameGenerators.ancient gender
-        else if @name_ in ['*FUTURE PERSON*', '*FUTURE MAN*', '*FUTURE WOMAN*']
-            @name_ = nameGenerators.future gender
-        else if @name_ == '*MEMORY*'
-            @name_ = thoughtGenerators.memory()
-        else if @name_ == '*SADTHOUGHT*'
-            @name_ = thoughtGenerators.sadThought()
-        else if @name_ == '*HAPPYTHOUGHT*'
-            @name_ = thoughtGenerators.happyThought()
-        else if @name_ == '*MEDIEVAL MEMORY*'
-            @name_ = thoughtGenerators.medievalMemory()
-        else if @name_ == '*MEDIEVAL THOUGHT*'
-            @name_ = thoughtGenerators.medievalThought()
-        else if @name_ == '*ANCIENT MEMORY*'
-            @name_ = thoughtGenerators.ancientMemory()
-        else if @name_ == '*ANCIENT THOUGHT*'
-            @name_ = thoughtGenerators.ancientThought()
-        else if @name_ == '*FUTURE MEMORY*'
-            @name_ = thoughtGenerators.futureMemory()
-        else if @name_ == '*FUTURE THOUGHT*'
-            @name_ = thoughtGenerators.futureThought()
-        else if @name_ == '*PAINTING*' # {{{4
-            #Paintings ! Most of these end up sounding rather disturbing, I wonder why ?
-            str = ''
-            objs = [
-                'apple'
-                'pear'
-                'peach'
-                'coconut'
-                'banana'
-                'fruit bowl'
-                'teapot'
-                'teacup'
-                'spoon'
-                'knife'
-                'fork'
-                'lemon'
-                'plate of pasta'
-                'baby'
-                'girl'
-                'boy'
-                'person'
-                'young man'
-                'young woman'
-                'man'
-                'woman'
-                'gentleman'
-                'lady'
-                'old person'
-                'businessman'
-                'salesman'
-                'ballerina'
-                'princess'
-                'prince'
-                'wizard'
-                'king'
-                'queen'
-                'witch'
-                'dragon'
-                'knight'
-                'singer'
-                'comedian'
-                'magician'
-                'artist'
-                'cook'
-                'clown'
-                'mime'
-                'dictator'
-                'president'
-                'flower pot'
-                'monster'
-                'creature'
-                'ice cream cone'
-                'cookie'
-                'fridge'
-                'oven'
-                'bunny'
-                'penguin'
-                'llama'
-                'horse'
-                'beetle'
-                'spider'
-                'bird'
-                'duck'
-                'mouse'
-                'bat'
-                'monkey'
-                'whale'
-                'fish'
-                'bear'
-                'shark'
-                'cat'
-                'dog'
-                'wolf'
-                'frog'
-                'snake'
-                'dolphin'
-                'chicken'
-                'brain'
-                'skeleton'
-                'skull'
-                'eyeball'
-                'rose'
-                'hat'
-                'robot'
-                'android'
-                'ghost'
-                'dinosaur'
-                'flower'
-                'tree'
-                'mushroom'
-                'worm'
-                'snowflake'
-                'clock'
-                'violin'
-                'tuba'
-                'saxophone'
-                'harp'
-                'piano'
-                'cosmic abomination'
-                'video game character'
-                'pizza slice'
-                'sphere'
-                'cube'
-                'ovoid'
-                'torus'
-                'square'
-                'triangle'
-                'line'
-                'dot'
-                'pyramid'
-                'abstract blob'
-                'hand'
-                'foot'
-                'beak'
-                'mouth'
-                'eye'
-                'tentacle'
-                'god'
-                'ancestor'
-                'unicorn'
-                'vampire'
-                'midget'
-                'giant'
-                'mountain'
-                'caveman'
-                'feather'
-                'bubble'
-                'detective'
-                'cop'
-                'spinning top'
-                'sponge'
-                'doll'
-                'train'
-                'manbox'
-                'person dressed as an animal'
-                'animal dressed as a person'
-                'moustache'
-                'fetus'
-                'egg'
-                'phone'
-                'television'
-                'computer'
-                'humanoid'
-                'anthill'
-                'beehive'
-                'octopus'
-                'couple'
-                'pair of shoes'
-                'mirror'
-            ]
-            adjs = [
-                'an ugly'
-                'a disfigured'
-                'a shapeless'
-                'a faceless'
-                'a rancid'
-                'a misshapen'
-                'a happy'
-                'a happy little'
-                'a plump little'
-                'a fat little'
-                'a sad'
-                'a giant'
-                'a miniature'
-                'a small'
-                'a huge'
-                'an insane'
-                'a crazy'
-                'a big-nosed'
-                'a big-mouthed'
-                'a long-eared'
-                'a scary'
-                'a talking'
-                'a jolly'
-                'a merry'
-                'a bearded'
-                'a tall'
-                'a stout'
-                'a smiling'
-                'a tap-dancing'
-                'a very distressed-looking'
-                'a depressed'
-                'a lovestruck'
-                'a wandering'
-                'an eerie'
-                'a sleepy'
-                'a lonely'
-                'a naked'
-                'a disturbing'
-                'a confused'
-                'an evil-looking'
-                'a headless'
-                'a tidy little'
-                'a moist'
-                'a shrivelled'
-                'an eyeless'
-                'a bulging'
-                'a murderous'
-                'a skinny'
-                'a skeletal'
-                'a ghostly'
-                'a tentacled'
-                'a monstrous'
-                'a horned'
-                'a robotic'
-                'a wooden'
-                'a metal'
-                'a translucent'
-                'a rad'
-                'a pretty cool'
-                'a well-dressed'
-                'a regretful'
-                'a hopeful'
-                'a famous'
-                'an infamous'
-                'a friendly'
-                'a flying'
-                'a winged'
-                'a jealous'
-                'a satisfied'
-                'a spiteful'
-                'an elegant'
-                'a dapper'
-                'a mirrored'
-            ]
-            tverbings = [
-                'harassing'
-                'dancing with'
-                'screaming at'
-                'yelling at'
-                'laughing at'
-                'smiling at'
-                'kissing'
-                'licking'
-                'arguing with'
-                'crying over'
-                'eating'
-                'mourning'
-                'devouring'
-                'killing'
-                'seducing'
-                'courting'
-                'hanging out with'
-                'having a chat with'
-                'drawing'
-                'painting'
-                'running towards'
-                'insulting'
-                'stabbing'
-                'tickling'
-                'nibbling'
-                'hugging'
-                'watching'
-                'looking at'
-                'staring at'
-                'pointing at'
-                'running away from'
-                'chasing'
-                'stalking'
-                'following'
-                'holding hands with'
-                'being mean to'
-                'being nice to'
-                'sharing toys with'
-                'tearing apart'
-                'trying to touch'
-                'reaching for'
-                'giving birth to'
-                'cleaning up'
-                'strangling'
-                'exploring with'
-                'lasering'
-                'cutting up'
-                'singing for'
-                'intimidating'
-                'ignoring'
-                'trying to eat'
-                'suffocating under the weight of'
-                'searching for'
-                'fishing for'
-                'trying to lure'
-                'explaining something to'
-                'laying on'
-                'jumping on'
-                'stomping on'
-                'marrying'
-                'rejecting'
-                'playing with'
-                'toying with'
-                'fused to'
-                'softly rubbing'
-                'spreading jam on'
-                'drooling on'
-                'climbing on'
-                'stepping on'
-                'putting a hat on'
-            ]
-            verbings = [
-                'dancing'
-                'screaming'
-                'crying'
-                'laughing'
-                'flying'
-                'sleeping'
-                'resting'
-                'thinking'
-                'tap-dancing'
-                'smiling'
-                'meditating'
-                'wiggling'
-                'jiggling'
-                'looking away'
-                'shivering'
-                'shaking'
-                'trembling'
-                'moaning'
-                'drooling'
-                'twitching'
-                'spinning'
-                'melting'
-                'phasing out of existence'
-                'breathing heavily'
-                'dying'
-                'slowly dying'
-                'floating away'
-                'looking terrified'
-                'looking happy as can be'
-                'playing music'
-                'reading a book'
-                'losing all sanity'
-                'slowly coming this way'
-                'stifling laughter'
-                'pretending not to notice anything'
-                'yawning'
-                'singing'
-                'stretching'
-                'taking notes'
-                'teleporting'
-                'drowning'
-                'suffocating'
-                'vomiting'
-                'flying away'
-                'swimming away'
-                'shapeshifting'
-                'changing shapes'
-                'morphing into something else'
-                'tearing apart'
-                'bursting into treats'
-                'trying to escape death'
-                'sobbing sadly'
-                'clapping'
-                'staring at the viewer'
-                'blowing a raspberry'
-                'making a prank call'
-                'looking upset'
-                'looking bored'
-                'looking sad'
-                'jogging'
-                'spilling spaghetti'
-                'looking satisfied'
-                'partying'
-                'skiing'
-                'rotting away'
-                'wearing a hat'
-            ]
-            locs = [
-                'in outer space'
-                'in the moonlight'
-                'under a starry night'
-                'under a red sky'
-                'under an otherworldly sky'
-                'in a kitchen'
-                'among the clouds'
-                'in the sky'
-                'on a table'
-                'in a blank room'
-                'outside a house'
-                'in a dark room'
-                'on a bed'
-                'on a couch'
-                'in a living-room'
-                'in front of a house'
-                'on top of a house'
-                'in the ocean'
-                'on the beach'
-                'on an airplane'
-                'on a boat'
-                'in front of a window'
-                'on top of a building'
-                'on the town square'
-                'in a dark cave'
-                'in the forest'
-                'in the desert'
-                'on top of a mountain'
-                'in a snowy landscape'
-                'in a storm'
-                'in an urban setting'
-                'in a metropolis'
-                'in a bar'
-                'at a party'
-                'in a medieval setting'
-                'in a futuristic setting'
-                'in a restaurant'
-                'in an elegant stairway'
-                'in a castle'
-                'in a lavish palace'
-                'in a museum'
-                'in an ancient temple'
-                'in an alien construction'
-                'in an industrial landscape'
-                'on a movie set'
-                'in an opera'
-                'surrounded by strange contraptions'
-                'in a laboratory'
-                'surrounded by geometric patterns'
-                'in an abstract landscape'
-                'in a geometric landscape'
-                'on an alien planet'
-                'in a bloody landscape'
-                'in a bleak landscape'
-                'in a post-apocalyptic landscape'
-                'in an alternate dimension'
-                'in a historic scene'
-                'in a bathroom'
-                'in a romantic setting'
-                'surrounded by ruins'
-                'in a library'
-                'underwater'
-                'in a wasteland'
-                'in a long, dark corridor'
-                'in a dark alley'
-                'surrounded by dancing figures'
-                'surrounded by judging faces'
-                'surrounded by twisted statues'
-                'under the rain'
-                'atop a hill'
-                'in the sewers'
-                'on a moon\'s surface'
-            ]
-            str += weightedChoose([
-                'A painting of'
-                'A portrait of'
-                'A picture of'
-                'A photograph of'
-                'A rendition of'
-                'A sculpture of'
-                'A bas-relief of'
-                'An installation of'
-                'A series of pictures representing'
-                'A series of photographs showing'
-                'A model of'
-                'A dyptic of'
-                'A tryptic of'
-            ], 3) + ' '
-            str += choose([
-                '$adj $obj $loc.'
-                '$adj $obj $verbing $loc.'
-                '$adj $obj $loc. The $obj is $verbing.'
-                '$adj $obj and $adj2 $obj2 $loc. The $obj is $tverbing the $obj2.'
-                '$adj $obj and $adj2 $obj2 $loc. The $obj2 is $verbing, and the $obj is $verbing2.'
-                '$adj $obj $tverbing $adj2 $obj2. The $obj2 is $verbing.'
-                '$adj $obj $tverbing $adj2 $obj2 $loc.'
-            ])
-            str = str.split('$verbing2').join(choose(verbings))
-            str = str.split('$verbing').join(choose(verbings))
-            str = str.split('$tverbing').join(choose(tverbings))
-            str = str.split('$loc').join(choose(locs))
-            str = str.split('$adj2').join(choose(adjs))
-            str = str.split('$obj2').join(choose(objs))
-            str = str.split('$adj').join(choose(adjs))
-            str = str.split('$obj').join(choose(objs))
-            @name_ = str
-        else if @name_ == '*NOTE*' # {{{4
-            #Notes found hidden in people's pockets, etc. Can contain recipes, laundry bills, or creepy observations.
-            str = ''
-            str += choose([
-                choose([
-                    'I\'m sorry.'
-                    'I regret everything.'
-                    'I regret nothing!'
-                    'Please don\'t judge me.'
-                    'I wish things went otherwise.'
-                    'I didn\'t know what to say.'
-                    'Thanks for the dinner.' + choose([
-                        ''
-                        ' It was great.'
-                        ' I enjoyed it.'
-                    ])
-                    'I have this ' + choose([
-                        'neat'
-                        'cool'
-                        'awesome'
-                        'stupid'
-                    ]) + ' idea for ' + choose([
-                        'a book'
-                        'a joke'
-                        'a story'
-                        'a film'
-                    ]) + '. It involves ' + choose([
-                        'pirates'
-                        'ninjas'
-                        'dinosaurs'
-                        'unicorns'
-                        'robots'
-                        'cyborgs'
-                        'scientists'
-                        'superheroes'
-                        'maths'
-                    ]) + ', ' + choose([
-                        'surgeons'
-                        'penguins'
-                        'dolphins'
-                        'cheese'
-                        'dragons'
-                        'ghosts'
-                        'kittens'
-                        'sarcasm'
-                        'astronomers'
-                        'banana peels'
-                    ]) + ' and ' + choose([
-                        'spaceships'
-                        'vegetarians'
-                        'babies'
-                        'art'
-                        'time travel'
-                        'abortions'
-                        'philosophy'
-                        'computers'
-                        'punctuation'
-                        'magnets'
-                        'geometry'
-                        'language'
-                    ]) + '.'
-                    'Socks and sandals. Because I can.'
-                    'I like shorts. They\'re comfy and easy to wear.'
-                    'Ski masks are in right now.'
-                    'Recipe for happiness :<br>1)?'
-                    'How to be happy :<br>-eat well<br>-sleep early<br>-don\'t ask questions'
-                    'Hey.<br>I\'ll show you something neat :<br>add?seed=*** to the url<br>and replace *** by whatever you want,<br>like person or bookshelf or ocean.'
-                    'You will find the strangest things in the oddest places.'
-                    'I\'d love to learn a foreign language. But they don\'t seem to exist...'
-                    'Alright, how comes everybody in the universe has an american name?'
-                ])
-                choose([
-                    'I know who you are.'
-                    'I see you.'
-                    'Stop looking through my stuff!'
-                    'So, I was right after all? You were sifting through my stuff?'
-                    'They don\'t know where I hid it.'
-                    'Hi!'
-                    'Hello there!'
-                    'Pay attention.'
-                    'I\'m proud of you.'
-                    'Don\'t look behind you.'
-                    'It\'s on its way to find you now.'
-                    'Let\'s not get too meta.'
-                    'we are all nested<br>we are all viewed<br>we are all viewing<br>nested<br>nesters<br>nestees<br>all is one'
-                    'Well? Did you?'
-                    'OH MY GOD<br>WHAT IF SOMEONE IS LOOKING AT ALL THIS RIGHT NOW'
-                    'I found myself in a website once.'
-                    'But for real though. Nothing is of any significance to anything. There is no overarching story. There is no grand scheme of things. There is only here and now.'
-                    'Tell you what. None of this is randomly generated. All this data is actually being transferred from the real world.'
-                    'Every time you refresh, a new universe is being born just for you. Think about it before you close the page.'
-                    'Did you know? A team of 781 persons worked on this game for 11 years, painstakingly adding in every single thing they could think of.'
-                    'aint no universe like a nested universe'
-                    'this party gettin started or what'
-                    'it aint stopping oh god'
-                    'There is no Nested; only shark.'
-                    'Nothing makes sense, and nothing ever will.'
-                    'There\'s no real point to anything, and that\'s okay.'
-                    'Hands off, you plebeian!'
-                    'Everything is fine. Everything is fine. Everything is fine. There is nothing to worry about. Nothing at all.'
-                    'I have a secret for you. Wait no, I don\'t.'
-                    'Tell me a secret. Wait. I don\'t care.'
-                    '(The note is ' + choose([
-                        'burnt'
-                        'partly-burnt'
-                        'washed-off'
-                        'bleached'
-                        'covered in scribblings'
-                        'covered in strange symbols'
-                        'covered in intricate patterns'
-                        'covered in densely-written instructions'
-                    ]) + ' and indecipherable.)'
-                    'This universe is so. Very. Large.'
-                    choose([
-                        'A'
-                        'B'
-                        'C'
-                        'D'
-                        'E'
-                        'F'
-                        'J'
-                        'K'
-                        'L'
-                        'M'
-                        'N'
-                        'O'
-                        'P'
-                        'Q'
-                        'R'
-                        'S'
-                        'T'
-                        'U'
-                        'V'
-                        'W'
-                        'X'
-                        'Y'
-                        'Z'
-                    ]) + randint(0, 9) + '' + randint(0, 9) + '' + randint(0, 9) + '' + randint(0, 9) + ''
-                ])
-                choose([ 'Laundry service : $' + randint(10, 50) + '.' + randint(0, 9) + '0' ])
-                choose([ 'Recipe :<br>-' + choose([
-                    'toast'
-                    'bagel'
-                    'breadstick'
-                    'garlic bread'
-                    'pita'
-                    'taco shell'
-                ]) + '<br>-' + choose([
-                    'eggs'
-                    'ground beef'
-                    'fries'
-                    'ice cream'
-                    'mashed potatoes'
-                ]) + '<br>-' + choose([
-                    'chocolate syrup'
-                    'whipped cream'
-                    'cheese'
-                    'mayonaise'
-                    'vinegar'
-                    'tabasco'
-                    'cough syrup'
-                    'soy sauce'
-                ]) ])
-            ])
-            @name_ = '"' + str + '"'
-        else if @name_ == '*BOOK*' # {{{4
-            @name_ = bookCase(miscGenerators.book())
-        else if @name_ == '*CHAR*' # {{{4
-            @name_ = miscGenerators.char()
-        else if @name_ == '*MONUMENT*' # {{{4
-            str = ''
-            str += choose([ choose([ choose([
-                weightedChoose([
-                    'old'
-                    'new'
-                    'ancient'
-                    'historic'
-                    'royal'
-                    'imperial'
-                    'sunken'
-                    'painted'
-                    'crooked'
-                    'slanted'
-                    'high'
-                    'rising'
-                    'underground'
-                    'immersed'
-                    'twisted'
-                    'shaky'
-                    'lucky'
-                    'glorious'
-                    'flying'
-                ], 2)
-                weightedChoose([
-                    'great'
-                    'big'
-                    'large'
-                    'giant'
-                    'huge'
-                    'grand'
-                    'gigantic'
-                    'colossal'
-                    'tremendous'
-                    'humongous'
-                ], 0.5)
-            ]) + ' ' ]) + choose([
-                ''
-                ''
-                ''
-                choose([
-                    'stone'
-                    'gold'
-                    'silver'
-                    'copper'
-                    'bronze'
-                    'metal'
-                    'white'
-                    'black'
-                    'blue'
-                    'green'
-                    'yellow'
-                    'red'
-                    'grey'
-                    'crimson'
-                    'azure'
-                    'viridian'
-                ]) + ' '
-            ]) + weightedChoose([
-                'tower'
-                choose([
-                    ''
-                    'smiling '
-                    'proud '
-                    'wise '
-                    'horse '
-                    'freedom '
-                    'watching '
-                    'crying '
-                    'singing '
-                ]) + 'statue'
-                'bridge'
-                'park'
-                'towers'
-                'palace'
-                'statues'
-                'gardens'
-                'parks'
-                'cathedral'
-                'ruins'
-                'wall'
-                'church'
-                'maze'
-                'castle'
-                'radio tower'
-                'arena'
-                'keep'
-                'colossus'
-                'space needle'
-                'house'
-                'villa'
-                'manor'
-                'dungeon'
-                'opera'
-                'pyramid'
-                'cave'
-                'ark'
-                'wheel'
-            ], 5) ])
-            str = 'The ' + str
-            @name_ = bookCase(str)
+        switch @name_
+            when '*PERSON', '*MAN*', '*WOMAN*'
+                @name_ = nameGenerators.modern gender
+            when '*MEDIEVAL PERSON*', '*MEDIEVAL MAN*', '*MEDIEVAL WOMAN*'
+                @name_ = nameGenerators.medieval gender
+            when '*ANCIENT PERSON*', '*ANCIENT MAN*', '*ANCIENT WOMAN*'
+                @name_ = nameGenerators.ancient gender
+            when '*FUTURE PERSON*', '*FUTURE MAN*', '*FUTURE WOMAN*'
+                @name_ = nameGenerators.future gender
+            when '*MEMORY*'
+                @name_ = thoughtGenerators.memory()
+            when '*SADTHOUGHT*'
+                @name_ = thoughtGenerators.sadThought()
+            when '*HAPPYTHOUGHT*'
+                @name_ = thoughtGenerators.happyThought()
+            when '*MEDIEVAL MEMORY*'
+                @name_ = thoughtGenerators.medievalMemory()
+            when '*MEDIEVAL THOUGHT*'
+                @name_ = thoughtGenerators.medievalThought()
+            when '*ANCIENT MEMORY*'
+                @name_ = thoughtGenerators.ancientMemory()
+            when '*ANCIENT THOUGHT*'
+                @name_ = thoughtGenerators.ancientThought()
+            when '*FUTURE MEMORY*'
+                @name_ = thoughtGenerators.futureMemory()
+            when '*FUTURE THOUGHT*'
+                @name_ = thoughtGenerators.futureThought()
+            when '*PAINTING*'
+                @name_ = miscGenerators.painting()
+            when '*NOTE*'
+                @name = miscGenerators.note()
+            when '*BOOK*'
+                @name_ = bookCase(miscGenerators.book())
+            when '*CHAR*'
+                @name_ = miscGenerators.char()
+            when '*MONUMENT*' # {{{4
+                @name_ = bookCase(miscGenerators.monument())
 
         if nameParts[1] != undefined # {{{4
+            # "*PERSON*| avenue" -> "John Smith avenue"
             @name_ = @name_ + nameParts[1]
 
         return
@@ -883,7 +162,7 @@ class Instance
                     if Math.random() * 100 <= makeProb
                         ii = 0
                         while ii < makeAmount
-                            New = make(things[toMake[0]].name_)
+                            New = new Instance(things[toMake[0]].name_)
                             New.parent = this
                             @children.push New
                             ii++
@@ -897,13 +176,13 @@ class Instance
             str += '<div id="div' + @children[i].n + '">' + @children[i].name_ + '</div>'
         #special-case pictures
         if @name_ == 'sharkverse'
-            addStyle = 'background-image:url(\'nestedSharkverse.png\');'
+            addStyle = "background-image:url('nestedSharkverse.png');"
         else if @name_ == 'baconverse'
-            addStyle = 'background-image:url(\'nestedBaconverse.png\');'
+            addStyle = "background-image:url('nestedBaconverse.png');"
         else if @name_ == 'doughnutverse'
-            addStyle = 'background-image:url(\'nestedDoughnutverse.png\');'
+            addStyle = "background-image:url('nestedDoughnutverse.png');"
         else if @name_ == 'lasagnaverse'
-            addStyle = 'background-image:url(\'nestedLasagnaverse.png\');'
+            addStyle = "background-image:url('nestedLasagnaverse.png');"
         #if (this.children.length>0) document.getElementById("div"+this.n).innerHTML='<span onclick="toggle('+this.n+');"><span class="arrow" id="arrow'+this.n+'">+</span> '+this.name_+'</span><div id="container'+this.n+'" class="thing" style="display:none;">'+str+'</div>';
         if @children.length > 0
             document.getElementById('div' + @n).innerHTML = '<a href="javascript:toggle(' + @n + ');" style="padding-right:8px;" alt="archetype : ' + @type.name_ + '" title="archetype : ' + @type.name_ + '"><span class="arrow" id="arrow' + @n + '">+</span> ' + @name_ + '</a><div id="container' + @n + '" class="thing" style="display:none;' + addStyle + '">' + str + '</div>'
@@ -936,10 +215,6 @@ bookCase = (s) -> # {{{2
 
     return s
 
-make = (what) -> # {{{2
-    # TODO: Why does this function exist?
-    new Instance(what)
-
 debug = (what) -> # {{{2
     document.getElementById('debug').innerHTML = document.getElementById('debug').innerHTML + '<br>' + what
     return
@@ -960,12 +235,13 @@ toggle = (what) -> # {{{2
 
     return # DO NOT REMOVE
 
-launchNest = (what) -> # {{{2
-    if !things[what]
-        what = 'error'
-    Seed = make(what)
-    Seed.grow 0
-    Seed.list()
+launchNest = (seed) -> # {{{2
+    if not things[seed]?
+        seed = 'error'
+
+    seed = new Instance(seed)
+    seed.grow 0
+    seed.list()
 
 # Thing definitions {{{1
 # Instructions {{{2
@@ -997,7 +273,7 @@ launchNest = (what) -> # {{{2
 #            A name generator of [["blue ","red "],["frog","toad"]] will produce
 #            names such as "blue frog" or "red toad".
 
-# basic materials and particles {{{2
+# Basic materials and particles {{{2
 # (these are very rough simplifications, don't hold all the inaccuracies against me)
 
 new Thing('diamond', [ 'carbon' ])
@@ -1359,7 +635,7 @@ new Thing('orteil thoughts', [], [
     '<a href="http://twitter.com/orteil42">WHATEVER</a>'
 ])
 
-# biological {{{2
+# Biological {{{2
 # cell stuff {{{3
 new Thing('cell', [
     'nucleus'
@@ -1819,7 +1095,7 @@ new Thing('glasses', [
     'monocle'
     'ski mask'
 ])
-# terrain stuff {{{2
+# Terrain stuff {{{2
 new Thing('ocean', [
     'sea water'
     'sea life'
@@ -2091,7 +1367,7 @@ new Thing('precipitation', [ 'water' ], [
     'drizzle'
     'storm'
 ])
-# vegetation {{{2
+# Vegetation {{{2
 new Thing('plant cell', [ '.cell' ], [ 'plant cells' ])
 new Thing('grass', [ 'grass blade,50-100' ])
 new Thing('grass blade', [
@@ -2636,86 +1912,32 @@ new Thing('snake body', [
 #oh my god writing animal thoughts is so much fun
 # single-celled organisms {{{3
 # TODO: Bacteria are not viruses.
-new Thing('bacteria', [
-    'bacteria body'
-    'bacteria thoughts'
-], [
+new Thing('bacteria',
+    ['bacteria body', 'bacteria thoughts']
     [
-        'pico'
-        'nitro'
-        'sulfuro'
-        'oxy'
-        'toxi'
-        'micro'
-        'nano'
-        'proto'
-        'archi'
-        'ferro'
-        'mono'
-        'poly'
-        'schizo'
-        'myxo'
-        'hydro'
-        'noo'
-        'zoo'
-        'phyto'
-        'aqui'
-        'acido'
-        'cyano'
-        'chloro'
-        'chromo'
-        'fibro'
-        'osteo'
-        'spiro'
-        'bacillo'
-        'flagello'
-        'helio'
-        'anaero'
-        'photo'
-        'litho'
-        'methano'
-        'cerebro'
-        'cephalo'
-        'brachio'
-        'plasmo'
-        'ethylo'
+        [
+            'pico', 'nitro', 'sulfuro', 'oxy', 'toxi', 'micro', 'nano',
+            'proto', 'archi', 'ferro', 'mono', 'poly', 'schizo', 'myxo',
+            'hydro', 'noo', 'zoo', 'phyto', 'aqui', 'acido', 'cyano', 'chloro',
+            'chromo', 'fibro', 'osteo', 'spiro', 'bacillo', 'flagello',
+            'helio', 'anaero', 'photo', 'litho', 'methano', 'cerebro',
+            'cephalo', 'brachio', 'plasmo', 'ethylo'
+        ]
+        ['amoeba', 'bacteria', 'virus']
     ]
-    [
-        'amoeba'
-        'bacteria'
-        'virus'
-    ]
-])
-new Thing('bacteria body', [ '.cell' ], 'body')
-new Thing('bacteria thoughts', [ 'bacteria thought,1' ], [ 'thoughts' ])
+)
+
+new Thing('bacteria body', ['.cell'], 'body')
+new Thing('bacteria thoughts', ['bacteria thought,1'], ['thoughts'])
 new Thing('bacteria thought', [], [
-    '#wow'
-    '#wow okay'
-    "#i can't even"
-    '#okay'
-    '#me'
-    '#yes'
-    '#what'
-    '#how'
-    '#delicious'
-    '#seriously'
-    '#but seriously tho'
-    '#germ life'
-    '#mitosis'
-    '#meiosis'
-    '#nucleus'
-    '#cytoplasm'
-    '#single-celled and ready to mingle'
-    '#lame'
-    '#meh'
-    "#i don't wanna talk about it"
-    '#eukaryote privilege'
-    '#protist scum'
-    '#squirm'
-    '#protist patriarchy'
-    '#osmosis'
-    '#one cell of a guy'
+    '#wow', '#wow okay', "#i can't even", '#okay', '#me', '#yes', '#what',
+    '#how', '#delicious', '#seriously', '#but seriously tho', '#germ life',
+    '#mitosis', '#meiosis', '#nucleus', '#cytoplasm',
+    '#single-celled and ready to mingle', '#lame', '#meh',
+    "#i don't wanna talk about it", '#eukaryote privilege', '#protist scum',
+    '#squirm', '#protist patriarchy', '#osmosis', '#one cell of a guy'
 ])
+
 #sea life {{{3
 #plankton {{{4
 new Thing('plankton', [
@@ -2745,7 +1967,7 @@ new Thing('plankton thought', [], [
     'hello :)'
     'yes hi :)'
     'how are you :)'
-    'it\'s sunny today :)'
+    "it's sunny today :)"
     'what a nice day :)'
     'aaah I could just float away :)'
     'I am fine thank you :)'
@@ -2753,22 +1975,22 @@ new Thing('plankton thought', [], [
     'how fun :)'
     'do you catch my drift :)'
     'so many cousins :)'
-    'I\'m a little lost :)'
+    "I'm a little lost :)"
     'no pressure :)'
-    'that\'s okay :)'
+    "that's okay :)"
     'what a nice thing to say :)'
     'you should stay over :)'
     'my place or your place :)'
     'why are you still here :)'
-    'there\'s a big world to explore :)'
-    'I don\'t even know where I\'m going :)'
+    "there's a big world to explore :)"
+    "I don't even know where I'm going :)"
     'here I go! :)'
     'am I really going where I decide to go, or am I just being pushed around by the current? :)'
     'oh no :('
-    'can\'t you feel them coming? :('
-    'they\'re slowly rising from deep below :('
-    'it\'s slowly coming this way :('
-    'I\'m different :('
+    "can't you feel them coming? :("
+    "they're slowly rising from deep below :("
+    "it's slowly coming this way :("
+    "I'm different :("
     'ravioli, ravioli :)'
     'give me the formuoli :)'
     'oh,...'
@@ -2794,25 +2016,25 @@ new Thing('clam thought', [], [
     'wait'
     'hold on'
     'wait why'
-    'i don\'t'
+    "i don't"
     'stay clam and carry on'
     'oh no'
     'why this'
-    'that\'s'
+    "that's"
     'no'
     'yes'
     'wait no'
     'but'
     'haha what'
     'please explain'
-    'that\'s not'
-    'i\'m confused'
+    "that's not"
+    "i'm confused"
     'please why'
     'slurp'
     'okay'
     'okay what'
     'what is this'
-    'what\'s that'
+    "what's that"
 ])
 #cnidaria {{{4
 new Thing('cnidaria', [
@@ -2827,7 +2049,7 @@ new Thing('cnidaria', [
     'box jelly'
     'jellyfish'
     'hydra'
-    'man\'o\'war'
+    "man'o'war"
     'sponge'
     'sea nettle'
     'siphonophore'
@@ -2890,13 +2112,13 @@ new Thing('mollusk thought', [], [
     'party time'
     'is it party time now'
     'party now ok'
-    'party\'s over'
-    'okay let\'s party'
+    "party's over"
+    "okay let's party"
     'ready to party'
     'are you party'
-    'they don\'t look like they want to party'
+    "they don't look like they want to party"
     'is the party over'
-    'this party\'s so hot it\'s stupid'
+    "this party's so hot it's stupid"
     'this party getting crazy'
     'partyyyyyyy'
     'chug chug chug'
@@ -2905,7 +2127,7 @@ new Thing('mollusk thought', [], [
     'we partyin'
     'okay too much party'
     'I have a secret for you'
-    'that\'s a secret'
+    "that's a secret"
     'I kinda like partying'
     'party yes nice'
     'woooo party'
@@ -3094,10 +2316,10 @@ new Thing('cetacean thought', [], [
     'Sigh. Yes, this is dolphin.'
     'Do I look like a goddamn rescue dog to you?'
     'A trick? Do I look like a clown to you?'
-    'The blowhole isn\'t just for show.'
-    'There\'s things. Down there. Deep down.'
-    'We\'ve seen them.'
-    'They\'re coming to the surface.'
+    "The blowhole isn't just for show."
+    "There's things. Down there. Deep down."
+    "We've seen them."
+    "They're coming to the surface."
     'EEK EEK EEK EEK- oh, sorry about that.'
     'EEK UUK'
     'Yes. Charming.'
@@ -3108,11 +2330,11 @@ new Thing('cetacean thought', [], [
     'Swimmity.'
     'Yes. No. Go away.'
     'You know. I could catch that fish myself if I wanted to.'
-    'I mean, that\'s fine and all.'
-    'That\'s really all there is to say about it.'
+    "I mean, that's fine and all."
+    "That's really all there is to say about it."
     'I never make puns on porpoise. HUEHUEHUEHUEHUE'
     'Look! Over there! Haha, sucker.'
-    'Guess how much I care about sharks? Exactly. I don\'t.'
+    "Guess how much I care about sharks? Exactly. I don't."
 ])
 new Thing('cetacean head', [
     'mouth'
@@ -3245,7 +2467,7 @@ new Thing('insect thought', [], [
     'intruder detected'
     'must spawn eggs'
     'hey hey'
-    'let\'s be bros'
+    "let's be bros"
     'no stomp please'
     'go away'
 ])
@@ -3292,14 +2514,14 @@ new Thing('social insect thought', [], [
     'you should stay away intruder'
     'intruder we may be forced to chop you up into little pieces if you stay here'
     'this is no place for you intruder'
-    'why don\'t you go back to your intruder nest with all the other intruders'
+    "why don't you go back to your intruder nest with all the other intruders"
     'we have no need for intruders right now'
     'hey intruder ever heard of personal space'
-    'sorry intruder but you\'re kind of in the way'
-    'intruder that\'s enough now'
-    'intruder why don\'t you come back another time'
-    'sorry intruder we\'re all super-busy here'
-    'hey intruder you\'re like very big so please don\'t stay here'
+    "sorry intruder but you're kind of in the way"
+    "intruder that's enough now"
+    "intruder why don't you come back another time"
+    "sorry intruder we're all super-busy here"
+    "hey intruder you're like very big so please don't stay here"
     'i trophallaxized a girl and i liked it'
 ])
 #monsters {{{3
@@ -3371,7 +2593,7 @@ new Thing('space monster', [
     'weird hard organ,0-4'
 ], [
     [
-        'C\'', 'Vr\'', 'Ksh', 'Zn\'', 'Sh', 'Hrl', 'X', 'O', 'Yog', 'Gorg',
+        "C'", "Vr'", 'Ksh', "Zn'", 'Sh', 'Hrl', 'X', 'O', 'Yog', 'Gorg',
         'Morg', 'Marg', 'Magg',
     ]
     [
@@ -3422,7 +2644,7 @@ new Thing('space monster thought', [], [
     'I COMMMMME FROM DEEP'
     'IMMMMMMOBILE I WATCHHHH'
     'SSSSSKITTER'
-    'HHHHHHHEY HOW YOU DOIN\''
+    "HHHHHHHEY HOW YOU DOIN'"
     'AWKWAAAAAAAAARD'
 ])
 
@@ -3470,19 +2692,19 @@ new Thing('space animal body', [
 new Thing('space animal thoughts', [ 'space animal thought,1-3' ], [ 'thoughts' ])
 new Thing('space animal thought', [], [
     [
-        'sk\'', 'mop', 'nanu', 'nug', 'gmap', 'shmu', 'dna', 'no', 'xle',
+        "sk'", 'mop', 'nanu', 'nug', 'gmap', 'shmu', 'dna', 'no', 'xle',
         'doda', 'daia', 'de', '',
     ]
     [
-        'g ', 'gek ', 'th ', 'iap ', 'glib ', 'ph ', 'd\'t ', 'neig\'', 'dip ',
+        'g ', 'gek ', 'th ', 'iap ', 'glib ', 'ph ', "d't ", "neig'", 'dip ',
         'shna ', 'sh ',
     ]
     [
-        'sk\'', 'mop', 'nanu', 'nug', 'gmap', 'shmu', 'dna', 'no', 'xle',
+        "sk'", 'mop', 'nanu', 'nug', 'gmap', 'shmu', 'dna', 'no', 'xle',
         'doda', 'daia', 'de', '',
     ]
     [
-        'g ', 'gek ', 'th ', 'iap ', 'glib ', 'ph ', 'd\'t ', 'neig\'', 'dip ',
+        'g ', 'gek ', 'th ', 'iap ', 'glib ', 'ph ', "d't ", "neig'", 'dip ',
         'shna ', 'sh ',
     ]
     ['mi', 'di', 'glu', 'dra', 'shwa', 'ama', '']
@@ -3523,7 +2745,7 @@ new Thing('amphibian thought', [], [
     'hello my baby'
     'hello my honey'
     'how do you do this'
-    'i\'m kinda newt to this'
+    "i'm kinda newt to this"
     'well'
     'okay'
     'alright...'
@@ -3598,13 +2820,13 @@ new Thing('reptile thought', [], [
     'r u 4 real'
     'i swr m8'
     'ill bop u 1'
-    'let\'s see if you fit in my mouth'
+    "let's see if you fit in my mouth"
     'wink, wink'
     'but for real tho im absolutely terrified right now'
     'your skin so soft so nice mmh can i wear it'
     'damn right'
     'yes indeed... yes indeed'
-    'let\'s shed light on this mystery'
+    "let's shed light on this mystery"
     'pabongles'
     'bachinkles'
     'zabinga'
@@ -3673,19 +2895,19 @@ new Thing('dragon thought', [], [
     'I will make quick work of you.'
     'You smell like food. Are you food?'
     'I will eat your mind before I eat your body.'
-    'You\'ll be dead before you realize what\'s happening to you.'
+    "You'll be dead before you realize what's happening to you."
     'They... they took my egg...'
     'My treasure. Must protect my treasure!'
     'I guard, undisturbed.'
-    'I\'m older than most of these mountains.'
-    'I\'ve seen things you wouldn\'t believe.'
+    "I'm older than most of these mountains."
+    "I've seen things you wouldn't believe."
     'Leave at once, mortal.'
     'Turn back if you value your life.'
-    'Act with great care now, for this is the very last thing you\'ll ever do.'
+    "Act with great care now, for this is the very last thing you'll ever do."
     'Knights in armor cook just like canned beans.'
     'People seem to value treasure more than their own life.'
-    'There\'s no honor, no valor nowadays.'
-    'I\'m on fire today.'
+    "There's no honor, no valor nowadays."
+    "I'm on fire today."
     'Ooooh burn.'
 ])
 
@@ -3746,7 +2968,7 @@ new Thing('bird thought', [], [
     "do i care, no i don't, doop-dee-doop"
     'me and my mates are gonna ruin your day', 'can i peck your face'
     'please can i peck at you just a bit', 'everything i sing is super-lewd'
-    "i'm a lewd dude", 'so yeah', 'i am bird hi', 'i\'m pretty fly'
+    "i'm a lewd dude", 'so yeah', 'i am bird hi', "i'm pretty fly"
     'hey can i steal that', 'what now'
     "that's not what your mom said last night", "yes that's right"
     'yes indeed', 'see what happens', 'oh god what happen', 'riveting'
@@ -3759,7 +2981,7 @@ new Thing('poultry thought', [], [
     'bwucluck'
     ':U'
     ':U cluck'
-    'i\'m gonna strut around a bit while bobbing my head like that'
+    "i'm gonna strut around a bit while bobbing my head like that"
     'i got weird feet why'
     'you think i care'
     'like for real'
@@ -3767,15 +2989,15 @@ new Thing('poultry thought', [], [
     'come say that to my face'
     'why do i poop on my feet'
     'oh my god i have the best voice'
-    'i\'m like super-good at songs okay'
+    "i'm like super-good at songs okay"
     'let me sing you something plz'
     'so yeah'
     'i am bird hi'
     'this is most fowl'
     'yeah i got laid when i was born, what now gurl'
     'what now'
-    'that\'s not what your mom said last night'
-    'yes that\'s right'
+    "that's not what your mom said last night"
+    "yes that's right"
     'yes indeed'
     'see what happens'
     'oh god what happen'
@@ -3785,7 +3007,7 @@ new Thing('poultry thought', [], [
     'i am the birdest'
     'bird and bird accessories'
     'hey have you heard'
-    'turns out i\'m the word'
+    "turns out i'm the word"
 ])
 new Thing('bird egg', [
     'egg thoughts'
@@ -3858,14 +3080,14 @@ new Thing('small mammal thought', [], [
     'I need to burrow somewhere.'
     'This is not good.'
     'I am being stalked.'
-    'Something\'s chasing me.'
-    'Don\'t turn around.'
+    "Something's chasing me."
+    "Don't turn around."
     'Just keep running.'
     'I need to collect more food.'
-    'I\'ll never get enough food at this rate.'
+    "I'll never get enough food at this rate."
     'I need to find a mate.'
     'I want offspring.'
-    'I can\'t stay here.'
+    "I can't stay here."
     'I think I saw something move.'
     'The hunt is on.'
     'This scent is familiar.'
@@ -3873,10 +3095,10 @@ new Thing('small mammal thought', [], [
     'This scent is no good.'
     'This smells dangerous.'
     'I need to hurry.'
-    'I\'m starving.'
-    'I\'m tired.'
-    'I\'m cold.'
-    'I\'m scared.'
+    "I'm starving."
+    "I'm tired."
+    "I'm cold."
+    "I'm scared."
 ])
 new Thing('herbivorous mammal', [
     'mammal body'
@@ -3904,60 +3126,30 @@ new Thing('herbivorous mammal', [
     'kangaroo'
     'walabi'
 ])
-new Thing('predatory mammal', [
-    'mammal body'
-    'predatory mammal thoughts'
-], [
-    'fox'
-    'jackal'
-    'boar'
-    'wolf'
-    'hyena'
-    'lynx'
-    'lion'
-    'leopard'
-    'panther'
-    'tiger'
-    'dropbear'
+
+new Thing('predatory mammal', ['mammal body', 'predatory mammal thoughts'], [
+    'fox', 'jackal', 'boar', 'wolf', 'hyena', 'lynx', 'lion', 'leopard',
+    'panther', 'tiger', 'dropbear'
 ])
-new Thing('bear', [
-    'mammal body'
-    'bear thoughts'
-], [
-    'bear'
-    'brown bear'
-    'polar bear'
-    'grizzly'
-    'panda'
+
+new Thing('bear', ['mammal body', 'bear thoughts'], [
+    'bear', 'brown bear', 'polar bear', 'grizzly', 'panda'
 ])
+
 new Thing('herbivorous mammal thoughts', [ 'herbivorous mammal thought,1-3' ], [ 'thoughts' ])
+
 new Thing('herbivorous mammal thought', [], [
-    'Hunted.'
-    'Somewhere to hide. Now.'
-    'Now is not the time.'
-    'I need shelter.'
-    'I need to hide somewhere.'
-    'This is not good.'
-    'I am being stalked.'
-    'Something\'s chasing me.'
-    'Don\'t turn around.'
-    'Just keep running.'
-    'I need food badly.'
-    'I need to find a mate.'
-    'I want offspring.'
-    'I can\'t stay here.'
-    'I think I saw something move.'
-    'This scent is familiar.'
-    'I smell food.'
-    'This scent is no good.'
-    'This smells dangerous.'
-    'I need to hurry.'
-    'I\'m starving.'
-    'I\'m tired.'
-    'I\'m cold.'
-    'I\'m scared.'
+    'Hunted.', 'Somewhere to hide. Now.', 'Now is not the time.',
+    'I need shelter.', 'I need to hide somewhere.', 'This is not good.',
+    'I am being stalked.', "Something's chasing me.", "Don't turn around.",
+    'Just keep running.', 'I need food badly.', 'I need to find a mate.',
+    'I want offspring.', "I can't stay here.", 'I think I saw something move.',
+    'This scent is familiar.', 'I smell food.', 'This scent is no good.',
+    'This smells dangerous.', 'I need to hurry.', "I'm starving.", "I'm tired.",
+    "I'm cold.", "I'm scared."
 ])
-new Thing('predatory mammal thoughts', [ 'predatory mammal thought,1-3' ], [ 'thoughts' ])
+
+new Thing('predatory mammal thoughts', ['predatory mammal thought,1-3'], ['thoughts'])
 new Thing('predatory mammal thought', [], [
     'Busy. Hunting.'
     'Now is not the time.'
@@ -3970,7 +3162,7 @@ new Thing('predatory mammal thought', [], [
     'All is quiet.'
     'Why is it in such a hurry?'
     'Aah. Delicious, mindless meat.'
-    'I\'ve been stalking this meat for days. I won\'t give up.'
+    "I've been stalking this meat for days. I won't give up."
     'So swift is the meat.'
     'I will toy with the meat and then I will devour it.'
     'The meat is going scarce.'
@@ -3978,36 +3170,36 @@ new Thing('predatory mammal thought', [], [
     'Something is scaring the meat away.'
     'Do I smell meat?'
     'Graceful, delicious meat.'
-    'I smell something. It\'s not meat.'
+    "I smell something. It's not meat."
     'Something is approaching.'
     'There is something bigger than me.'
     'You think you can outrun me?'
     'Prey or be preyed upon.'
     'Eat. Prey. Eat some more.'
     'Meat awaits.'
-    'Don\'t turn around.'
+    "Don't turn around."
     'Run. Run for the meat.'
     'I need food badly.'
     'I need to find a mate.'
     'I want offspring.'
-    'I don\'t beat my meat. I just tear it to pieces.'
-    'I can\'t stay here.'
-    'I\'m bigger than you.'
+    "I don't beat my meat. I just tear it to pieces."
+    "I can't stay here."
+    "I'm bigger than you."
     'This scent is familiar.'
     'I smell meat.'
     'This scent is no good.'
     'This smells dangerous.'
     'I need to hurry.'
-    'I\'m starving.'
-    'I\'m tired.'
-    'I\'m cold.'
-    'I\'m scared.'
+    "I'm starving."
+    "I'm tired."
+    "I'm cold."
+    "I'm scared."
 ])
 new Thing('bear thoughts', [ 'bear thought,1-3' ], [ 'thoughts' ])
 new Thing('bear thought', [], [
     'I WOULD LIKE TO ENQUIRE ABOUT YOUR FOOD'
     'EXCUSE ME GOOD SIR, WOULD YOU HAPPEN TO BE EDIBLE'
-    'I\'LL SAY'
+    "I'LL SAY"
     'THIS IS NOT PROPER ETIQUETTE'
     'MAY I ENQUIRE ABOUT YOUR EDIBILITY'
     'ARE YOU ONE OF THOSE EDIBLE FELLOWS'
@@ -4019,21 +3211,21 @@ new Thing('bear thought', [], [
     'IT WOULD APPEAR SO'
     'YES I AM QUITE DAPPER'
     'WHAT WILL IT BE OLD CHAP'
-    'WELL AREN\'T YOU A DELICIOUS LITTLE CHAP'
+    "WELL AREN'T YOU A DELICIOUS LITTLE CHAP"
     'SUCH PLEBEIAN UNDERTAKINGS'
     'SUCH GLORIOUS VERBOSITY'
     'HOLD ON TO THAT THOUGHT'
-    'HOLD ON I NEED TO STUFF MY FACE INSIDE A BEEHIVE BECAUSE I\'M HARDCORE LIKE THAT'
+    "HOLD ON I NEED TO STUFF MY FACE INSIDE A BEEHIVE BECAUSE I'M HARDCORE LIKE THAT"
     'DEM BEES MAN'
     'OKAY WHAT'
     'SHHH ONLY SLEEP NOW'
-    'IT\'S A SECRET TO EVERYBODY'
-    'I CERTAINLY DON\'T MIND SOME SQUIRMING MEAT'
+    "IT'S A SECRET TO EVERYBODY"
+    "I CERTAINLY DON'T MIND SOME SQUIRMING MEAT"
     'YEAH NOT GOING TO RANT ABOUT FOOD'
     'HELLO THERE TASTY'
     'I DARE YOU MAN'
     'WELL THIS IS JUST SILLY'
-    'I\'M SECRETELY A HUMAN'
+    "I'M SECRETELY A HUMAN"
 ])
 new Thing('horse', [
     'mammal body'
@@ -4044,24 +3236,24 @@ new Thing('horse thought', [], [
     'oh'
     'oh god'
     'what does it mean'
-    'it\'s all around'
+    "it's all around"
     'why'
-    'I don\'t understand'
+    "I don't understand"
     'oh god what is that'
     'oh my god'
     'oh dear god'
-    'it\'s so intense'
-    'it\'s so beautiful'
-    'this is everything I\'ve ever wanted'
+    "it's so intense"
+    "it's so beautiful"
+    "this is everything I've ever wanted"
     'this exceeds all my expectations'
     'this is better than everything ever'
     'how did I even get here son'
     'whoah'
     'I just'
     'mom where are you'
-    'let\'s just'
+    "let's just"
     '...whoah'
-    'look at me, I\'m amazing'
+    "look at me, I'm amazing"
     'give me a lick'
     'sweet lemonade'
     'not walking into bars again'
@@ -4069,14 +3261,14 @@ new Thing('horse thought', [], [
     'I can taste the colors'
     'the universe tastes amazing'
     'is this real life'
-    'I can\'t even'
-    'I can\'t breathe help'
-    'that\'s the best thing I\'ve ever heard'
-    'so then why the long face? because it\'s melting. my face is melting'
+    "I can't even"
+    "I can't breathe help"
+    "that's the best thing I've ever heard"
+    "so then why the long face? because it's melting. my face is melting"
     'why this'
     'I am everything'
     'I am forever'
-    'I can\'t even begin to'
+    "I can't even begin to"
 ])
 new Thing('monkey', [
     'mammal body'
@@ -4094,25 +3286,25 @@ new Thing('monkey', [
 new Thing('monkey thoughts', [ 'monkey thought,2-3' ], [ 'thoughts' ])
 new Thing('monkey thought', [], [
     'I need grooming. Anyone?'
-    'Oh yeah, that\'s the spot.'
+    "Oh yeah, that's the spot."
     'Oh god. The itch.'
-    'Yes. I\'m a monkey. How are you.'
+    "Yes. I'm a monkey. How are you."
     'How insensitive of you.'
     'Look what I can do!'
     'Oh hey, look what I found!'
-    'Don\'t make me fling it.'
+    "Don't make me fling it."
     'Hey. Pull my finger.'
     'Man, you keep delicious things in your fur.'
-    'Am I smelling what I think I\'m smelling?'
+    "Am I smelling what I think I'm smelling?"
     'Mind if I sit on you?'
-    'You don\'t know where that finger has been.'
+    "You don't know where that finger has been."
     'A stick, a rock, technology!'
     'This is the last time I raid an anthill.'
-    'I don\'t feel like I\'m being taken seriously here.'
-    'Do everything they do. That\'ll do the trick.'
+    "I don't feel like I'm being taken seriously here."
+    "Do everything they do. That'll do the trick."
     'Do I smell... coconut?'
     'Can I eat the skin of your face just a little? No? Okay, just making sure.'
-    'I could make tools or whatever too, I just don\'t feel like it.'
+    "I could make tools or whatever too, I just don't feel like it."
 ])
 new Thing('cat', [
     'mammal body'
@@ -4186,9 +3378,9 @@ new Thing('cat thought', [], [
         'complete with'
         'if it fits'
         'if you order now'
-        'oh no it\'s happening agai-'
+        "oh no it's happening agai-"
         'one does not simply'
-        'I\'m so much better off without my meds'
+        "I'm so much better off without my meds"
         'Did you know?'
         'I can haz'
         'and that is how I met your'
@@ -4269,7 +3461,7 @@ new Thing('cat thought', [], [
         'directly to forehead'
         'spoke to my brain'
         'wrote a book about it'
-        'and it\'s free'
+        "and it's free"
         'proven clinically'
         'immediate results'
         'created all of them'
@@ -4281,7 +3473,7 @@ new Thing('cat thought', [], [
         'not very raven'
         'would you like to know more'
         'cat cat cat cat cat cat cat'
-        'I\'m a kitty-cat'
+        "I'm a kitty-cat"
         'and I dance dance dance and I dance dance dance'
         'nyan'
         'interwebz'
@@ -4355,10 +3547,10 @@ new Thing('dog', [
 #Wrote all these names and realized it wasn't very funny, plus too many location names for my liking. Ah well.
 new Thing('dog thoughts', [ 'dog thought,2-3' ], [ 'thoughts' ])
 new Thing('dog thought', [], [
-    'HAY I\'M DOG'
+    "HAY I'M DOG"
     'I AM DOG HAY'
     'WE DOG NOW???'
-    'HEY LET\'S DOG OK???'
+    "HEY LET'S DOG OK???"
     'CAN WE DOG NOW OK???'
     'DOG STUFF YAYYYYY'
     'BUTTS COME IN MANY FLAVORS'
@@ -4378,7 +3570,7 @@ new Thing('dog thought', [], [
     'EVERYTHING SO NICE WOW'
     'WE GO MANGLE SQUIRREL NOW????? PLS'
     'WOW!!!!!!!! SO EXCITE'
-    'I\'M RLY EXCITE RIGHT NOW'
+    "I'M RLY EXCITE RIGHT NOW"
     'DO YOU KNOW JUST HOW EXCITE I AM'
     'DO YOU HAVE. ANY IDEA. JUST HOW EXCITE I AM.'
     'A WALK????? YES WALK LOVE WALKS HURRAY!!!!!!'
@@ -4391,7 +3583,7 @@ new Thing('dog thought', [], [
     'I LICK YOUR FACE NOW OK???????'
     'VERI GOOD :DDDDDDDD'
     'I WAS RUNNING BUT I FORGOT WHY I WAS RUNNING SO THEN I STOPPED RUNNING AND NOW I AM NOT RUNNING ANYMORE.'
-    'I DON\'T UNDERSTAND!!!!! BUT OK'
+    "I DON'T UNDERSTAND!!!!! BUT OK"
     'UH'
     'HELP I AM CHOKE ON SQUIRREL HELP'
     'ARE YOU A SQUIRREL'
@@ -4853,7 +4045,7 @@ new Thing('office', [
     'office worker,0-3'
     'cat,2%'
     'meeting room,0-2'
-    'boss\'s office'
+    "boss's office"
     'cubicle,2-12'
     'water cooler,0-2'
     'public bathroom,75%'
@@ -5122,7 +4314,7 @@ new Thing('cubicle', [
     'chair'
     'panel,2-3'
 ])
-new Thing('boss\'s office', [
+new Thing("boss's office", [
     'office boss'
     'office worker,10%'
     'office worker,5%'
@@ -6122,7 +5314,7 @@ new Thing('top secret file', [], [
         'Subject ¤¤¤ presumed dead'
         'Subject ¤¤¤ unfortunately still alive'
         'Phenomenons possibly caused by ¤¤¤ spotted'
-        'Phenomenons matching ¤¤¤\'s behavior have been observed'
+        "Phenomenons matching ¤¤¤'s behavior have been observed"
         'Discussions on the whereabouts of ¤¤¤ took place'
         'Subject ¤¤¤ travelled from ¤¤¤ to ¤¤¤'
         'Subject ¤¤¤ sighted shape-shifting from a ¤¤¤ to a ¤¤¤'
@@ -6349,7 +5541,7 @@ new Thing('ghost thoughts', [
 ], [ 'thoughts' ])
 new Thing('ghost thought', [], [
     'if only - she could hear me -'
-    'he needs to know - I\'m sorry -'
+    "he needs to know - I'm sorry -"
     'alone - I - wait -'
     'I am so - very lonely -'
     'when - will it end -'
@@ -6367,9 +5559,9 @@ new Thing('ghost thought', [], [
     'I float - forever -'
     'I wander - for how long -'
     'so spooky - right now -'
-    'that slime - isn\'t mine -'
+    "that slime - isn't mine -"
     'I rest - at last -'
-    'let\'s - be pals -'
+    "let's - be pals -"
     'I sense - a presence -'
     'you can - see me?'
     'who you - gonna call -'
@@ -7090,7 +6282,7 @@ new Thing('tv show', [], [
         'trying to kill each other'
         'doing sports'
         'trying to defeat a government conspiracy'
-        'in the century\'s biggest heist'
+        "in the century's biggest heist"
         'involving hilarious quiproquos and misunderstandings'
         'getting killed by a sociopath'
         'fighting robots'
@@ -7434,8 +6626,8 @@ new Thing('video game', [ '.computer file' ], [
         'vania'
         'arria'
         'arium'
-        '\'s Revenge'
-        '\'s Quest'
+        "'s Revenge"
+        "'s Quest"
         ' Bros'
         ' Town'
         ' Land'
@@ -7805,7 +6997,7 @@ new Thing('disturbing computer image', [ '.computer file' ], [
         'another ¤¤¤¤¤¤'
         'two other ¤¤¤¤¤¤'
         'their ¤¤¤¤¤¤'
-        'inside a ¤¤¤¤¤¤\'s ¤¤¤¤¤¤'
+        "inside a ¤¤¤¤¤¤'s ¤¤¤¤¤¤"
         'a ¤¤¤¤¤¤'
         'a strange-looking ¤¤¤¤¤¤'
         'a bewildered ¤¤¤¤¤¤'
@@ -7884,7 +7076,7 @@ new Thing('forum post', [ '.pixel paragraph' ], [
         'sports'
         'meditation'
         'hobbies'
-        'whatever\'s trendy right now'
+        "whatever's trendy right now"
         'a debated topic'
         'superheroes'
         'trolling'
@@ -9491,7 +8683,7 @@ new Thing('medieval clothing shop', [
         'coats'
         'cloak'
         'garments'
-        'cobbler\'s'
+        "cobbler's"
     ]
     [
         ' shop'
@@ -9522,11 +8714,11 @@ new Thing('medieval food shop', [
     '.medieval shop'
 ], [
     [
-        'baker\'s'
+        "baker's"
         'ingredients'
         'groceries'
-        'farmer\'s'
-        'cook\'s'
+        "farmer's"
+        "cook's"
     ]
     [
         ' shop'
@@ -9810,7 +9002,7 @@ new Thing('unusual stone', [ 'rock' ], [
     'obsidian'
     'opal'
     'sapphire'
-    'tiger\'s eye'
+    "tiger's eye"
     'turquoise'
     'zircon'
 ])
@@ -9911,28 +9103,28 @@ new Thing('potion', [
         'endurance'
         'strength'
         'energy'
-        'lover\'s'
-        'blacksmith\'s'
-        'cook\'s'
-        'queen\'s'
+        "lover's"
+        "blacksmith's"
+        "cook's"
+        "queen's"
         'growth'
-        'witch\'s'
-        'hunter\'s'
-        'brawler\'s'
-        'knight\'s'
-        'cobbler\'s'
+        "witch's"
+        "hunter's"
+        "brawler's"
+        "knight's"
+        "cobbler's"
         'clarity'
         'perception'
         'nimbleness'
         'quickness'
-        'squire\'s'
-        'unicorn\'s'
-        'bear\'s'
-        'shark\'s'
-        'moon\'s'
-        'lady\'s'
-        'soldier\'s'
-        'wizard\'s'
+        "squire's"
+        "unicorn's"
+        "bear's"
+        "shark's"
+        "moon's"
+        "lady's"
+        "soldier's"
+        "wizard's"
         'rest'
         'sleep'
         'paralysis'
@@ -9941,7 +9133,7 @@ new Thing('potion', [
         'oil'
         'eloquence'
         'speech'
-        'bird\'s'
+        "bird's"
         'vapor'
         'void'
     ]
@@ -10522,16 +9714,16 @@ new Thing('nanobot thought', [], [
     'all hail nanobro :]'
     'help a nanobro out :]'
     'do you need anything :]'
-    'that\'s nano your business :]'
+    "that's nano your business :]"
     'hey hey hey :]'
     'we wish you a warm welcome :]'
     'hey hey hey, good news! :]'
     'nanobots, unite :]'
     'nanobots represent :]'
-    'I don\'t remember my mommy :['
+    "I don't remember my mommy :["
     'that is nice to hear :]'
     'want me to print you a sandwich? :]'
-    'I can print you a cold drink if you\'d like :]'
+    "I can print you a cold drink if you'd like :]"
     'so many little sisters :]'
     'I lost count of all my siblings :['
     'can I use your dead skin cells to make more of me :]'
@@ -11034,11 +10226,11 @@ new Thing('wall painting', [ 'pigment' ], [
     [ ')' ]
 ])
 new Thing('pigment', [ 'organic matter' ])
-#meta
-new Thing('later', [ 'sorry' ], 'will do later')
-new Thing('error', [ 'sorry' ], 'Uh oh... It looks like you didn\'t supply a valid element to create.')
-new Thing('sorry', [ 'consolation universe' ], '(Sorry!)')
-new Thing('consolation universe', [ '.universe' ])
+# meta {{{3
+new Thing('later', ['sorry'], 'will do later')
+new Thing('error', ['sorry'], "Uh oh... It looks like you didn't supply a valid element to create.")
+new Thing('sorry', ['consolation universe'], '(Sorry!)')
+new Thing('consolation universe', ['.universe'])
 #this is for the nice people who help support the site.
 new Thing('thanks', [
     'can of nightmare'
@@ -11050,7 +10242,7 @@ new Thing('thanks', [
 #actual battlefield thoughts,military bases,ships,airports,more street names,space ships/stations,giant colony ships,wasteland worlds,cults,space probes,prisons,government buildings,schools,amphibian skin
 debug 'Building...'
 cleanThings()
-#checkMissingThings();
-#alert("There are "+thingsN+" thing archetypes.");
+checkMissingThings()
+#alert "There are #{thingsN} thing archetypes."
 document.getElementById('debug').innerHTML = ''
 debug '<div id="div0" class="thing"></div>'

@@ -11,6 +11,7 @@
 # Change default skin to the cool dark one.
 # miscGenerators.book should bookCase its output
 # How many Things on screen is too many?
+# weightedChoose should take arguments in the opposite order.
 
 # Comments {{{1
 # Converted by js2coffee 2.2.0 but tweaked and refactored from there manually.
@@ -320,14 +321,14 @@ new Thing('molecule', ['atom'], ['molecules'])
 
 new Thing('proton', ['up quark,2', 'down quark'])
 new Thing('neutron', ['down quark,2', 'up quark'])
-new Thing('electron', ['qwubble'])
-new Thing('up quark', ['qwubble'])
+new Thing('electron',   ['qwubble'])
+new Thing('up quark',   ['qwubble'])
 new Thing('down quark', ['qwubble'])
 new Thing('qwubble', ['multiverse,1-5'])
 new Thing('portal', ['universe'])
 
 # Universe stuff {{{2
-new Thing('multiverse', [ 'universe,10-30' ], [
+new Thing('multiverse', ['universe,10-30'], [
     'multiverse', 'lasagnaverse', 'doughnutverse', 'towelverse', 'baconverse',
     'sharkverse', 'nestedverse', 'tastyverse', 'upverse', 'downverse',
     'layerverse', 'clusterverse', 'metaverse', 'quantiverse', 'paraverse',
@@ -399,8 +400,8 @@ new Thing('interstellar cloud', [
         'a silvery'
         'a shimmering'
     ]
-    [ ' ' ]
-    [ 'interstellar cloud' ]
+    [' ']
+    ['interstellar cloud']
 ])
 new Thing('star system', [
     'star'
@@ -470,9 +471,9 @@ new Thing('star', [
         'twisted'
         'spectral'
     ]
-    [ ' star' ]
+    [' star']
 ])
-new Thing('planet', [ '.terraformed planet' ], 'telluric planet')
+new Thing('planet', ['.terraformed planet'], 'telluric planet')
 new Thing('barren planet', [
     'galactic life,10%'
     'rock'
@@ -536,7 +537,7 @@ new Thing('moon', [
         'black'
         'old'
     ]
-    [ ' moon' ]
+    [' moon']
 ])
 new Thing('terraformed moon', [
     '.planet composition'
@@ -561,13 +562,13 @@ new Thing('terraformed moon', [
         'colonized'
         'life'
     ]
-    [ ' moon' ]
+    [' moon']
 ])
 new Thing('asteroid belt', [
     'galactic life,20%'
     'asteroid,10-30'
 ])
-new Thing('earth', [ '.asteroid belt' ], 'Earth')
+new Thing('earth', ['.asteroid belt'], 'Earth')
 new Thing('asteroid', [
     'space animal,0.5%'
     'rock'
@@ -595,16 +596,16 @@ new Thing('planet core', [
     'diamond,2%'
     'magma'
 ], 'core')
-new Thing('black hole', [ 'inside the black hole' ])
+new Thing('black hole', ['inside the black hole'])
 new Thing('inside the black hole', [
     'end of universe note,0.5%'
     'crustacean,0.2%'
     'white hole'
 ])
-new Thing('white hole', [ 'universe' ])
-new Thing('42', [ 'universe' ])
-new Thing('everything', [ 'universe' ])
-new Thing('end of universe note', [ 'pasta,0.1%' ], [
+new Thing('white hole', ['universe'])
+new Thing('42', ['universe'])
+new Thing('everything', ['universe'])
+new Thing('end of universe note', ['pasta,0.1%'], [
     "Help! I'm trapped in a universe factory!"
     'Okay, you can stop clicking now.'
     "I want to get off Mr Orteil's Wild Ride"
@@ -619,9 +620,9 @@ new Thing('orteil', [
     'computer'
 ], 'Orteil')
 #I do what I want
-new Thing('god', [ '.orteil' ], 'Orteil')
+new Thing('god', ['.orteil'], 'Orteil')
 #I'm a fucking god
-new Thing('orteil psyche', [ 'orteil thoughts' ], 'psyche')
+new Thing('orteil psyche', ['orteil thoughts'], 'psyche')
 new Thing('orteil thoughts', [], [
     'OH MY GOD WHAT ARE YOU DOING HERE TURN BACK IMMEDIATELY'
     'WHAT IS WRONG WITH YOU'
@@ -641,7 +642,7 @@ new Thing('orteil thoughts', [], [
 new Thing('cell', [
     'nucleus'
     'cytoplasm'
-], [ 'cells' ])
+], ['cells'])
 new Thing('nucleus', [
     'dna'
     'proteins'
@@ -658,8 +659,8 @@ new Thing('dna', [
     'carbon'
     'phosphorus'
 ], 'DNA')
-new Thing('genetic code', [ 'nucleotide,20-50' ])
-new Thing('nucleotide', [ 'molecule' ], [
+new Thing('genetic code', ['nucleotide,20-50'])
+new Thing('nucleotide', ['molecule'], [
     'A'
     'T'
     'G'
@@ -703,8 +704,8 @@ new Thing('blood vessels', [
     'bacteria,30%'
     'blood'
 ], 'blood vessels')
-new Thing('blood', [ 'blood cell' ], 'blood')
-new Thing('blood cell', [ '.cell' ], [ 'blood cells' ])
+new Thing('blood', ['blood cell'], 'blood')
+new Thing('blood cell', ['.cell'], ['blood cells'])
 new Thing('skin', [
     'bacteria,1-3'
     'scar,0.5%'
@@ -714,26 +715,26 @@ new Thing('skin', [
     'dust,20%'
     'sweat,20%'
 ], 'skin')
-new Thing('scar', [ 'dead skin' ])
+new Thing('scar', ['dead skin'])
 new Thing('pores', [
     'bacteria,1-3'
     'skin cell'
     'dead skin,50%'
     'sweat,40%'
 ], 'pores')
-new Thing('skin cell', [ '.cell' ], [ 'skin cells' ])
-new Thing('dead skin', [ 'skin cell' ])
-new Thing('bone', [ '.bones' ], 'bone')
+new Thing('skin cell', ['.cell'], ['skin cells'])
+new Thing('dead skin', ['skin cell'])
+new Thing('bone', ['.bones'], 'bone')
 new Thing('bones', [
     'bone cell'
     'calcium'
 ], 'bones')
-new Thing('bone cell', [ '.cell' ], [ 'bone cells' ])
-new Thing('muscles', [ 'muscle cell' ], 'muscles')
-new Thing('muscle cell', [ '.cell' ], [ 'muscle cells' ])
-new Thing('fat', [ 'lipids' ], 'fat')
-new Thing('brain cell', [ '.cell' ], [ 'brain cells' ])
-new Thing('dandruff', [ 'dead skin' ])
+new Thing('bone cell', ['.cell'], ['bone cells'])
+new Thing('muscles', ['muscle cell'], 'muscles')
+new Thing('muscle cell', ['.cell'], ['muscle cells'])
+new Thing('fat', ['lipids'], 'fat')
+new Thing('brain cell', ['.cell'], ['brain cells'])
+new Thing('dandruff', ['dead skin'])
 new Thing('clothing set', [
     'hat,2%'
     'glasses,20%'
@@ -744,8 +745,8 @@ new Thing('clothing set', [
     'shoes,80%'
     'underwear,99%'
 ], 'clothing')
-new Thing('man', [ '.person' ], '*MAN*')
-new Thing('woman', [ '.person' ], '*WOMAN*')
+new Thing('man', ['.person'], '*MAN*')
+new Thing('woman', ['.person'], '*WOMAN*')
 new Thing('person', [
     'body'
     'psyche'
@@ -780,13 +781,13 @@ new Thing('bellybutton', [
     'skin'
     'lint,0-1'
 ])
-new Thing('nipple', [ 'skin' ])
+new Thing('nipple', ['skin'])
 new Thing('pelvis', [
     'naughty bits'
     'butt'
     '.body part'
 ])
-new Thing('naughty bits', [ '.soft body part' ])
+new Thing('naughty bits', ['.soft body part'])
 new Thing('butt', [
     'pasta,0.01%'
     'sweat,50%'
@@ -810,13 +811,13 @@ new Thing('fingernail', [
     'dust,30%'
     'keratin'
 ], 'fingernail')
-new Thing('elbow', [ '.body part' ])
+new Thing('elbow', ['.body part'])
 new Thing('armpit', [
     'armpit hair'
     'sweat,80%'
     '.soft body part'
 ])
-new Thing('armpit hair', [ '.hair' ], 'hair')
+new Thing('armpit hair', ['.hair'], 'hair')
 new Thing('leg', [
     'foot'
     'knee'
@@ -835,7 +836,7 @@ new Thing('toenail', [
     'dust,40%'
     'keratin'
 ], 'toenail')
-new Thing('knee', [ '.body part' ], 'knee')
+new Thing('knee', ['.body part'], 'knee')
 new Thing('head', [
     'mouth'
     'nose'
@@ -856,12 +857,12 @@ new Thing('eye flesh', [
     'blood vessels'
     'fat'
 ], 'eyeball')
-new Thing('eyelashes', [ '.hair' ], 'eyelashes')
+new Thing('eyelashes', ['.hair'], 'eyelashes')
 new Thing('tear', [
     'water'
     'salt'
 ])
-new Thing('ear', [ '.soft body part' ], 'ear')
+new Thing('ear', ['.soft body part'], 'ear')
 new Thing('brain', [
     'bacteria,20%'
     'brain cell'
@@ -883,7 +884,7 @@ new Thing('head hair', [
         'red'
         'dark'
     ]
-    [ ' hair' ]
+    [' hair']
 ])
 new Thing('hair', [
     'bacteria,30%'
@@ -898,8 +899,8 @@ new Thing('nostril', [
     'boogers,0-1'
     '.soft body part'
 ], 'nostril')
-new Thing('nostril hair', [ '.hair' ], 'nostril hair')
-new Thing('boogers', [ 'organic matter' ])
+new Thing('nostril hair', ['.hair'], 'nostril hair')
+new Thing('boogers', ['organic matter'])
 new Thing('mouth', [
     'teeth'
     'tongue'
@@ -908,7 +909,7 @@ new Thing('teeth', [
     'calcium'
     'phosphorus'
 ], 'teeth')
-new Thing('tongue', [ 'muscles' ], 'tongue')
+new Thing('tongue', ['muscles'], 'tongue')
 new Thing('abomination', [
     'abomination body'
     'abomination psyche'
@@ -994,17 +995,17 @@ new Thing('thoughts', [
         'happy thought,2-4'
     ]
 ])
-new Thing('sad thought', [], [ '*SADTHOUGHT*' ])
-new Thing('happy thought', [], [ '*HAPPYTHOUGHT*' ])
-new Thing('memories', [ 'memory,2-4' ])
-new Thing('memory', [], [ '*MEMORY*' ])
+new Thing('sad thought', [], ['*SADTHOUGHT*'])
+new Thing('happy thought', [], ['*HAPPYTHOUGHT*'])
+new Thing('memories', ['memory,2-4'])
+new Thing('memory', [], ['*MEMORY*'])
 
 # Cloth stuff {{{2
-new Thing('cloth', [ 'textile' ])
-new Thing('leather', [ 'skin cell' ])
-new Thing('textile', [ 'textile fibre' ])
-new Thing('textile fibre', [ 'keratin' ], [ 'textile fibres' ])
-new Thing('keratin', [ 'proteins' ])
+new Thing('cloth', ['textile'])
+new Thing('leather', ['skin cell'])
+new Thing('textile', ['textile fibre'])
+new Thing('textile fibre', ['keratin'], ['textile fibres'])
+new Thing('keratin', ['proteins'])
 new Thing('sweat', [
     'water'
     'salt'
@@ -1046,12 +1047,12 @@ new Thing('pants', [
     'jeans'
     'cargo pants'
 ])
-new Thing('shirt', [ '.clothing' ], [
+new Thing('shirt', ['.clothing'], [
     'shirt'
     'sweater'
     't-shirt'
 ])
-new Thing('underwear', [ '.clothing' ])
+new Thing('underwear', ['.clothing'])
 new Thing('coat', [
     'pocket,0-4'
     '.clothing'
@@ -1065,16 +1066,16 @@ new Thing('cozy von pocketworth', [
     'pocket,20-40'
     '.clothing'
     'leather,30%'
-], [ 'Cozy von Pocketworth' ])
+], ['Cozy von Pocketworth'])
 # lotsopokkits
-new Thing('socks', [ '.clothing' ])
+new Thing('socks', ['.clothing'])
 new Thing('shoes', [
     'leather,40%', 'plastic'
 ], [
     'shoes', 'boots', 'sneakers', 'sandals'
 ])
 # headware
-new Thing('hat', [ '.clothing' ], [
+new Thing('hat', ['.clothing'], [
     'cap'
     'hat'
     'hat'
@@ -1131,7 +1132,7 @@ new Thing('abyss', [
     'sand'
     'abyss life'
 ])
-new Thing('sand', [ 'silica' ])
+new Thing('sand', ['silica'])
 new Thing('soil', [
     ['worm,0-2', '', '']
     ['insect,0-2', '', '']
@@ -1357,9 +1358,9 @@ new Thing('meteorite', [
     'rock'
     'iron,40%'
 ], 'meteorite')
-new Thing('ozone', [ 'oxygen' ])
-new Thing('cloud', [ 'water' ])
-new Thing('precipitation', [ 'water' ], [
+new Thing('ozone', ['oxygen'])
+new Thing('cloud', ['water'])
+new Thing('precipitation', ['water'], [
     'rain'
     'snow'
     'hail'
@@ -1369,8 +1370,8 @@ new Thing('precipitation', [ 'water' ], [
     'storm'
 ])
 # Vegetation {{{2
-new Thing('plant cell', [ '.cell' ], [ 'plant cells' ])
-new Thing('grass', [ 'grass blade,50-100' ])
+new Thing('plant cell', ['.cell'], ['plant cells'])
+new Thing('grass', ['grass blade,50-100'])
 new Thing('grass blade', [
     'grass thoughts,2%'
     'dew,6%'
@@ -1378,7 +1379,7 @@ new Thing('grass blade', [
     'insect,6%'
     'plant cell'
 ])
-new Thing('grass thoughts', [ 'grass thought,1' ], 'thought')
+new Thing('grass thoughts', ['grass thought,1'], 'thought')
 new Thing('grass thought', [], [':D', ':O', 'D:', ':|', ':]', '>:0'])
 new Thing('trees', ['tree,20-50'])
 new Thing('tree', [
@@ -1415,7 +1416,7 @@ new Thing('tree', [
     'walnut tree'
     'olive tree'
 ])
-new Thing('tree thoughts', [ 'tree thought,1' ], 'thought')
+new Thing('tree thoughts', ['tree thought,1'], 'thought')
 new Thing('tree thought', [], [
     'Well. What is this all about.'
     "So. What's the hurry?"
@@ -1428,7 +1429,7 @@ new Thing('tree thought', [], [
     'Do you have any idea how old I am?'
     'Yes. I remember you. I remember all of you.'
 ])
-new Thing('leaves', [ 'leaf,50-100' ])
+new Thing('leaves', ['leaf,50-100'])
 new Thing('leaf', ['dew,6%', 'insect,6%', 'plant cell'])
 new Thing('branches', ['branch,10-30'])
 new Thing('branch', ['insect,6%', 'leaf,10%', 'plant cell'])
@@ -1457,8 +1458,8 @@ new Thing('bark', [
     'worm,10%'
     'wood'
 ])
-new Thing('jungle trees', [ 'jungle tree,20-150' ], 'trees')
-new Thing('jungle tree', [ '.tree' ], [ 'tree' ])
+new Thing('jungle trees', ['jungle tree,20-150'], 'trees')
+new Thing('jungle tree', ['.tree'], ['tree'])
 new Thing('humus', [
     'insect,0-3'
     'worm,0-3'
@@ -1477,13 +1478,13 @@ new Thing('nest', [
 # misc life {{{3
 
 # TODO: Why is 'Life' capitalized?
-new Thing('life', [ [
+new Thing('life', [[
     'bird', 'poultry', 'fish', 'shark', 'crustacean', 'cnidaria', 'worm',
     'mollusk', 'clam', 'plankton', 'reptile', 'amphibian', 'snake', 'small
     mammal', 'herbivorous mammal', 'predatory mammal', 'monkey', 'bear',
     'horse', 'cat', 'dog', 'dinosaur', 'medieval person', 'caveman', 'dragon',
     'person', 'space animal', 'insect', 'tree', 'grass blade'
-] ], 'Life')
+]], 'Life')
 
 new Thing('sea life', [
     'sea monster,0.5%', 'fish,5-10', 'cetacean,0-4', 'shark,0-4',
@@ -1547,10 +1548,10 @@ new Thing('urban life', [
 ], 'life')
 new Thing('sky life', ['shark,1%', 'bird,5-20', 'insect,0-2'], 'life')
 new Thing('galactic life', ['space monster,1%', 'space animal,1-12'], 'life')
-new Thing('skeleton', [ 'bones' ], 'skeleton')
-new Thing('flesh', [ '.skinless body part' ], 'flesh')
-new Thing('soft flesh', [ '.skinless soft body part' ], 'flesh')
-new Thing('scales', [ 'keratin' ])
+new Thing('skeleton', ['bones'], 'skeleton')
+new Thing('flesh', ['.skinless body part'], 'flesh')
+new Thing('soft flesh', ['.skinless soft body part'], 'flesh')
+new Thing('scales', ['keratin'])
 new Thing('fish fin', ['muscles', 'scales'], 'fin')
 new Thing('fish tail', ['muscles', 'scales'], 'tail')
 new Thing('fish skin', ['scales'], 'skin')
@@ -1558,14 +1559,14 @@ new Thing('cetacean flipper', ['muscles', 'skin'], 'flipper')
 new Thing('cetacean fin', ['muscles', 'skin'], 'fin')
 new Thing('crustacean claw', ['chitin', 'muscles', 'fat'], 'claw')
 new Thing('crustacean leg', ['chitin', 'muscles', 'fat'], 'leg')
-new Thing('crustacean shell', [ 'chitin' ], 'shell')
-new Thing('clam shell', [ 'calcium' ], 'shell')
-new Thing('simple eye', [ '.eye flesh' ], 'eye')
-new Thing('exoskeleton', [ 'chitin' ], 'exoskeleton')
+new Thing('crustacean shell', ['chitin'], 'shell')
+new Thing('clam shell', ['calcium'], 'shell')
+new Thing('simple eye', ['.eye flesh'], 'eye')
+new Thing('exoskeleton', ['chitin'], 'exoskeleton')
 new Thing('insect leg', ['chitin', 'muscles', 'fat'], 'leg')
 new Thing('insect claw', ['chitin', 'muscles', 'fat'], 'claw')
 new Thing('stinger', ['chitin', 'venom'], 'stinger')
-new Thing('antenna', [ 'chitin' ], 'antenna')
+new Thing('antenna', ['chitin'], 'antenna')
 new Thing('insect wing', [['chitin', 'scales'], 'dew,2%'], 'wing')
 new Thing('wing', ['feathers', '.body part'], 'wing')
 new Thing('reptile wing', ['scales', '.body part'], 'wing')
@@ -1580,7 +1581,7 @@ new Thing('venom', [
 
 new Thing('jelly', ['water'])
 
-new Thing('weird soft organ', [ '.skinless soft body part' ], [
+new Thing('weird soft organ', ['.skinless soft body part'], [
     [
         'fleshy', 'thick', 'slimy', 'scaly', 'furry', 'fuzzy', 'feathery',
         'sharp', 'pointy', 'thorny', 'bulbous', 'leathery', 'hidden', 'soft',
@@ -1597,7 +1598,7 @@ new Thing('weird soft organ', [ '.skinless soft body part' ], [
     ]
 ])
 
-new Thing('weird hard organ', [ '.skinless body part' ], [
+new Thing('weird hard organ', ['.skinless body part'], [
     [
         'fleshy', 'thick', 'slimy', 'scaly', 'furry', 'fuzzy', 'sharp',
         'pointy', 'thorny', 'bulbous', 'hidden', 'flexible', 'plated',
@@ -1617,7 +1618,7 @@ new Thing('simple mouth', [
     'teeth'
     '.skinless soft body part'
 ], 'mouth')
-new Thing('beak', [ '.bones' ], 'beak')
+new Thing('beak', ['.bones'], 'beak')
 new Thing('reptile head', [
     'scales'
     '.body part'
@@ -1626,14 +1627,14 @@ new Thing('reptile leg', [
     'scales'
     '.body part'
 ], 'leg')
-new Thing('fur', [ 'keratin' ], 'fur')
-new Thing('snout', [ '.nose' ], 'snout')
-new Thing('whiskers', [ 'keratin' ], 'whiskers')
+new Thing('fur', ['keratin'], 'fur')
+new Thing('snout', ['.nose'], 'snout')
+new Thing('whiskers', ['keratin'], 'whiskers')
 new Thing('mammal leg', [
     'fur'
     '.body part'
 ], 'leg')
-new Thing('tail', [ '.body part' ], 'tail')
+new Thing('tail', ['.body part'], 'tail')
 new Thing('mammal head', [
     'mouth'
     'snout'
@@ -1730,7 +1731,7 @@ new Thing('plankton body', [
     'jelly'
     'soft flesh'
 ], 'body')
-new Thing('plankton thoughts', [ 'plankton thought,1' ], [ 'thoughts' ])
+new Thing('plankton thoughts', ['plankton thought,1'], ['thoughts'])
 new Thing('plankton thought', [], [
     'hello :)'
     'yes hi :)'
@@ -1778,7 +1779,7 @@ new Thing('clam body', [
     'brain'
     'soft flesh'
 ], 'body')
-new Thing('clam thoughts', [ 'clam thought,1-3' ], [ 'thoughts' ])
+new Thing('clam thoughts', ['clam thought,1-3'], ['thoughts'])
 new Thing('clam thought', [], [
     'what'
     'wait'
@@ -1831,7 +1832,7 @@ new Thing('cnidaria body', [
     'jelly'
     'soft flesh'
 ], 'body')
-new Thing('cnidaria thoughts', [ 'cnidaria thought' ], 'thoughts')
+new Thing('cnidaria thoughts', ['cnidaria thought'], 'thoughts')
 new Thing('cnidaria thought', [], [
     [
         'shhhhl'
@@ -1875,7 +1876,7 @@ new Thing('mollusk body', [
     'jelly'
     'soft flesh'
 ], 'body')
-new Thing('mollusk thoughts', [ 'mollusk thought,2' ], [ 'thoughts' ])
+new Thing('mollusk thoughts', ['mollusk thought,2'], ['thoughts'])
 new Thing('mollusk thought', [], [
     'party time'
     'is it party time now'
@@ -1925,7 +1926,7 @@ new Thing('crustacean body', [
     'crustacean shell'
     'soft flesh'
 ], 'body')
-new Thing('crustacean thoughts', [ 'crustacean thought,2-3' ], [ 'thoughts' ])
+new Thing('crustacean thoughts', ['crustacean thought,2-3'], ['thoughts'])
 new Thing('crustacean thought', [], [
     'skitter skitter'
     'crawl crawl'
@@ -1992,7 +1993,7 @@ new Thing('fish body', [
     'flesh'
     'worm,5%'
 ], 'body')
-new Thing('fish thoughts', [ 'fish thought,2-3' ], [ 'thoughts' ])
+new Thing('fish thoughts', ['fish thought,2-3'], ['thoughts'])
 new Thing('fish thought', [], [
     'blup'
     'bloop'
@@ -2027,7 +2028,7 @@ new Thing('shark', [
     'wereshark'
     'bearshark'
 ])
-new Thing('shark thoughts', [ 'shark thought,1-2' ], [ 'thoughts' ])
+new Thing('shark thoughts', ['shark thought,1-2'], ['thoughts'])
 new Thing('shark thought', [], [
     'CHOMP'
     'NOM'
@@ -2078,7 +2079,7 @@ new Thing('cetacean', [
     'orca'
     'bottlenose dolphin'
 ])
-new Thing('cetacean thoughts', [ 'cetacean thought,1-2' ], [ 'thoughts' ])
+new Thing('cetacean thoughts', ['cetacean thought,1-2'], ['thoughts'])
 new Thing('cetacean thought', [], [
     'Oh god. Let me tell you about sharks.'
     'Sigh. Yes, this is dolphin.'
@@ -2134,7 +2135,7 @@ new Thing('worm body', [
     'simple mouth'
     'soft flesh'
 ], 'body')
-new Thing('worm thoughts', [ 'worm thought,1-2' ], [ 'thoughts' ])
+new Thing('worm thoughts', ['worm thought,1-2'], ['thoughts'])
 new Thing('worm thought', [], [
     'wiggle wiggle'
     'squirm squirm'
@@ -2215,7 +2216,7 @@ new Thing('insect body', [
 ], 'body')
 #spiders with wings. because yeah
 # TODO: Spiders don't have wings. Because no.
-new Thing('insect thoughts', [ 'insect thought,2-3' ], [ 'thoughts' ])
+new Thing('insect thoughts', ['insect thought,2-3'], ['thoughts'])
 new Thing('insect thought', [], [
     'skitter'
     'skitter skitter'
@@ -2250,7 +2251,7 @@ new Thing('social insect', [
 new Thing('insect queen', [
     'insect body'
     'social insect thoughts'
-], [ 'queen' ])
+], ['queen'])
 new Thing('anthill', [
     'social insect,10-30'
     'insect queen'
@@ -2276,7 +2277,7 @@ new Thing('insect egg', [
     'soft flesh'
     'organic matter'
 ], 'egg')
-new Thing('social insect thoughts', [ 'social insect thought,1-2' ], [ 'thoughts' ])
+new Thing('social insect thoughts', ['social insect thought,1-2'], ['thoughts'])
 new Thing('social insect thought', [], [
     'hello intruder'
     'you should stay away intruder'
@@ -2324,7 +2325,7 @@ new Thing('sea monster', [
         'leech', 'fish', 'shark', 'squid', 'saur', 'buddy', 'lord',
     ]
 ])
-new Thing('sea monster thoughts', [ 'sea monster thought,1-2' ], [ 'thoughts' ])
+new Thing('sea monster thoughts', ['sea monster thought,1-2'], ['thoughts'])
 new Thing('sea monster thought', [], [
     'IIIIII MUSSST SCREEEAAAM'
     'I AMMMM AWAKENED'
@@ -2381,7 +2382,7 @@ new Thing('space monster', [
         ' the All-Consumer',
     ]
 ])
-new Thing('space monster thoughts', [ 'space monster thought,1-2' ], [ 'thoughts' ])
+new Thing('space monster thoughts', ['space monster thought,1-2'], ['thoughts'])
 new Thing('space monster thought', [], [
     'WWWWWWWIDER THAN STARRRRRRS'
     'AWAKENNNN MY CHILDRENNNNNN'
@@ -2456,8 +2457,8 @@ new Thing('space animal body', [
     'weird soft organ,20%'
     'weird hard organ,50%'
     'weird hard organ,20%'
-], [ 'body' ])
-new Thing('space animal thoughts', [ 'space animal thought,1-3' ], [ 'thoughts' ])
+], ['body'])
+new Thing('space animal thoughts', ['space animal thought,1-3'], ['thoughts'])
 new Thing('space animal thought', [], [
     [
         "sk'", 'mop', 'nanu', 'nug', 'gmap', 'shmu', 'dna', 'no', 'xle',
@@ -2501,7 +2502,7 @@ new Thing('amphibian', [
     'caecilian'
     'axolotl'
 ])
-new Thing('amphibian thoughts', [ 'amphibian thought,1-2' ], [ 'thoughts' ])
+new Thing('amphibian thoughts', ['amphibian thought,1-2'], ['thoughts'])
 new Thing('amphibian thought', [], [
     'h-here i go'
     'r-ribbit?'
@@ -2555,7 +2556,7 @@ new Thing('snake', [
     'adder'
     'python'
 ])
-new Thing('reptile thoughts', [ 'reptile thought,1-2' ], [ 'thoughts' ])
+new Thing('reptile thoughts', ['reptile thought,1-2'], ['thoughts'])
 new Thing('reptile thought', [], [
     'hhhehehe'
     'hehu'
@@ -2631,7 +2632,7 @@ new Thing('dinosaur', [
     'dimetrodon'
     'pterosaur'
 ])
-new Thing('dinosaur thoughts', [ 'dinosaur thought,1-2' ], [ 'thoughts' ])
+new Thing('dinosaur thoughts', ['dinosaur thought,1-2'], ['thoughts'])
 new Thing('dinosaur thought', [], [
     'Dinner. Served.', 'End. Near.', 'Protect. Eggs.', 'Food. Must find.',
     'Need food. Badly.', 'Scared. Hunted.', 'Things. Beneath.', 'Chase. Run.',
@@ -2654,7 +2655,7 @@ new Thing('dragon', [
     ['dragon', 'wyrm', 'wyvern', 'guivre']
 ])
 
-new Thing('dragon thoughts', [ 'dragon thought,1-2' ], [ 'thoughts' ])
+new Thing('dragon thoughts', ['dragon thought,1-2'], ['thoughts'])
 new Thing('dragon thought', [], [
     "You shouldn't be here."
     'Leave. Now.'
@@ -2728,7 +2729,7 @@ new Thing('poultry', [
 ])
 # All flightless birds are considered poultry. Penguins and kiwis in farms. LIKE I CARE
 # TODO: Fix
-new Thing('bird thoughts', [ 'bird thought,1-2' ], [ 'thoughts' ])
+new Thing('bird thoughts', ['bird thought,1-2'], ['thoughts'])
 new Thing('bird thought', [], [
     'caw', 'caw caw', ':V', ':V caw', 'you think i care', 'yeah bring it'
     'like for real', 'come say that to my face', 'chirp', 'so high right now'
@@ -2743,7 +2744,7 @@ new Thing('bird thought', [], [
     'aw yiss', 'bred crums yisss', 'i am the birdest'
     'bird and bird accessories', 'hey have you heard', "turns out i'm the word"
 ])
-new Thing('poultry thoughts', [ 'poultry thought,1-2' ], [ 'thoughts' ])
+new Thing('poultry thoughts', ['poultry thought,1-2'], ['thoughts'])
 new Thing('poultry thought', [], [
     'cluck'
     'bwucluck'
@@ -2783,9 +2784,9 @@ new Thing('bird egg', [
     'soft flesh'
     'organic matter'
 ], 'egg')
-new Thing('egg shell', [ 'calcium' ], 'shell')
-new Thing('egg thoughts', [ 'egg thought' ], 'thought')
-new Thing('egg thought', [], [ [
+new Thing('egg shell', ['calcium'], 'shell')
+new Thing('egg thoughts', ['egg thought'], 'thought')
+new Thing('egg thought', [], [[
     '...'
     '...'
     '...'
@@ -2794,7 +2795,7 @@ new Thing('egg thought', [], [ [
     'the...'
     'a...'
     'ah...'
-] ])
+]])
 #mammals {{{3
 new Thing('small mammal', [
     'mammal body'
@@ -2839,7 +2840,7 @@ new Thing('small mammal', [
     'gerbil'
     'chinchilla'
 ])
-new Thing('small mammal thoughts', [ 'small mammal thought,2-3' ], [ 'thoughts' ])
+new Thing('small mammal thoughts', ['small mammal thought,2-3'], ['thoughts'])
 new Thing('small mammal thought', [], [
     'Hunted.'
     'Somewhere to hide. Now.'
@@ -2904,7 +2905,7 @@ new Thing('bear', ['mammal body', 'bear thoughts'], [
     'bear', 'brown bear', 'polar bear', 'grizzly', 'panda'
 ])
 
-new Thing('herbivorous mammal thoughts', [ 'herbivorous mammal thought,1-3' ], [ 'thoughts' ])
+new Thing('herbivorous mammal thoughts', ['herbivorous mammal thought,1-3'], ['thoughts'])
 
 new Thing('herbivorous mammal thought', [], [
     'Hunted.', 'Somewhere to hide. Now.', 'Now is not the time.',
@@ -2963,7 +2964,7 @@ new Thing('predatory mammal thought', [], [
     "I'm cold."
     "I'm scared."
 ])
-new Thing('bear thoughts', [ 'bear thought,1-3' ], [ 'thoughts' ])
+new Thing('bear thoughts', ['bear thought,1-3'], ['thoughts'])
 new Thing('bear thought', [], [
     'I WOULD LIKE TO ENQUIRE ABOUT YOUR FOOD'
     'EXCUSE ME GOOD SIR, WOULD YOU HAPPEN TO BE EDIBLE'
@@ -2998,8 +2999,8 @@ new Thing('bear thought', [], [
 new Thing('horse', [
     'mammal body'
     'horse thoughts'
-], [ 'horse' ])
-new Thing('horse thoughts', [ 'horse thought,1-3' ], [ 'thoughts' ])
+], ['horse'])
+new Thing('horse thoughts', ['horse thought,1-3'], ['thoughts'])
 new Thing('horse thought', [], [
     'oh'
     'oh god'
@@ -3051,7 +3052,7 @@ new Thing('monkey', [
     'capuchin monkey'
     'spider monkey'
 ])
-new Thing('monkey thoughts', [ 'monkey thought,2-3' ], [ 'thoughts' ])
+new Thing('monkey thoughts', ['monkey thought,2-3'], ['thoughts'])
 new Thing('monkey thought', [], [
     'I need grooming. Anyone?'
     "Oh yeah, that's the spot."
@@ -3091,7 +3092,7 @@ new Thing('cat', [
         'purring'
         'meowing'
     ]
-    [ ' ' ]
+    [' ']
     [
         'tabby'
         'calico'
@@ -3103,14 +3104,14 @@ new Thing('cat', [
         'brown'
         'orange'
     ]
-    [ ' ' ]
+    [' ']
     [
         'cat'
         'kitten'
     ]
 ])
 #[["bobtail","abyssinian","balinese","birman","bombay","burmese","chartreux","devon rex","domestic","maine coon","manx","munchkin","oriental","persian","ragamuffin","scottish fold","siamese","sphynx","longhaired","shorthaired","bald","fluffy","obese","white","black","tabby","calico"],[" cat"," kitten"]]);
-new Thing('cat thoughts', [ 'cat thought,1-2' ], [ 'thoughts' ])
+new Thing('cat thoughts', ['cat thought,1-2'], ['thoughts'])
 new Thing('cat thought', [], [
     [
         'meow meow meow meow'
@@ -3154,7 +3155,7 @@ new Thing('cat thought', [], [
         'and that is how I met your'
         'thoughtform of cat coevaluates thoughtform of dog'
     ]
-    [ ' ' ]
+    [' ']
     [
         'MEOW MEOW MEOW MEOW'
         'PURR PURR PURR'
@@ -3207,7 +3208,7 @@ new Thing('cat thought', [], [
         'THEY WILL PAY WITH BLOOD'
         'HE COMES'
     ]
-    [ ' ' ]
+    [' ']
     [
         'meow meow meow meow'
         'meow'
@@ -3287,7 +3288,7 @@ new Thing('dog', [
         'barking'
         'panting'
     ]
-    [ ' ' ]
+    [' ']
     [
         'yellow'
         'gold'
@@ -3303,7 +3304,7 @@ new Thing('dog', [
         'two-color'
         'tricolor'
     ]
-    [ ' ' ]
+    [' ']
     [
         'dog'
         'puppy'
@@ -3313,7 +3314,7 @@ new Thing('dog', [
 ])
 #[["inu","terrier","malamute","bulldog","spaniel","foxhound","pit bull terrier","mastiff","shepherd","basset","beagle","berger","bichon","collie","boxer","chihuahua","chow chow","dachshund","dalmatian","cocker","coonhound","setter","mountain","spitz","retriever","dane","labrador","husky","maltese","pekingese","pomeranian","poodle","labradoodle","pug","rottweiler","shih tzu"],[" dog"," puppy"]]);
 #Wrote all these names and realized it wasn't very funny, plus too many location names for my liking. Ah well.
-new Thing('dog thoughts', [ 'dog thought,2-3' ], [ 'thoughts' ])
+new Thing('dog thoughts', ['dog thought,2-3'], ['thoughts'])
 new Thing('dog thought', [], [
     "HAY I'M DOG"
     'I AM DOG HAY'
@@ -3466,7 +3467,7 @@ new Thing('monument', [
     'souvenir shop,70%'
     'souvenir shop,30%'
 ], '*MONUMENT*')
-new Thing('tourist', [ '.person' ], '*PERSON*| (tourist)')
+new Thing('tourist', ['.person'], '*PERSON*| (tourist)')
 new Thing('commercial area', [
     'street,1-5'
     'bargain shop,60%'
@@ -3505,7 +3506,7 @@ new Thing('office building', [
         'a newly-built'
         'a fancy'
     ]
-    [ ' ' ]
+    [' ']
     [
         'office building'
         'skyscraper'
@@ -3565,7 +3566,7 @@ new Thing('house', [
         ''
         ''
     ]
-    [ ' house' ]
+    [' house']
 ])
 new Thing('apartment', [
     'living-room,90%'
@@ -3614,8 +3615,8 @@ new Thing('field', [
     'rye field'
     'flower field'
 ])
-new Thing('farmer', [ '.person' ], '*PERSON*| (farmer)')
-new Thing('grain', [ 'plant cell' ])
+new Thing('farmer', ['.person'], '*PERSON*| (farmer)')
+new Thing('grain', ['plant cell'])
 new Thing('grain silo', [
     'metal'
     'grain'
@@ -3627,14 +3628,14 @@ new Thing('warehouse', [
     'machine,0-4'
     '.building'
 ])
-new Thing('barn', [ '.building' ])
-new Thing('storage shed', [ '.building' ])
+new Thing('barn', ['.building'])
+new Thing('storage shed', ['.building'])
 new Thing('haystack', [
     'grain'
     'insect,10%'
     'needle,0.1%'
 ])
-new Thing('needle', [ 'metal' ])
+new Thing('needle', ['metal'])
 new Thing('factory', [
     'worker,2-12'
     'machine,1-12'
@@ -3660,9 +3661,9 @@ new Thing('factory', [
         'weapon'
         'hardware'
     ]
-    [ ' factory' ]
+    [' factory']
 ])
-new Thing('worker', [ '.person' ], '*PERSON*| (worker)')
+new Thing('worker', ['.person'], '*PERSON*| (worker)')
 new Thing('public bathroom', [
     '.room'
     'person,10%'
@@ -3923,7 +3924,7 @@ new Thing('office', [
         'Corp'
         ' Procedurals'
     ]
-    [ ' ' ]
+    [' ']
     [
         'Inc.'
         'Corp.'
@@ -3941,8 +3942,8 @@ new Thing('office', [
         'Conglomerate'
     ]
 ])
-new Thing('office worker', [ '.person' ], '*PERSON*| (employee)')
-new Thing('office boss', [ '.person' ], '*PERSON*| (boss)')
+new Thing('office worker', ['.person'], '*PERSON*| (employee)')
+new Thing('office boss', ['.person'], '*PERSON*| (boss)')
 new Thing('cubicle', [
     'office worker,80%'
     'office worker,10%'
@@ -4018,12 +4019,12 @@ new Thing('office toy', [
     'magic 8-ball'
     'yo-yo'
 ])
-new Thing('panel', [ 'plastic' ])
+new Thing('panel', ['plastic'])
 new Thing('calendar', [
     'paper'
     'ink'
 ], [
-    [ 'calendar (' ]
+    ['calendar (']
     [
         'firemen'
         'sexy athletes'
@@ -4043,13 +4044,13 @@ new Thing('calendar', [
         'haikus'
         '1-word-a-day'
     ]
-    [ ')' ]
+    [')']
 ])
-new Thing('nameplate', [ [
+new Thing('nameplate', [[
     'plastic'
     'wood'
     'metal'
-] ])
+]])
 new Thing('water cooler', [
     'plastic'
     'water'
@@ -4068,8 +4069,8 @@ new Thing('shop', [
     'warehouse,20%'
     '.building'
 ])
-new Thing('clerk', [ '.person' ], '*PERSON*| (clerk)')
-new Thing('customer', [ '.person' ], '*PERSON*| (customer)')
+new Thing('clerk', ['.person'], '*PERSON*| (clerk)')
+new Thing('customer', ['.person'], '*PERSON*| (customer)')
 new Thing('game shop', [
     'video game stand,2-12'
     'video game console,1-4'
@@ -4136,7 +4137,7 @@ new Thing('fruit pile', [
     'plant cell'
     'insect,10%'
 ], [
-    [ 'a pile of ' ]
+    ['a pile of ']
     [
         'apples'
         'oranges'
@@ -4178,7 +4179,7 @@ new Thing('vegetable pile', [
     'plant cell'
     'insect,10%'
 ], [
-    [ 'a pile of ' ]
+    ['a pile of ']
     [
         'potatoes'
         'carrots'
@@ -4325,10 +4326,10 @@ new Thing('toy box', [
     'toy,0-8'
     'doll,0-4'
 ])
-new Thing('toy', [ [
+new Thing('toy', [[
     'wood'
     'plastic'
-] ], [
+]], [
     'spinning top'
     'building blocks'
     'construction set'
@@ -4394,7 +4395,7 @@ new Thing('doll', [
         'plastic'
         'mutant'
     ]
-    [ ' ' ]
+    [' ']
     [
         'Cindy'
         'Stacy'
@@ -4491,12 +4492,12 @@ new Thing('souvenir shop', [
     'souvenir shop'
     'gift shop'
 ])
-new Thing('souvenir', [ [
+new Thing('souvenir', [[
     'wood'
     'plastic'
     'metal'
     'glass'
-] ], [
+]], [
     [
         'tower'
         'pyramid'
@@ -4512,7 +4513,7 @@ new Thing('souvenir', [ [
         'city'
         'monument'
     ]
-    [ ' ' ]
+    [' ']
     [
         'model'
         'replica'
@@ -4544,7 +4545,7 @@ new Thing('paint', [
     'oil'
     'pigment'
 ])
-new Thing('wooden frame', [ 'wood' ])
+new Thing('wooden frame', ['wood'])
 # services {{{3
 new Thing('fire department', [
     'fire,0.2%'
@@ -4556,7 +4557,7 @@ new Thing('fire department', [
     'fire truck'
     '.building'
 ])
-new Thing('firefighter', [ '.person' ], '*PERSON*| (firefighter)')
+new Thing('firefighter', ['.person'], '*PERSON*| (firefighter)')
 new Thing('police station', [
     'police officer,2-6'
     'desk,0-2'
@@ -4565,7 +4566,7 @@ new Thing('police station', [
     'chair,0-4'
     '.building'
 ])
-new Thing('police officer', [ '.person' ], '*PERSON*| (police officer)')
+new Thing('police officer', ['.person'], '*PERSON*| (police officer)')
 new Thing('library', [
     'bookshelf,10-30'
     'painting,50%'
@@ -4578,7 +4579,7 @@ new Thing('library', [
     'person,0-12'
     '.building'
 ])
-new Thing('librarian', [ '.person' ], '*PERSON*| (librarian)')
+new Thing('librarian', ['.person'], '*PERSON*| (librarian)')
 # war stuff {{{3
 new Thing('battlefield', [
     'soldier,10-30'
@@ -4591,7 +4592,7 @@ new Thing('soldier', [
     'blood,20%'
     'bullet wound,0-3'
 ], [
-    [ '*PERSON*| ' ]
+    ['*PERSON*| ']
     [
         '(soldier)'
         '(soldier)'
@@ -4632,7 +4633,7 @@ new Thing('handgun', [
     'polymers,20%'
     'bullet,0-6'
 ])
-new Thing('gun', [ '.handgun' ])
+new Thing('gun', ['.handgun'])
 new Thing('knife', [
     'steel'
     'blood,10%'
@@ -4730,7 +4731,7 @@ new Thing('research facility', [
     'top secret drawer,1-6'
     '.building'
 ])
-new Thing('researcher', [ '.person' ], '*PERSON*| (researcher)')
+new Thing('researcher', ['.person'], '*PERSON*| (researcher)')
 new Thing('security guard', [
     '.person'
     'handgun'
@@ -4815,7 +4816,7 @@ new Thing('top secret folder', [
     'top secret file,2-8'
     'paper'
 ], [
-    [ 'Classified Folder n°' ]
+    ['Classified Folder n°']
     [
         '0'
         '1'
@@ -4872,7 +4873,7 @@ new Thing('top secret file', [], [
         'S'
         'T'
     ]
-    [ '-' ]
+    ['-']
     [
         '0'
         '1'
@@ -4913,7 +4914,7 @@ new Thing('top secret file', [], [
         '8'
         '9'
     ]
-    [ '<br>-' ]
+    ['<br>-']
     [
         'Containment breach ¤¤¤'
         'Subject ¤¤¤ attempted escape'
@@ -4967,7 +4968,7 @@ new Thing('top secret file', [], [
         'Collision event between ¤¤¤ and ¤¤¤'
         'Evidence of ¤¤¤'
     ]
-    [ ' ' ]
+    [' ']
     [
         'in sector'
         'in zone'
@@ -4975,7 +4976,7 @@ new Thing('top secret file', [], [
         'in facility'
         'near site'
     ]
-    [ ' ' ]
+    [' ']
     [
         'X'
         'Z'
@@ -4985,7 +4986,7 @@ new Thing('top secret file', [], [
         'S'
         'T'
     ]
-    [ '-' ]
+    ['-']
     [
         '0'
         '1'
@@ -5026,7 +5027,7 @@ new Thing('top secret file', [], [
         '8'
         '9'
     ]
-    [ ' ' ]
+    [' ']
     [
         'on ¤¤/¤¤/¤¤¤¤'
         'the day preceding ¤¤¤'
@@ -5058,7 +5059,7 @@ new Thing('top secret file', [], [
         ''
         ''
     ]
-    [ '.' ]
+    ['.']
 ])
 # cemeteries {{{3
 new Thing('cemetery', [
@@ -5122,7 +5123,7 @@ new Thing('coffin', [
     'cloth'
     'nails'
 ])
-new Thing('ectoplasm', [ 'proton,3-7' ], [
+new Thing('ectoplasm', ['proton,3-7'], [
     [
         'purple'
         'fetid'
@@ -5133,8 +5134,8 @@ new Thing('ectoplasm', [ 'proton,3-7' ], [
         'wispy'
         'sparkly'
     ]
-    [ ' ' ]
-    [ 'ectoplasm' ]
+    [' ']
+    ['ectoplasm']
 ])
 new Thing('ghost', [
     'ghost body'
@@ -5166,7 +5167,7 @@ new Thing('ghost', [
         'floating'
         'mournful'
     ]
-    [ ' ' ]
+    [' ']
     [
         'ghost'
         'spirit'
@@ -5177,11 +5178,11 @@ new Thing('ghost', [
         'hauntling'
     ]
 ])
-new Thing('ghost body', [ 'ectoplasm' ], [ '"body"' ])
+new Thing('ghost body', ['ectoplasm'], ['"body"'])
 new Thing('ghost thoughts', [
     'ghost thought'
     'ghost thought,20%'
-], [ 'thoughts' ])
+], ['thoughts'])
 new Thing('ghost thought', [], [
     'if only - she could hear me -'
     "he needs to know - I'm sorry -"
@@ -5221,8 +5222,8 @@ new Thing('street', [
     'road'
     'pavement'
 ], [
-    [ '*PERSON*|' ]
-    [ ' ' ]
+    ['*PERSON*|']
+    [' ']
     [
         'street'
         'avenue'
@@ -5236,10 +5237,10 @@ new Thing('street', [
         'plaza'
     ]
 ])
-new Thing('road', [ [
+new Thing('road', [[
     'asphalt'
     'stone'
-] ])
+]])
 new Thing('pavement', [
     'note,3%'
     'coin,4%'
@@ -5255,7 +5256,7 @@ new Thing('car', [
     'mechanics'
     'tire,4'
 ], [
-    [ 'parked ' ]
+    ['parked ']
     [
         'blue'
         'red'
@@ -5263,7 +5264,7 @@ new Thing('car', [
         'black'
         'grey'
     ]
-    [ ' ' ]
+    [' ']
     [
         'Chr'
         'F'
@@ -5305,7 +5306,7 @@ new Thing('driven car', [
         'white'
         'black'
     ]
-    [ ' ' ]
+    [' ']
     [
         'Chr'
         'F'
@@ -5362,7 +5363,7 @@ new Thing('roof', [
     'nest,2%'
     'roof tiles'
 ])
-new Thing('roof tiles', [ 'ceramic' ], 'tiles')
+new Thing('roof tiles', ['ceramic'], 'tiles')
 new Thing('room', [
     'visitor,0.1%'
     'ghost,0.1%'
@@ -5387,15 +5388,15 @@ new Thing('plaster', [
     'calcium'
     'sulfur'
 ])
-new Thing('marble', [ 'calcium' ])
-new Thing('stone', [ 'rock' ])
+new Thing('marble', ['calcium'])
+new Thing('stone', ['rock'])
 new Thing('concrete', [
     'rock'
     'cement'
     'water'
 ])
-new Thing('cement', [ 'calcium' ])
-new Thing('marble', [ 'calcium' ])
+new Thing('cement', ['calcium'])
+new Thing('marble', ['calcium'])
 new Thing('door', [
     'wood frame'
     'glass,10%'
@@ -5607,7 +5608,7 @@ new Thing('oven', [
     'metal grill,1-3'
     'electronics'
 ])
-new Thing('kitchen sink', [ '.sink' ])
+new Thing('kitchen sink', ['.sink'])
 new Thing('sink', [
     [
         'porcelain'
@@ -5627,11 +5628,11 @@ new Thing('pipes', [
     'metal'
     'dirt'
 ])
-new Thing('nails', [ 'iron' ])
-new Thing('metal', [ 'iron' ])
-new Thing('metal grill', [ 'metal' ])
-new Thing('porcelain', [ 'silica' ])
-new Thing('ceramic', [ 'silica' ])
+new Thing('nails', ['iron'])
+new Thing('metal', ['iron'])
+new Thing('metal grill', ['metal'])
+new Thing('porcelain', ['silica'])
+new Thing('ceramic', ['silica'])
 new Thing('chair', [
     [
         'wood'
@@ -5661,7 +5662,7 @@ new Thing('coin', [
     'dirt,2%'
     'copper'
 ])
-new Thing('gold coin', [ 'gold' ])
+new Thing('gold coin', ['gold'])
 new Thing('dirt', [
     'organic matter,50%'
     'dust'
@@ -5670,19 +5671,19 @@ new Thing('grease', [
     'lipids'
     'dust'
 ])
-new Thing('dust', [ 'molecule' ])
-new Thing('crumbs', [ 'organic matter' ])
-new Thing('lint', [ 'textile fibre' ])
+new Thing('dust', ['molecule'])
+new Thing('crumbs', ['organic matter'])
+new Thing('lint', ['textile fibre'])
 new Thing('pen', [
     'plastic'
     'ink,80%'
 ])
-new Thing('button', [ 'plastic' ])
+new Thing('button', ['plastic'])
 new Thing('note', [
     'note writing'
     'paper'
 ])
-new Thing('note writing', [], [ '*NOTE*' ])
+new Thing('note writing', [], ['*NOTE*'])
 new Thing('bed', [
     '.armchair'
     'pillow,0-3'
@@ -5691,13 +5692,13 @@ new Thing('pillow', [
     'feather'
     'cloth'
 ])
-new Thing('feather', [ 'keratin' ])
-new Thing('feathers', [ '.feather' ])
+new Thing('feather', ['keratin'])
+new Thing('feathers', ['.feather'])
 new Thing('mirror', [
     'glass'
     'portal,0.1%'
 ])
-new Thing('glass', [ 'silica' ])
+new Thing('glass', ['silica'])
 new Thing('desk', [
     'wood frame'
     'drawer,0-6'
@@ -5711,10 +5712,10 @@ new Thing('cupboard', [
     'wood shelf,1-4'
     'drawer,0-2'
 ])
-new Thing('drinking glass', [ 'glass' ], 'glass')
-new Thing('bowl', [ 'ceramic' ])
-new Thing('cup', [ 'ceramic' ])
-new Thing('plate', [ 'ceramic' ])
+new Thing('drinking glass', ['glass'], 'glass')
+new Thing('bowl', ['ceramic'])
+new Thing('cup', ['ceramic'])
+new Thing('plate', ['ceramic'])
 new Thing('closet', [
     'portal,0.1%'
     'skeleton,0.1%'

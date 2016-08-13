@@ -1197,9 +1197,7 @@ miscGenerators =
                 'colossal', 'tremendous', 'humongous'
             ], 0.5)
         ]) + ' ' ]) + choose([
-            ''
-            ''
-            ''
+            '', '', ''
             choose([
                 'stone', 'gold', 'silver', 'copper', 'bronze', 'metal',
                 'white', 'black', 'blue', 'green', 'yellow', 'red', 'grey',

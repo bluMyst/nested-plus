@@ -1,9 +1,5 @@
 # vim: foldmethod=marker
 # Todo list {{{1
-# Move the class Thing to a new file and use coffeescript-concat to put it
-# here, and also in atoms.coffee. Then import atoms.coffee in here.
-# search for getScript
-# Make sure the mv in make.sh is okay with overwriting nestedscript.js.
 # Add a warning that make.sh is untested.
 # Change default skin to the cool dark one.
 # miscGenerators.book should bookCase its output
@@ -1032,30 +1028,6 @@ new Thing('alcohol',  ['.glucids'])
 
 # Elements {{{2
 new Thing('atom', ['proton', 'neutron', 'electron'], ['atoms'])
-
-# TODO: This just doesn't work at all.
-#$.getScript 'atoms.js' # TODO: WARNING: This runs asynchronously. Stuff might break!
-
-#new Thing('hydrogen', ['.hydrogen atom'])
-#new Thing('hydrogen atom', ['proton', 'electron'], ['atoms'])
-#new Thing('carbon',     ['.atom'])
-#new Thing('sodium',     ['.atom'])
-#new Thing('chlorine',   ['.atom'])
-#new Thing('oxygen',     ['.atom'])
-#new Thing('helium',     ['.atom'])
-#new Thing('potassium',  ['.atom'])
-#new Thing('aluminium',  ['.atom'])
-#new Thing('iron',       ['.atom'])
-#new Thing('copper',     ['.atom'])
-#new Thing('lead',       ['.atom'])
-#new Thing('gold',       ['.atom'])
-#new Thing('silver',     ['.atom'])
-#new Thing('silicon',    ['.atom'])
-#new Thing('calcium',    ['.atom'])
-#new Thing('nitrogen',   ['.atom'])
-#new Thing('sulfur',     ['.atom'])
-#new Thing('phosphorus', ['.atom'])
-
 new Thing('steel', ['iron', 'carbon'])
 new Thing('proteins', ['.molecule'])
 new Thing('lipids', ['.molecule'])

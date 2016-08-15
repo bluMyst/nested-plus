@@ -4,379 +4,379 @@ Nuclides marked with an asterisk (*) in the abundance column
 indicate that it is not present in nature or that a meaningful natural
 abundance cannot be given.
 
-1 Hydrogen  1H 99.9885
-  Deuterium 2H 0.0115
+1 Hydrogen  1H 99.9885%
+  Deuterium 2H  0.0115%
   Tritium   3H *
 
-2 Helium 3He 0.000137
-         4He 99.999863
+2 Helium 3He  0.000137%
+         4He 99.999863%
+
+3 Lithium 6Li  7.59%
+          7Li 92.41%
+
+4 Beryllium 9Be 100$
+
+5 Boron 10B 19.9%
+        11B 80.1%
+
+6 Carbon 12C 98.93%
+         13C  1.07%
+         14C  *
+
+7 Nitrogen 14N 99.632%
+           15N  0.368%
+
+8 Oxygen 16O 99.757%
+         17O  0.038%
+         18O  0.205%
+
+9 Fluorine 19F 100%
+
+10 Neon 20Ne 90.48%
+        21Ne  0.27%
+        22Ne  9.25%
+
+11 Sodium 23Na 100%
+
+12 Magnesium 24Mg 78.99%
+             25Mg 10.00%
+             26Mg 11.01%
+
+13 Aluminum 27Al 100%
+
+14 Silicon 28Si 92.2297%
+           29Si  4.6832%
+           30Si  3.0872%
+
+15 Phosphorus 31P 100%
 
 /\                      data entered                      /\
 ------------------------------------------------------------
 \/                    data not entered                    \/
 
-3 Lithium 6Li 7.59
-          7Li 92.41
+16 Sulphur 32S 94.93%
+           33S  0.76%
+           34S  4.29%
+           36S  0.02%
 
-4 Beryllium 9Be 100
+17 Chlorine 35Cl 75.78%
+            37Cl 24.22%
 
-5 Boron 10B 19.9
-        11B 80.1
+18 Argon 36Ar  0.3365%
+         38Ar  0.0632%
+         40Ar 99.6003%
 
-6 Carbon 12C 98.93
-         13C 1.07
-         14C *
+19 Potassium 39K 93.2581%
+             40K  0.0117%
+             41K  6.7302%
 
-7 Nitrogen 14N 99.632
-           15N 0.368
+20 Calcium 40Ca 96.941%
+           42Ca  0.647%
+           43Ca  0.135%
+           44Ca  2.086%
+           46Ca  0.004%
+           48Ca  0.187%
 
-8 Oxygen 16O 99.757
-         17O 0.038
-         18O 0.205
+21 Scandium 45Sc 100%
 
-9 Fluorine 19F 100
+22 Titanium 46Ti  8.25%
+            47Ti  7.44%
+            48Ti 73.72%
+            49Ti  5.41%
+            50Ti  5.18%
 
-10 Neon 20Ne 90.48
-        21Ne 0.27
-        22Ne 9.25
+23 Vanadium 50V  0.250%
+            51V 99.750%
 
-11 Sodium 23Na 100
+24 Chromium 50Cr  4.345%
+            52Cr 83.789%
+            53Cr  9.501%
+            54Cr  2.365%
 
-12 Magnesium 24Mg 78.99
-             25Mg 10.00
-             26Mg 11.01
+25 Manganese 55Mn 100%
 
-13 Aluminum 27Al 100
+26 Iron 54Fe  5.845%
+        56Fe 91.754%
+        57Fe  2.119%
+        58Fe  0.282%
 
-14 Silicon 28Si 92.2297
-           29Si 4.6832
-           30Si 3.0872
+27 Cobalt 59Co 100%
 
-15 Phosphorus 31P 100
+28 Nickel 58Ni 68.0769%
+          60Ni 26.2231%
+          61Ni  1.1399%
+          62Ni  3.6345%
+          64Ni  0.9256%
 
-16 Sulphur 32S 94.93
-           33S 0.76
-           34S 4.29
-           36S 0.02
+29 Copper 63Cu 69.17%
+          65Cu 30.83%
 
-17 Chlorine 35Cl 75.78
-            37Cl 24.22
+30 Zinc 64Zn 48.63%
+        66Zn 27.90%
+        67Zn  4.10%
+        68Zn 18.75%
+        70Zn  0.62%
 
-18 Argon 36Ar 0.3365
-         38Ar 0.0632
-         40Ar 99.6003
+31 Gallium 69Ga 60.108%
+           71Ga 39.892%
 
-19 Potassium 39K 93.2581
-             40K 0.0117
-             41K 6.7302
+32 Germanium 70Ge 20.84%
+             72Ge 27.54%
+             73Ge  7.73%
+             74Ge 36.28%
+             76Ge  7.61%
 
-20 Calcium 40Ca 96.941
-           42Ca 0.647
-           43Ca 0.135
-           44Ca 2.086
-           46Ca 0.004
-           48Ca 0.187
+33 Arsenic 75As 100%
 
-21 Scandium 45Sc 100
+34 Selenium 74Se  0.89%
+            76Se  9.37%
+            77Se  7.63%
+            78Se 23.77%
+            80Se 49.61%
+            82Se  8.73%
 
-22 Titanium 46Ti 8.25
-            47Ti 7.44
-            48Ti 73.72
-            49Ti 5.41
-            50Ti 5.18
+35 Bromine 79Br 50.69%
+           81Br 49.31%
 
-23 Vanadium 50V 0.250
-            51V 99.750
+36 Krypton 78Kr  0.35%
+           80Kr  2.28%
+           82Kr 11.58%
+           83Kr 11.49%
+           84Kr 57.00%
+           86Kr 17.30%
 
-24 Chromium 50Cr 4.345
-            52Cr 83.789
-            53Cr 9.501
-            54Cr 2.365
+37 Rubidium 85Rb 72.17%
+            87Rb 27.83%
 
-25 Manganese 55Mn 100
+38 Strontium 84Sr  0.56%
+             86Sr  9.86%
+             87Sr  7.00%
+             88Sr 82.58%
 
-26 Iron 54Fe 5.845
-        56Fe 91.754
-        57Fe 2.119
-        58Fe 0.282
-
-27 Cobalt 59Co 100
-
-28 Nickel 58Ni 68.0769
-          60Ni 26.2231
-          61Ni 1.1399
-          62Ni 3.6345
-          64Ni 0.9256
-
-29 Copper 63Cu 69.17
-          65Cu 30.83
-
-30 Zinc 64Zn 48.63
-        66Zn 27.90
-        67Zn 4.10
-        68Zn 18.75
-        70Zn 0.62
-
-31 Gallium 69Ga 60.108
-           71Ga 39.892
-
-32 Germanium 70Ge 20.84
-             72Ge 27.54
-             73Ge 7.73
-             74Ge 36.28
-             76Ge 7.61
-
-33 Arsenic 75As 100
-
-34 Selenium 74Se 0.89
-            76Se 9.37
-            77Se 7.63
-            78Se 23.77
-            80Se 49.61
-            82Se 8.73
-
-35 Bromine 79Br 50.69
-           81Br 49.31
-
-36 Krypton 78Kr 0.35
-           80Kr 2.28
-           82Kr 11.58
-           83Kr 11.49
-           84Kr 57.00
-           86Kr 17.30
-
-37 Rubidium 85Rb 72.17
-            87Rb 27.83
-
-38 Strontium 84Sr 0.56
-             86Sr 9.86
-             87Sr 7.00
-             88Sr 82.58
-
-39 Yttrium 89Y 100
+9 Yttrium 89Y 100%
 
 40 Zirconium 90Zr 51.45
              91Zr 11.22
              92Zr 17.15
              94Zr 17.38
-             96Zr 2.80
+             96Zr  2.80
 
 41 Niobium 93Nb 100
 
-42 Molybdenum  92Mo 14.84
-               94Mo 9.25
-               95Mo 15.92
-               96Mo 16.68
-               97Mo 9.55
-               98Mo 24.13
-              100Mo 9.63
+42 Molybdenum  92Mo 14.84%
+               94Mo  9.25%
+               95Mo 15.92%
+               96Mo 16.68%
+               97Mo  9.55%
+               98Mo 24.13%
+              100Mo  9.63%
 
 43 Technetium 98Tc 97.907216 *
 
-44 Ruthenium 96Ru 5.54
-             98Ru 1.87
-             99Ru 12.76
-             100Ru 12.60
-             101Ru 17.06
-             102Ru 31.55
-             104Ru 18.62
+44 Ruthenium 96Ru   5.54%
+             98Ru   1.87%
+             99Ru  12.76%
+             100Ru 12.60%
+             101Ru 17.06%
+             102Ru 31.55%
+             104Ru 18.62%
 
-45 Rhodium 103Rh 100
+45 Rhodium 103Rh 100%
 
-46 Palladium 102Pd 1.02
-             104Pd 11.14
-             105Pd 22.33
-             106Pd 27.33
-             108Pd 26.46
-             110Pd 11.72
+46 Palladium 102Pd  1.02%
+             104Pd 11.14%
+             105Pd 22.33%
+             106Pd 27.33%
+             108Pd 26.46%
+             110Pd 11.72%
 
-47 Silver 107Ag 51.839
-          109Ag 48.161
+47 Silver 107Ag 51.839%
+          109Ag 48.161%
 
-48 Cadmium 106Cd 1.25
-           108Cd 0.89
-           110Cd 12.49
-           111Cd 12.80
-           112Cd 24.13
-           113Cd 12.22
-           114Cd 28.73
-           116Cd 7.49
+48 Cadmium 106Cd  1.25%
+           108Cd  0.89%
+           110Cd 12.49%
+           111Cd 12.80%
+           112Cd 24.13%
+           113Cd 12.22%
+           114Cd 28.73%
+           116Cd  7.49%
 
-49 Indium 113In 4.29
-          115In 95.71
+49 Indium 113In  4.29%
+          115In 95.71%
 
-50 Tin 112Sn 0.97
-       114Sn 0.66
-       115Sn 0.34
-       116Sn 14.54
-       117Sn 7.68
-       118Sn 24.22
-       119Sn 8.59
-       120Sn 32.58
-       122Sn 4.63
-       124Sn 5.79
+50 Tin 112Sn  0.97%
+       114Sn  0.66%
+       115Sn  0.34%
+       116Sn 14.54%
+       117Sn  7.68%
+       118Sn 24.22%
+       119Sn  8.59%
+       120Sn 32.58%
+       122Sn  4.63%
+       124Sn  5.79%
 
-51 Antimony 121Sb 57.21
-            123Sb 42.79
+51 Antimony 121Sb 57.21%
+            123Sb 42.79%
 
-52 Tellurium 120Te 0.09
-             122Te 2.55
-             123Te 0.89
-             124Te 4.74
-             125Te 7.07
-             126Te 18.84
-             128Te 31.74
-             130Te 34.08
+52 Tellurium 120Te  0.09%
+             122Te  2.55%
+             123Te  0.89%
+             124Te  4.74%
+             125Te  7.07%
+             126Te 18.84%
+             128Te 31.74%
+             130Te 34.08%
 
-53 Iodine 127I 100
+53 Iodine 127I 100%
 
-54 Xenon 124Xe 0.09
-         126Xe 0.09
-         128Xe 1.92
-         129Xe 26.44
-         130Xe 4.08
-         131Xe 21.18
-         132Xe 26.89
-         134Xe 10.44
-         136Xe 8.87
+54 Xenon 124Xe  0.09%
+         126Xe  0.09%
+         128Xe  1.92%
+         129Xe 26.44%
+         130Xe  4.08%
+         131Xe 21.18%
+         132Xe 26.89%
+         134Xe 10.44%
+         136Xe  8.87%
 
-55 Cesium 133Cs 100
+55 Cesium 133Cs 100%
 
-56 Barium 130Ba 0.106
-          132Ba 0.101
-          134Ba 2.417
-          135Ba 6.592
-          136Ba 7.854
-          137Ba 11.232
-          138Ba 71.698
+56 Barium 130Ba  0.106%
+          132Ba  0.101%
+          134Ba  2.417%
+          135Ba  6.592%
+          136Ba  7.854%
+          137Ba 11.232%
+          138Ba 71.698%
 
-57 Lanthanum 138La 0.090
-             139La 99.910
+57 Lanthanum 138La  0.090%
+             139La 99.910%
 
-58 Cerium 136Ce 0.185
-          138Ce 0.251
-          140Ce 88.450
-          142Ce 11.114
+58 Cerium 136Ce  0.185%
+          138Ce  0.251%
+          140Ce 88.450%
+          142Ce 11.114%
 
-59 Praseodymium 141Pr 100
+59 Praseodymium 141Pr 100%
 
-60 Neodymium 142Nd 27.2
-             143Nd 12.2
-             144Nd 23.8
-             145Nd 8.3
-             146Nd 17.2
-             148Nd 5.7
-             150Nd 5.6
+60 Neodymium 142Nd 27.2%
+             143Nd 12.2%
+             144Nd 23.8%
+             145Nd  8.3%
+             146Nd 17.2%
+             148Nd  5.7%
+             150Nd  5.6%
 
 61 Promethium 145Pm *
 
-62 Samarium 144Sm 3.07
-            147Sm 14.99
-            148Sm 11.24
-            149Sm 13.82
-            150Sm 7.38
-            152Sm 26.75
-            154Sm 22.75
+62 Samarium 144Sm  3.07%
+            147Sm 14.99%
+            148Sm 11.24%
+            149Sm 13.82%
+            150Sm  7.38%
+            152Sm 26.75%
+            154Sm 22.75%
 
-63 Europium 151Eu 47.81
-            153Eu 52.19
+63 Europium 151Eu 47.81%
+            153Eu 52.19%
 
-64 Gadolinium 152Gd 0.20
-              154Gd 2.18
-              155Gd 14.80
-              156Gd 20.47
-              157Gd 15.65
-              158Gd 24.84
-              160Gd 21.86
+64 Gadolinium 152Gd  0.20%
+              154Gd  2.18%
+              155Gd 14.80%
+              156Gd 20.47%
+              157Gd 15.65%
+              158Gd 24.84%
+              160Gd 21.86%
 
-65 Terbium 159Tb 100
+65 Terbium 159Tb 100%
 
-66 Dysprosium 156Dy 0.06
-              158Dy 0.10
-              160Dy 2.34
-              161Dy 18.91
-              162Dy 25.51
-              163Dy 24.90
-              164Dy 28.18
+66 Dysprosium 156Dy  0.06%
+              158Dy  0.10%
+              160Dy  2.34%
+              161Dy 18.91%
+              162Dy 25.51%
+              163Dy 24.90%
+              164Dy 28.18%
 
-67 Holmium 165Ho 100
+67 Holmium 165Ho 100%
 
-68 Erbium 162Er 0.14
-          164Er 1.61
-          166Er 33.61
-          167Er 22.93
-          168Er 26.78
-          170Er 14.93
+68 Erbium 162Er  0.14%
+          164Er  1.61%
+          166Er 33.61%
+          167Er 22.93%
+          168Er 26.78%
+          170Er 14.93%
 
-69 Thulium 169Tm 100
+69 Thulium 169Tm 100%
 
-70 Ytterbium 168Yb 0.13
-             170Yb 3.04
-             171Yb 14.28
-             172Yb 21.83
-             173Yb 16.13
-             174Yb 31.83
-             176Yb 12.76
+70 Ytterbium 168Yb  0.13%
+             170Yb  3.04%
+             171Yb 14.28%
+             172Yb 21.83%
+             173Yb 16.13%
+             174Yb 31.83%
+             176Yb 12.76%
 
-71 Lutetium 175Lu 97.41
-            176Lu 2.59
+71 Lutetium 175Lu 97.41%
+            176Lu  2.59%
 
-72 Hafnium 174Hf 0.16
-           176Hf 5.26
-           177Hf 18.60
-           178Hf 27.28
-           179Hf 13.62
-           180Hf 35.08
+72 Hafnium 174Hf  0.16%
+           176Hf  5.26%
+           177Hf 18.60%
+           178Hf 27.28%
+           179Hf 13.62%
+           180Hf 35.08%
 
-73 Tantalum 180Ta 0.012
-            181Ta 99.988
+73 Tantalum 180Ta  0.012%
+            181Ta 99.988%
 
-74 Tungsten 180W 0.12
-            182W 26.50
-            183W 14.31
-            184W 30.64
-            186W 28.43
+74 Tungsten 180W  0.12%
+            182W 26.50%
+            183W 14.31%
+            184W 30.64%
+            186W 28.43%
 
-75 Rhenium 185Re 37.40
-           187Re 62.60
+75 Rhenium 185Re 37.40%
+           187Re 62.60%
 
-76 Osmium 184Os 0.02
-          186Os 1.59
-          187Os 1.96
-          188Os 13.24
-          189Os 16.15
-          190Os 26.26
-          192Os 40.78
+76 Osmium 184Os  0.02%
+          186Os  1.59%
+          187Os  1.96%
+          188Os 13.24%
+          189Os 16.15%
+          190Os 26.26%
+          192Os 40.78%
 
-77 Iridium 191Ir 37.3
-           193Ir 62.7
+77 Iridium 191Ir 37.3%
+           193Ir 62.7%
 
-78 Platinum 190Pt 0.014
-            192Pt 0.782
-            194Pt 32.967
-            195Pt 33.832
-            196Pt 25.242
-            198Pt 7.163
+78 Platinum 190Pt  0.014%
+            192Pt  0.782%
+            194Pt 32.967%
+            195Pt 33.832%
+            196Pt 25.242%
+            198Pt  7.163%
 
-79 Gold 197Au 100
+79 Gold 197Au 100%
 
-80 Mercury 196Hg 0.15
-           198Hg 9.97
-           199Hg 16.87
-           200Hg 23.10
-           201Hg 13.18
-           202Hg 29.86
-           204Hg 6.87
+80 Mercury 196Hg  0.15%
+           198Hg  9.97%
+           199Hg 16.87%
+           200Hg 23.10%
+           201Hg 13.18%
+           202Hg 29.86%
+           204Hg  6.87%
 
-81 Thallium 203Tl 29.524
-            205Tl 70.476
+81 Thallium 203Tl 29.524%
+            205Tl 70.476%
 
-82 Lead 204Pb 1.4
-        206Pb 24.1
-        207Pb 22.1
-        208Pb 52.4
+82 Lead 204Pb  1.4%
+        206Pb 24.1%
+        207Pb 22.1%
+        208Pb 52.4%
 
-83 Bismuth 209Bi 100
+83 Bismuth 209Bi 100%
 
 84 Polonium 209Po *
 
@@ -390,13 +390,13 @@ abundance cannot be given.
 
 89 Actinium 227Ac *
 
-90 Thorium 232Th 100
+90 Thorium 232Th 100%
 
-91 Protactinium 231Pa 100
+91 Protactinium 231Pa 100%
 
-92 Uranium 234U 0.0055
-           235U 0.7200
-           238U 99.2745
+92 Uranium 234U  0.0055%
+           235U  0.7200%
+           238U 99.2745%
 
 93 Neptunium 237Np *
 

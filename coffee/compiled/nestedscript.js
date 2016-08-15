@@ -160,29 +160,29 @@ new Thing('tritium', ['proton,1', 'neutron,3', 'electron,1']);
 
 new Thing('helium', isotopeGenerator(2, 2, [[0.00000137, 3], [0.99999863, 4]]));
 
-new Thing('lithium', ['proton,3', 'neutron,6', 'neutron,92.41%', 'electron,3']);
+new Thing('lithium', isotopeGenerator(3, 3, [[0.0759, 6], [0.9241, 7]]));
 
 new Thing('beryllium', ['proton,4', 'neutron,9', 'electron,4']);
 
-new Thing('boron', ['proton,5', 'neutron,10', 'neutron,80.1%', 'electron,5']);
+new Thing('boron', isotopeGenerator(5, 5, [[0.199, 10], [0.801, 11]]));
 
-new Thing('carbon', ['proton,6', 'neutron,12', 'neutron,1.07%', 'electron,6']);
+new Thing('carbon', isotopeGenerator(6, 6, [[0.9893, 12], [0.0107, 13]]));
 
-new Thing('nitrogen', ['proton,7', 'neutron,14', 'neutron,0.368%', 'electron,7']);
+new Thing('nitrogen', isotopeGenerator(7, 7, [[0.99632, 14], [0.00368, 15]]));
 
-new Thing('oxygen', ['proton,9', 'neutron,16', 'neutron,0.038', 'neutron,0.205%', 'electron,8']);
+new Thing('oxygen', isotopeGenerator(9, 9, [[0.99656, 16], [0.00038, 17], [0.00205, 18]]));
 
 new Thing('fluorine', ['proton,9', 'neutron,19', 'electron,9']);
 
-new Thing('neon', ['proton,10', 'neutron,20', 'neutron,0.27%', 'neutron,9.25%', 'electron,10']);
+new Thing('neon', isotopeGenerator(10, 10, [[0.9048, 20], [0.0027, 21], [0.0925, 22]]));
 
 new Thing('sodium', ['proton,11', 'neutron,23', 'electron,11']);
 
-new Thing('magnesium', ['proton,12', 'neutron,24', 'neutron,10%', 'neutron,11.01%', 'electron,12']);
+new Thing('magnesium', isotopeGenerator(12, 12, [[0.7899, 24], [0.1000, 25], [0.1101, 26]]));
 
 new Thing('aluminum', ['proton,13', 'neutron,27', 'electron,13']);
 
-new Thing('silicon', ['proton,14', 'neutron,28', 'electron,14']);
+new Thing('silicon', isotopeGenerator(14, 14, [[0.922297, 28], [0.046832, 29], [0.030872, 30]]));
 
 new Thing('phosphorus', ['proton,15', 'neutron,31', 'electron,15']);
 

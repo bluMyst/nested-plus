@@ -35,45 +35,77 @@ isotopeGenerator = (protons, electrons, naturalAbundances) ->
 
 new Thing 'testium', isotopeGenerator(1, 1, [[0.5, 1], [0.5, 2]])
 
+# 1 Hydrogen  1H 99.9885%
+#   Deuterium 2H  0.0115%
+#   Tritium   3H *
 # TODO: Hydrogen with two neutrons should be called deuterium. How would I go
 #       about doing that?
 new Thing 'hydrogen', isotopeGenerator(1, 1, [[0.999885, 1], [0.000115, 2]])
-new Thing('deuterium', ['proton,1', 'neutron,2', 'electron,1'])
-new Thing('tritium',   ['proton,1', 'neutron,3', 'electron,1'])
+new Thing 'deuterium', ['proton,1', 'neutron,2', 'electron,1']
+new Thing 'tritium',   ['proton,1', 'neutron,3', 'electron,1']
 
-new Thing 'helium', isotopeGenerator(2, 2, [[0.00000137, 3], [0.99999863, 4]])
+# 2 Helium 3He  0.000137%
+#          4He 99.999863%
+new Thing 'helium',  isotopeGenerator(2, 2, [[0.00000137, 3], [0.99999863, 4]])
 
-new Thing('lithium', ['proton,3', 'neutron,6', 'neutron,92.41%', 'electron,3'])
-new Thing('beryllium', ['proton,4', 'neutron,9', 'electron,4'])
-new Thing('boron', ['proton,5', 'neutron,10', 'neutron,80.1%', 'electron,5'])
-new Thing('carbon', ['proton,6', 'neutron,12', 'neutron,1.07%', 'electron,6'])
-new Thing('nitrogen', ['proton,7', 'neutron,14', 'neutron,0.368%', 'electron,7'])
+# 3 Lithium 6Li  7.59%
+#           7Li 92.41%
+new Thing 'lithium', isotopeGenerator(3, 3, [[0.0759, 6], [0.9241, 7]])
+
+# 4 Beryllium 9Be 100%
+new Thing 'beryllium', ['proton,4', 'neutron,9', 'electron,4']
+
+# 5 Boron 10B 19.9%
+#         11B 80.1%
+new Thing 'boron', isotopeGenerator(5, 5, [[0.199, 10], [0.801, 11]])
+
+# 6 Carbon 12C 98.93%
+#          13C  1.07%
+#          14C  *
+new Thing 'carbon', isotopeGenerator(6, 6, [[0.9893, 12], [0.0107, 13]])
+
+# 7 Nitrogen 14N 99.632%
+#            15N  0.368%
+new Thing 'nitrogen', isotopeGenerator(7, 7, [[0.99632, 14], [0.00368, 15]])
 
 
-# TODO: How am I supposed to do this?
-# 8 Oxygen 16O 99.757
-#          17O 0.038
-#          18O 0.205
-new Thing('oxygen', ['proton,9', 'neutron,16', 'neutron,0.038', 'neutron,0.205%', 'electron,8'])
+# 8 Oxygen 16O 99.757%
+#          17O  0.038%
+#          18O  0.205%
+new Thing 'oxygen', isotopeGenerator(9, 9, [
+    [0.99656, 16], [0.00038, 17], [0.00205, 18]])
 
+# 9 Fluorine 19F 100%
 new Thing('fluorine', ['proton,9', 'neutron,19', 'electron,9'])
 
-# TODO:
-# 10 Neon 20Ne 90.48
-#         21Ne 0.27
-#         22Ne 9.25
-new Thing('neon', ['proton,10', 'neutron,20', 'neutron,0.27%', 'neutron,9.25%', 'electron,10'])
+# 10 Neon 20Ne 90.48%
+#         21Ne  0.27%
+#         22Ne  9.25%
+new Thing 'neon', isotopeGenerator(10, 10, [
+    [0.9048, 20], [0.0027, 21], [0.0925, 22]])
 
+# 11 Sodium 23Na 100%
 new Thing('sodium', ['proton,11', 'neutron,23', 'electron,11'])
 
-# TODO:
-# 12 Magnesium 24Mg 78.99
-#              25Mg 10.00
-#              26Mg 11.01
-new Thing('magnesium', ['proton,12', 'neutron,24', 'neutron,10%', 'neutron,11.01%', 'electron,12'])
-new Thing('aluminum', ['proton,13', 'neutron,27', 'electron,13'])
-new Thing('silicon', ['proton,14', 'neutron,28', 'electron,14']) # TODO: isotope data
-new Thing('phosphorus', ['proton,15', 'neutron,31', 'electron,15'])
+# 12 Magnesium 24Mg 78.99%
+#              25Mg 10.00%
+#              26Mg 11.01%
+new Thing 'magnesium', isotopeGenerator(12, 12, [[0.7899, 24], [0.1000, 25], [0.1101, 26]])
+
+# 13 Aluminum 27Al 100%
+new Thing 'aluminum', ['proton,13', 'neutron,27', 'electron,13']
+
+# 14 Silicon 28Si 92.2297%
+#            29Si  4.6832%
+#            30Si  3.0872%
+new Thing 'silicon', isotopeGenerator(14, 14, [
+    [0.922297, 28]
+    [0.046832, 29]
+    [0.030872, 30]])
+
+# 15 Phosphorus 31P 100%
+new Thing 'phosphorus', ['proton,15', 'neutron,31', 'electron,15']
+
 new Thing('sulfur', ['proton,16', 'neutron,32', 'electron,16']) # TODO: isotope data
 
 # TODO: Everything after this point has no isotope data

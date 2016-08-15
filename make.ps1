@@ -1,3 +1,5 @@
+push-location $(split-path $MyInvocation.MyCommand.Path)
+
 cd coffee/
 
 echo 'Preprocessing...'
@@ -13,5 +15,4 @@ rm nestedscript.preprocessed.coffee
 # -force means 'overwrite if needed'
 mv -force nestedscript.preprocessed.js nestedscript.js
 
-cd ..
-cd ..
+pop-location

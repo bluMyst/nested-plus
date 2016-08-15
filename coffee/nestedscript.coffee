@@ -192,30 +192,28 @@ class Instance
             document.getElementById('div' + @n).innerHTML = '<span class="emptyThing">' + @name_ + '</span>'
         return
 
-bookCase = (s) -> # {{{2
+bookCase = (name) -> # {{{2
     # Changes a string like "the cat is on the table" to "The Cat is on the Table"
 
-    capitalizeWord = (s) ->
-        return s[0].toUpperCase() + s[1..]
+    capitalizeTitle = (words) ->
+        return words[0].toUpperCase() + words[1..]
 
     wordsToNotCapitalize = [
         'of', 'in', 'on', 'and', 'the', 'an', 'a', 'with', 'to', 'for', 'from',
         'be', 'is'
     ]
 
-    s = s.split(' ')
-    for i of s
+    name = name.split(' ')
+
+    for i, word of name
         if i == 0
             # Always capitalize the first word.
-            s[i] = capitalizeWord s[i]
-            continue
+            name[i] = capitalizeTitle word
+        else if word not in wordsToNotCapitalize
+            name[i] = capitalizeTitle name[i]
 
-        if s[i] not in wordsToNotCapitalize
-            s[i] = capitalizeWord s[i]
-
-    s = s.join(' ')
-
-    return s
+    name = name.join(' ')
+    return name
 
 debug = (what) -> # {{{2
     document.getElementById('debug').innerHTML = document.getElementById('debug').innerHTML + '<br>' + what

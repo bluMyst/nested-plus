@@ -283,7 +283,7 @@ new Thing('oil', [ 'lipids' ])
 new Thing('magma', [ '.rock' ])
 
 new Thing('rock', [
-    'silica', 'aluminium,30%', 'iron,20%', 'potassium,20%', 'sodium,50%',
+    'silica', 'aluminum,30%', 'iron,20%', 'potassium,20%', 'sodium,50%',
     'calcium,50%'
 ])
 
@@ -4623,13 +4623,13 @@ new Thing('bullet', [
 ])
 new Thing('rifle', [
     'steel'
-    'aluminium,50%'
+    'aluminum,50%'
     'polymers,20%'
     'bullet,0-6'
 ])
 new Thing('handgun', [
     'steel'
-    'aluminium,50%'
+    'aluminum,50%'
     'polymers,20%'
     'bullet,0-6'
 ])
@@ -6026,7 +6026,7 @@ new Thing('cog', [ [
     'plastic'
     'iron'
     'steel'
-    'aluminium'
+    'aluminum'
 ] ], [
     'cog'
     'gear'

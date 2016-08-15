@@ -9707,7 +9707,7 @@ new Thing('thanks', [
 # }}}1
 debug 'Building...'
 cleanThings()
-checkMissingThings()
+#checkMissingThings()
 #alert "There are #{thingsN} thing archetypes."
 document.getElementById('debug').innerHTML = ''
 debug '<div id="div0" class="thing"></div>'

@@ -200,7 +200,7 @@ bookCase = (s) -> # {{{2
 
     wordsToNotCapitalize = [
         'of', 'in', 'on', 'and', 'the', 'an', 'a', 'with', 'to', 'for', 'from',
-        'be', 'about', 'is'
+        'be', 'is'
     ]
 
     s = s.split(' ')

@@ -1,14 +1,48 @@
 #= require <thing>
+#= require <rand>
 
 # Source for isotope data: https://www.ncsu.edu/chemistry/msf/pdf/IsotopicMass_NaturalAbundance.pdf
 
+isotopeGenerator = (protons, electrons, naturalAbundances) ->
+    ###
+    # example naturalAbundances:
+    # [[0.99, 16], [0.01, 15] 16 neutrons has 99% probability
+    ###
+
+    sum = 0
+    for [prob, neutrons] in naturalAbundances
+        sum += prob
+
+    if sum != 1
+        throw "
+            isotopeGenerator called with invalid naturalAbundances:
+            probabilities don't add up to 1.
+        "
+
+    return ->
+        r = Math.random()
+        sum = 0
+
+        for [prob, neutrons] in naturalAbundances
+            sum += prob
+
+            if r <= sum
+                return [
+                    "proton,#{protons}",
+                    "neutron,#{neutrons}",
+                    "electron,#{electrons}"
+                ]
+
+new Thing 'testium', isotopeGenerator(1, 1, [[0.5, 1], [0.5, 2]])
+
 # TODO: Hydrogen with two neutrons should be called deuterium. How would I go
 #       about doing that?
-new Thing('hydrogen',  ['proton,1', 'neutron', 'neutron,0.0115%', 'electron,1'])
+new Thing 'hydrogen', isotopeGenerator(1, 1, [[0.999885, 1], [0.000115, 2]])
 new Thing('deuterium', ['proton,1', 'neutron,2', 'electron,1'])
 new Thing('tritium',   ['proton,1', 'neutron,3', 'electron,1'])
 
-new Thing('helium', ['proton,2', 'neutron,3', 'neutron,99.999863%', 'electron,2'])
+new Thing 'helium', isotopeGenerator(2, 2, [[0.00000137, 3], [0.99999863, 4]])
+
 new Thing('lithium', ['proton,3', 'neutron,6', 'neutron,92.41%', 'electron,3'])
 new Thing('beryllium', ['proton,4', 'neutron,9', 'electron,4'])
 new Thing('boron', ['proton,5', 'neutron,10', 'neutron,80.1%', 'electron,5'])

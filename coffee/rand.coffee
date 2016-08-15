@@ -25,3 +25,11 @@ weightedChoose = (arr, weightChoose) ->
 randint = (min, max) ->
     #Return a number between min and max, inclusive.
     parseFloat(Math.floor(Math.random() * (max - min + 1))) + parseFloat(min)
+
+chance = (prob) ->
+    ###
+    # Random chance of returning true instead of false.
+    # prob is a probability, like 0.99 would be 99%.
+    ###
+
+    return Math.random() <= prob

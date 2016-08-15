@@ -11,14 +11,14 @@ abundance cannot be given.
 2 Helium 3He 0.000137
          4He 99.999863
 
+/\                      data entered                      /\
+------------------------------------------------------------
+\/                    data not entered                    \/
+
 3 Lithium 6Li 7.59
           7Li 92.41
 
 4 Beryllium 9Be 100
-
-/\                      data entered                      /\
-------------------------------------------------------------
-\/                    data not entered                    \/
 
 5 Boron 10B 19.9
         11B 80.1

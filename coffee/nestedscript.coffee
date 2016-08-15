@@ -57,15 +57,23 @@ class Instance
     name: -> # {{{3
         @name_ = @type.namegen
 
-        if typeof @name_ != 'string'
-            if typeof @name_[0] == 'string'
-                str = choose(@name_)
+        nameToString = (name) ->
+            if typeof name == 'string'
+                return name
+            else if typeof name[0] == 'string'
+                # [string]
+                str = choose name
+            else if typeof name == 'function'
+                return nameToString name()
             else
+                # [[string]]
                 str = ''
-                for i in @name_
+                for i in name
                     str += choose i
 
-            @name_ = str
+            return str
+
+        @name_ = nameToString @name_
 
         nameParts = @name_.split('|')
         @name_ = nameParts[0]
@@ -118,7 +126,7 @@ class Instance
                 @name_ = bookCase(miscGenerators.book())
             when '*CHAR*'
                 @name_ = miscGenerators.char()
-            when '*MONUMENT*' # {{{4
+            when '*MONUMENT*'
                 @name_ = bookCase(miscGenerators.monument())
 
         if nameParts[1] != undefined # {{{4
@@ -127,47 +135,60 @@ class Instance
 
         return
 
-    grow: -> # {{{2
-        if @grown == false
-            @name()
-            for i, toMake of @type.contains
-                if typeof toMake != 'string'
-                    toMake = choose(toMake)
+    grow: -> # {{{3
+        if @grown == true then return
 
-                toMake = toMake.split(',')
-                makeAmount = 1
-                makeProb = 100
+        @name()
 
-                if toMake[1] == undefined
-                    toMake[1] = 1
+        if typeof @type.contains == 'function'
+            contains = @type.contains()
+        else
+            contains = @type.contains
+
+        for i, toMake of contains
+            generateContent = (contents) ->
+                if typeof contents == 'string'
+                    return contents
+                else if typeof contents == 'function'
+                    return generateContent contents()
+                else if typeof contents[0] == 'string'
+                    return choose contents
+
+            toMake = generateContent toMake
+            toMake = toMake.split ','
+
+            makeAmount = 1
+            makeProb = 100
+
+            if toMake[1] == undefined
+                toMake[1] = 1
+            else
+                makeAmount = toMake[1].split('-')
+
+                if makeAmount[1] == undefined
+                    makeAmount = makeAmount[0]
                 else
-                    makeAmount = toMake[1].split('-')
+                    makeAmount = randint(makeAmount[0], makeAmount[1])
 
-                    if makeAmount[1] == undefined
-                        makeAmount = makeAmount[0]
-                    else
-                        makeAmount = randint(makeAmount[0], makeAmount[1])
+                makeProb = (toMake[1] + '?').split('%')
 
-                    makeProb = (toMake[1] + '?').split('%')
+                if makeProb[1] != undefined
+                    makeProb = makeProb[0]
+                    makeAmount = 1
+                else
+                    makeProb = 100
 
-                    if makeProb[1] != undefined
-                        makeProb = makeProb[0]
-                        makeAmount = 1
-                    else
-                        makeProb = 100
+            if things[toMake[0]] != undefined
+                if chance makeProb
+                    ii = 0
+                    while ii < makeAmount
+                        New = new Instance(things[toMake[0]].name_)
+                        New.parent = this
+                        @children.push New
+                        ii++
+        @grown = true
 
-                if things[toMake[0]] != undefined
-                    if Math.random() * 100 <= makeProb
-                        ii = 0
-                        while ii < makeAmount
-                            New = new Instance(things[toMake[0]].name_)
-                            New.parent = this
-                            @children.push New
-                            ii++
-            @grown = true
-        return
-
-    list: -> # {{{2
+    list: -> # {{{3
         str = ''
         addStyle = ''
         for i of @children
@@ -261,13 +282,50 @@ launchNest = (seed) -> # {{{2
 #            - ["banana",["sugar","honey"]] will include a banana, and either
 #              sugar or honey. Unfortunately, this does not work with the format
 #              ".sugar" or ".honey".
+#            - You can now pass it a function that returns a valid 'contains'
+#              when called. You can even pass it an array of functions if you
+#              want. - Ahto
+#              TODO: Broken.
 #        - name generator is optional; if specified, the instance of the Thing
 #          will be named according to this.
-#            It can be either an array containing other arrays (the name will be
-#            patched up from an element of each array) or an identifier for the
-#            name function, like *BOOK*.
-#            A name generator of [["blue ","red "],["frog","toad"]] will produce
-#            names such as "blue frog" or "red toad".
+#            - It can be either an array containing other arrays (the name will be
+#              patched up from an element of each array) or an identifier for the
+#              name function, like *BOOK*.
+#            - A name generator of [["blue ","red "],["frog","toad"]] will produce
+#              names such as "blue frog" or "red toad".
+#            - You can now pass it a function that returns a valid name generator
+#              when called. - Ahto
+
+# Testing and debugging {{{2
+new Thing 'test', ->
+    contents = []
+
+    for thingName of things
+        if thingName.search(/^test./) != -1
+            contents.push thingName
+
+    return contents
+
+new Thing('test1',
+    (-> choose [['diamond'], ['oil']]),
+    (-> return 'test1: ' + choose(['foo', 'bar']))
+)
+
+new Thing 'test2', ->
+        return choose [
+            [(-> 'diamond')],
+            [(-> 'oil')]
+        ]
+
+new Thing 'test3', [
+    (-> ['diamond', 'carbon']),
+    (-> ['oil', 'hydrogen'])
+]
+
+new Thing 'test4', [
+    (-> 'diamond'),
+    (-> 'carbon')
+]
 
 # Basic materials and particles {{{2
 # (these are very rough simplifications, don't hold all the inaccuracies
@@ -286,6 +344,56 @@ new Thing('silica', ['silicon', 'oxygen'])
 new Thing('organic molecule', [
     'carbon,3-10', 'hydrogen,3-10', 'oxygen,0-5', 'nitrogen,0-5'
 ])
+
+# Amino acids {{{3
+new Thing('alanine', ['.organic molecule'])
+new Thing('cysteine', ['.organic molecule'])
+new Thing('aspartic acid', ['.organic molecule'])
+new Thing('glutamic acid', ['.organic molecule'])
+new Thing('phenylalanine', ['.organic molecule'])
+new Thing('glycine', ['.organic molecule'])
+new Thing('histidine', ['.organic molecule'])
+new Thing('isoleucine', ['.organic molecule'])
+new Thing('lysine', ['.organic molecule'])
+new Thing('leucine', ['.organic molecule'])
+new Thing('methionine', ['.organic molecule'])
+new Thing('asparagine', ['.organic molecule'])
+new Thing('pyrrolysine', ['.organic molecule'])
+new Thing('proline', ['.organic molecule'])
+new Thing('glutamine', ['.organic molecule'])
+new Thing('arginine', ['.organic molecule'])
+new Thing('serine', ['.organic molecule'])
+new Thing('threonine', ['.organic molecule'])
+new Thing('selenocysteine', ['.organic molecule'])
+new Thing('valine', ['.organic molecule'])
+new Thing('tryptophan', ['.organic molecule'])
+new Thing('tyrosine', ['.organic molecule'])
+
+new Thing('amino acids', [
+    'alanine',
+    'cysteine',
+    'aspartic acid',
+    'glutamic acid',
+    'phenylalanine',
+    'glycine',
+    'histidine',
+    'isoleucine',
+    'lysine',
+    'leucine',
+    'methionine',
+    'asparagine',
+    'pyrrolysine',
+    'proline',
+    'glutamine',
+    'arginine',
+    'serine',
+    'threonine',
+    'selenocysteine',
+    'valine',
+    'tryptophan',
+    'tyrosine'
+])
+# }}}3
 
 new Thing('chitin', ['.organic molecule'])
 new Thing('salt', ['chlorine', 'sodium'])
@@ -306,11 +414,6 @@ new Thing('alcohol',  ['.glucids'])
 new Thing('atom', ['proton', 'neutron', 'electron'], ['atoms'])
 new Thing('steel', ['iron', 'carbon'])
 
-###
-# Arginine
-# Histidine
-# Lysine
-###
 new Thing('proteins', ['.molecule'])
 
 new Thing('lipids', ['.molecule'])
@@ -9711,7 +9814,7 @@ new Thing('thanks', [
 
 # }}}1
 debug 'Building...'
-cleanThings()
+#cleanThings()
 #checkMissingThings()
 #alert "There are #{thingsN} thing archetypes."
 document.getElementById('debug').innerHTML = ''

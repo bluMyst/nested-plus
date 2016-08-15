@@ -1,10 +1,6 @@
-# vim: foldmethod=marker
+# vim: foldmethod=marker colorcolumn=80
 # Todo list {{{1
 # To test:
-# - Painting generator.
-# - Note generator.
-# - All generators, now that we're using a switch statement.
-# - New folder structure, and makefiles.
 # - make.sh, on Linux.
 #
 # Add a warning that make.sh is untested.
@@ -117,7 +113,7 @@ class Instance
             when '*PAINTING*'
                 @name_ = miscGenerators.painting()
             when '*NOTE*'
-                @name = miscGenerators.note()
+                @name_ = miscGenerators.note()
             when '*BOOK*'
                 @name_ = bookCase(miscGenerators.book())
             when '*CHAR*'
@@ -274,19 +270,24 @@ launchNest = (seed) -> # {{{2
 #            names such as "blue frog" or "red toad".
 
 # Basic materials and particles {{{2
-# (these are very rough simplifications, don't hold all the inaccuracies against me)
+# (these are very rough simplifications, don't hold all the inaccuracies
+# against me)
 
-new Thing('diamond', [ 'carbon' ])
-new Thing('oil', [ 'lipids' ])
-new Thing('magma', [ '.rock' ])
+new Thing('diamond', ['carbon'])
+new Thing('oil', ['lipids'])
+new Thing('magma', ['.rock'])
 
 new Thing('rock', [
     'silica', 'aluminum,30%', 'iron,20%', 'potassium,20%', 'sodium,50%',
     'calcium,50%'
 ])
-
 new Thing('silica', ['silicon', 'oxygen'])
-new Thing('chitin', ['carbon', 'hydrogen', 'oxygen', 'nitrogen'])
+
+new Thing('organic molecule', [
+    'carbon,3-10', 'hydrogen,3-10', 'oxygen,0-5', 'nitrogen,0-5'
+])
+
+new Thing('chitin', ['.organic molecule'])
 new Thing('salt', ['chlorine', 'sodium'])
 new Thing('water', ['hydrogen', 'oxygen'])
 new Thing('fire', ['oxygen', 'carbon'])
@@ -302,10 +303,16 @@ new Thing('rubber',  ['polymers'])
 new Thing('polymers', ['.glucids'])
 new Thing('alcohol',  ['.glucids'])
 
-# Elements {{{2
 new Thing('atom', ['proton', 'neutron', 'electron'], ['atoms'])
 new Thing('steel', ['iron', 'carbon'])
+
+###
+# Arginine
+# Histidine
+# Lysine
+###
 new Thing('proteins', ['.molecule'])
+
 new Thing('lipids', ['.molecule'])
 new Thing('glucids', ['carbon', 'hydrogen', 'oxygen'], 'glucose')
 

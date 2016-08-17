@@ -1,25 +1,29 @@
 # vim: foldmethod=marker colorcolumn=80
 # Todo list {{{1
-# To test:
-# - make.sh, on Linux.
-#
-# Change default skin to the cool dark one.
-#
-# miscGenerators.book should bookCase its output
-#
-# How many Things on screen is too many?
-#
-# weightedChoose should take arguments in the opposite order.
-#
-# test autorun.coffee and the new make.ps1
-#
-# Rewrite make.sh to generate autorun.js
-#
-# Make autorun.coffee import nestedscript.coffee, then remove nestedscript.js
-# from the HTML.
-#
-# Make a stable build for master. Because having 'master' and 'experimental'
-# is misleading right now.
+###
+To test:
+- make.sh, on Linux.
+
+Change default skin to the cool dark one.
+
+miscGenerators.book should bookCase its output
+
+How many Things on screen is too many?
+
+weightedChoose should take arguments in the opposite order.
+
+test autorun.coffee and the new make.ps1
+
+Rewrite make.sh to generate autorun.js
+
+Make autorun.coffee import nestedscript.coffee, then remove nestedscript.js
+from the HTML.
+
+Make a stable build for master. Because having 'master' and 'experimental'
+is misleading right now.
+
+Test atoms.coffee code.
+###
 
 # Comments {{{1
 # Converted by js2coffee 2.2.0 but tweaked and refactored from there manually.

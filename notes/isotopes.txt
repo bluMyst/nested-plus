@@ -50,10 +50,6 @@ abundance cannot be given.
 
 15 Phosphorus 31P 100%
 
-/\                      data entered                      /\
-------------------------------------------------------------
-\/                    data not entered                    \/
-
 16 Sulphur 32S 94.93%
            33S  0.76%
            34S  4.29%
@@ -153,13 +149,13 @@ abundance cannot be given.
              87Sr  7.00%
              88Sr 82.58%
 
-9 Yttrium 89Y 100%
+39 Yttrium 89Y 100%
 
-40 Zirconium 90Zr 51.45
-             91Zr 11.22
-             92Zr 17.15
-             94Zr 17.38
-             96Zr  2.80
+40 Zirconium 90Zr 51.45%
+             91Zr 11.22%
+             92Zr 17.15%
+             94Zr 17.38%
+             96Zr  2.80%
 
 41 Niobium 93Nb 100
 
@@ -171,7 +167,7 @@ abundance cannot be given.
                98Mo 24.13%
               100Mo  9.63%
 
-43 Technetium 98Tc 97.907216 *
+43 Technetium 98Tc *
 
 44 Ruthenium 96Ru   5.54%
              98Ru   1.87%

@@ -2,25 +2,35 @@
 #= require <rand>
 
 # Source for isotope data: https://www.ncsu.edu/chemistry/msf/pdf/IsotopicMass_NaturalAbundance.pdf
+# See notes/ for more info.
 
 isotopeGenerator = (protons, electrons, naturalAbundances) ->
     ###
     # example naturalAbundances:
-    # [[0.99, 16], [0.01, 15] 16 neutrons has 99% probability
+    # [[99, 16], [1, 15] 16 neutrons has 99% probability
     ###
 
     sum = 0
     for [prob, neutrons] in naturalAbundances
         sum += prob
 
-    if sum != 1
+    if sum != 100
         throw "
             isotopeGenerator called with invalid naturalAbundances:
             probabilities don't add up to 1.
         "
 
+    if naturalAbundances.length == 1
+        [prob, neutrons] = naturalAbundances[0]
+
+        return [
+            "proton,#{protons}",
+            "neutron,#{neutrons}",
+            "electron,#{electrons}"
+        ]
+
     return ->
-        r = Math.random()
+        r = Math.random()*100
         sum = 0
 
         for [prob, neutrons] in naturalAbundances
@@ -33,181 +43,566 @@ isotopeGenerator = (protons, electrons, naturalAbundances) ->
                     "electron,#{electrons}"
                 ]
 
-new Thing 'testium', isotopeGenerator(1, 1, [[0.5, 1], [0.5, 2]])
+new Thing 'testium', isotopeGenerator(1, 1, [
+    [0.5, 1], [0.5, 2]])
 
-# 1 Hydrogen  1H 99.9885%
-#   Deuterium 2H  0.0115%
-#   Tritium   3H *
 # TODO: Hydrogen with two neutrons should be called deuterium. How would I go
 #       about doing that?
-new Thing 'hydrogen', isotopeGenerator(1, 1, [[0.999885, 1], [0.000115, 2]])
-new Thing 'deuterium', ['proton,1', 'neutron,2', 'electron,1']
-new Thing 'tritium',   ['proton,1', 'neutron,3', 'electron,1']
+new Thing 'hydrogen', isotopeGenerator(1, 1, [
+    [99.9885, 1],
+    [ 0.0115, 2],
+    [ 0.0000, 3])
 
-# 2 Helium 3He  0.000137%
-#          4He 99.999863%
-new Thing 'helium',  isotopeGenerator(2, 2, [[0.00000137, 3], [0.99999863, 4]])
+new Thing 'deuterium', isotopeGenerator(1, 1, [
+    [100, 2]])
 
-# 3 Lithium 6Li  7.59%
-#           7Li 92.41%
-new Thing 'lithium', isotopeGenerator(3, 3, [[0.0759, 6], [0.9241, 7]])
+new Thing 'tritium',   isotopeGenerator(1, 1, [
+    [100, 3]])
 
-# 4 Beryllium 9Be 100%
-new Thing 'beryllium', ['proton,4', 'neutron,9', 'electron,4']
+new Thing 'helium',  isotopeGenerator(2, 2, [
+    [ 0.000137, 3],
+    [99.999863, 4]])
 
-# 5 Boron 10B 19.9%
-#         11B 80.1%
-new Thing 'boron', isotopeGenerator(5, 5, [[0.199, 10], [0.801, 11]])
+new Thing 'lithium', isotopeGenerator(3, 3, [
+    [ 7.59, 6],
+    [92.41, 7]])
 
-# 6 Carbon 12C 98.93%
-#          13C  1.07%
-#          14C  *
-new Thing 'carbon', isotopeGenerator(6, 6, [[0.9893, 12], [0.0107, 13]])
+new Thing 'beryllium', isotopeGenerator(4, 4, [
+    [100, 9]])
 
-# 7 Nitrogen 14N 99.632%
-#            15N  0.368%
-new Thing 'nitrogen', isotopeGenerator(7, 7, [[0.99632, 14], [0.00368, 15]])
+new Thing 'boron', isotopeGenerator(5, 5, [
+    [19.9, 10],
+    [80.1, 11]])
 
+new Thing 'carbon', isotopeGenerator(6, 6, [
+    [98.93, 12],
+    [ 1.07, 13],
+    [ 0.00, 14]])
 
-# 8 Oxygen 16O 99.757%
-#          17O  0.038%
-#          18O  0.205%
+new Thing 'nitrogen', isotopeGenerator(7, 7, [
+    [99.632, 14],
+    [ 0.368, 15]])
+
 new Thing 'oxygen', isotopeGenerator(9, 9, [
-    [0.99656, 16], [0.00038, 17], [0.00205, 18]])
+    [99.757, 16],
+    [ 0.038, 17],
+    [ 0.205, 18]])
 
-# 9 Fluorine 19F 100%
-new Thing('fluorine', ['proton,9', 'neutron,19', 'electron,9'])
+new Thing 'fluorine', isotopeGenerator(9, 9, [
+    [100, 19]])
 
-# 10 Neon 20Ne 90.48%
-#         21Ne  0.27%
-#         22Ne  9.25%
 new Thing 'neon', isotopeGenerator(10, 10, [
-    [0.9048, 20], [0.0027, 21], [0.0925, 22]])
+    [90.48, 20],
+    [ 0.27, 21],
+    [ 9.25, 22]])
 
-# 11 Sodium 23Na 100%
-new Thing('sodium', ['proton,11', 'neutron,23', 'electron,11'])
+new Thing 'sodium', isotopeGenerator(11, 11, [
+    [100, 23]])
 
-# 12 Magnesium 24Mg 78.99%
-#              25Mg 10.00%
-#              26Mg 11.01%
-new Thing 'magnesium', isotopeGenerator(12, 12, [[0.7899, 24], [0.1000, 25], [0.1101, 26]])
+new Thing 'magnesium', isotopeGenerator(12, 12, [
+    [78.99, 24],
+    [10.00, 25],
+    [11.01, 26]])
 
-# 13 Aluminum 27Al 100%
-new Thing 'aluminum', ['proton,13', 'neutron,27', 'electron,13']
+new Thing 'aluminum', isotopeGenerator(13, 13, [
+    [100, 27]])
 
-# 14 Silicon 28Si 92.2297%
-#            29Si  4.6832%
-#            30Si  3.0872%
 new Thing 'silicon', isotopeGenerator(14, 14, [
-    [0.922297, 28]
-    [0.046832, 29]
-    [0.030872, 30]])
+    [92.2297, 28]
+    [ 4.6832, 29]
+    [ 3.0872, 30]])
 
-# 15 Phosphorus 31P 100%
-new Thing 'phosphorus', ['proton,15', 'neutron,31', 'electron,15']
+new Thing 'phosphorus', isotopeGenerator(15, 15, [
+    [100, 31]])
 
-new Thing('sulfur', ['proton,16', 'neutron,32', 'electron,16']) # TODO: isotope data
+new Thing 'sulphur', isotopeGenerator(16, 16, [
+    [94.93, 32]
+    [ 0.76, 33]
+    [ 4.29, 34]
+    [ 0.02, 36]])
 
-# TODO: Everything after this point has no isotope data
-new Thing('chlorine', ['proton,17', 'neutron,0-3', 'electron,17'])
-new Thing('argon', ['proton,18', 'neutron,0-3', 'electron,18'])
-new Thing('potassium', ['proton,19', 'neutron,0-3', 'electron,19'])
-new Thing('calcium', ['proton,20', 'neutron,0-3', 'electron,20'])
-new Thing('scandium', ['proton,21', 'neutron,0-3', 'electron,21'])
-new Thing('titanium', ['proton,22', 'neutron,0-3', 'electron,22'])
-new Thing('vanadium', ['proton,23', 'neutron,0-3', 'electron,23'])
-new Thing('chromium', ['proton,24', 'neutron,0-3', 'electron,24'])
-new Thing('manganese', ['proton,25', 'neutron,0-3', 'electron,25'])
-new Thing('iron', ['proton,26', 'neutron,0-3', 'electron,26'])
-new Thing('cobalt', ['proton,27', 'neutron,0-3', 'electron,27'])
-new Thing('nickel', ['proton,28', 'neutron,0-3', 'electron,28'])
-new Thing('copper', ['proton,29', 'neutron,0-3', 'electron,29'])
-new Thing('zinc', ['proton,30', 'neutron,0-3', 'electron,30'])
-new Thing('gallium', ['proton,31', 'neutron,0-3', 'electron,31'])
-new Thing('germanium', ['proton,32', 'neutron,0-3', 'electron,32'])
-new Thing('arsenic', ['proton,33', 'neutron,0-3', 'electron,33'])
-new Thing('selenium', ['proton,34', 'neutron,0-3', 'electron,34'])
-new Thing('bromine', ['proton,35', 'neutron,0-3', 'electron,35'])
-new Thing('krypton', ['proton,36', 'neutron,0-3', 'electron,36'])
-new Thing('rubidium', ['proton,37', 'neutron,0-3', 'electron,37'])
-new Thing('strontium', ['proton,38', 'neutron,0-3', 'electron,38'])
-new Thing('yttrium', ['proton,39', 'neutron,0-3', 'electron,39'])
-new Thing('zirconium', ['proton,40', 'neutron,0-3', 'electron,40'])
-new Thing('niobium', ['proton,41', 'neutron,0-3', 'electron,41'])
-new Thing('molybdenum', ['proton,42', 'neutron,0-3', 'electron,42'])
-new Thing('technetium', ['proton,43', 'neutron,0-3', 'electron,43'])
-new Thing('ruthenium', ['proton,44', 'neutron,0-3', 'electron,44'])
-new Thing('rhodium', ['proton,45', 'neutron,0-3', 'electron,45'])
-new Thing('palladium', ['proton,46', 'neutron,0-3', 'electron,46'])
-new Thing('silver', ['proton,47', 'neutron,0-3', 'electron,47'])
-new Thing('cadmium', ['proton,48', 'neutron,0-3', 'electron,48'])
-new Thing('indium', ['proton,49', 'neutron,0-3', 'electron,49'])
-new Thing('tin', ['proton,50', 'neutron,0-3', 'electron,50'])
-new Thing('antimony', ['proton,51', 'neutron,0-3', 'electron,51'])
-new Thing('tellurium', ['proton,52', 'neutron,0-3', 'electron,52'])
-new Thing('iodine', ['proton,53', 'neutron,0-3', 'electron,53'])
-new Thing('xenon', ['proton,54', 'neutron,0-3', 'electron,54'])
-new Thing('cesium', ['proton,55', 'neutron,0-3', 'electron,55'])
-new Thing('barium', ['proton,56', 'neutron,0-3', 'electron,56'])
-new Thing('lanthanum', ['proton,57', 'neutron,0-3', 'electron,57'])
-new Thing('cerium', ['proton,58', 'neutron,0-3', 'electron,58'])
-new Thing('praseodymium', ['proton,59', 'neutron,0-3', 'electron,59'])
-new Thing('neodymium', ['proton,60', 'neutron,0-3', 'electron,60'])
-new Thing('promethium', ['proton,61', 'neutron,0-3', 'electron,61'])
-new Thing('samarium', ['proton,62', 'neutron,0-3', 'electron,62'])
-new Thing('europium', ['proton,63', 'neutron,0-3', 'electron,63'])
-new Thing('gadolinium', ['proton,64', 'neutron,0-3', 'electron,64'])
-new Thing('terbium', ['proton,65', 'neutron,0-3', 'electron,65'])
-new Thing('dysprosium', ['proton,66', 'neutron,0-3', 'electron,66'])
-new Thing('holmium', ['proton,67', 'neutron,0-3', 'electron,67'])
-new Thing('erbium', ['proton,68', 'neutron,0-3', 'electron,68'])
-new Thing('thulium', ['proton,69', 'neutron,0-3', 'electron,69'])
-new Thing('ytterbium', ['proton,70', 'neutron,0-3', 'electron,70'])
-new Thing('lutetium', ['proton,71', 'neutron,0-3', 'electron,71'])
-new Thing('hafnium', ['proton,72', 'neutron,0-3', 'electron,72'])
-new Thing('tantalum', ['proton,73', 'neutron,0-3', 'electron,73'])
-new Thing('tungsten', ['proton,74', 'neutron,0-3', 'electron,74'])
-new Thing('rhenium', ['proton,75', 'neutron,0-3', 'electron,75'])
-new Thing('osmium', ['proton,76', 'neutron,0-3', 'electron,76'])
-new Thing('iridium', ['proton,77', 'neutron,0-3', 'electron,77'])
-new Thing('platinum', ['proton,78', 'neutron,0-3', 'electron,78'])
-new Thing('gold', ['proton,79', 'neutron,0-3', 'electron,79'])
-new Thing('mercury', ['proton,80', 'neutron,0-3', 'electron,80'])
-new Thing('thallium', ['proton,81', 'neutron,0-3', 'electron,81'])
-new Thing('lead', ['proton,82', 'neutron,0-3', 'electron,82'])
-new Thing('bismuth', ['proton,83', 'neutron,0-3', 'electron,83'])
-new Thing('polonium', ['proton,84', 'neutron,0-3', 'electron,84'])
-new Thing('astatine', ['proton,85', 'neutron,0-3', 'electron,85'])
-new Thing('radon', ['proton,86', 'neutron,0-3', 'electron,86'])
-new Thing('francium', ['proton,87', 'neutron,0-3', 'electron,87'])
-new Thing('radium', ['proton,88', 'neutron,0-3', 'electron,88'])
-new Thing('actinium', ['proton,89', 'neutron,0-3', 'electron,89'])
-new Thing('thorium', ['proton,90', 'neutron,0-3', 'electron,90'])
-new Thing('protactinium', ['proton,91', 'neutron,0-3', 'electron,91'])
-new Thing('uranium', ['proton,92', 'neutron,0-3', 'electron,92'])
-new Thing('neptunium', ['proton,93', 'neutron,0-3', 'electron,93'])
-new Thing('plutonium', ['proton,94', 'neutron,0-3', 'electron,94'])
-new Thing('americium', ['proton,95', 'neutron,0-3', 'electron,95'])
-new Thing('curium', ['proton,96', 'neutron,0-3', 'electron,96'])
-new Thing('berkelium', ['proton,97', 'neutron,0-3', 'electron,97'])
-new Thing('californium', ['proton,98', 'neutron,0-3', 'electron,98'])
-new Thing('einsteinium', ['proton,99', 'neutron,0-3', 'electron,99'])
-new Thing('fermium', ['proton,100', 'neutron,0-3', 'electron,100'])
-new Thing('mendelevium', ['proton,101', 'neutron,0-3', 'electron,101'])
-new Thing('nobelium', ['proton,102', 'neutron,0-3', 'electron,102'])
-new Thing('lawrencium', ['proton,103', 'neutron,0-3', 'electron,103'])
-new Thing('rutherfordium', ['proton,104', 'neutron,0-3', 'electron,104'])
-new Thing('dubnium', ['proton,105', 'neutron,0-3', 'electron,105'])
-new Thing('seaborgium', ['proton,106', 'neutron,0-3', 'electron,106'])
-new Thing('bohrium', ['proton,107', 'neutron,0-3', 'electron,107'])
-new Thing('hassium', ['proton,108', 'neutron,0-3', 'electron,108'])
-new Thing('meitnerium', ['proton,109', 'neutron,0-3', 'electron,109'])
-new Thing('darmstadtium', ['proton,110', 'neutron,0-3', 'electron,110'])
-new Thing('roentgenium', ['proton,111', 'neutron,0-3', 'electron,111'])
-new Thing('ununbium', ['proton,112', 'neutron,0-3', 'electron,112'])
-new Thing('ununtrium', ['proton,113', 'neutron,0-3', 'electron,113'])
-new Thing('ununquadium', ['proton,114', 'neutron,0-3', 'electron,114'])
-new Thing('ununpentium', ['proton,115', 'neutron,0-3', 'electron,115'])
-new Thing('ununhexium', ['proton,116', 'neutron,0-3', 'electron,116'])
-new Thing('ununseptium', ['proton,117', 'neutron,0-3', 'electron,117'])
-new Thing('ununoctium', ['proton,118', 'neutron,0-3', 'electron,118'])
+new Thing 'chlorine', isotopeGenerator(17, 17, [
+    [75.78, 35]
+    [24.22, 37]])
+
+new Thing 'argon', isotopeGenerator(18, 18, [
+    [ 0.3365, 36]
+    [ 0.0632, 38]
+    [99.6003, 40]])
+
+new Thing 'potassium', isotopeGenerator(19, 19, [
+    [93.2581, 39]
+    [ 0.0117, 40]
+    [ 6.7302, 41]])
+
+new Thing 'calcium', isotopeGenerator(20, 20, [
+    [96.941, 40]
+    [ 0.647, 42]
+    [ 0.135, 43]
+    [ 2.086, 44]
+    [ 0.004, 46]
+    [ 0.187, 48]])
+
+new Thing 'scandium', isotopeGenerator(21, 21, [
+    [100, 45]])
+
+new Thing 'titanium', isotopeGenerator(22, 22, [
+    [ 8.25, 46]
+    [ 7.44, 47]
+    [73.72, 48]
+    [ 5.41, 49]
+    [ 5.18, 50]
+])
+
+new Thing 'vanadium', isotopeGenerator(23, 23, [
+    [ 0.250, 50]
+    [99.750, 51]])
+
+new Thing 'chromium', isotopeGenerator(24, 24, [
+    [ 4.345, 50]
+    [83.789, 52]
+    [ 9.501, 53]
+    [ 2.365, 54]])
+
+new Thing 'manganese', isotopeGenerator(25, 25, [
+    [100, 55]])
+
+new Thing 'iron', isotopeGenerator(26, 26, [
+    [ 5.845, 54]
+    [91.754, 56]
+    [ 2.119, 57]
+    [ 0.282, 58]])
+
+new Thing 'cobalt', isotopeGenerator(27, 27, [
+    [100, 59]])
+
+new Thing 'nickel', isotopeGenerator(28, 28, [
+    [68.0769, 58]
+    [26.2231, 60]
+    [ 1.1399, 61]
+    [ 3.6345, 62]
+    [ 0.9256, 64]])
+
+new Thing 'copper', isotopeGenerator(29, 29, [
+    [69.17, 63]
+    [30.83, 65]])
+
+new Thing 'zinc', isotopeGenerator(30, 30, [
+    [48.63, 64]
+    [27.90, 66]
+    [ 4.10, 67]
+    [18.75, 68]
+    [ 0.62, 70]])
+
+new Thing 'gallium', isotopeGenerator(31, 31, [
+    [60.108, 69]
+    [39.892, 71]])
+
+new Thing 'germanium', isotopeGenerator(32, 32, [
+    [20.84, 70]
+    [27.54, 72]
+    [ 7.73, 73]
+    [36.28, 74]
+    [ 7.61, 76]])
+
+new Thing 'arsenic', isotopeGenerator(33, 33, [
+    [100, 75]])
+
+new Thing 'selenium', isotopeGenerator(34, 34, [
+    [ 0.89, 74]
+    [ 9.37, 76]
+    [ 7.63, 77]
+    [23.77, 78]
+    [49.61, 80]
+    [ 8.73, 82]])
+
+new Thing 'bromine', isotopeGenerator(35, 35, [
+    [50.69, 79]
+    [49.31, 81]])
+
+new Thing 'krypton', isotopeGenerator(36, 36, [
+    [ 0.35, 78]
+    [ 2.28, 80]
+    [11.58, 82]
+    [11.49, 83]
+    [57.00, 84]
+    [17.30, 86]])
+
+new Thing 'rubidium', isotopeGenerator(37, 37, [
+    [72.17, 85]
+    [27.83, 87]])
+
+new Thing 'strontium', isotopeGenerator(38, 38, [
+    [ 0.56, 84]
+    [ 9.86, 86]
+    [ 7.00, 87]
+    [82.58, 88]])
+
+new Thing 'yttrium', isotopeGenerator(39, 39, [
+    [100, 89]])
+
+new Thing 'zirconium', isotopeGenerator(40, 40, [
+    [51.45, 90]
+    [11.22, 91]
+    [17.15, 92]
+    [17.38, 94]
+    [ 2.80, 96]])
+
+new Thing 'niobium', isotopeGenerator(41, 41, [
+    [100, 93]])
+
+new Thing 'molybdenum', isotopeGenerator(42, 42, [
+    [14.84, 92]
+    [ 9.25, 94]
+    [15.92, 95]
+    [16.68, 96]
+    [ 9.55, 97]
+    [24.13, 98]
+    [ 9.63, 100]])
+
+new Thing 'technetium', isotopeGenerator(43, 43, [
+    [100, 98]])
+
+new Thing 'ruthenium', isotopeGenerator(44, 44, [
+    [5.54, 96]
+    [1.87, 98]
+    [12.76, 99]
+    [12.60, 100]
+    [17.06, 101]
+    [31.55, 102]
+    [18.62, 104]])
+
+new Thing 'rhodium', isotopeGenerator(45, 45, [
+    [100, 103]])
+
+new Thing 'palladium', isotopeGenerator(46, 46, [
+    [ 1.02, 102]
+    [11.14, 104]
+    [22.33, 105]
+    [27.33, 106]
+    [26.46, 108]
+    [11.72, 110]])
+
+new Thing 'silver', isotopeGenerator(47, 47, [
+    [51.839, 107]
+    [48.161, 109]])
+
+new Thing 'cadmium', isotopeGenerator(48, 48, [
+    [ 1.25, 106]
+    [ 0.89, 108]
+    [12.49, 110]
+    [12.80, 111]
+    [24.13, 112]
+    [12.22, 113]
+    [28.73, 114]
+    [ 7.49, 116]])
+
+new Thing 'indium', isotopeGenerator(49, 49, [
+    [ 4.29, 113]
+    [95.71, 115]])
+
+new Thing 'tin', isotopeGenerator(50, 50, [
+    [ 0.97, 112]
+    [ 0.66, 114]
+    [ 0.34, 115]
+    [14.54, 116]
+    [ 7.68, 117]
+    [24.22, 118]
+    [ 8.59, 119]
+    [32.58, 120]
+    [ 4.63, 122]
+    [ 5.79, 124]])
+
+new Thing 'antimony', isotopeGenerator(51, 51, [
+    [57.21, 121]
+    [42.79, 123]])
+
+new Thing 'tellurium', isotopeGenerator(52, 52, [
+    [0.09, 120]
+    [2.55, 122]
+    [0.89, 123]
+    [4.74, 124]
+    [7.07, 125]
+    [18.84, 126]
+    [31.74, 128]
+    [34.08, 130]])
+
+new Thing 'iodine', isotopeGenerator(53, 53, [
+    [100, 127]])
+
+new Thing 'xenon', isotopeGenerator(54, 54, [
+    [ 0.09, 124]
+    [ 0.09, 126]
+    [ 1.92, 128]
+    [26.44, 129]
+    [ 4.08, 130]
+    [21.18, 131]
+    [26.89, 132]
+    [10.44, 134]
+    [ 8.87, 136]])
+
+new Thing 'cesium', isotopeGenerator(55, 55, [
+    [100, 133]])
+
+new Thing 'barium', isotopeGenerator(56, 56, [
+    [ 0.106, 130]
+    [ 0.101, 132]
+    [ 2.417, 134]
+    [ 6.592, 135]
+    [ 7.854, 136]
+    [11.232, 137]
+    [71.698, 138]])
+
+new Thing 'lanthanum', isotopeGenerator(57, 57, [
+    [ 0.090, 138]
+    [99.910, 139]])
+
+new Thing 'cerium', isotopeGenerator(58, 58, [
+    [ 0.185, 136]
+    [ 0.251, 138]
+    [88.450, 140]
+    [11.114, 142]])
+
+new Thing 'praseodymium', isotopeGenerator(59, 59, [
+    [100, 141]])
+
+new Thing 'neodymium', isotopeGenerator(60, 60, [
+    [27.2, 142]
+    [12.2, 143]
+    [23.8, 144]
+    [ 8.3, 145]
+    [17.2, 146]
+    [ 5.7, 148]
+    [ 5.6, 150]])
+
+new Thing 'promethium', isotopeGenerator(61, 61, [
+    [100, 145]])
+
+new Thing 'samarium', isotopeGenerator(62, 62, [
+    [ 3.07, 144]
+    [14.99, 147]
+    [11.24, 148]
+    [13.82, 149]
+    [ 7.38, 150]
+    [26.75, 152]
+    [22.75, 154]])
+
+new Thing 'europium', isotopeGenerator(63, 63, [
+    [47.81, 151]
+    [52.19, 153]])
+
+new Thing 'gadolinium', isotopeGenerator(64, 64, [
+    [ 0.20, 152]
+    [ 2.18, 154]
+    [14.80, 155]
+    [20.47, 156]
+    [15.65, 157]
+    [24.84, 158]
+    [21.86, 160]])
+
+new Thing 'terbium', isotopeGenerator(65, 65, [
+    [100, 159]])
+
+new Thing 'dysprosium', isotopeGenerator(66, 66, [
+    [ 0.06, 156]
+    [ 0.10, 158]
+    [ 2.34, 160]
+    [18.91, 161]
+    [25.51, 162]
+    [24.90, 163]
+    [28.18, 164]])
+
+new Thing 'holmium', isotopeGenerator(67, 67, [
+    [100, 165]])
+
+new Thing 'erbium', isotopeGenerator(68, 68, [
+    [ 0.14, 162]
+    [ 1.61, 164]
+    [33.61, 166]
+    [22.93, 167]
+    [26.78, 168]
+    [14.93, 170]])
+
+new Thing 'thulium', isotopeGenerator(69, 69, [
+    [100, 169]])
+
+new Thing 'ytterbium', isotopeGenerator(70, 70, [
+    [ 0.13, 168]
+    [ 3.04, 170]
+    [14.28, 171]
+    [21.83, 172]
+    [16.13, 173]
+    [31.83, 174]
+    [12.76, 176]])
+
+new Thing 'lutetium', isotopeGenerator(71, 71, [
+    [97.41, 175]
+    [ 2.59, 176]])
+
+new Thing 'hafnium', isotopeGenerator(72, 72, [
+    [ 0.16, 174]
+    [ 5.26, 176]
+    [18.60, 177]
+    [27.28, 178]
+    [13.62, 179]
+    [35.08, 180]])
+
+new Thing 'tantalum', isotopeGenerator(73, 73, [
+    [ 0.012, 180]
+    [99.988, 181]])
+
+new Thing 'tungsten', isotopeGenerator(74, 74, [
+    [ 0.12, 180]
+    [26.50, 182]
+    [14.31, 183]
+    [30.64, 184]
+    [28.43, 186]])
+
+new Thing 'rhenium', isotopeGenerator(75, 75, [
+    [37.40, 185]
+    [62.60, 187]])
+
+new Thing 'osmium', isotopeGenerator(76, 76, [
+    [ 0.02, 184]
+    [ 1.59, 186]
+    [ 1.96, 187]
+    [13.24, 188]
+    [16.15, 189]
+    [26.26, 190]
+    [40.78, 192]])
+
+new Thing 'iridium', isotopeGenerator(77, 77, [
+    [37.3, 191]
+    [62.7, 193]])
+
+new Thing 'platinum', isotopeGenerator(78, 78, [
+    [ 0.014, 190]
+    [ 0.782, 192]
+    [32.967, 194]
+    [33.832, 195]
+    [25.242, 196]
+    [ 7.163, 198]])
+
+new Thing 'gold', isotopeGenerator(79, 79, [
+    [100, 197]])
+
+new Thing 'mercury', isotopeGenerator(80, 80, [
+    [ 0.15, 196]
+    [ 9.97, 198]
+    [16.87, 199]
+    [23.10, 200]
+    [13.18, 201]
+    [29.86, 202]
+    [ 6.87, 204]])
+
+new Thing 'thallium', isotopeGenerator(81, 81, [
+    [29.524, 203]
+    [70.476, 205]])
+
+new Thing 'lead', isotopeGenerator(82, 82, [
+    [ 1.4, 204]
+    [24.1, 206]
+    [22.1, 207]
+    [52.4, 208]])
+
+new Thing 'bismuth', isotopeGenerator(83, 83, [
+    [100, 209]])
+
+new Thing 'polonium', isotopeGenerator(84, 84, [
+    [100, 209]])
+
+
+new Thing 'astatine', isotopeGenerator(85, 85, [
+    [100, 210]])
+
+new Thing 'radon', isotopeGenerator(86, 86, [
+    [100, 222]])
+
+new Thing 'francium', isotopeGenerator(87, 87, [
+    [100, 223]])
+
+new Thing 'radium', isotopeGenerator(88, 88, [
+    [100, 226]])
+
+new Thing 'actinium', isotopeGenerator(89, 89, [
+    [100, 227]])
+
+new Thing 'thorium', isotopeGenerator(90, 90, [
+    [100, 232]])
+
+new Thing 'protactinium', isotopeGenerator(91, 91, [
+    [100, 231]])
+
+new Thing 'uranium', isotopeGenerator(92, 92, [
+    [ 0.0055, 234]
+    [ 0.7200, 235]
+    [99.2745, 238]])
+
+new Thing 'neptunium', isotopeGenerator(93, 93, [
+    [100, 237]])
+
+new Thing 'plutonium', isotopeGenerator(94, 94, [
+    [100, 244]])
+
+new Thing 'americium', isotopeGenerator(95, 95, [
+    [100, 243]])
+
+new Thing 'curium', isotopeGenerator(96, 96, [
+    [100, 247]])
+
+new Thing 'berkelium', isotopeGenerator(97, 97, [
+    [100, 247]])
+
+new Thing 'californium', isotopeGenerator(98, 98, [
+    [100, 251]])
+
+new Thing 'einsteinium', isotopeGenerator(99, 99, [
+    [100, 252]])
+
+new Thing 'fermium', isotopeGenerator(100, 100, [
+    [100, 257]])
+
+new Thing 'mendelevium', isotopeGenerator(101, 101, [
+    [100, 258]])
+
+new Thing 'nobelium', isotopeGenerator(102, 102, [
+    [100, 259]])
+
+new Thing 'lawrencium', isotopeGenerator(103, 103, [
+    [100, 262]])
+
+new Thing 'rutherfordium', isotopeGenerator(104, 104, [
+    [100, 263]])
+
+new Thing 'dubnium', isotopeGenerator(105, 105, [
+    [100, 262]])
+
+new Thing 'seaborgium', isotopeGenerator(106, 106, [
+    [100, 266]])
+
+new Thing 'bohrium', isotopeGenerator(107, 107, [
+    [100, 264]])
+
+new Thing 'hassium', isotopeGenerator(108, 108, [
+    [100, 269]])
+
+new Thing 'meitnerium', isotopeGenerator(109, 109, [
+    [100, 268]])
+
+new Thing 'ununnilium', isotopeGenerator(110, 110, [
+    [100, 272]])
+
+new Thing 'unununium', isotopeGenerator(111, 111, [
+    [100, 272]])
+
+new Thing 'ununbium', isotopeGenerator(112, 112, [
+    [100, 277]])
+
+new Thing 'ununquadium', isotopeGenerator(114, 114, [
+    [100, 289]])
+
+new Thing 'ununhexium', isotopeGenerator(116, 116, [
+    [100, 289]])
+
+new Thing 'ununoctium', isotopeGenerator(118, 118, [
+    [100, 293]])

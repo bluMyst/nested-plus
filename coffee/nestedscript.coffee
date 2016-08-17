@@ -17,6 +17,9 @@
 #
 # Make autorun.coffee import nestedscript.coffee, then remove nestedscript.js
 # from the HTML.
+#
+# Make a stable build for master. Because having 'master' and 'experimental'
+# is misleading right now.
 
 # Comments {{{1
 # Converted by js2coffee 2.2.0 but tweaked and refactored from there manually.

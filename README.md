@@ -11,4 +11,6 @@ Compilation instructions:
 - Run `npm install -g coffeescript-concat`
 - Run either make.sh (Linux/UNIX) or make.ps1 (Windows).
 
+WARNING: make.sh is untested and probably doesn't work. Look at make.ps1 to get an idea of what it's supposed to do.
+
 Orteil's info: http://orteil.deviantart.com, https://twitter.com/Orteil42, orteil42@gmail.com, http://orteil.dashnet.org

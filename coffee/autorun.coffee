@@ -60,7 +60,6 @@ styles.push new Style "#474", "
     .arrow { background: #141; }
 
     .thing {
-        border-color:  #141;
         background:    #ada;
     }
 
@@ -197,3 +196,7 @@ for i, style of styles
     "
 
 $('#styles').html str
+
+for styleID, style of styles
+    if style.color == '#000'
+        setStyle styleID

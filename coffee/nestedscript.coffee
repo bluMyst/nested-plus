@@ -330,7 +330,6 @@ launchNest = (seed) -> # {{{2
 #            - You can now pass it a function that returns a valid 'contains'
 #              when called. You can even pass it an array of functions if you
 #              want. - Ahto
-#              TODO: Broken.
 #        - name generator is optional; if specified, the instance of the Thing
 #          will be named according to this.
 #            - It can be either an array containing other arrays (the name will be

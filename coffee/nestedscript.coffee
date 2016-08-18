@@ -1,6 +1,8 @@
-# vim: foldmethod=marker colorcolumn=80
+# vim: foldmethod=marker
 # Todo list {{{1
 ###
+It should be Thing.name, not Thing.name_
+
 To test:
 - make.sh, on Linux.
 
@@ -24,7 +26,15 @@ is misleading right now.
 
 Test atoms.coffee code.
 
+Test Atom class.
+
+Put instace-making code in Thing.
+
+Test new toggle function.
+
 Make sure the favicon is working.
+
+NewStyleInstance and makeInstance
 ###
 
 # Comments {{{1
@@ -227,6 +237,18 @@ class Instance
             document.getElementById('div' + @n).innerHTML = '<span class="emptyThing">' + @name_ + '</span>'
         return
 
+class NewStyleInstance extends Instance # {{{2
+    constructor: (@type, @name_=@type.name_) ->
+        @parent = 0
+        @children = []
+        @n = iN
+        @display = 0
+        @grown = false
+        instances.push this
+        iN++
+
+    name: -> @name_
+
 bookCase = (name) -> # {{{2
     # Changes a string like "the cat is on the table" to "The Cat is on the Table"
 
@@ -255,18 +277,23 @@ debug = (what) -> # {{{2
     return
 
 toggle = (what) -> # {{{2
-    if instances[what].display == 0
-        for i of instances[what].children
-            if instances[what].children[i].grown == false
-                instances[what].children[i].grow 0
-                instances[what].children[i].list 0
-        instances[what].display = 1
-        document.getElementById('container' + what).style.display = 'block'
-        document.getElementById('arrow' + what).innerHTML = '-'
-    else if instances[what].display == 1
-        instances[what].display = 0
-        document.getElementById('container' + what).style.display = 'none'
-        document.getElementById('arrow' + what).innerHTML = '+'
+    instance  = instances[what]
+    container = $('#container' + what)
+    arrow     = $('#arrow' + what)
+
+    if instance.display == 0
+        for child in instance.children
+            if not child.grown
+                child.grow 0
+                child.list 0
+
+        instance.display = 1
+        container.css('display', 'block')
+        arrow.html '-'
+    else if instance.display == 1
+        instance.display = 0
+        container.css('display', 'none')
+        arrow.html '+'
 
     return # DO NOT REMOVE
 

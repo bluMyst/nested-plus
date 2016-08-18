@@ -1,7 +1,8 @@
 #= require <thing>
 #= require <rand>
 
-# Source for isotope data: https://www.ncsu.edu/chemistry/msf/pdf/IsotopicMass_NaturalAbundance.pdf
+# Source for isotope data:
+# https://www.ncsu.edu/chemistry/msf/pdf/IsotopicMass_NaturalAbundance.pdf
 # See notes/ for more info.
 
 isotopeGenerator = (protons, electrons, naturalAbundances) ->
@@ -43,8 +44,21 @@ isotopeGenerator = (protons, electrons, naturalAbundances) ->
                     "electron,#{electrons}"
                 ]
 
+class Atom extends Thing
+    constructor: (name_, protons, electrons, naturalAbundances, namegen) ->
+        contains = isotopeGenerator(
+            protons
+            electrons
+            naturalAbundances
+        )
+
+        super name_, contains, namegen
+
 new Thing 'testium', isotopeGenerator(1, 1, [
-    [0.5, 1], [0.5, 2]])
+    [50, 0], [50, 1]])
+
+new Atom 'testium2', 1, 1, [
+    [50, 0], [50, 1]]
 
 # TODO: Hydrogen with two neutrons should be called deuterium. How would I go
 #       about doing that?

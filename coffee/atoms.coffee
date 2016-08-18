@@ -17,7 +17,7 @@ isotopeGenerator = (protons, electrons, naturalAbundances) ->
     if sum != 100
         throw "
             isotopeGenerator called with invalid naturalAbundances:
-            probabilities don't add up to 1.
+            probabilities don't add up to 100.
         "
 
     if naturalAbundances.length == 1

@@ -23,6 +23,8 @@ Make a stable build for master. Because having 'master' and 'experimental'
 is misleading right now.
 
 Test atoms.coffee code.
+
+Make sure the favicon is working.
 ###
 
 # Comments {{{1

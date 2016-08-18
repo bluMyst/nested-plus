@@ -3,6 +3,13 @@
 ###
 It should be Thing.name, not Thing.name_
 
+Download the following images:
+
+nestedSharkverse.png
+nestedBaconverse.png
+nestedDoughnutverse.png
+nestedLasagnaverse.png
+
 To test:
 - make.sh, on Linux.
 
@@ -35,6 +42,12 @@ Test new toggle function.
 Make sure the favicon is working.
 
 NewStyleInstance and makeInstance
+
+debug function
+
+Instance.list
+
+Sharkverse and etc
 ###
 
 # Comments {{{1
@@ -218,23 +231,43 @@ class Instance
 
     list: -> # {{{3
         str = ''
-        addStyle = ''
-        for i of @children
-            str += '<div id="div' + @children[i].n + '">' + @children[i].name_ + '</div>'
-        #special-case pictures
-        if @name_ == 'sharkverse'
-            addStyle = "background-image:url('nestedSharkverse.png');"
-        else if @name_ == 'baconverse'
-            addStyle = "background-image:url('nestedBaconverse.png');"
-        else if @name_ == 'doughnutverse'
-            addStyle = "background-image:url('nestedDoughnutverse.png');"
-        else if @name_ == 'lasagnaverse'
-            addStyle = "background-image:url('nestedLasagnaverse.png');"
-        #if (this.children.length>0) document.getElementById("div"+this.n).innerHTML='<span onclick="toggle('+this.n+');"><span class="arrow" id="arrow'+this.n+'">+</span> '+this.name_+'</span><div id="container'+this.n+'" class="thing" style="display:none;">'+str+'</div>';
-        if @children.length > 0
-            document.getElementById('div' + @n).innerHTML = '<a href="javascript:toggle(' + @n + ');" style="padding-right:8px;" alt="archetype : ' + @type.name_ + '" title="archetype : ' + @type.name_ + '"><span class="arrow" id="arrow' + @n + '">+</span> ' + @name_ + '</a><div id="container' + @n + '" class="thing" style="display:none;' + addStyle + '">' + str + '</div>'
+        for child in @children
+            str += "
+                <div id='div#{child.n}'>
+                    #{child.name_}
+                </div>
+            "
+
+        if @name_ in ['sharkverse', 'baconverse', 'doughnutverse', 'lasagnaverse']
+            verseName = verseName[0].toUpperCase() + verseName[1..]
+            addStyle = "background-image:url('./images/nested#{verseName}.png');'"
         else
-            document.getElementById('div' + @n).innerHTML = '<span class="emptyThing">' + @name_ + '</span>'
+            addStyle = ''
+
+        ###
+        if (this.children.length>0) document.getElementById("div"+this.n).innerHTML='<span onclick="toggle('+this.n+');"><span class="arrow" id="arrow'+this.n+'">+</span> '+this.name_+'</span><div id="container'+this.n+'" class="thing" style="display:none;">'+str+'</div>';
+        ###
+
+        if @children.length > 0
+            $('#div' + @n).html "
+                <a
+                    href='javascript:toggle(#{@n});'
+                    style='padding-right: 8px;'
+                    alt='archetype : #{@type.name_}'
+                    title='archetype : #{@type.name_}'
+                >
+                    <span class='arrow' id='arrow#{@n}'>
+                        +
+                    </span> #{@name_}
+                </a>
+
+                <div id='container#{@n}' class='thing' style='display: none; #{addStyle}'>
+                    #{str}
+                </div>
+            "
+        else
+            $('#div' + @n).html "<span class='emptyThing'>#{@name_}</span>"
+
         return
 
 class NewStyleInstance extends Instance # {{{2
@@ -260,7 +293,7 @@ bookCase = (name) -> # {{{2
         'be', 'is'
     ]
 
-    name = name.split(' ')
+    name = name.split ' '
 
     for i, word of name
         if i == 0
@@ -269,11 +302,11 @@ bookCase = (name) -> # {{{2
         else if word not in wordsToNotCapitalize
             name[i] = capitalizeTitle name[i]
 
-    name = name.join(' ')
+    name = name.join ' '
     return name
 
-debug = (what) -> # {{{2
-    document.getElementById('debug').innerHTML = document.getElementById('debug').innerHTML + '<br>' + what
+debug = (message) -> # {{{2
+    $('#debug').append '<br>' + message
     return
 
 toggle = (what) -> # {{{2

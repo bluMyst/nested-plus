@@ -1,3 +1,5 @@
+#= require <nestedscript>
+
 getParameterByName = (name, url=window.location.href) ->
     name = name.replace /[\[\]]/g, "\\$&"
     regex = ///

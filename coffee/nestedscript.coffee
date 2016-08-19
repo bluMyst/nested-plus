@@ -47,6 +47,8 @@ debug function
 
 Instance.list
 
+Test Instance.grow
+
 Sharkverse and etc
 ###
 
@@ -177,7 +179,8 @@ class Instance
         return
 
     grow: -> # {{{3
-        if @grown == true then return
+        # TODO: This method is an absolute mess.
+        if @grown then return
 
         @name()
 
@@ -185,6 +188,9 @@ class Instance
             contains = @type.contains()
         else
             contains = @type.contains
+
+        # contains is now something like:
+        # ['carbon,2', ['hydrogen,2-3', 'nitrogen'], (-> 'oxygen,20%')]
 
         for i, toMake of contains
             generateContent = (contents) ->
@@ -195,38 +201,37 @@ class Instance
                 else if typeof contents[0] == 'string'
                     return choose contents
 
+            # 'foo,2'             -> 'foo,2'
+            # ['foo', 'bar']      -> choose ['foo', 'bar']
+            # (-> ['foo', 'bar']) -> choose ['foo', 'bar']
             toMake = generateContent toMake
+
+            # 'foo'     -> ['foo', '1']
+            # 'foo,2'   -> ['foo', '2']
+            # 'foo,20%' -> ['foo', '20%']
+            # 'foo,0-3' -> ['foo', '0-3']
             toMake = toMake.split ','
+            toMake[1] = toMake[1] ? '1'
 
-            makeAmount = 1
-            makeProb = 100
+            if (match = toMake[1].match /(\d+)(?:-(\d+))?/) != null
+                # 'foo,2' or 'foo,2-3'
+                makeProb = 100
 
-            if toMake[1] == undefined
-                toMake[1] = 1
-            else
-                makeAmount = toMake[1].split('-')
-
-                if makeAmount[1] == undefined
-                    makeAmount = makeAmount[0]
+                if match[1]?
+                    makeAmount = randint match[1], match[2]
                 else
-                    makeAmount = randint(makeAmount[0], makeAmount[1])
+                    makeAmount = match[1]
+            else if (match = toMake[1].match /(\d+)%/) != null
+                # 'foo,20%'
+                makeProb = match[1]
+                makeAmount = 1
 
-                makeProb = (toMake[1] + '?').split('%')
+            for [0...makeAmount]
+                thingToMake        = things[toMake[0]].name_
+                newInstance        = new Instance thingToMake
+                newInstance.parent = this
+                @children.push newInstance
 
-                if makeProb[1] != undefined
-                    makeProb = makeProb[0]
-                    makeAmount = 1
-                else
-                    makeProb = 100
-
-            if things[toMake[0]] != undefined
-                if chance makeProb
-                    ii = 0
-                    while ii < makeAmount
-                        New = new Instance(things[toMake[0]].name_)
-                        New.parent = this
-                        @children.push New
-                        ii++
         @grown = true
 
     list: -> # {{{3
@@ -238,9 +243,18 @@ class Instance
                 </div>
             "
 
-        if @name_ in ['sharkverse', 'baconverse', 'doughnutverse', 'lasagnaverse']
-            verseName = verseName[0].toUpperCase() + verseName[1..]
-            addStyle = "background-image:url('./images/nested#{verseName}.png');'"
+        # Some of the universes get a special background image as an easter egg.
+        # Here's a list of all of them, and the background images to use.
+        specialVerses =
+            sharkverse:     './images/nestedSharkverse.png'
+            baconverse:     './images/nestedBaconverse.png'
+            doughnutverse:  './images/nestedDoughnutverse.png'
+            lasagnaverse:   './images/nestedLasagnaverse.png'
+
+        if specialVerses[@name_]?
+            addStyle = "
+                background-image:url('#{specialVerses[@name_]}');
+            "
         else
             addStyle = ''
 
@@ -249,6 +263,7 @@ class Instance
         ###
 
         if @children.length > 0
+            # I'm so sorry for how unreadable this is. I really did try.
             $('#div' + @n).html "
                 <a
                     href='javascript:toggle(#{@n});'
@@ -258,10 +273,14 @@ class Instance
                 >
                     <span class='arrow' id='arrow#{@n}'>
                         +
-                    </span> #{@name_}
+                    </span>
+                    #{@name_}
                 </a>
 
-                <div id='container#{@n}' class='thing' style='display: none; #{addStyle}'>
+                <div id='container#{@n}' class='thing' style='
+                    display: none;
+                    #{addStyle}
+                '>
                     #{str}
                 </div>
             "
@@ -283,10 +302,11 @@ class NewStyleInstance extends Instance # {{{2
     name: -> @name_
 
 bookCase = (name) -> # {{{2
-    # Changes a string like "the cat is on the table" to "The Cat is on the Table"
+    # Changes a string like "the cat is on the table" to
+    # "The Cat is on the Table"
 
-    capitalizeTitle = (words) ->
-        return words[0].toUpperCase() + words[1..]
+    capitalizeTitle = (word) ->
+        return word[0].toUpperCase() + word[1..]
 
     wordsToNotCapitalize = [
         'of', 'in', 'on', 'and', 'the', 'an', 'a', 'with', 'to', 'for', 'from',
@@ -317,8 +337,8 @@ toggle = (what) -> # {{{2
     if instance.display == 0
         for child in instance.children
             if not child.grown
-                child.grow 0
-                child.list 0
+                child.grow()
+                child.list()
 
         instance.display = 1
         container.css('display', 'block')
@@ -379,7 +399,8 @@ new Thing 'test', ->
 
     for thingName of things
         if thingName.search(/^test./) != -1
-            contents.push thingName
+            #contents.push thingName
+            contents.push "#{thingName},5"
 
     return contents
 
@@ -402,6 +423,13 @@ new Thing 'test3', [
 new Thing 'test4', [
     (-> 'diamond'),
     (-> 'carbon')
+]
+
+new Thing 'test5', [
+    ['carbon,50%', 'hydrogen,1-3', 'oxygen,2']
+    'nitrogen,1-3'
+    'oxygen,50%'
+    'deuterium,2'
 ]
 
 # Basic materials and particles {{{2
@@ -9894,5 +9922,5 @@ debug 'Building...'
 #cleanThings()
 #checkMissingThings()
 #alert "There are #{thingsN} thing archetypes."
-document.getElementById('debug').innerHTML = ''
+$('#debug').html ''
 debug '<div id="div0" class="thing"></div>'

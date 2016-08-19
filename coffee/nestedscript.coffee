@@ -213,10 +213,10 @@ class Instance
             toMake = toMake.split ','
             toMake[1] = toMake[1] ? '1'
 
+            makeAmount = 1
+            makeProb   = 100
             if (match = toMake[1].match /(\d+)(?:-(\d+))?/) != null
                 # 'foo,2' or 'foo,2-3'
-                makeProb = 100
-
                 if match[1]?
                     makeAmount = randint match[1], match[2]
                 else
@@ -224,10 +224,9 @@ class Instance
             else if (match = toMake[1].match /(\d+)%/) != null
                 # 'foo,20%'
                 makeProb = match[1]
-                makeAmount = 1
 
+            thingToMake = things[toMake[0]].name_
             for [0...makeAmount]
-                thingToMake        = things[toMake[0]].name_
                 newInstance        = new Instance thingToMake
                 newInstance.parent = this
                 @children.push newInstance

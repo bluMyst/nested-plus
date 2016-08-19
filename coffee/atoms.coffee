@@ -10,39 +10,13 @@ isotopeGenerator = (protons, electrons, naturalAbundances) ->
     # example naturalAbundances:
     # [[99, 16], [1, 15] 16 neutrons has 99% probability
     ###
-
-    sum = 0
-    for [prob, neutrons] in naturalAbundances
-        sum += prob
-
-    if sum != 100
-        throw "
-            isotopeGenerator called with invalid naturalAbundances:
-            probabilities don't add up to 100.
-        "
-
-    if naturalAbundances.length == 1
-        [prob, neutrons] = naturalAbundances[0]
-
+    return ->
+        neutrons = listWeightedChoose naturalAbundances
         return [
             "proton,#{protons}",
             "neutron,#{neutrons}",
             "electron,#{electrons}"
         ]
-
-    return ->
-        r = Math.random()*100
-        sum = 0
-
-        for [prob, neutrons] in naturalAbundances
-            sum += prob
-
-            if r <= sum
-                return [
-                    "proton,#{protons}",
-                    "neutron,#{neutrons}",
-                    "electron,#{electrons}"
-                ]
 
 class Atom extends Thing
     constructor: (name_, protons, electrons, naturalAbundances, namegen) ->

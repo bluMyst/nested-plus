@@ -15,6 +15,41 @@ weightedChoose = (arr, weightChoose) ->
     arr[Math.floor(Math.random() ** weightChoose * arr.length)]
     #return arr[Math.floor((1-Math.pow(Math.random(),1/weightChoose))*arr.length)];//this would give a different curve
 
+listWeightedChoose = (list) ->
+    # Example list:
+    # [
+    #   [75, 'foo'],
+    #   [25, 'bar']
+    # ]
+    #
+    # 'foo' has a 75% chance and 'bar' has a 25% chance.
+
+    if list.length == 1
+        [prob, value] = list[0]
+        console.assert prob == 100
+        return value
+
+    sum = 0
+    for [prob, value] in list
+        sum += prob
+
+    if sum != 100
+        throw "
+            listWeightedChoose called with invalid list:
+            probabilities don't add up to 100. (#{sum})
+        "
+
+    r = Math.random() * 100
+    sum = 0
+
+    for [prob, value] in list
+        sum += prob
+
+        if r <= sum
+            return value
+
+    console.assert false, 'listWeightedChoose is borked'
+
 randint = (min, max) ->
     #Return a number between min and max, inclusive.
     parseFloat(Math.floor(Math.random() * (max - min + 1))) + parseFloat(min)

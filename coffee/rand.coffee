@@ -6,10 +6,10 @@ choose = (arr) ->
 # Because that's what it's called in Python. Don't judge.
 choice = choose
 
-weightedChoose = (arr, weightChoose) ->
+weightedChoose = (arr, weightChoose=1) ->
     #Returns an element from an array at random according to a weight.
     #A weight of 2 means the first element will be picked roughly twice as often as the second; a weight of 0.5 means half as often. A weight of 1 gives a flat, even distribution.
-    if weightChoose <= 0 or weightChoose == undefined
+    if weightChoose <= 0
         weightChoose = 1
 
     arr[Math.floor(Math.random() ** weightChoose * arr.length)]
@@ -59,5 +59,6 @@ chance = (prob) ->
     # Random chance of returning true instead of false.
     # prob is a probability, like 0.99 would be 99%.
     ###
+    # TODO: Most other functions take percentage instead.
 
     return Math.random() <= prob

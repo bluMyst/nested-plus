@@ -1,6 +1,10 @@
 choose = (arr) ->
-    #Returns an element from an array at random.
+    # Returns an element from an array at random.
     arr[Math.floor(Math.random() * arr.length)]
+
+
+# Because that's what it's called in Python. Don't judge.
+choice = choose
 
 weightedChoose = (arr, weightChoose) ->
     #Returns an element from an array at random according to a weight.
@@ -10,17 +14,6 @@ weightedChoose = (arr, weightChoose) ->
 
     arr[Math.floor(Math.random() ** weightChoose * arr.length)]
     #return arr[Math.floor((1-Math.pow(Math.random(),1/weightChoose))*arr.length)];//this would give a different curve
-    #previously
-
-    ###
-    var iChoose;
-    var arrChoose=[];
-    if (weightChoose<=0 || weightChoose==undefined) weightChoose=1;
-    for (iChoose=0;iChoose<arr.length;iChoose++) {
-      if (Math.round(Math.random()*(iChoose*weightChoose))==0) arrChoose.push(arr[iChoose]);
-    }
-    return choose(arrChoose);
-    ###
 
 randint = (min, max) ->
     #Return a number between min and max, inclusive.

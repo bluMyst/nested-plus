@@ -1,5 +1,6 @@
 # vim: foldmethod=marker
 #= require <rand>
+#= require <ahtoLib>
 
 miscGenerators =
     painting: -> # {{{1
@@ -1167,7 +1168,7 @@ miscGenerators =
                 'X'
             ])
 
-        return str
+        return ahtoLib.bookCase str
 
     char: -> # {{{1
         str = "aaaabbccddeeeeffgghhhiijkkllmmnnooppqqrrrssstttuuvwwxyz.,;!?:()-'"
@@ -1218,4 +1219,4 @@ miscGenerators =
             'ark', 'wheel'
         ], 5) ])
 
-        return 'The ' + str
+        return ahtoLib.bookCase 'The ' + str

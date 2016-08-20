@@ -10,12 +10,13 @@ nestedBaconverse.png
 nestedDoughnutverse.png
 nestedLasagnaverse.png
 
+*SADTHOUGHT* and *HAPPYTHOUGHT* should be
+*SAD THOUGHT* and *HAPPY THOUGHT*
+
 To test:
 - make.sh, on Linux.
 
 Change default skin to the cool dark one.
-
-miscGenerators.book should bookCase its output
 
 How many Things on screen is too many?
 
@@ -50,6 +51,8 @@ Instance.list
 Test Instance.grow
 
 Sharkverse and etc
+
+Test out generators.coffee code.
 ###
 
 # Comments {{{1
@@ -77,9 +80,7 @@ Sharkverse and etc
 #= require <thing>
 #= require <atoms>
 #= require <rand>
-#= require <nameGenerators>
-#= require <thoughtGenerators>
-#= require <miscGenerators>
+#= require <generators>
 
 # Function/class definitions {{{1
 # Instances {{{2
@@ -116,63 +117,15 @@ class Instance
 
             return str
 
+        # TODO: Everything from here down should be handled by generators.coffee
         @name_ = nameToString @name_
 
         nameParts = @name_.split('|')
         @name_ = nameParts[0]
-
-        if @name_.search(/^\*.*\*$/) == -1
-            gender = INVALID_GENDER
-        else if @name_.search(/PERSON\*$/) != -1
-            gender = choose [MALE, FEMALE]
-        else if @name_.search(/WOMAN\*$/) != -1
-            # Order is important here. WOMAN comes before MAN because /MAN$/
-            # matches "WOMAN".
-            gender = FEMALE
-        else if @name_.search(/MAN\*$/) != -1
-            gender = MALE
-        else
-            gender = INVALID_GENDER
-
-        switch @name_
-            when '*PERSON*', '*MAN*', '*WOMAN*'
-                @name_ = nameGenerators.modern gender
-            when '*MEDIEVAL PERSON*', '*MEDIEVAL MAN*', '*MEDIEVAL WOMAN*'
-                @name_ = nameGenerators.medieval gender
-            when '*ANCIENT PERSON*', '*ANCIENT MAN*', '*ANCIENT WOMAN*'
-                @name_ = nameGenerators.ancient gender
-            when '*FUTURE PERSON*', '*FUTURE MAN*', '*FUTURE WOMAN*'
-                @name_ = nameGenerators.future gender
-            when '*MEMORY*'
-                @name_ = thoughtGenerators.memory()
-            when '*SADTHOUGHT*'
-                @name_ = thoughtGenerators.sadThought()
-            when '*HAPPYTHOUGHT*'
-                @name_ = thoughtGenerators.happyThought()
-            when '*MEDIEVAL MEMORY*'
-                @name_ = thoughtGenerators.medievalMemory()
-            when '*MEDIEVAL THOUGHT*'
-                @name_ = thoughtGenerators.medievalThought()
-            when '*ANCIENT MEMORY*'
-                @name_ = thoughtGenerators.ancientMemory()
-            when '*ANCIENT THOUGHT*'
-                @name_ = thoughtGenerators.ancientThought()
-            when '*FUTURE MEMORY*'
-                @name_ = thoughtGenerators.futureMemory()
-            when '*FUTURE THOUGHT*'
-                @name_ = thoughtGenerators.futureThought()
-            when '*PAINTING*'
-                @name_ = miscGenerators.painting()
-            when '*NOTE*'
-                @name_ = miscGenerators.note()
-            when '*BOOK*'
-                @name_ = bookCase(miscGenerators.book())
-            when '*CHAR*'
-                @name_ = miscGenerators.char()
-            when '*MONUMENT*'
-                @name_ = bookCase(miscGenerators.monument())
+        @name_ = generators.thingNamer.generateName @name_
 
         if nameParts[1] != undefined # {{{4
+            # TODO: There should be no need for a pipe character.
             # "*PERSON*| avenue" -> "John Smith avenue"
             @name_ = @name_ + nameParts[1]
 
@@ -289,6 +242,11 @@ class Instance
         return
 
 class NewStyleInstance extends Instance # {{{2
+    ###
+    # This Instance is named upstream by a Thing generating it with a special
+    # method.
+    ###
+
     constructor: (@type, @name_=@type.name_) ->
         @parent = 0
         @children = []
@@ -299,30 +257,6 @@ class NewStyleInstance extends Instance # {{{2
         iN++
 
     name: -> @name_
-
-bookCase = (name) -> # {{{2
-    # Changes a string like "the cat is on the table" to
-    # "The Cat is on the Table"
-
-    capitalizeTitle = (word) ->
-        return word[0].toUpperCase() + word[1..]
-
-    wordsToNotCapitalize = [
-        'of', 'in', 'on', 'and', 'the', 'an', 'a', 'with', 'to', 'for', 'from',
-        'be', 'is'
-    ]
-
-    name = name.split ' '
-
-    for i, word of name
-        if i == 0
-            # Always capitalize the first word.
-            name[i] = capitalizeTitle word
-        else if word not in wordsToNotCapitalize
-            name[i] = capitalizeTitle name[i]
-
-    name = name.join ' '
-    return name
 
 debug = (message) -> # {{{2
     $('#debug').append '<br>' + message

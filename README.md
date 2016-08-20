@@ -2,6 +2,14 @@
 
 A coffeescript refactoring of Orteil's Nested that works offline and extends functionality a little bit, here and there.
 
+This git repository has submodules that aren't downloaded by default. When cloning this repository, use:
+
+    git clone --recursive <url>
+
+If you forgot to do that, just run:
+
+    git submodule update --init --recursive
+
 Requirements to run: A web browser that supports Javascript. Not IE.
 Requirements to compile: A coffeescript compiler, and coffeescript-concat.
 

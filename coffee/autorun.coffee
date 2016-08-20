@@ -23,15 +23,11 @@ getParameterByName = (name, url=window.location.href) ->
         return decodeURIComponent results
 
 # This can be set to anything, like "firefighter" or "donut box".
-seedObject = getParameterByName('seed')?.toLowerCase() ? "universe"
+seedObject = getParameterByName('seed') ? "universe"
+seedObject = seedObject.toLowerCase()
 launchNest seedObject
 
 # quick and dirty dynamic stylesheets (doesn't seem to work in IE, unfortunately)
-###
-sheet = document.createElement 'style'
-sheet.id = "customstyle"
-document.body.appendChild sheet
-###
 $('body').append "<style id='customstyle'></style>"
 
 setStyle = (styleID) ->
@@ -60,7 +56,7 @@ styles.push new Style "#474", "
     .arrow { background: #141; }
 
     .thing {
-        background:    #ada;
+        background: #ada;
     }
 
     .thing a:hover, .thing a:active {

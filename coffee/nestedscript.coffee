@@ -86,12 +86,12 @@ Sharkverse and etc
 iN = 0
 instances = []
 class Instance
-    constructor: (what) -> # {{{3
+    constructor: (thingName) -> # {{{3
         @name_ = 'thing'
-        @type = things[what]
+        @type = things[thingName]
         @parent = 0
         @children = []
-        @n = iN
+        @instanceID = iN
         @display = 0
         @grown = false
         instances.push this
@@ -135,7 +135,7 @@ class Instance
             gender = INVALID_GENDER
 
         switch @name_
-            when '*PERSON', '*MAN*', '*WOMAN*'
+            when '*PERSON*', '*MAN*', '*WOMAN*'
                 @name_ = nameGenerators.modern gender
             when '*MEDIEVAL PERSON*', '*MEDIEVAL MAN*', '*MEDIEVAL WOMAN*'
                 @name_ = nameGenerators.medieval gender
@@ -263,20 +263,20 @@ class Instance
 
         if @children.length > 0
             # I'm so sorry for how unreadable this is. I really did try.
-            $('#div' + @n).html "
+            $('#div' + @instanceID).html "
                 <a
-                    href='javascript:toggle(#{@n});'
+                    href='javascript:toggle(#{@instanceID});'
                     style='padding-right: 8px;'
                     alt='archetype : #{@type.name_}'
                     title='archetype : #{@type.name_}'
                 >
-                    <span class='arrow' id='arrow#{@n}'>
+                    <span class='arrow' id='arrow#{@instanceID}'>
                         +
                     </span>
                     #{@name_}
                 </a>
 
-                <div id='container#{@n}' class='thing' style='
+                <div id='container#{@instanceID}' class='thing' style='
                     display: none;
                     #{addStyle}
                 '>
@@ -284,7 +284,7 @@ class Instance
                 </div>
             "
         else
-            $('#div' + @n).html "<span class='emptyThing'>#{@name_}</span>"
+            $('#div' + @instanceID).html "<span class='emptyThing'>#{@name_}</span>"
 
         return
 
@@ -292,7 +292,7 @@ class NewStyleInstance extends Instance # {{{2
     constructor: (@type, @name_=@type.name_) ->
         @parent = 0
         @children = []
-        @n = iN
+        @instanceID = iN
         @display = 0
         @grown = false
         instances.push this

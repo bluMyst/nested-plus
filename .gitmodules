@@ -1,0 +1,3 @@
+[submodule "coffee/ahtoLib.coffee"]
+	path = coffee/ahtoLib.coffee
+	url = https://github.com/bluMyst/ahtoLib.coffee.git

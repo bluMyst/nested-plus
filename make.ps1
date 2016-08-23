@@ -5,10 +5,10 @@ cd coffee/
 echo 'Preprocessing...'
 
 # Graves (`) are a line continuation character in the powershell world.
-coffeescript-concat -I . -I ahtoLib.coffee/ nestedscript.coffee  `
+coffeescript-concat -I . -I ahtoLib-coffee/ nestedscript.coffee  `
     -o compiled/nestedscript.preprocessed.coffee
 
-coffeescript-concat -I . -I ahtoLib.coffee/ autorun.coffee `
+coffeescript-concat -I . -I ahtoLib-coffee/ autorun.coffee `
     -o compiled/autorun.preprocessed.coffee
 
 echo 'Compiling...'

@@ -1,11 +1,11 @@
 cd coffee/
 
 echo 'Preprocessing...'
-coffeescript-concat -I . -I ahtoLib.coffee/ \
+coffeescript-concat -I . -I ahtoLib-coffee/ \
     nestedscript.coffee \
     -o compiled/nestedscript.preprocessed.coffee
 
-coffeescript-concat -I . -I ahtoLib.coffee/ \
+coffeescript-concat -I . -I ahtoLib-coffee/ \
     autorun.coffee \
     -o compiled/autorun.preprocessed.coffee
 

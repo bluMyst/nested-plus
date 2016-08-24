@@ -1,10 +1,11 @@
 # vim: foldmethod=marker
 #= require <rand>
+#= require <ahtoLib>
 # Also generates memories.
 
 thoughtGenerators =
     memory: -> # {{{1
-        str = '' + weightedChoose([
+        return '' + weightedChoose_ 1.5, [
             choose([
                 'Biking', 'Hiking', 'Swimming', 'Flying kites', 'Playing',
                 'Playing baseball', 'Stargazing', 'Playing soccer',
@@ -23,12 +24,12 @@ thoughtGenerators =
 
             'The day I ' + choose([
                 'learned how to ' + choose([
-                    'drive', 'cook', 'love', 'kiss', 'read', 'forgive', 'make
-                    friends', 'speak another language',
+                    'drive', 'cook', 'love', 'kiss', 'read', 'forgive',
+                    'make friends', 'speak another language',
 
-                    'play ' + choose([
-                        'piano', 'drums', 'guitar', 'saxophone', 'cards'
-                    ]),
+                    ahtoLib.stringVariation '
+                        play (piano|drums|guitar|saxophone|cards)
+                    '
                 ]),
 
                 choose([
@@ -36,82 +37,85 @@ thoughtGenerators =
                     'got my license'
                 ])
 
-                choose([
-                    'got promoted as '
-                    'got a job as '
-                    'finally became '
-                ]) + choose([
-                    'a cook'
-                    'a reporter'
-                    'a game designer'
-                    'a lawyer'
-                    'a doctor'
-                    'a veterinarian'
-                    'a biologist'
-                    'a soldier'
-                    'a physicist'
-                    'a scientist'
-                    'a geologist'
-                    'a shopkeeper'
-                    'a teacher'
-                    'a historian'
-                    'an archeologist'
-                    'a musician'
-                    'an artist'
-                    'an athlete'
-                    'a dancer'
-                ])
+                ahtoLib.stringVariation '
+                    (got promoted as|got a job as|finally became)
+
+                    (\
+                        a cook|a reporter|a game designer|a lawyer|a doctor|\
+                        a veterinarian|a biologist|a soldier|a physicist|\
+                        a scientist|a geologist|a shopkeeper|a teacher|\
+                        a historian|an archeologist|a musician|an artist|\
+                        an athlete|a dancer\
+                    )
+                '
             ]) + '.'
-            choose([
-                'Kissing'
-                'Cuddling with'
-                'Watching movies with'
-                'Staying up late with'
-                'Sharing secrets with'
-                'Sharing childhood memories with'
-                'Feeling close to'
-                'Laying my arm around'
-            ]) + ' ' + choose([
-                'that one person'
-                'my best friend'
-                'my love interest'
-                'my crush'
-            ]) + ' in ' + choose([
-                'middle school'
-                'high school'
-                'college'
-            ]) + '.'
+
+            ahtoLib.stringVariation """
+                (
+                    Kissing|
+                    Cuddling with|
+                    Watching movies with|
+                    Staying up late with|
+                    Sharing secrets with|
+                    Sharing childhood memories with|
+                    Feeling close to|
+                    Laying my arm around
+                ) 
+
+                (
+                    that one person|
+                    my best friend|
+                    my love interest|
+                    my crush
+                ) 
+
+                in 
+
+                (
+                    middle school|
+                    high school|
+                    college
+                )
+
+                .
+            """, true
+
             'The day I ' + choose([
                 'got married'
                 'had my daughter'
                 'had my son'
                 'lost my father'
                 'lost my mother'
-                'went on a trip with ' + choose([
-                    'my partner'
-                    'my family'
-                    'my friends'
-                ])
-                'learned ' + choose([
-                    'I'
-                    'my son'
-                    'my daughter'
-                    'my sister'
-                    'my brother'
-                    'my father'
-                    'my mother'
-                ]) + ' was ill'
                 'learned we were at war'
                 'learned the war was over'
-                'broke my ' + choose([
-                    'leg'
-                    'ankle'
-                    'elbow'
-                    'knee'
-                    'nose'
-                ])
                 'broke up with my partner'
-                'lost my ' + weightedChoose([
+
+                ahtoLib.stringVariation """
+                    went on a trip with 
+                    (my partner|my family|my friends)
+                """, true
+
+                ahtoLib.stringVariation """
+                    learned 
+
+                    (
+                        I|
+                        my son|
+                        my daughter|
+                        my sister|
+                        my brother|
+                        my father|
+                        my mother
+                    ) 
+
+                    was ill
+                """, true
+
+                ahtoLib.stringVariation "
+                    broke my (leg|ankle|elbow|knee|nose)
+                "
+
+                'lost my ' + weightedChoose_ 1.5, [
                     'dog'
                     'cat'
                     'bunny'
@@ -123,30 +127,37 @@ thoughtGenerators =
                     'rat'
                     'iguana'
                     'pet spider'
-                ], 1.5)
+                ]
             ]) + '.'
-            'That one unforgettable ' + choose([
-                'book'
-                'movie'
-                'video game'
-                'trip'
-                'kiss'
-                'person I met'
-                'party'
-            ]) + '.'
-        ], 1.5)
+
+            ahtoLib.stringVariation """
+                That one unforgettable 
+
+                (
+                    book|
+                    movie|
+                    video game|
+                    trip|
+                    kiss|
+                    person I met|
+                    party
+                )
+
+                .
+            """, true
+        ]
 
     sadThought: -> # {{{1
-        str = weightedChoose([
-            choose([
+        return weightedChoose_ 1.4, [
+            choose [
                 'This place is crowded.'
-                'I don\'t want to live here my whole life.'
-                'I don\'t want to spend the rest of my life here.'
+                "I don't want to live here my whole life."
+                "I don't want to spend the rest of my life here."
                 'I want to meet different people.'
-                'I\'m so alone.'
-                'I don\'t want to be alone.'
+                "I'm so alone."
+                "I don't want to be alone."
                 'When did I get so lonely?'
-                'I\'m scared.'
+                "I'm scared."
                 'I feel so insignificant.'
                 'Does it matter, really?'
                 'This is absurd.'
@@ -154,21 +165,22 @@ thoughtGenerators =
                 'I hate the people here.'
                 'Nobody understands me.'
                 'I wish the voices would stop.'
-                'I\'m in debt.'
-                'I shouldn\'t spend so much.'
-                'I don\'t really like my friends.'
+                "I'm in debt."
+                "I shouldn't spend so much."
+                "I don't really like my friends."
                 'I regret doing that thing I did.'
                 'I hope they never find out.'
                 'What if I get caught?'
                 'This is killing me.'
                 'What will happen to me when I die?'
                 'This is all sick.'
-                'What\'s the point?'
-                'I secretly know the meaning of life but I won\'t tell anyone.'
-                'I know why we\'re here.'
+                "What's the point?"
+                "I secretly know the meaning of life but I won't tell anyone."
+                "I know why we're here."
                 'What if this was real?'
                 'Some people need to check their privilege...'
-                'This isn\'t what I wanted.'
+                "This isn't what I wanted."
+
                 'I... I just want ' + choose([
                     'a friend'
                     'friends'
@@ -176,36 +188,58 @@ thoughtGenerators =
                     'a family'
                     'someone who understands me'
                     'to have kids'
+                    'something to look forward to'
+                    'to be loved'
                 ]) + '.'
-                'Is this how it\'s going to end?'
-                'Oh, that\'s going on my blog.'
-            ])
-            choose([
-                'I\'m too lazy.'
-                'I don\'t want to get fired.'
-                'I\'m worried.'
-                'I don\'t deserve this.'
+
+                "Is this how it's going to end?"
+                "Oh, that's going on my blog."
+            ]
+
+            choose [
+                "I'm too lazy."
+                "I don't want to get fired."
+                "I'm worried."
+                "I don't deserve this."
                 'Why am I doing this to myself?'
-                'This isn\'t like me.'
-                'If only I was ' + choose([
+                "This isn't like me."
+                "Hold me. I'm scared."
+                'This is my only shot at this.'
+                'This was my only shot at this, and I blew it.'
+                "I won't make the same mistake twice."
+                'If I must.'
+                'As you wish.'
+                'Where are my parents now?'
+                'I hate myself sometimes.'
+                'What a waste.'
+                'I wish I was a better person.'
+                "I'm terrified of death."
+                "I don't want to get older."
+                "I wish I didn't waste my youth."
+                'I regret so much.'
+                "I shouldn't have said no."
+                'I should call my parents.'
+                "I'm tired. I've been doing this all day."
+                "Don't listen to what they say. It's just not true."
+                'Too many rumors going on.'
+                "It's not what it looks like, I swear!"
+                'Uh... I can explain.'
+                "Well, I'm glad nobody can read my mind."
+                "My friends aren't real."
+                "I'm the only real person here."
+
+                'If only I were ' + choose([
                     'a pirate'
                     'a dolphin'
-                    'an unicorn'
+                    'a unicorn'
                     'a panda'
                     'a cyborg'
                     'a robot'
                     'a superhero'
                     'invisible'
                 ]) + '.'
-                'Hold me. I\'m scared.'
-                'This is my only shot at this.'
-                'This was my only shot at this, and I blew it.'
-                'I won\'t make the same mistake twice.'
-                'If I must.'
-                'As you wish.'
-                'Where are my parents now?'
-                'I hate myself sometimes.'
-                'I\'m ' + choose([
+
+                "I'm " + choose([
                     'worthless'
                     'terrible'
                     'just a bad person'
@@ -219,31 +253,16 @@ thoughtGenerators =
                     'so bad at this'
                     'too nice for my own good'
                 ]) + '.'
-                'What a waste.'
-                'I wish I was a better person.'
-                'I should learn a new ' + choose([
-                    'skill'
-                    'language'
-                ]) + '.'
-                'I\'m terrified of death.'
-                'I don\'t want to get older.'
-                'I wish I didn\'t waste my youth.'
-                'I regret so much.'
-                'I shouldn\'t have said no.'
-                'I should call ' + choose([
-                    'her'
-                    'him'
-                ]) + ' and say sorry.'
-                'I should call my parents.'
+
+                'I should learn a new ' + choose(['skill', 'language']) + '.'
+                'I should call ' + choose(['her', 'him']) + ' and say sorry.'
+
                 'I miss ' + choose([
                     'him'
                     'her'
                     'them'
-                ]) + choose([
-                    '. So much'
-                    ''
-                    ''
-                ]) + '.'
+                ]) + choose(['. So much', '', '']) + '.'
+
                 'I ' + choose([
                     'wish I was'
                     'should be'
@@ -255,7 +274,8 @@ thoughtGenerators =
                     'more interesting'
                     'more romantic'
                 ]) + '.'
-                'I don\'t suck at ' + choose([
+
+                "I don't suck at " + choose([
                     'singing'
                     'painting'
                     'dancing'
@@ -263,7 +283,8 @@ thoughtGenerators =
                     'video-games'
                     'maths'
                 ]) + '. People just think I do.'
-                'Nobody must know about ' + choose([
+
+                'Nobody can know about ' + choose([
                     'my balding hair'
                     'my parents'
                     'this'
@@ -272,12 +293,13 @@ thoughtGenerators =
                     'my health problems'
                     'what I do in the shower'
                     'what I did'
-                    'what I\'m about to do'
-                    'what I\'m doing'
+                    "what I'm about to do"
+                    "what I'm doing"
                     'the movies I watch'
                     'the books I read'
                     'the websites I go on'
                 ]) + '.'
+
                 'I am secretly ' + choose([
                     'a regular human being'
                     'perfectly normal'
@@ -300,15 +322,8 @@ thoughtGenerators =
                     'an astral monstrosity'
                     'a secret'
                 ]) + '.'
-                'I\'m tired. I\'ve been doing this all day.'
-                'Don\'t listen to what they say. It\'s just not true.'
-                'Too many rumors going on.'
-                'It\'s not what it looks like, I swear!'
-                'Uh... I can explain.'
-                'Well, I\'m glad nobody can read my mind.'
-                'My friends aren\'t real.'
-                'I\'m the only real person here.'
-            ])
+            ]
+
             choose([
                 'I need'
                 'I want'
@@ -316,7 +331,7 @@ thoughtGenerators =
                 'I should get'
                 'What I want is'
                 'What I need right now is'
-                'I\'ll just get'
+                "I'll just get"
             ]) + ' ' + choose([
                 'some new shoes'
                 'a new TV'
@@ -369,18 +384,18 @@ thoughtGenerators =
                     'is a failure'
                     'is a disaster'
                     'was a mistake'
-                    'isn\'t working'
+                    "isn't working"
                 ])
                 'I regret getting married'
                 'I want a divorce'
-                'This isn\'t why I got married'
+                "This isn't why I got married"
             ]) + '.'
             choose([
                 choose([
-                    'I just can\'t stand the taste of'
+                    "I just can't stand the taste of"
                     'I am not going to finish'
                     'I paid way too much for'
-                    'I don\'t really like'
+                    "I don't really like"
                 ]) + ' ' + choose([
                     'this hamburger'
                     'this steak'
@@ -395,11 +410,11 @@ thoughtGenerators =
                 choose([
                     'I hate that show'
                     'That show is revolting'
-                    'I hate that show, but I\'m going to watch it anyway'
+                    "I hate that show, but I'm going to watch it anyway"
                     'My parents used to watch that show'
-                    'There\'s nothing on TV'
-                    'That\'s a stupid movie'
-                    'I\'ve seen that movie already'
+                    "There's nothing on TV"
+                    "That's a stupid movie"
+                    "I've seen that movie already"
                 ]) + '.'
                 choose([
                     'Wait, '
@@ -407,7 +422,7 @@ thoughtGenerators =
                     'Ugh. '
                     'Ugh, I told them '
                     ''
-                ]) + 'I\'m allergic to ' + choose([
+                ]) + "I'm allergic to " + choose([
                     'shrimp'
                     'soy'
                     'pineapple'
@@ -415,9 +430,9 @@ thoughtGenerators =
             ])
             choose([
                 'This will not stand.'
-                'Dammit I\'m mad.'
+                "Dammit I'm mad."
                 'Yes, I am mad.'
-                'I won\'t let this happen.'
+                "I won't let this happen."
                 'No. Never. Not if I have a word in it.'
                 'Over my dead body.'
                 'Do they have any idea how angry I am?'
@@ -427,56 +442,54 @@ thoughtGenerators =
                 'On we march.'
                 'This is not over.'
                 'I can see them, beyond the stars.'
-                'I can sense them. They\'re coming.'
+                "I can sense them. They're coming."
                 'Something is coming this way.'
                 'Something is about to go horribly wrong.'
                 'It was written.'
                 'It is coming.'
                 'We must fight on.'
-                'I\'ve seen things.'
-                'Oh no. I\'m thinking weird stuff again.'
-                'Do you really think I can\'t see you?'
-                'I don\'t look at the world the way I used to.'
-                'Can\'t you hear them?'
-                'It\'s always there.'
-                'It won\'t go away.'
-                'There are things that I just can\'t explain.'
+                "I've seen things."
+                "Oh no. I'm thinking weird stuff again."
+                "Do you really think I can't see you?"
+                "I don't look at the world the way I used to."
+                "Can't you hear them?"
+                "It's always there."
+                "It won't go away."
+                "There are things that I just can't explain."
                 'Who where?'
-                'They don\'t think it is like this. But it is.'
+                "They don't think it is like this. But it is."
                 'The world looks too intense for me.'
                 'I never asked for this.'
-                'No! I don\'t want that!'
-                'What if we\'re all living in a giant computer simulation?'
+                "No! I don't want that!"
+                "What if we're all living in a giant computer simulation?"
                 'This place would look good on fire!'
-                'This is the end, isn\'t it?'
+                "This is the end, isn't it?"
                 'The end.'
             ])
-        ], 1.4)
-
-        return str
+        ] # }}}2
 
     happyThought: -> # {{{1
-        str = weightedChoose([
+        return weightedChoose_ 1.4, [
             choose([
                 'What a nice day!'
-                'It\'s sunny today.'
-                'It\'s a sunny day out.'
-                'It\'s such a nice day.'
-                'It\'s such a great day to be alive!'
+                "It's sunny today."
+                "It's a sunny day out."
+                "It's such a nice day."
+                "It's such a great day to be alive!"
                 'This is a happy kind of day.'
                 'I feel great.'
-                'Ooh, I\'m feeling fine.'
-                'I\'m feeling awesome.'
+                "Ooh, I'm feeling fine."
+                "I'm feeling awesome."
                 'Hey, this is great!'
-                'I\'m so glad I came here.'
+                "I'm so glad I came here."
                 'I regret nothing!'
                 'Regrets are pointless.'
                 'I have no regrets.'
                 'This is what I wanted!'
-                'Everything\'s going just fine.'
-                'I can\'t wait!'
+                "Everything's going just fine."
+                "I can't wait!"
                 'Things are going smoothly.'
-                'I\'m just happy to be here.'
+                "I'm just happy to be here."
                 'Well, this is ' + choose([
                     'unexpected'
                     'awkward'
@@ -489,9 +502,9 @@ thoughtGenerators =
                     'weird'
                 ]) + '.'
                 'I know the meaning of life!'
-                'I didn\'t expect this!'
-                'I\'m glad someone understands me.'
-                'I\'m glad someone likes me for who I am.'
+                "I didn't expect this!"
+                "I'm glad someone understands me."
+                "I'm glad someone likes me for who I am."
                 'I love my friends!'
                 'Life is good!'
                 'I could picture myself spending the rest of my life here.'
@@ -500,34 +513,34 @@ thoughtGenerators =
                 'I feel almighty!'
                 'I matter.'
                 'This place is nice.'
-                'Everybody\'s great in some way!'
+                "Everybody's great in some way!"
                 'I hope ' + choose([
                     'they'
                     'she'
                     'he'
-                ]) + '\'ll like me!'
+                ]) + "'ll like me!"
                 'I wonder what happens next!'
-                'It\'s all going to be alright.'
-                'It\'ll all be alright in the end. I just know it.'
+                "It's all going to be alright."
+                "It'll all be alright in the end. I just know it."
                 'This is actually okay.'
                 'I love the whole world!'
                 'The world is a big place!'
                 'The world is amazing!'
                 'So it has come to this.'
                 'Well this is an interesting development.'
-                'Let\'s see what happens next.'
+                "Let's see what happens next."
                 'Oh hey. I found me.'
                 'I NEED to blog about this.'
             ])
             choose([
                 'I should take a self-help course!'
-                'I\'m doing alright.'
+                "I'm doing alright."
                 'My job is pretty fulfilling.'
-                'I don\'t really worry.'
+                "I don't really worry."
                 'Worrying is pointless!'
                 'This is cooler than I expected!'
                 'Haha, this is just like me.'
-                'Wouldn\'t it be awesome if I was ' + choose([
+                "Wouldn't it be awesome if I was " + choose([
                     'a pirate'
                     'a dolphin'
                     'an unicorn'
@@ -537,15 +550,15 @@ thoughtGenerators =
                     'a superhero'
                     'invisible'
                 ]) + '?'
-                'I\'m pretty self-confident.'
-                'I\'m a pretty big deal.'
-                'I\'m pretty extreme.'
+                "I'm pretty self-confident."
+                "I'm a pretty big deal."
+                "I'm pretty extreme."
                 choose([
                     'You want a piece of this?'
-                    'I\'m all business, all the time.'
+                    "I'm all business, all the time."
                     'I vibrate through walls.'
                     'This is going to be gay as hell.'
-                    'We\'re making this happen!'
+                    "We're making this happen!"
                 ])
                 'I mean, wow.'
                 'Yep. Just a regular human person. Nothing to see here.'
@@ -554,7 +567,7 @@ thoughtGenerators =
                     'skill'
                     'language'
                 ]) + '!'
-                'I hope I\'ll become a nice old person.'
+                "I hope I'll become a nice old person."
                 'I kinda miss my youth!'
                 'I should call ' + choose([
                     'her'
@@ -570,7 +583,7 @@ thoughtGenerators =
                     'video-games'
                     'maths'
                 ]) + '?'
-                'I\'m secretly ' + choose([
+                "I'm secretly " + choose([
                     'super-hardcore'
                     'perfectly normal'
                     'perfectly ordinary'
@@ -594,8 +607,8 @@ thoughtGenerators =
                 ]) + '!'
                 'H-here I go!'
                 'This place would look good on fire!'
-                'I don\'t worry, because I know nothing matters in the end.'
-                'Well, I\'m glad nobody can read my mind.'
+                "I don't worry, because I know nothing matters in the end."
+                "Well, I'm glad nobody can read my mind."
             ])
             choose([
                 'Hmm! I should get'
@@ -603,7 +616,7 @@ thoughtGenerators =
                 'Time for'
                 'I need'
                 'You know what? I need'
-                'Know what I need? I\'ll tell you - '
+                "Know what I need? I'll tell you - "
             ]) + ' ' + choose([
                 'some new shoes'
                 'a new TV'
@@ -620,7 +633,7 @@ thoughtGenerators =
             choose([
                 'This is the best relationship ever.'
                 'I love being married!'
-                'Marriage isn\'t as bad as they make it out to be!'
+                "Marriage isn't as bad as they make it out to be!"
                 'This relationship is awesome!'
                 'I love my family.'
                 'I love doing stuff with my family.'
@@ -628,8 +641,8 @@ thoughtGenerators =
             choose([
                 choose([
                     'I really, really like'
-                    'I can\'t get enough of'
-                    'I\'m going to get more of'
+                    "I can't get enough of"
+                    "I'm going to get more of"
                     'I wonder what they put in'
                 ]) + ' ' + choose([
                     'this hamburger'
@@ -646,19 +659,17 @@ thoughtGenerators =
                     'Haha, I love that show!'
                     'That show is confusing!'
                     'That show is hilarious.'
-                    'That\'s a silly show, but there\'s nothing on TV anyway.'
+                    "That's a silly show, but there's nothing on TV anyway."
                     'Oooh, my parents used to watch that show!'
-                    'There\'s nothing on TV!'
-                    'That movie\'s plot is hilariously bad.'
-                    'I\'ve never seen that movie before!'
+                    "There's nothing on TV!"
+                    "That movie's plot is hilariously bad."
+                    "I've never seen that movie before!"
                 ])
             ])
-        ], 1.4)
-
-        return str
+        ]
 
     medievalMemory: -> # {{{1
-        str = weightedChoose([
+        return weightedChoose_ 1.5, [
             choose([
                 'Tending the fields'
                 'Tending the animals'
@@ -797,19 +808,28 @@ thoughtGenerators =
                     'my way in the forest'
                 ])
             ]) + '.'
-        ], 1.5)
-
-        return str
+        ]
 
     medievalThought: -> # {{{1
-        str = weightedChoose([ choose([
+        return choose([
             'Today was a fine day.'
             'Many things happened on this day.'
             'What an eventful week this has been.'
-            'It\'s been a good year so far.'
+            "It's been a good year so far."
             'So much to do, so little time.'
             'I was born too soon.'
-            'I\'m still young. I\'ll manage.'
+            "I'm still young. I'll manage."
+            'What a surprising world we live in.'
+            "Hopefully next year's crops will be fruitful."
+            'What hides yonder?'
+            'What lies yonder, I wonder.'
+            'So many things out of my comprehension.'
+            'I want to see more of this world.'
+            'I am sworn to carry this burden.'
+            'What strange and terrifying creatures could live in the distant lands?'
+            "I've heard so many stories about the things that live in the farlands."
+            'Thank our star, I feel fine now.'
+
             'I would still be ' + choose([
                 'an adventurer'
                 'a bandit'
@@ -825,14 +845,7 @@ thoughtGenerators =
                 'stupid accident'
                 'unfortunate wound'
             ]) + '.'
-            'What a surprising world we live in.'
-            'Hopefully next year\'s crops will be fruitful.'
-            'What hides yonder?'
-            'What lies yonder, I wonder.'
-            'So many things out of my comprehension.'
-            'I want to see more of this world.'
-            'I am sworn to carry this burden.'
-            'I\'ll ' + choose([
+            "I'll " + choose([
                 'ready my spells'
                 'grab my sword'
                 'grab my axe'
@@ -867,6 +880,7 @@ thoughtGenerators =
                 'monsters'
                 'friendship'
             ]) + '!'
+
             'I want to travel and see ' + choose([
                 'the unicorns'
                 'the dinosaurs'
@@ -885,9 +899,7 @@ thoughtGenerators =
                 'the cephalites'
                 'the gembabies'
             ]) + '!'
-            'What strange and terrifying creatures could live in the distant lands?'
-            'I\'ve heard so many stories about the things that live in the farlands.'
-            'Thank our star, I feel fine now.'
+
             choose([
                 'She'
                 'He'
@@ -897,17 +909,19 @@ thoughtGenerators =
                 'will regret saying that'
                 'will regret doing that'
                 'must pay, somehow'
-                'will get what\'s coming'
+                "will get what's coming"
                 'will get what is deserved'
                 'will see how right I was'
                 'will not hold me back any longer'
                 'will regret laughing at me'
             ]) + '.'
-            choose([
+
+            choose [
                 'Our star will guide us throughout.'
                 'I trust our star to guide us in the right direction.'
                 'I trust our star to point us to the right choices.'
-            ])
+            ]
+
             'I need to ' + choose([
                 'find'
                 'see'
@@ -920,20 +934,21 @@ thoughtGenerators =
                 'an exorcist'
                 'a priest'
             ]) + '.'
-            choose([
+
+            choose [
                 'What is that smoke on the horizon?'
                 'That new moon keeps getting bigger.'
                 'Will the court wizards keep us safe?'
                 'The Entities are due soon.'
-                'All of our cattle is getting sick. What\'s happening?'
-                'I don\'t want to take part in another sacrifice.'
-                'Let\'s hope that sacrifice was worth it.'
+                "All of our cattle is getting sick. What's happening?"
+                "I don't want to take part in another sacrifice."
+                "Let's hope that sacrifice was worth it."
                 'I hate those dark rituals.'
                 'I hope the liches will leave us alone this year.'
                 'I keep finding these weird stones.'
                 'Some must fight, so that all may be free.'
-            ])
-        ]) ], 1.1)
+            ]
+        ])
 
     ancientMemory: -> # {{{1
         str = weightedChoose([
@@ -1056,14 +1071,12 @@ thoughtGenerators =
             ]) + '.'
         ], 1.5)
 
-        return str
-
     ancientThought: -> # {{{1
-        str = weightedChoose([ choose([
+        return weightedChoose([ choose([
             'Today. Nice day.'
             'Many things, today.'
             'Good year so far. Not many dead children.'
-            'I sure hope wolves don\'t eat my baby again.'
+            "I sure hope wolves don't eat my baby again."
             'Family comes back from hunt soon. Right?'
             'Busy. Always busy.'
             'I was born too soon.'
@@ -1073,10 +1086,10 @@ thoughtGenerators =
             'Beasts are getting scarce. Absolute baloney.'
             'The spirits must hate me. Only explanation.'
             'Oh, my aching head.'
-            'No. I don\'t want.'
+            "No. I don't want."
             'This displeases me.'
             'Sun setting soon. Must ready the fire.'
-            'We mustn\'t do that mistake with the fire again.'
+            "We mustn't do that mistake with the fire again."
             'We live in surprising world.'
             'Many more hunts to come.'
             'What lies beyond hills?'
@@ -1091,8 +1104,8 @@ thoughtGenerators =
                 'get tools ready for tomorrow'
             ]) + '.'
             'I am curious. About distant things.'
-            'I don\'t feel so sick anymore.'
-            'I won\'t eat raw rabbit again.'
+            "I don't feel so sick anymore."
+            "I won't eat raw rabbit again."
             choose([
                 'She'
                 'He'
@@ -1102,7 +1115,7 @@ thoughtGenerators =
                 'will regret saying that'
                 'will regret doing that'
                 'must pay'
-                'will get what\'s coming'
+                "will get what's coming"
                 'will get what is deserved'
                 'will see how right I was'
                 'will not hold me back any longer'
@@ -1142,10 +1155,8 @@ thoughtGenerators =
             ])
         ]) ], 1.1)
 
-        return str
-
     futureMemory: -> # {{{1
-        str = weightedChoose([
+        return weightedChoose([
             choose([
                 'Spraying the clearpath'
                 'Clearing the tendrils'
@@ -1317,28 +1328,26 @@ thoughtGenerators =
             ]) + '.'
         ], 1.5)
 
-        return str
-
     futureThought: -> # {{{1
-        str = weightedChoose([ choose([
-            'That\'s nice... that\'s really nice.'
+        return weightedChoose([ choose([
+            "That's nice... that's really nice."
             'All of this stuff is so nice.'
             'So nice, wow.'
             'I need a couple decades on an exotic planet to cool off.'
-            'Oh boy, they\'ve come up with a new food pill flavor!'
+            "Oh boy, they've come up with a new food pill flavor!"
             'Which food pills will I be ingesting today?'
             'Who where?'
             'Those are nice limbs. I bet they cost, uh, a lot, though.'
-            'I think I\'ll need more nanocredits.'
-            'We\'ve come a long way.'
+            "I think I'll need more nanocredits."
+            "We've come a long way."
             'What will we discover tomorrow?'
             'This system is getting cramped.'
             'I wonder - can we ever reverse entropy?'
-            'Meatspace\'s getting stale for me.'
-            'I\'m still at least ' + randint(5, 90) + '% meat!'
-            'I think I\'ll go visit some biorelatives.'
+            "Meatspace's getting stale for me."
+            "I'm still at least " + randint(5, 90) + '% meat!'
+            "I think I'll go visit some biorelatives."
             'Ugh. My biocontributors are visiting again.'
-            'One day I\'ll just upload myself.'
+            "One day I'll just upload myself."
             choose([
                 'Needs'
                 'What this planet needs is'
@@ -1355,13 +1364,13 @@ thoughtGenerators =
                 'more revived extinct species'
             ]) + '.'
             'These last few centuries have been a little boring.'
-            'I\'ll say, I\'m a little bit bored.'
-            'I don\'t really give a clam\'s hinge.'
-            'Everything\'s so nano.'
-            'That\'s totally nano.'
-            'I wonder, where\'s my nanobro right now?'
-            'I hope we don\'t get assimilated.'
-            'I\'m synthesizing ' + choose([
+            "I'll say, I'm a little bit bored."
+            "I don't really give a clam's hinge."
+            "Everything's so nano."
+            "That's totally nano."
+            "I wonder, where's my nanobro right now?"
+            "I hope we don't get assimilated."
+            "I'm synthesizing " + choose([
                 'dinosaurs'
                 'trilobites'
                 'businessmen'
@@ -1398,13 +1407,11 @@ thoughtGenerators =
                 'a good old videoverse'
             ]) + '!'
             choose([
-                'That videoverse\'s plot is barely believable.'
+                "That videoverse's plot is barely believable."
                 'That videoverse has some nicely-written characters.'
                 'I think this videoverse is too large for me.'
-                'I\'m getting lost in this videoverse.'
-                'I can\'t view this videoverse anymore. Way too scary.'
-                'I can\'t stop crying at that videoverse...'
+                "I'm getting lost in this videoverse."
+                "I can't view this videoverse anymore. Way too scary."
+                "I can't stop crying at that videoverse..."
             ])
         ]) ], 1.5)
-
-        return str

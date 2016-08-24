@@ -15,6 +15,12 @@ weightedChoose = (arr, weightChoose=1) ->
     arr[Math.floor(Math.random() ** weightChoose * arr.length)]
     #return arr[Math.floor((1-Math.pow(Math.random(),1/weightChoose))*arr.length)];//this would give a different curve
 
+weightedChoose_ = (weightChoose, arr) ->
+    ###
+    # Because this ordering makes more sense to me.
+    ###
+    return weightedChoose arr, weightChoose
+
 listWeightedChoose = (list) ->
     # Example list:
     # [

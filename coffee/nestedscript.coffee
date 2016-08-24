@@ -53,6 +53,10 @@ Test Instance.grow
 Sharkverse and etc
 
 Test out generators.coffee code.
+
+thoughtGenerators (all of them)
+
+stringVariation (especially multiline!)
 ###
 
 # Comments {{{1

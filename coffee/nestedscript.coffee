@@ -13,7 +13,7 @@ nestedLasagnaverse.png
 *SADTHOUGHT* and *HAPPYTHOUGHT* should be
 *SAD THOUGHT* and *HAPPY THOUGHT*
 
-To test:
+-------------------- To test: --------------------
 - make.sh, on Linux.
 
 Change default skin to the cool dark one.
@@ -59,6 +59,8 @@ thoughtGenerators (all of them)
 stringVariation (especially multiline!)
 
 Make sure CSS file is properly adapted to match #000 style.
+
+Insect generator.
 ###
 
 # Comments {{{1
@@ -2341,33 +2343,54 @@ new Thing('insect', [
     'locust'
     'earwig'
 ])
-new Thing('insect body', [
-    'simple eye,2-8'
-    'brain'
-    [
-        'insect leg,6'
-        'insect leg,8'
-    ]
-    [
-        'insect claw,2'
-        ''
-    ]
-    'exoskeleton'
-    'stinger,30%'
-    [
-        'insect wing,2'
-        'insect wing,4'
-        ''
-        ''
-    ]
-    [
-        'antenna,2'
-        ''
-    ]
-    'flesh'
-], 'body')
-#spiders with wings. because yeah
-# TODO: Spiders don't have wings. Because no.
+
+insectGenerator = ->
+    # Note to self: spiders don't have stingers.
+    if ahtoLib.choice [true, false]
+        # insect
+        return [
+            'simple eye,2-8'
+            'brain'
+            'insect leg,6'
+            ['insect claw,2', '']
+            'exoskeleton'
+            'stinger,30%'
+            ['insect wing,2', 'insect wing,4', '', '']
+            ['antenna,2', '']
+            'flesh'
+        ]
+    else
+        # arachnid
+        # Overall, 99% of all spiders have 8 eyes and of the remaining 1%
+        # nearly all have 6, but there are a few exceptions.
+        # TODO: Not representative of all arachnids.
+        eyeNum = ahtoLib.weightedChoose [[99, 8], [1, 6]]
+        hasClaws = ahtoLib.choice [true, false]
+
+        # TODO: Not all arachnid eyes are simple eyes.
+        contents = [
+            "simple eye,#{eyeNum}"
+            'brain'
+        ]
+
+        # Arachnids with claws have 6 other legs, because the claws /are/ legs.
+        if hasClaws
+            contents = contents.concat [
+                'insect leg,6'
+                'insect claw,2'
+            ]
+        else
+            contents.push 'insect leg,8'
+
+        contents = contents.concat [
+            'exoskeleton'
+            'flesh'
+        ]
+
+        return contents
+
+new Thing 'insect body', insectGenerator, 'body'
+
 new Thing('insect thoughts', ['insect thought,2-3'], ['thoughts'])
 new Thing('insect thought', [], [
     'skitter'

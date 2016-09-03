@@ -57,6 +57,8 @@ Test out generators.coffee code.
 thoughtGenerators (all of them)
 
 stringVariation (especially multiline!)
+
+Make sure CSS file is properly adapted to match #000 style.
 ###
 
 # Comments {{{1

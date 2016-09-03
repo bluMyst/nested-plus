@@ -54,10 +54,7 @@ styles.push new Style"#8cf", "
 styles.push new Style "#474", "
     body   { background: #474; }
     .arrow { background: #141; }
-
-    .thing {
-        background: #ada;
-    }
+    .thing { background: #ada; }
 
     .thing a:hover, .thing a:active {
         background:  #141;
@@ -193,6 +190,9 @@ for i, style of styles
 
 $('#styles').html str
 
+# Should have been handled at the CSS file level now.
+###
 for styleID, style of styles
     if style.color == '#000'
         setStyle styleID
+###

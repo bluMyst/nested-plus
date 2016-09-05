@@ -13,7 +13,8 @@ nameToGender = (name) ->
         gender = choose [MALE, FEMALE]
     else if name.search(/WOMAN\*$/) != -1
         # Order is important here. WOMAN comes before MAN because /MAN$/
-        # matches "WOMAN".
+        # matches "WOMAN". Javascript regexes don't support negative
+        # lookbehinds. :(
         gender = FEMALE
     else if name.search(/MAN\*$/) != -1
         gender = MALE
@@ -138,7 +139,6 @@ checkMissingThings = ->
     return
 
 cleanThings = ->
-    # TODO: Untested after refactoring.
     # TODO: What does this even do?
     for iT, thisT of things
         toConcat = []

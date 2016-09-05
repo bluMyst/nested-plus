@@ -20,6 +20,8 @@ Change default skin to the cool dark one.
 
 How many Things on screen is too many?
 
+Body part generation.
+
 weightedChoose should take arguments in the opposite order.
 
 test autorun.coffee and the new make.ps1
@@ -61,6 +63,12 @@ stringVariation (especially multiline!)
 Make sure CSS file is properly adapted to match #000 style.
 
 Insect generator.
+
+newStyle function in autorun
+
+cleanThings
+
+virus and microbe
 ###
 
 # Comments {{{1
@@ -822,56 +830,56 @@ new Thing('nucleotide', ['molecule'], [
 ])
 
 # body stuff {{{3
-new Thing('body part', [
-    'bacteria,30%'
-    'bacteria,10%'
+bodyPartContents = [
+    'microbe,30%'
+    'microbe,10%'
+    'virus,30%'
+    'virus,10%'
     'skin'
     'blood vessels'
     'bones'
     'fat'
     'muscles'
-], 'body part')
-new Thing('soft body part', [
-    'bacteria,30%'
-    'bacteria,10%'
-    'skin'
-    'blood vessels'
-    'fat'
-    'muscles'
-], 'body part')
-new Thing('skinless body part', [
-    'bacteria,30%'
-    'bacteria,10%'
-    'blood vessels'
-    'bones'
-    'fat'
-    'muscles'
-], 'body part')
-new Thing('skinless soft body part', [
-    'bacteria,30%'
-    'bacteria,10%'
-    'blood vessels'
-    'fat'
-    'muscles'
-], 'body part')
-new Thing('blood vessels', [
-    'bacteria,30%'
+]
+
+new Thing('body part', bodyPartContents, 'body part')
+
+new Thing('soft body part',
+    (i for i in bodyPartContents when i != 'bones'),
+    'body part')
+
+new Thing('skinless body part',
+    (i for i in bodyPartContents when i != 'skin'),
+    'body part')
+
+new Thing('skinless soft body part',
+    (i for i in bodyPartContents when i not in ['skin', 'bones']),
+    'body part')
+
+new Thing 'blood vessels', [
+    'microbe,30%'
+    'virus,30%'
     'blood'
-], 'blood vessels')
+]
+
 new Thing('blood', ['blood cell'], 'blood')
 new Thing('blood cell', ['.cell'], ['blood cells'])
-new Thing('skin', [
-    'bacteria,1-3'
+
+new Thing 'skin', [
+    'microbe,1-3'
+    'virus,1-3'
     'scar,0.5%'
     'pores'
     'skin cell'
     'dead skin'
     'dust,20%'
     'sweat,20%'
-], 'skin')
+]
+
 new Thing('scar', ['dead skin'])
 new Thing('pores', [
-    'bacteria,1-3'
+    'microbe,1-3'
+    'virus,1-3'
     'skin cell'
     'dead skin,50%'
     'sweat,40%'
@@ -1018,7 +1026,8 @@ new Thing('tear', [
 ])
 new Thing('ear', ['.soft body part'], 'ear')
 new Thing('brain', [
-    'bacteria,20%'
+    'microbe,20%'
+    'virus,20%'
     'brain cell'
 ], 'brain')
 new Thing('skull', [
@@ -1041,7 +1050,8 @@ new Thing('head hair', [
     [' hair']
 ])
 new Thing('hair', [
-    'bacteria,30%'
+    'microbe,30%'
+    'virus,30%'
     'keratin'
 ], 'hair')
 new Thing('nose', [
@@ -1834,25 +1844,35 @@ new Thing('snake body', [
 ], 'body')
 #oh my god writing animal thoughts is so much fun
 # single-celled organisms {{{3
-# TODO: Bacteria are not viruses.
-new Thing('bacteria',
-    ['bacteria body', 'bacteria thoughts']
-    [
-        [
-            'pico', 'nitro', 'sulfuro', 'oxy', 'toxi', 'micro', 'nano',
-            'proto', 'archi', 'ferro', 'mono', 'poly', 'schizo', 'myxo',
-            'hydro', 'noo', 'zoo', 'phyto', 'aqui', 'acido', 'cyano', 'chloro',
-            'chromo', 'fibro', 'osteo', 'spiro', 'bacillo', 'flagello',
-            'helio', 'anaero', 'photo', 'litho', 'methano', 'cerebro',
-            'cephalo', 'brachio', 'plasmo', 'ethylo'
-        ]
-        ['amoeba', 'bacteria', 'virus']
-    ]
-)
 
-new Thing('bacteria body', ['.cell'], 'body')
-new Thing('bacteria thoughts', ['bacteria thought,1'], ['thoughts'])
-new Thing('bacteria thought', [], [
+# TODO: Bacteria are not viruses.
+microbePrefixes = [
+    'pico', 'nitro', 'sulfuro', 'oxy', 'toxi', 'micro', 'nano',
+    'proto', 'archi', 'ferro', 'mono', 'poly', 'schizo', 'myxo',
+    'hydro', 'noo', 'zoo', 'phyto', 'aqui', 'acido', 'cyano', 'chloro',
+    'chromo', 'fibro', 'osteo', 'spiro', 'bacillo', 'flagello',
+    'helio', 'anaero', 'photo', 'litho', 'methano', 'cerebro',
+    'cephalo', 'brachio', 'plasmo', 'ethylo'
+]
+
+# Does not include viruses.
+new Thing 'microbe',
+    ['microbe body', 'microbe thoughts']
+    [
+        microbePrefixes
+        ['amoeba', 'bacteria']
+    ]
+
+new Thing 'microbe body', ['.cell'], 'body'
+
+new Thing 'virus',
+    ['virus body', 'microbe thoughts']
+    [microbePrefixes, ['virus']
+
+new Thing 'virus body', ['proteins', 'dna'], 'body'
+
+new Thing('microbe thoughts', ['microbe thought,1'], ['thoughts'])
+new Thing('microbe thought', [], [
     '#wow', '#wow okay', "#i can't even", '#okay', '#me', '#yes', '#what',
     '#how', '#delicious', '#seriously', '#but seriously tho', '#germ life',
     '#mitosis', '#meiosis', '#nucleus', '#cytoplasm',
@@ -7218,7 +7238,8 @@ new Thing('visitor mouth', [
 ], 'mouth')
 new Thing('visitor teeth', [ 'steel' ], 'teeth')
 new Thing('visitor ooze', [
-    'bacteria,40%'
+    'microbe,40%'
+    'virus,40%'
     'organic matter'
     'sulfur'
 ], 'ooze')

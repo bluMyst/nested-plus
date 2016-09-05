@@ -1,31 +1,15 @@
 #= require <nestedscript>
-
-getParameterByName = (name, url=window.location.href) ->
-    name = name.replace /[\[\]]/g, "\\$&"
-    regex = ///
-        [?&] #{name}
-        (
-            = ( [^&#]* )
-            | &
-            | \#
-            | $
-        )
-    ///
-
-    results = regex.exec url
-
-    if not results
-        return null
-    else if not results[2]
-        return ''
-    else
-        results = results[2].replace(/\+/g, ' ')
-        return decodeURIComponent results
+#= require <ahtoLib>
 
 # This can be set to anything, like "firefighter" or "donut box".
-seedObject = getParameterByName('seed') ? "universe"
+seedObject = ahtoLib.getParameterByName('seed') ? 'universe'
 seedObject = seedObject.toLowerCase()
 launchNest seedObject
+
+class Style
+    constructor: (@color, @style) ->
+
+styles = []
 
 # quick and dirty dynamic stylesheets (doesn't seem to work in IE, unfortunately)
 $('body').append "<style id='customstyle'></style>"
@@ -33,16 +17,25 @@ $('body').append "<style id='customstyle'></style>"
 setStyle = (styleID) ->
     $('#customstyle').html styles[styleID].style
 
-styles = []
-class Style
-    constructor: (@color, @style) ->
+newStyle = (color, style) ->
+    styleObject = new Style color, style
+    styleID     = styles.push styleObject
 
-styles.push new Style "#fff", "
+    $('#styles').append "
+        <a
+            href='javascript:setStyle(#{styleID});'
+            style='background-color:#{style.color};'
+        >
+            -
+        </a>
+    "
+
+newStyle "#fff", "
     body   { background:   #fff; }
     .thing { border-color: #fff; }
 "
 
-styles.push new Style"#8cf", "
+newStyle"#8cf", "
     body { background: #8cf; }
 
     .thing {
@@ -51,7 +44,7 @@ styles.push new Style"#8cf", "
     }
 "
 
-styles.push new Style "#474", "
+newStyle "#474", "
     body   { background: #474; }
     .arrow { background: #141; }
     .thing { background: #ada; }
@@ -62,7 +55,7 @@ styles.push new Style "#474", "
     }
 "
 
-styles.push new Style "#953", "
+newStyle "#953", "
     body   { background: #953; }
     .arrow { background: #620; }
 
@@ -77,7 +70,7 @@ styles.push new Style "#953", "
     }
 "
 
-styles.push new Style "#a97", "
+newStyle "#a97", "
     body { background: #a97; }
 
     .thing {
@@ -108,7 +101,7 @@ styles.push new Style "#a97", "
     }
 "
 
-styles.push new Style "#ccc", "
+newStyle "#ccc", "
     .thing {
         border-radius:       10px;
         -moz-border-radius:  10px;
@@ -136,7 +129,7 @@ styles.push new Style "#ccc", "
     }
 "
 
-styles.push new Style "#000", "
+newStyle "#000", "
     body     { background: #000; }
     .thing a { color:      #fff; }
 
@@ -152,7 +145,7 @@ styles.push new Style "#000", "
     }
 "
 
-styles.push new Style "#214", "
+newStyle "#214", "
     body {
         background: url(images/UniverseBG.jpg);
     }
@@ -175,20 +168,6 @@ styles.push new Style "#214", "
         color:       #000;
     }
 "
-
-str = ""
-for i, style of styles
-    # TODO: How can I indent this to make it readable?
-    str += "
-        <a
-            href='javascript:setStyle(#{i});'
-            style='background-color:#{style.color};'
-        >
-            -
-        </a>
-    "
-
-$('#styles').html str
 
 # Should have been handled at the CSS file level now.
 ###

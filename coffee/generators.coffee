@@ -6,7 +6,7 @@
 
 generators = {}
 
-class generators.ThingNamer
+class generators.NameGenerator
     ###
     # Warning: Only works on strings like '*PERSON*' or '*ANCIENT THOUGHT*'
     # The Instance class handles more complex stuff on its own.

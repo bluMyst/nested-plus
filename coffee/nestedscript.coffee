@@ -13,6 +13,8 @@ nestedLasagnaverse.png
 *SADTHOUGHT* and *HAPPYTHOUGHT* should be
 *SAD THOUGHT* and *HAPPY THOUGHT*
 
+Swap out weightedChoose with weightedChoose_
+
 -------------------- To test: --------------------
 - make.sh, on Linux.
 
@@ -21,8 +23,6 @@ Change default skin to the cool dark one.
 How many Things on screen is too many?
 
 Body part generation.
-
-weightedChoose should take arguments in the opposite order.
 
 test autorun.coffee and the new make.ps1
 
@@ -2380,11 +2380,11 @@ insectGenerator = ->
             'flesh'
         ]
     else
-        # arachnid
+        # arachnid ("spider")
         # Overall, 99% of all spiders have 8 eyes and of the remaining 1%
         # nearly all have 6, but there are a few exceptions.
         # TODO: Not representative of all arachnids.
-        eyeNum = ahtoLib.weightedChoose [[99, 8], [1, 6]]
+        eyeNum = listWeightedChoose [[99, 8], [1, 6]]
         hasClaws = ahtoLib.choice [true, false]
 
         # TODO: Not all arachnid eyes are simple eyes.

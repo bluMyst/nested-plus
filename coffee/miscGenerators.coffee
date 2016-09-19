@@ -123,14 +123,14 @@ miscGenerators =
             'in the sewers', "on a moon's surface"
         ]
 
-        str = weightedChoose([
+        str = weightedChoose_(3, [
             'A painting of', 'A portrait of', 'A picture of',
             'A photograph of', 'A rendition of', 'A sculpture of',
             'A bas-relief of', 'An installation of',
             'A series of pictures representing',
             'A series of photographs showing', 'A model of', 'A dyptic of',
             'A tryptic of'
-        ], 3) + ' '
+        ]) + ' '
 
         str += choose([
             '$adj $obj $loc.'
@@ -351,7 +351,7 @@ miscGenerators =
                 'Cooking for'
                 randint(10, 200) + ' recipes for'
                 'A few words on'
-                'They know where you live :'
+                'They know where you live:'
                 'What I think about'
                 "What you didn't know about"
                 'The truth on'
@@ -377,206 +377,56 @@ miscGenerators =
                 'Hey everyone,'
                 'The chorus of'
             ]) + ' ' + choose([
-                'weird'
-                'mutant'
-                'normal'
-                'serious'
-                'elongated'
-                'exploding'
-                'obese'
-                'skinny'
-                'whiny'
-                'stupid'
-                'slimy'
-                'creamy'
-                'tiny'
-                'small'
-                'giant'
-                'gigantic'
-                'ancient'
-                'tasty'
-                'obnoxious'
-                'invisible'
-                'shiny'
-                'boring'
-                'confused'
-                'lost'
-                'lonely'
-                'curly'
-                'frilly'
-                'friendly'
-                'annoying'
-                'space'
-                'green'
-                'orange'
-                'purple'
-                'mauve'
-                'transparent'
-                'stilted'
-                'hairy'
-                'bald'
-                'ridiculous'
-                'demanding'
-                'imaginary'
-                'awkward'
-                'stubborn'
-                'pretentious'
-                'naughty'
-                'nasty'
-                'lazy'
-                'fancy'
-                'magic'
-                'clumsy'
-                'smelly'
-                'bearded'
-                'sleazy'
-                'rabid'
-                'translucent'
-                'edible'
-                'inedible'
-                'foreign'
-                'snotty'
-                'mind-reading'
-                'telepathic'
-                'silent'
+                'weird', 'mutant', 'normal', 'serious', 'elongated',
+                'exploding', 'obese', 'skinny', 'whiny', 'stupid', 'slimy',
+                'creamy', 'tiny', 'small', 'giant', 'gigantic', 'ancient',
+                'tasty', 'obnoxious', 'invisible', 'shiny', 'boring',
+                'confused', 'lost', 'lonely', 'curly', 'frilly', 'friendly',
+                'annoying', 'space', 'green', 'orange', 'purple', 'mauve',
+                'transparent', 'stilted', 'hairy', 'bald', 'ridiculous',
+                'demanding', 'imaginary', 'awkward', 'stubborn', 'pretentious',
+                'naughty', 'nasty', 'lazy', 'fancy', 'magic', 'clumsy',
+                'smelly', 'bearded', 'sleazy', 'rabid', 'translucent',
+                'edible', 'inedible', 'foreign', 'snotty', 'mind-reading',
+                'telepathic', 'silent'
             ]) + ' ' + choose([
-                'shrimps'
-                'birds'
-                'people'
-                'friends'
-                'relatives'
-                'chappies'
-                'whales'
-                'deities'
-                'cactii'
-                'fungi'
-                'shellfish'
-                'alligators'
-                'jellyfish'
-                'crabs'
-                'hoboes'
-                'machines'
-                'robots'
-                'goats'
-                'cyborgs'
-                'ninjas'
-                'fish'
-                'mushrooms'
-                'mammals'
-                'reptiles'
-                'amphibians'
-                'cephalopods'
-                'spiders'
-                'fossils'
-                'moustaches'
-                'perverts'
-                'mermaids'
-                'squids'
-                'lampreys'
-                'seafood'
-                'turtles'
-                'unicorns'
-                'barbarians'
-                'vampires'
-                'werewolves'
-                'teenagers'
-                'babies'
-                'kids'
-                'ladies'
-                'superheroes'
-                'roads'
-                'hats'
-                'insects'
-                'centaurs'
+                'shrimps', 'birds', 'people', 'friends', 'relatives',
+                'chappies', 'whales', 'deities', 'cactii', 'fungi',
+                'shellfish', 'alligators', 'jellyfish', 'crabs', 'hoboes',
+                'machines', 'robots', 'goats', 'cyborgs', 'ninjas', 'fish',
+                'mushrooms', 'mammals', 'reptiles', 'amphibians',
+                'cephalopods', 'spiders', 'fossils', 'moustaches', 'perverts',
+                'mermaids', 'squids', 'lampreys', 'seafood', 'turtles',
+                'unicorns', 'barbarians', 'vampires', 'werewolves',
+                'teenagers', 'babies', 'kids', 'ladies', 'superheroes',
+                'roads', 'hats', 'insects', 'centaurs'
             ])
+
             choose([
-                'Tales of'
-                'Chronicles of'
-                'A history of'
-                'The gates of'
-                'Objective : '
-                'Reaching for'
-                'War for'
-                'Battle for'
+                'Tales of', 'Chronicles of', 'A history of', 'The gates of',
+                'Objective: ', 'Reaching for', 'War for', 'Battle for',
+                'The ruins of', 'The prophet of', 'Zealots on', 'Mysteries of',
+                'The temple of', 'The vagrant from', 'The nights of',
+                'Conquerors from', 'They came from', 'The spaceships on',
+                'The soldiers of', 'The warrior from', 'On the moons of',
+                'Saving', 'Glory for', 'Rulers of', 'Kings of', 'Lords of',
+                'Princes of'
+
                 choose([
-                    'Money'
-                    'A savior'
-                    'A wizard'
-                    'A warrior'
-                    'A hero'
-                    'A prince'
-                    'A king'
-                    'A princess'
-                    'A queen'
-                    'Cake'
+                    'Money', 'A savior', 'A wizard', 'A warrior', 'A hero',
+                    'A prince', 'A king', 'A princess', 'A queen', 'Cake',
                     'Booze'
                 ]) + ' for'
-                'The ruins of'
-                'The prophet of'
-                'Zealots on'
-                'Mysteries of'
-                'The temple of'
-                'The vagrant from'
-                'The nights of'
-                'Conquerors from'
-                'They came from'
-                'The spaceships on'
-                'The soldiers of'
-                'The warrior from'
-                'On the moons of'
-                'Saving'
-                'Glory for'
-                'Rulers of'
-                'Kings of'
-                'Lords of'
-                'Princes of'
             ]) + ' ' + choose([
-                'G'
-                'P'
-                'S'
-                'St'
-                'Sh'
-                'B'
-                'F'
-                'K'
-                'Z'
-                'Az'
-                'Oz'
+                'G', 'P', 'S', 'St', 'Sh', 'B', 'F', 'K', 'Z', 'Az', 'Oz'
             ]) + choose([
-                ''
-                ''
-                ''
-                'r'
-                'l'
+                '', '', '', 'r', 'l'
             ]) + choose([
-                'u'
-                'o'
-                'a'
-                'e'
+                'u', 'o', 'a', 'e'
             ]) + choose([
-                'r'
-                'sh'
-                'nd'
-                'st'
-                'sd'
-                'kl'
-                'kt'
-                'pl'
-                'fr'
-                'ck'
-                'sh'
-                'ff'
-                'gg'
-                'l'
-                'lig'
-                'rag'
-                'sha'
-                'pta'
-                'lir'
-                'limd'
-                'lim'
-                'shim'
-                'stel'
+                'r', 'sh', 'nd', 'st', 'sd', 'kl', 'kt', 'pl', 'fr', 'ck',
+                'sh', 'ff', 'gg', 'l', 'lig', 'rag', 'sha', 'pta', 'lir',
+                'limd', 'lim', 'shim', 'stel'
             ]) + choose([
                 'i'
                 'u'
@@ -703,7 +553,7 @@ miscGenerators =
                     'discoveries'
                 ]) + ' of '
             ]) + choose([
-                weightedChoose([
+                weightedChoose_(1.5, [
                     'James'
                     'John'
                     'Robert'
@@ -730,7 +580,7 @@ miscGenerators =
                     'Jason'
                     'Jeff'
                     'Jack'
-                ], 1.5)
+                ])
                 choose([
                     'A'
                     'Ana'
@@ -998,61 +848,19 @@ miscGenerators =
                     'discoveries'
                 ]) + ' of '
             ]) + choose([
-                weightedChoose([
-                    'James'
-                    'John'
-                    'Robert'
-                    'Michael'
-                    'William'
-                    'David'
-                    'Richard'
-                    'Charles'
-                    'Joseph'
-                    'Thomas'
-                    'Christopher'
-                    'Daniel'
-                    'Paul'
-                    'Mark'
-                    'Donald'
-                    'George'
-                    'Kenneth'
-                    'Steven'
-                    'Edward'
-                    'Brian'
-                    'Ronald'
-                    'Anthony'
-                    'Kevin'
-                    'Jason'
-                    'Jeff'
-                    'Jack'
-                ], 1.5)
-                weightedChoose([
-                    'Mary'
-                    'Patricia'
-                    'Linda'
-                    'Barbara'
-                    'Elizabeth'
-                    'Jennifer'
-                    'Maria'
-                    'Susan'
-                    'Margaret'
-                    'Dorothy'
-                    'Lisa'
-                    'Nancy'
-                    'Karen'
-                    'Betty'
-                    'Helen'
-                    'Sandra'
-                    'Donna'
-                    'Carol'
-                    'Ruth'
-                    'Sharon'
-                    'Michelle'
-                    'Laura'
-                    'Sarah'
-                    'Kimberly'
-                    'Deborah'
-                ], 1.5)
+                weightedChoose_ 1.5, [
+                    'James', 'John', 'Robert', 'Michael', 'William', 'David',
+                    'Richard', 'Charles', 'Joseph', 'Thomas', 'Christopher',
+                    'Daniel', 'Paul', 'Mark', 'Donald', 'George', 'Kenneth',
+                    'Steven', 'Edward', 'Brian', 'Ronald', 'Anthony', 'Kevin',
+                    'Jason', 'Jeff', 'Jack']
+
+                weightedChoose_ 1.5, [
+                    'Mary', 'Patricia', 'Linda', 'Barbara', 'Elizabeth',
+                    'Jennifer', 'Maria', 'Susan', 'Margaret', 'Dorothy',
+                    'Lisa', 'Nancy', 'Karen', 'Betty', 'Helen', 'Sandra',
+                    'Donna', 'Carol', 'Ruth', 'Sharon', 'Michelle', 'Laura',
+                    'Sarah', 'Kimberly', 'Deborah']
             ]) + ', the ' + choose([
                 'weird'
                 'mutant'
@@ -1185,38 +993,58 @@ miscGenerators =
         return str
 
     monument: -> # {{{1
-        str = choose([ choose([ choose([
-            weightedChoose([
-                'old', 'new', 'ancient', 'historic', 'royal', 'imperial',
-                'sunken', 'painted', 'crooked', 'slanted', 'high', 'rising',
-                'underground', 'immersed', 'twisted', 'shaky', 'lucky',
-                'glorious', 'flying'
-            ], 2)
-
-            weightedChoose([
-                'great', 'big', 'large', 'giant', 'huge', 'grand', 'gigantic',
-                'colossal', 'tremendous', 'humongous'
-            ], 0.5)
-        ]) + ' ' ]) + choose([
-            '', '', ''
+        str = choose([
             choose([
-                'stone', 'gold', 'silver', 'copper', 'bronze', 'metal',
-                'white', 'black', 'blue', 'green', 'yellow', 'red', 'grey',
-                'crimson', 'azure', 'viridian'
-            ]) + ' '
-        ]) + weightedChoose([
-            'tower'
+                choose([
+                    weightedChoose_(2, [
+                        'old', 'new', 'ancient', 'historic', 'royal', 'imperial',
+                        'sunken', 'painted', 'crooked', 'slanted', 'high', 'rising',
+                        'underground', 'immersed', 'twisted', 'shaky', 'lucky',
+                        'glorious', 'flying'
+                    ])
 
-            choose([
-                '', 'smiling ', 'proud ', 'wise ', 'horse ', 'freedom ',
-                'watching ', 'crying ', 'singing '
-            ]) + 'statue'
+                    weightedChoose_(0.5, [
+                        'great', 'big', 'large', 'giant', 'huge', 'grand', 'gigantic',
+                        'colossal', 'tremendous', 'humongous'
+                    ])
+                ]) + ' '
+            ]) + listWeightedChoose([
+                [75, ''],
+                #[25, choose([
+                #    'stone', 'gold', 'silver', 'copper', 'bronze', 'metal',
+                #    'white', 'black', 'blue', 'green', 'yellow', 'red', 'grey',
+                #    'crimson', 'azure', 'viridian'
+                #]) + ' ']
+                [1.5625, 'stone'],
+                [1.5625, 'gold'],
+                [1.5625, 'silver'],
+                [1.5625, 'copper'],
+                [1.5625, 'bronze'],
+                [1.5625, 'metal'],
+                [1.5625, 'white'],
+                [1.5625, 'black'],
+                [1.5625, 'blue'],
+                [1.5625, 'green'],
+                [1.5625, 'yellow'],
+                [1.5625, 'red'],
+                [1.5625, 'grey'],
+                [1.5625, 'crimson'],
+                [1.5625, 'azure'],
+                [1.5625, 'viridian']
+            ]) + weightedChoose_(5, [
+                'tower'
 
-            'bridge', 'park', 'towers', 'palace', 'statues', 'gardens',
-            'parks', 'cathedral', 'ruins', 'wall', 'church', 'maze', 'castle',
-            'radio tower', 'arena', 'keep', 'colossus', 'space needle',
-            'house', 'villa', 'manor', 'dungeon', 'opera', 'pyramid', 'cave',
-            'ark', 'wheel'
-        ], 5) ])
+                choose([
+                    '', 'smiling ', 'proud ', 'wise ', 'horse ', 'freedom ',
+                    'watching ', 'crying ', 'singing '
+                ]) + 'statue'
+
+                'bridge', 'park', 'towers', 'palace', 'statues', 'gardens',
+                'parks', 'cathedral', 'ruins', 'wall', 'church', 'maze', 'castle',
+                'radio tower', 'arena', 'keep', 'colossus', 'space needle',
+                'house', 'villa', 'manor', 'dungeon', 'opera', 'pyramid', 'cave',
+                'ark', 'wheel'
+            ])
+        ])
 
         return ahtoLib.bookCase 'The ' + str

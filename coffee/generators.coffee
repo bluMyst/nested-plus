@@ -1,3 +1,4 @@
+# vim: foldmethod=marker
 #= require <rand>
 #= require <nameGenerators>
 #= require <thoughtGenerators>
@@ -6,7 +7,7 @@
 
 generators = {}
 
-class generators.NameGenerator
+class generators.NameGenerator # {{{1
     ###
     # Warning: Only works on strings like '*PERSON*' or '*ANCIENT THOUGHT*'
     # The Instance class handles more complex stuff on its own.
@@ -46,7 +47,7 @@ class generators.NameGenerator
         if (f = @namingFunctions[nameTemplate])?
             return f()
         else
-            error()
+            error() # }}}1
 
 generators.nameGenerator = new generators.NameGenerator()
 

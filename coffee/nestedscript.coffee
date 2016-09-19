@@ -138,7 +138,7 @@ class Instance
 
         nameParts = @name_.split('|')
         @name_ = nameParts[0]
-        @name_ = generators.thingNamer.generateName @name_
+        @name_ = generators.nameGenerator.generateName @name_
 
         if nameParts[1] != undefined # {{{4
             # TODO: There should be no need for a pipe character.

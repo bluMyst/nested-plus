@@ -48,55 +48,55 @@ class generators.NameGenerator
         else
             error()
 
-generators.thingNamer = new generators.ThingNamer()
+generators.nameGenerator = new generators.NameGenerator()
 
-generators.thingNamer.newGenderedNamingScheme(
+generators.nameGenerator.newGenderedNamingScheme(
     '*[GENDER]*', nameGenerators.modern)
 
-generators.thingNamer.newGenderedNamingScheme(
+generators.nameGenerator.newGenderedNamingScheme(
     '*MEDIEVAL [GENDER]*', nameGenerators.medieval)
 
-generators.thingNamer.newGenderedNamingScheme(
+generators.nameGenerator.newGenderedNamingScheme(
     '*ANCIENT [GENDER]*', nameGenerators.ancient)
 
-generators.thingNamer.newGenderedNamingScheme(
+generators.nameGenerator.newGenderedNamingScheme(
     '*FUTURE [GENDER]*', nameGenerators.future)
 
-generators.thingNamer.newNamingScheme(
+generators.nameGenerator.newNamingScheme(
     '*MEMORY*', thoughtGenerators.memory)
 
-generators.thingNamer.newNamingScheme(
+generators.nameGenerator.newNamingScheme(
     '*SADTHOUGHT*', thoughtGenerators.sadThought)
 
-generators.thingNamer.newNamingScheme(
+generators.nameGenerator.newNamingScheme(
     '*HAPPYTHOUGHT*', thoughtGenerators.happyThought)
 
-generators.thingNamer.newNamingScheme(
+generators.nameGenerator.newNamingScheme(
     '*MEDIEVAL MEMORY*', thoughtGenerators.medievalMemory)
 
-generators.thingNamer.newNamingScheme(
+generators.nameGenerator.newNamingScheme(
     '*MEDIEVAL THOUGHT*', thoughtGenerators.medievalThought)
 
-generators.thingNamer.newNamingScheme(
+generators.nameGenerator.newNamingScheme(
     '*ANCIENT MEMORY*', thoughtGenerators.ancientMemory)
 
-generators.thingNamer.newNamingScheme(
+generators.nameGenerator.newNamingScheme(
     '*ANCIENT THOUGHT*', thoughtGenerators.medievalThought)
 
-generators.thingNamer.newNamingScheme(
+generators.nameGenerator.newNamingScheme(
     '*FUTURE MEMORY*', thoughtGenerators.futureMemory)
 
-generators.thingNamer.newNamingScheme(
+generators.nameGenerator.newNamingScheme(
     '*FUTURE THOUGHT*', thoughtGenerators.futureThought)
 
-generators.thingNamer.newNamingScheme(
+generators.nameGenerator.newNamingScheme(
     '*PAINTING*', miscGenerators.painting)
 
-generators.thingNamer.newNamingScheme(
+generators.nameGenerator.newNamingScheme(
     '*note*', miscGenerators.note)
 
-generators.thingNamer.newNamingScheme(
+generators.nameGenerator.newNamingScheme(
     '*book*', miscGenerators.book)
 
-generators.thingNamer.newNamingScheme(
+generators.nameGenerator.newNamingScheme(
     '*char*', thoughtGenerators.futureThought)

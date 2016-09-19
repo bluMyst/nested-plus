@@ -13,8 +13,8 @@ nameGenerators =
 
         #http://names.mongabay.com/male_names.htm
         if gender == FEMALE
-            str = weightedChoose([
-                'Mary', 'Patricia', 'Linda', 'Barbara', 'Elizabeth', # {{{
+            str = weightedChoose_ 1.2, [ # {{{
+                'Mary', 'Patricia', 'Linda', 'Barbara', 'Elizabeth',
                 'Jennifer', 'Maria', 'Susan', 'Margaret', 'Dorothy', 'Lisa',
                 'Nancy', 'Karen', 'Betty', 'Helen', 'Sandra', 'Donna', 'Carol',
                 'Ruth', 'Sharon', 'Michelle', 'Laura', 'Sarah', 'Kimberly',
@@ -30,11 +30,10 @@ nameGenerators =
                 'Jane', 'Lori', 'Rachel', 'Marilyn', 'Andrea', 'Kathryn',
                 'Louise', 'Sara', 'Anne', 'Jacqueline', 'Wanda', 'Bonnie',
                 'Julia', 'Ruby', 'Lois', 'Tina', 'Phyllis', 'Norma', 'Paula',
-                'Diana', 'Annie', 'Lillian', 'Emily', 'Robin', # }}}
-            ], 1.2)
+                'Diana', 'Annie', 'Lillian', 'Emily', 'Robin'] # }}}
         else if gender == MALE
-            str = weightedChoose([
-                'James', 'John', 'Robert', 'Michael', 'William', 'David',# {{{
+            str = weightedChoose_ 1.2, [ # {{{
+                'James', 'John', 'Robert', 'Michael', 'William', 'David',
                 'Richard', 'Charles', 'Joseph', 'Thomas', 'Christopher',
                 'Daniel', 'Paul', 'Mark', 'Donald', 'George', 'Kenneth',
                 'Steven', 'Edward', 'Brian', 'Ronald', 'Anthony', 'Kevin',
@@ -50,15 +49,14 @@ nameGenerators =
                 'Eugene', 'Carlos', 'Russell', 'Bobby', 'Victor', 'Martin',
                 'Ernest', 'Phillip', 'Todd', 'Jesse', 'Craig', 'Alan', 'Shawn',
                 'Clarence', 'Sean', 'Philip', 'Chris', 'Johnny', 'Earl',
-                'Jimmy', 'Antonio',# }}}
-            ], 1.2)
+                'Jimmy', 'Antonio'] # }}}
 
         str += ' '
         if randint(0, 30) == 1
             str += 'Mc'
 
-        str += weightedChoose([
-            'Smith', 'Johnson', 'Williams', 'Brown', 'Jones', 'Miller', # {{{
+        str += weightedChoose_ 2, [ # {{{
+            'Smith', 'Johnson', 'Williams', 'Brown', 'Jones', 'Miller',
             'Davis', 'Garcia', 'Rodriguez', 'Wilson', 'Martinez', 'Anderson',
             'Taylor', 'Thomas', 'Hernandez', 'Moore', 'Martin', 'Jackson',
             'Thompson', 'White', 'Lopez', 'Lee', 'Gonzalez', 'Harris', 'Clark',
@@ -89,15 +87,11 @@ nameGenerators =
             'Daniels', 'Stephens', 'Gardner', 'Payne', 'Kelley', 'Dunn',
             'Pierce', 'Arnold', 'Tran', 'Spencer', 'Peters', 'Hawkins',
             'Grant', 'Hansen', 'Castro', 'Hoffman', 'Hart', 'Elliott',
-            'Cunningham', 'Knight', 'Bradley', # }}}
-        ], 2)
+            'Cunningham', 'Knight', 'Bradley'] # }}}
 
-        if gender == MALE and randint(0, 2000) == 1
-            str = choose([
-                'Elvis Presley'
-                'Gabe Newell'
-            ])
         # 4chan made me do it
+        if gender == MALE and randint(0, 2000) == 1
+            str = choose ['Elvis Presley', 'Gabe Newell']
 
         return str
 

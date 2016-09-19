@@ -951,7 +951,7 @@ thoughtGenerators =
         ])
 
     ancientMemory: -> # {{{1
-        str = weightedChoose([
+        str = weightedChoose_ 1.5, [
             choose([
                 'Scouting for wild beasts'
                 'Tending the fire'
@@ -1068,11 +1068,10 @@ thoughtGenerators =
                     'nose'
                 ])
                 'got lost in the forest'
-            ]) + '.'
-        ], 1.5)
+            ]) + '.']
 
     ancientThought: -> # {{{1
-        return weightedChoose([ choose([
+        return weightedChoose_(1.1, [ choose([
             'Today. Nice day.'
             'Many things, today.'
             'Good year so far. Not many dead children.'
@@ -1153,10 +1152,10 @@ thoughtGenerators =
                 'Tickle auroch udder, drink free udderjuice!'
                 'Smash rocks found on the beach. Eat insides.'
             ])
-        ]) ], 1.1)
+        ]) ])
 
     futureMemory: -> # {{{1
-        return weightedChoose([
+        return weightedChoose_(1.5, [
             choose([
                 'Spraying the clearpath'
                 'Clearing the tendrils'
@@ -1303,7 +1302,7 @@ thoughtGenerators =
                     'brain'
                 ])
                 'ended my biocontract with my biomate'
-                'lost my ' + weightedChoose([
+                'lost my ' + weightedChoose_(1.5, [
                     'dwog'
                     'cwat'
                     'bwunny'
@@ -1314,7 +1313,7 @@ thoughtGenerators =
                     'fwerret'
                     'giant lizard'
                     'pet clam'
-                ], 1.5)
+                ])
             ]) + '.'
             'That one unforgettable ' + choose([
                 'videoverse'
@@ -1326,10 +1325,10 @@ thoughtGenerators =
                 'lifeform I met'
                 'party'
             ]) + '.'
-        ], 1.5)
+        ])
 
     futureThought: -> # {{{1
-        return weightedChoose([ choose([
+        return weightedChoose_(1.5, [ choose([
             "That's nice... that's really nice."
             'All of this stuff is so nice.'
             'So nice, wow.'
@@ -1414,4 +1413,4 @@ thoughtGenerators =
                 "I can't view this videoverse anymore. Way too scary."
                 "I can't stop crying at that videoverse..."
             ])
-        ]) ], 1.5)
+        ]) ])
